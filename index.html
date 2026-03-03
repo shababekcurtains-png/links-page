@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>روابط شبابيك للستائر</title>
+    <title>شبابيك للستائر - روابطنا</title>
     
-    <!-- Font Awesome -->
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -25,41 +24,37 @@
 
         body {
             min-height: 100vh;
-            background: #000;
+            background: linear-gradient(145deg, #1a0f0a 0%, #3d2e24 50%, #5c4a3a 100%);
             position: relative;
             overflow-x: hidden;
         }
 
-        /* فيديو الخلفية */
-        .video-bg {
+        /* خلفية متحركة بنقوش ذهبية */
+        .bg-pattern {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M20,20 L30,20 L25,30 Z" fill="%23d9b382"/><circle cx="70" cy="70" r="5" fill="%23d9b382"/><circle cx="30" cy="70" r="3" fill="%23d9b382"/><circle cx="70" cy="30" r="8" fill="%23d9b382"/><path d="M45,45 L55,45 L50,60 Z" fill="%23d9b382"/></svg>');
+            background-size: 150px 150px;
             z-index: -1;
-            overflow: hidden;
+            animation: movePattern 60s linear infinite;
         }
 
-        .video-bg video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            filter: brightness(0.5);
+        @keyframes movePattern {
+            0% { background-position: 0 0; }
+            100% { background-position: 300px 300px; }
         }
 
-        .video-bg::after {
-            content: '';
-            position: absolute;
+        .bg-overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.3);
+            background: radial-gradient(circle at 20% 50%, rgba(217,179,130,0.15), transparent 50%);
+            z-index: -1;
         }
 
         /* الحاوية الرئيسية */
@@ -71,28 +66,54 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 15px 10px;
+            padding: 20px 15px;
         }
 
-        /* الشعار */
+        /* الشعار مع تأثيرات */
         .logo-wrapper {
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             position: relative;
+            animation: floatIn 0.8s ease;
+        }
+
+        @keyframes floatIn {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .logo {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            border: 3px solid #d9b382;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            border: 4px solid #d9b382;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 2px rgba(217,179,130,0.3);
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 10;
         }
 
-        .logo:active {
-            transform: scale(0.95);
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(217,179,130,0.5), 0 0 0 4px rgba(255,255,255,0.3);
+        }
+
+        .logo-glow {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(217,179,130,0.3), transparent 70%);
+            z-index: -1;
+            animation: pulseGlow 3s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
         }
 
         .click-counter {
@@ -101,8 +122,8 @@
             right: -5px;
             background: #d9b382;
             color: #3d2e24;
-            width: 28px;
-            height: 28px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -122,97 +143,178 @@
 
         @keyframes pop {
             0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            50% { transform: scale(1.3); }
             100% { transform: scale(1); }
         }
 
         h1 {
             color: white;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 900;
-            margin: 5px 0 0;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            margin: 10px 0 0;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5), 0 0 20px rgba(217,179,130,0.5);
+            letter-spacing: 1px;
         }
 
         .subtitle {
             color: #d9b382;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            margin-bottom: 5px;
         }
 
-        /* عنوان القسم */
+        /* عنوان القسم مع تأثيرات */
         .section-title {
             color: white;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 900;
-            margin: 20px 0 10px;
+            margin: 25px 0 15px;
             text-align: center;
             position: relative;
             width: 100%;
+            max-width: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d9b382, transparent);
         }
 
         .section-title i {
             color: #d9b382;
-            margin-left: 5px;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 2px;
-            background: #d9b382;
-            margin: 5px auto 0;
+            font-size: 22px;
+            filter: drop-shadow(0 0 5px rgba(217,179,130,0.5));
         }
 
         /* شبكة الروابط */
         .links-grid {
             width: 100%;
-            max-width: 380px;
+            max-width: 400px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
         }
 
-        /* تصميم الرابط */
+        /* تصميم الرابط المتطور */
         .link-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 12px 20px;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            gap: 18px;
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 60px;
+            border: 1px solid rgba(217,179,130,0.3);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 1px rgba(217,179,130,0.2) inset;
             color: white;
             text-decoration: none;
-            transition: 0.2s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
-            -webkit-touch-callout: none;
-            touch-action: manipulation;
+            animation: slideIn 0.5s ease forwards;
+            opacity: 0;
+            transform: translateX(-20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* تأخير ظهور الروابط */
+        .link-item:nth-child(1) { animation-delay: 0.1s; }
+        .link-item:nth-child(2) { animation-delay: 0.15s; }
+        .link-item:nth-child(3) { animation-delay: 0.2s; }
+        .link-item:nth-child(4) { animation-delay: 0.25s; }
+        .link-item:nth-child(5) { animation-delay: 0.3s; }
+        .link-item:nth-child(6) { animation-delay: 0.35s; }
+        .link-item:nth-child(7) { animation-delay: 0.4s; }
+        .link-item:nth-child(8) { animation-delay: 0.45s; }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* تأثير التوهج الذهبي عند المرور */
+        .link-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(217,179,130,0.3), transparent);
+            transition: left 0.6s ease;
+            z-index: -1;
+        }
+
+        .link-item:hover::before {
+            left: 100%;
+        }
+
+        .link-item::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #d9b382, transparent, #d9b382);
+            border-radius: 62px;
+            z-index: -2;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .link-item:hover::after {
+            opacity: 0.5;
+        }
+
+        .link-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(217,179,130,0.15);
+            border-color: #d9b382;
+            box-shadow: 0 15px 35px rgba(217,179,130,0.4), 0 0 0 2px rgba(217,179,130,0.3) inset;
         }
 
         .link-item:active {
-            transform: scale(0.98);
-            background: rgba(217,179,130,0.3);
-            border-color: #d9b382;
+            transform: translateY(-2px) scale(0.98);
         }
 
         /* أيقونة الرابط */
         .link-icon {
-            width: 45px;
-            height: 45px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
+            font-size: 26px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(217,179,130,0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .link-item:hover .link-icon {
+            transform: scale(1.15) rotate(10deg);
+            background: #d9b382;
+            border-color: white;
+            box-shadow: 0 0 25px #d9b382;
+        }
+
+        .link-item:hover .link-icon i {
+            color: #3d2e24 !important;
         }
 
         /* محتوى الرابط */
@@ -221,73 +323,159 @@
         }
 
         .link-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
             display: flex;
             align-items: center;
             gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .link-item:hover .link-title {
+            color: #d9b382;
+            transform: translateX(-3px);
         }
 
         .badge {
             background: #d9b382;
             color: #3d2e24;
-            font-size: 10px;
-            padding: 2px 8px;
-            border-radius: 20px;
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 30px;
             font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .link-item:hover .badge {
+            background: white;
+            color: #d9b382;
+            transform: scale(1.1);
         }
 
         .link-desc {
-            font-size: 12px;
+            font-size: 13px;
             opacity: 0.8;
             display: flex;
             align-items: center;
             gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .link-item:hover .link-desc {
+            opacity: 1;
+            color: rgba(255,255,255,0.9);
         }
 
         .link-desc i {
             font-size: 6px;
             color: #d9b382;
+            transition: all 0.3s ease;
+        }
+
+        .link-item:hover .link-desc i {
+            transform: scale(1.5);
+            color: white;
         }
 
         /* سهم الرابط */
         .link-arrow {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(217,179,130,0.4);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             flex-shrink: 0;
         }
 
-        .link-arrow i {
-            font-size: 14px;
+        .link-item:hover .link-arrow {
+            transform: translateX(-10px) rotate(360deg);
+            background: #d9b382;
+            border-color: white;
+            box-shadow: 0 0 20px #d9b382;
         }
 
-        /* ألوان خاصة */
-        .whatsapp { background: #25D366; }
-        .youtube { background: #FF0000; }
-        .instagram { background: #E4405F; }
-        .facebook { background: #1877F2; }
-        .tiktok { background: #000000; }
-        .twitter { background: #1DA1F2; }
-        .snapchat { background: #FFFC00; color: #000; }
-        .telegram { background: #0088cc; }
-        .gold { background: #d9b382; color: #3d2e24; }
+        .link-item:hover .link-arrow i {
+            color: #3d2e24 !important;
+        }
+
+        .link-arrow i {
+            font-size: 16px;
+            color: #d9b382;
+            transition: all 0.3s ease;
+        }
+
+        /* ألوان خاصة للأيقونات */
+        .whatsapp-bg { background: #25D366; }
+        .youtube-bg { background: #FF0000; }
+        .instagram-bg { background: linear-gradient(45deg, #FCAF45, #E4405F, #833AB4); }
+        .facebook-bg { background: #1877F2; }
+        .tiktok-bg { background: #000000; }
+        .twitter-bg { background: #1DA1F2; }
+        .snapchat-bg { background: #FFFC00; color: #000; }
+        .telegram-bg { background: #0088cc; }
+        .gold-bg { background: #d9b382; }
 
         /* تذييل الصفحة */
         .footer {
-            margin-top: 25px;
-            color: rgba(255,255,255,0.5);
-            font-size: 12px;
+            margin-top: 35px;
+            color: rgba(255,255,255,0.4);
+            font-size: 13px;
             text-align: center;
+            animation: fadeIn 1s ease 1s both;
         }
 
-        /* لوحة التحكم */
+        .footer i {
+            color: #d9b382;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* إشعار */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            color: #3d2e24;
+            padding: 15px 30px;
+            border-radius: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 0 2px #d9b382;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            z-index: 3000;
+            border-right: 5px solid #d9b382;
+            font-weight: 700;
+            font-size: 15px;
+            width: 90%;
+            max-width: 350px;
+            text-align: center;
+            justify-content: center;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translate(-50%, -30px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+
+        .notification i {
+            font-size: 20px;
+            color: #d9b382;
+        }
+
+        /* ===== لوحة التحكم (مخفية) ===== */
         .admin-panel {
             position: fixed;
             top: 0;
@@ -295,27 +483,29 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.98);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             z-index: 2000;
             display: none;
             justify-content: center;
             align-items: center;
-            padding: 10px;
+            padding: 15px;
         }
 
         .admin-panel.show {
             display: flex;
+            animation: fadeIn 0.3s;
         }
 
         .admin-content {
             background: white;
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             max-height: 90vh;
             overflow-y: auto;
-            border-radius: 25px;
-            padding: 20px;
-            border: 2px solid #d9b382;
+            border-radius: 30px;
+            padding: 25px;
+            border: 3px solid #d9b382;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
         .admin-header {
@@ -330,41 +520,43 @@
         .admin-header h2 {
             color: #3d2e24;
             font-weight: 900;
-            font-size: 20px;
+            font-size: 22px;
         }
 
         .admin-close {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             background: #f0f0f0;
             border: none;
-            font-size: 20px;
+            font-size: 22px;
             cursor: pointer;
-            touch-action: manipulation;
+            transition: 0.3s;
         }
 
         .admin-close:active {
             background: #e74c3c;
             color: white;
+            transform: rotate(90deg);
         }
 
         .admin-tabs {
             display: flex;
             gap: 5px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         .admin-tab {
             flex: 1;
-            padding: 10px;
+            padding: 12px;
             background: #f0f0f0;
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
             font-weight: 700;
             cursor: pointer;
-            touch-action: manipulation;
-            font-size: 13px;
+            transition: 0.3s;
+            min-width: 80px;
         }
 
         .admin-tab.active {
@@ -374,25 +566,25 @@
 
         .admin-section {
             background: #f8f8f8;
-            border-radius: 15px;
-            padding: 15px;
+            border-radius: 20px;
+            padding: 20px;
             margin-bottom: 20px;
         }
 
         .admin-section h3 {
             color: #b58f5a;
-            margin-bottom: 10px;
-            font-size: 16px;
+            margin-bottom: 15px;
+            font-size: 18px;
         }
 
         .admin-input {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
             border: 2px solid #eee;
-            border-radius: 10px;
+            border-radius: 15px;
             font-family: 'Cairo';
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .admin-input:focus {
@@ -404,23 +596,25 @@
             background: #d9b382;
             color: white;
             border: none;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 15px;
+            border-radius: 15px;
             font-weight: 900;
             width: 100%;
             cursor: pointer;
-            touch-action: manipulation;
+            font-size: 16px;
+            transition: 0.3s;
         }
 
         .admin-btn:active {
             background: #b58f5a;
+            transform: scale(0.98);
         }
 
         .admin-list {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            max-height: 300px;
+            max-height: 250px;
             overflow-y: auto;
         }
 
@@ -428,26 +622,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
+            padding: 12px;
             background: white;
-            border-radius: 10px;
+            border-radius: 12px;
             border: 1px solid #eee;
-        }
-
-        .admin-item-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .admin-item-icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f5f5f5;
         }
 
         .admin-item-actions {
@@ -456,12 +634,12 @@
         }
 
         .admin-item-btn {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            touch-action: manipulation;
+            font-size: 16px;
         }
 
         .admin-item-btn.edit {
@@ -474,75 +652,47 @@
             color: white;
         }
 
-        .admin-item-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* إشعار */
-        .notification {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            color: #333;
-            padding: 12px 25px;
-            border-radius: 50px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            display: none;
-            align-items: center;
-            gap: 10px;
-            z-index: 3000;
-            border-right: 4px solid #d9b382;
-            font-weight: 600;
-            width: 90%;
-            max-width: 350px;
-            text-align: center;
-            justify-content: center;
-        }
-
-        /* إخفاء شريط التمرير */
-        ::-webkit-scrollbar {
-            display: none;
+        /* أنيميشن عام */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <!-- فيديو الخلفية -->
-    <div class="video-bg">
-        <video autoplay loop muted playsinline>
-            <source src="https://res.cloudinary.com/dnkuwf8q9/video/upload/v1772571247/%D9%81%D9%8A%D8%AF%D9%8A%D9%88_%D8%B3%D8%AA%D8%A7%D8%A6%D8%B1_%D8%B1%D9%88%D9%85%D8%A7%D9%86%D8%B3%D9%8A_%D8%A8%D8%B3%D9%8A%D8%B7_iyila0.mp4" type="video/mp4">
-        </video>
-    </div>
+    <!-- خلفية متحركة -->
+    <div class="bg-pattern"></div>
+    <div class="bg-overlay"></div>
 
     <!-- المحتوى الرئيسي -->
     <div class="container">
-        <!-- الشعار -->
+        <!-- الشعار مع نظام الـ 5 نقرات -->
         <div class="logo-wrapper" onclick="handleLogoClick()">
+            <div class="logo-glow"></div>
             <img src="https://i.ibb.co/3y1ZNCk0/1.png" class="logo" id="logo">
             <div class="click-counter" id="clickCounter">0</div>
             <h1>شبابيك للستائر</h1>
             <div class="subtitle">ظل وذوق</div>
         </div>
 
-        <!-- روابط التواصل -->
-        <div class="section-title"><i class="fas fa-hashtag"></i> تابعنا على</div>
-        <div class="links-grid" id="social-links"></div>
-
-        <!-- روابط الخدمات -->
+        <!-- خدماتنا -->
         <div class="section-title"><i class="fas fa-store"></i> خدماتنا</div>
         <div class="links-grid" id="store-links"></div>
 
-        <!-- روابط مهمة (تم التعديل) -->
+        <!-- تابعنا على -->
+        <div class="section-title"><i class="fas fa-hashtag"></i> تابعنا على</div>
+        <div class="links-grid" id="social-links"></div>
+
+        <!-- روابط مهمة -->
         <div class="section-title"><i class="fas fa-star"></i> روابط مهمة</div>
         <div class="links-grid" id="important-links"></div>
 
         <!-- تذييل -->
-        <div class="footer">© 2026 شبابيك للستائر</div>
+        <div class="footer">© 2026 شبابيك للستائر • <i class="fas fa-heart"></i> من العراق</div>
     </div>
 
-    <!-- لوحة التحكم -->
+    <!-- لوحة التحكم (تظهر بعد 5 نقرات) -->
     <div class="admin-panel" id="adminPanel">
         <div class="admin-content">
             <div class="admin-header">
@@ -551,20 +701,15 @@
             </div>
 
             <div class="admin-tabs">
-                <button class="admin-tab active" onclick="switchTab('social')">📱 تواصل</button>
-                <button class="admin-tab" onclick="switchTab('store')">🛍️ خدمات</button>
+                <button class="admin-tab active" onclick="switchTab('store')">🛍️ خدمات</button>
+                <button class="admin-tab" onclick="switchTab('social')">📱 تواصل</button>
                 <button class="admin-tab" onclick="switchTab('important')">⭐ مهمة</button>
             </div>
 
             <div class="admin-section">
                 <h3>➕ إضافة رابط</h3>
-                <select id="link-category" class="admin-input">
-                    <option value="social">📱 وسائل التواصل</option>
-                    <option value="store">🛍️ خدمات المتجر</option>
-                    <option value="important">⭐ روابط مهمة</option>
-                </select>
-                <input type="text" id="link-title" class="admin-input" placeholder="العنوان">
-                <input type="text" id="link-desc" class="admin-input" placeholder="الوصف">
+                <input type="text" id="link-title" class="admin-input" placeholder="العنوان (مثال: المتجر)">
+                <input type="text" id="link-desc" class="admin-input" placeholder="الوصف (مثال: تسوق الآن)">
                 <input type="url" id="link-url" class="admin-input" placeholder="الرابط">
                 <input type="text" id="link-icon" class="admin-input" placeholder="الأيقونة (fab fa-facebook)">
                 <button class="admin-btn" onclick="addLink()">➕ إضافة</button>
@@ -579,13 +724,18 @@
 
     <!-- الإشعار -->
     <div class="notification" id="notification">
-        <i class="fas fa-check-circle" style="color: #d9b382;"></i>
+        <i class="fas fa-check-circle"></i>
         <span id="notif-message"></span>
     </div>
 
     <script>
-        // ========== البيانات ==========
+        // ========== البيانات الأساسية (مطابقة للطلبات) ==========
         let linksData = {
+            store: [
+                { title: 'المتجر الإلكتروني', desc: 'تصفح جميع المنتجات', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-store', color: 'gold' },
+                { title: 'منتجاتنا', desc: 'أحدث التصاميم', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-tag', color: 'gold' }, // تم التعديل من "عروض خاصة" إلى "منتجاتنا"
+                { title: 'استشارة مجانية', desc: 'خبراء التصميم', url: 'https://wa.me/9647883002797?text=استشارة', icon: 'fas fa-headset', color: 'whatsapp' }
+            ],
             social: [
                 { title: 'فيسبوك', desc: 'تابعنا على فيسبوك', url: 'https://www.facebook.com/profile.php?id=61587692021311', icon: 'fab fa-facebook', color: 'facebook' },
                 { title: 'إنستغرام', desc: 'أحدث التصاميم', url: 'https://www.instagram.com/shababek.curtains/', icon: 'fab fa-instagram', color: 'instagram' },
@@ -594,29 +744,22 @@
                 { title: 'تويتر', desc: 'تغريدات على X', url: 'https://x.com/ShababekCurtain', icon: 'fa-brands fa-x-twitter', color: 'twitter' },
                 { title: 'سناب شات', desc: 'يومياتنا', url: 'https://www.snapchat.com/add/shababekcurtin', icon: 'fab fa-snapchat', color: 'snapchat' },
                 { title: 'واتساب', desc: 'تواصل مباشر', url: 'https://wa.me/9647883002797', icon: 'fab fa-whatsapp', color: 'whatsapp' },
-                { title: 'تيليجرام', desc: 'قناتنا', url: 'https://t.me/shababekcurtains', icon: 'fab fa-telegram', color: 'telegram' }
-            ],
-            store: [
-                { title: 'المتجر الإلكتروني', desc: 'تصفح المنتجات', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-store', color: 'gold' },
-                { title: 'عروض خاصة', desc: 'خصومات حتى 30%', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-tags', color: 'gold' },
-                { title: 'استشارة مجانية', desc: 'خبراء التصميم', url: 'https://wa.me/9647883002797?text=استشارة', icon: 'fas fa-headset', color: 'whatsapp' },
-                { title: 'معرض الأعمال', desc: 'أحدث التصاميم', url: 'https://www.instagram.com/shababek.curtains/', icon: 'fas fa-images', color: 'instagram' }
+                { title: 'تيليجرام', desc: 'قناتنا', url: 'https://t.me/shababekcurtains', icon: 'fab fa-telegram', color: 'telegram' } // تم التعديل لفتح المحادثة مباشرة
             ],
             important: [
                 { title: 'منتدى شبابيك', desc: 'مجتمع الديكور', url: 'https://shababekcurtains.com/ai.html', icon: 'fas fa-comments', color: 'gold' },
                 { title: 'طرق الدفع', desc: 'طرق دفع آمنة', url: 'https://shababekcurtains.com/index.html?page=categories#paymentPage', icon: 'fas fa-credit-card', color: 'gold' },
-                { title: 'من نحن', desc: 'تعرف على فريقنا', url: 'https://shababekcurtains.com/index.html?page=categories#aboutPage', icon: 'fas fa-info-circle', color: 'gold' },
-                { title: 'تواصل معنا', desc: 'نرحب باستفساراتك', url: 'https://wa.me/9647883002797', icon: 'fas fa-envelope', color: 'whatsapp' }
+                { title: 'من نحن', desc: 'تعرف على فريقنا', url: 'https://shababekcurtains.com/index.html?page=categories#aboutPage', icon: 'fas fa-info-circle', color: 'gold' }
             ]
         };
 
-        let currentTab = 'social';
+        let currentTab = 'store';
         let clickCount = 0;
         let clickTimer;
 
         // ========== تحميل البيانات ==========
         function loadData() {
-            const saved = localStorage.getItem('shababek_links');
+            const saved = localStorage.getItem('shababek_links_final');
             if (saved) {
                 linksData = JSON.parse(saved);
             }
@@ -624,13 +767,13 @@
         }
 
         function saveData() {
-            localStorage.setItem('shababek_links', JSON.stringify(linksData));
+            localStorage.setItem('shababek_links_final', JSON.stringify(linksData));
         }
 
         // ========== عرض الروابط ==========
         function renderAllLinks() {
-            renderLinks('social', 'social-links');
             renderLinks('store', 'store-links');
+            renderLinks('social', 'social-links');
             renderLinks('important', 'important-links');
         }
 
@@ -641,9 +784,9 @@
             const links = linksData[category] || [];
             
             container.innerHTML = links.map(link => `
-                <a href="${link.url}" class="link-item" onclick="openAppLink('${link.url}', '${link.title}'); return false;">
-                    <div class="link-icon ${link.color}">
-                        <i class="${link.icon}"></i>
+                <a href="#" class="link-item" onclick="openAppLink('${link.url}', '${link.title}', '${link.color}'); return false;">
+                    <div class="link-icon ${link.color}-bg">
+                        <i class="${link.icon}" style="${link.color === 'snapchat' ? 'color:#000;' : ''}"></i>
                     </div>
                     <div class="link-content">
                         <div class="link-title">
@@ -662,76 +805,77 @@
             `).join('');
         }
 
-        // ========== فتح الروابط مع دعم التطبيقات ==========
-        function openAppLink(url, title) {
+        // ========== فتح الروابط مع دعم التطبيقات (بدون رسالة الاستمرار) ==========
+        function openAppLink(url, title, color) {
             showNotif(`جاري فتح ${title}...`);
             
-            // روابط واتساب المباشرة
-            if (url.includes('wa.me')) {
-                const phone = url.split('/').pop().split('?')[0];
+            // واتساب - فتح مباشر
+            if (url.includes('wa.me') || url.includes('whatsapp')) {
+                const phone = url.match(/\d+/g)?.join('') || '9647883002797';
                 window.location.href = `whatsapp://send?phone=${phone}`;
                 setTimeout(() => {
                     window.location.href = url;
-                }, 500);
+                }, 800);
                 return;
             }
             
-            // روابط انستغرام
+            // إنستغرام - فتح مباشر
             if (url.includes('instagram.com')) {
-                const username = url.split('/').filter(s => s).pop();
+                const username = url.split('/').filter(s => s && !s.includes('?')).pop() || 'shababek.curtains';
                 window.location.href = `instagram://user?username=${username}`;
                 setTimeout(() => {
                     window.location.href = url;
-                }, 500);
+                }, 800);
                 return;
             }
             
-            // روابط فيسبوك
+            // فيسبوك - فتح مباشر
             if (url.includes('facebook.com')) {
                 const id = '61587692021311';
                 window.location.href = `fb://page/${id}`;
                 setTimeout(() => {
                     window.location.href = url;
-                }, 500);
+                }, 800);
                 return;
             }
             
-            // روابط تيك توك
+            // تيك توك - تم إصلاحه ليعمل على الهاتف
             if (url.includes('tiktok.com')) {
                 const username = url.split('@')[1]?.split('/')[0] || 'shababek.curtains';
                 window.location.href = `tiktok://user?username=${username}`;
                 setTimeout(() => {
                     window.location.href = url;
-                }, 500);
+                }, 800);
                 return;
             }
             
-            // روابط تيليجرام
+            // تيليجرام - فتح المحادثة مباشرة (تم الإصلاح)
             if (url.includes('t.me')) {
-                const username = url.split('/').pop();
+                const username = url.split('/').pop()?.split('?')[0] || 'shababekcurtains';
+                // استخدام رابط المحادثة المباشرة
                 window.location.href = `tg://resolve?domain=${username}`;
                 setTimeout(() => {
-                    window.location.href = url;
-                }, 500);
+                    window.location.href = `https://t.me/${username}`;
+                }, 800);
                 return;
             }
             
-            // روابط تويتر
+            // تويتر
             if (url.includes('x.com') || url.includes('twitter.com')) {
-                const username = url.split('/').pop();
+                const username = url.split('/').pop()?.split('?')[0] || 'ShababekCurtain';
                 window.location.href = `twitter://user?screen_name=${username}`;
                 setTimeout(() => {
                     window.location.href = url;
-                }, 500);
+                }, 800);
                 return;
             }
             
-            // روابط يوتيوب
+            // يوتيوب
             if (url.includes('youtube.com') || url.includes('youtu.be')) {
                 window.location.href = `vnd.youtube://www.youtube.com/channel/UCxxx`;
                 setTimeout(() => {
                     window.location.href = url;
-                }, 500);
+                }, 800);
                 return;
             }
             
@@ -763,13 +907,18 @@
                 clickCount = 0;
                 counter.classList.remove('show');
                 openAdminPanel();
+                
+                // تأثير احتفالي
+                if (typeof confetti !== 'undefined') {
+                    confetti({ particleCount: 100, spread: 70, colors: ['#d9b382', '#3d2e24', '#ffffff'] });
+                }
             }
         }
 
         // ========== لوحة التحكم ==========
         function openAdminPanel() {
             document.getElementById('adminPanel').classList.add('show');
-            showAdminLinks('social');
+            switchTab('store');
         }
 
         function closeAdmin() {
@@ -791,13 +940,11 @@
             
             list.innerHTML = links.map((link, index) => `
                 <div class="admin-item">
-                    <div class="admin-item-info">
-                        <div class="admin-item-icon" style="background: #f5f5f5;">
-                            <i class="${link.icon}" style="color: #d9b382;"></i>
-                        </div>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <i class="${link.icon}" style="color: #d9b382; font-size:20px;"></i>
                         <div>
                             <strong>${link.title}</strong>
-                            <div style="font-size: 10px; color: #999;">${link.url.substring(0,30)}</div>
+                            <div style="font-size: 11px; color: #999;">${link.url.substring(0,30)}</div>
                         </div>
                     </div>
                     <div class="admin-item-actions">
@@ -809,7 +956,6 @@
         }
 
         function addLink() {
-            const category = document.getElementById('link-category').value;
             const title = document.getElementById('link-title').value;
             const desc = document.getElementById('link-desc').value;
             const url = document.getElementById('link-url').value;
@@ -828,8 +974,8 @@
                 color: 'gold'
             };
 
-            if (!linksData[category]) linksData[category] = [];
-            linksData[category].push(newLink);
+            if (!linksData[currentTab]) linksData[currentTab] = [];
+            linksData[currentTab].push(newLink);
 
             saveData();
             renderAllLinks();
@@ -881,16 +1027,20 @@
             }, 2000);
         }
 
+        // ========== تحميل مكتبة الكونفيتي ==========
+        function loadConfetti() {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js';
+            document.head.appendChild(script);
+        }
+
         // ========== بدء التشغيل ==========
         document.addEventListener('DOMContentLoaded', () => {
             loadData();
-            
-            // جعل الفيديو أبطأ
-            const video = document.querySelector('video');
-            if (video) video.playbackRate = 0.8;
+            loadConfetti();
             
             setTimeout(() => {
-                showNotif('👋 اضغط على الشعار 5 مرات');
+                showNotif('👋 اضغط على الشعار 5 مرات للتحكم');
             }, 1000);
         });
 
