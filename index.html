@@ -17,6 +17,8 @@
         /* ===== المتغيرات الأساسية ===== */
         :root {
             --gold: #d9b382;
+            --gold-light: #f0d8b0;
+            --gold-dark: #b58f5a;
             --brown: #3d2e24;
             --white: #ffffff;
             --whatsapp: #25D366;
@@ -28,6 +30,7 @@
             --snapchat: #FFFC00;
             --telegram: #0088cc;
             --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            --shadow-gold: 0 5px 20px rgba(217, 179, 130, 0.5);
         }
 
         /* ===== إعادة تعيين ===== */
@@ -90,7 +93,7 @@
             padding: 10px;
         }
 
-        /* ===== شعار الموقع (مصغر) مع مؤشر النقرات ===== */
+        /* ===== شعار الموقع مع عداد النقرات ===== */
         .logo-container {
             margin-bottom: 10px;
             text-align: center;
@@ -105,14 +108,21 @@
             border: 3px solid var(--gold);
             box-shadow: var(--shadow);
             margin-bottom: 5px;
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            border-color: white;
+            box-shadow: var(--shadow-gold);
         }
 
         .logo:active {
             transform: scale(0.95);
-            border-color: white;
         }
 
         .click-counter {
@@ -134,10 +144,18 @@
             opacity: 0;
             transition: opacity 0.2s ease;
             pointer-events: none;
+            z-index: 20;
         }
 
         .click-counter.show {
             opacity: 1;
+            animation: pulse 0.5s ease;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
 
         .site-title {
@@ -147,6 +165,12 @@
             text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
             letter-spacing: 0.5px;
             line-height: 1.2;
+            transition: all 0.3s ease;
+        }
+
+        .site-title:hover {
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(217, 179, 130, 0.5);
         }
 
         .site-subtitle {
@@ -156,7 +180,7 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* ===== عنوان القسم (مصغر) ===== */
+        /* ===== عنوان القسم ===== */
         .section-title {
             color: white;
             font-size: 1rem;
@@ -166,11 +190,22 @@
             text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
             position: relative;
             animation: fadeIn 0.8s ease;
+            transition: all 0.3s ease;
+        }
+
+        .section-title:hover {
+            color: var(--gold);
+            transform: scale(1.05);
         }
 
         .section-title i {
             color: var(--gold);
             margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .section-title:hover i {
+            transform: rotate(360deg);
         }
 
         .section-title::after {
@@ -181,9 +216,15 @@
             background: var(--gold);
             margin: 3px auto 0;
             border-radius: 1px;
+            transition: all 0.3s ease;
         }
 
-        /* ===== شبكة الروابط الرئيسية (مصغرة) ===== */
+        .section-title:hover::after {
+            width: 60px;
+            background: white;
+        }
+
+        /* ===== شبكة الروابط ===== */
         .links-grid {
             display: flex;
             flex-direction: column;
@@ -194,7 +235,7 @@
             padding: 5px;
         }
 
-        /* ===== تصميم الروابط المحسن والمصغر ===== */
+        /* ===== تصميم الروابط مع التأثيرات الذهبية ===== */
         .link-card {
             display: flex;
             align-items: center;
@@ -208,7 +249,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             text-decoration: none;
             color: white;
-            transition: all 0.2s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             animation: slideInLeft 0.5s ease forwards;
             opacity: 0;
@@ -218,23 +259,49 @@
             -webkit-touch-callout: none;
         }
 
-        /* تأخير ظهور الروابط */
-        .link-card:nth-child(1) { animation-delay: 0.05s; }
-        .link-card:nth-child(2) { animation-delay: 0.1s; }
-        .link-card:nth-child(3) { animation-delay: 0.15s; }
-        .link-card:nth-child(4) { animation-delay: 0.2s; }
-        .link-card:nth-child(5) { animation-delay: 0.25s; }
-        .link-card:nth-child(6) { animation-delay: 0.3s; }
-        .link-card:nth-child(7) { animation-delay: 0.35s; }
-        .link-card:nth-child(8) { animation-delay: 0.4s; }
-        .link-card:nth-child(9) { animation-delay: 0.45s; }
-        .link-card:nth-child(10) { animation-delay: 0.5s; }
-        .link-card:nth-child(11) { animation-delay: 0.55s; }
-        .link-card:nth-child(12) { animation-delay: 0.6s; }
-        .link-card:nth-child(13) { animation-delay: 0.65s; }
-        .link-card:nth-child(14) { animation-delay: 0.7s; }
-        .link-card:nth-child(15) { animation-delay: 0.75s; }
-        .link-card:nth-child(16) { animation-delay: 0.8s; }
+        /* التأثير الذهبي عند تمرير الماوس */
+        .link-card:hover {
+            transform: translateX(10px) scale(1.02);
+            border-color: var(--gold);
+            background: rgba(217, 179, 130, 0.25);
+            box-shadow: 0 8px 25px rgba(217, 179, 130, 0.4);
+        }
+
+        /* تأثير الحدود الذهبية المتحركة */
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(217, 179, 130, 0.3), transparent);
+            transition: left 0.6s ease;
+            pointer-events: none;
+        }
+
+        .link-card:hover::before {
+            left: 100%;
+        }
+
+        /* تأثير لمعان ذهبي */
+        .link-card::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--gold), transparent, var(--gold));
+            border-radius: 42px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .link-card:hover::after {
+            opacity: 0.3;
+        }
 
         @keyframes slideInLeft {
             to {
@@ -245,10 +312,9 @@
 
         .link-card:active {
             transform: scale(0.98);
-            background: rgba(255, 255, 255, 0.25);
         }
 
-        /* أيقونة الرابط (مصغرة) */
+        /* أيقونة الرابط */
         .link-icon {
             width: 40px;
             height: 40px;
@@ -258,16 +324,19 @@
             justify-content: center;
             font-size: 18px;
             background: rgba(255, 255, 255, 0.2);
-            transition: all 0.2s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid rgba(255, 255, 255, 0.3);
             flex-shrink: 0;
         }
 
-        .link-card:active .link-icon {
-            transform: scale(1.05);
+        .link-card:hover .link-icon {
+            transform: scale(1.15) rotate(10deg);
+            background: var(--gold);
+            border-color: white;
+            box-shadow: 0 0 15px var(--gold);
         }
 
-        /* محتوى الرابط (مصغر) */
+        /* محتوى الرابط */
         .link-content {
             flex: 1;
             min-width: 0;
@@ -283,6 +352,12 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            transition: all 0.3s ease;
+        }
+
+        .link-card:hover .link-title {
+            color: var(--gold);
+            transform: translateX(-5px);
         }
 
         .link-badge {
@@ -293,6 +368,13 @@
             border-radius: 20px;
             font-weight: 700;
             white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .link-card:hover .link-badge {
+            background: white;
+            color: var(--gold);
+            transform: scale(1.1);
         }
 
         .link-description {
@@ -304,14 +386,26 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            transition: all 0.3s ease;
+        }
+
+        .link-card:hover .link-description {
+            opacity: 1;
+            color: var(--gold-light);
         }
 
         .link-description i {
             font-size: 0.5rem;
             color: var(--gold);
+            transition: all 0.3s ease;
         }
 
-        /* السهم (مصغر) */
+        .link-card:hover .link-description i {
+            transform: scale(1.5);
+            color: white;
+        }
+
+        /* السهم */
         .link-arrow {
             width: 30px;
             height: 30px;
@@ -320,20 +414,28 @@
             align-items: center;
             justify-content: center;
             background: rgba(255, 255, 255, 0.2);
-            transition: all 0.2s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid rgba(255, 255, 255, 0.3);
             flex-shrink: 0;
         }
 
-        .link-card:active .link-arrow {
-            transform: translateX(-3px);
+        .link-card:hover .link-arrow {
+            transform: translateX(-8px) rotate(360deg);
+            background: var(--gold);
+            border-color: white;
+            box-shadow: 0 0 15px var(--gold);
         }
 
         .link-arrow i {
             font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
 
-        /* ألوان خاصة للروابط */
+        .link-card:hover .link-arrow i {
+            color: white;
+        }
+
+        /* ألوان خاصة للروابط عند hover */
         .whatsapp-bg { background: var(--whatsapp); }
         .youtube-bg { background: var(--youtube); }
         .instagram-bg { background: var(--instagram); }
@@ -344,9 +446,17 @@
         .telegram-bg { background: var(--telegram); }
         .gold-bg { background: var(--gold); color: var(--brown); }
 
-        /* ===== أزرار التحكم (مخفية افتراضياً) ===== */
-        .admin-button, .scroll-top {
-            display: none;
+        .link-card:hover .whatsapp-bg,
+        .link-card:hover .youtube-bg,
+        .link-card:hover .instagram-bg,
+        .link-card:hover .facebook-bg,
+        .link-card:hover .tiktok-bg,
+        .link-card:hover .twitter-bg,
+        .link-card:hover .snapchat-bg,
+        .link-card:hover .telegram-bg,
+        .link-card:hover .gold-bg {
+            background: var(--gold) !important;
+            color: var(--brown) !important;
         }
 
         /* ===== أنيميشنات ===== */
@@ -376,39 +486,56 @@
             animation: shake 0.3s ease;
         }
 
-        /* ===== نافذة لوحة التحكم ===== */
+        /* ===== نافذة لوحة التحكم المتطورة ===== */
         .admin-panel {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             z-index: 2000;
             display: none;
             justify-content: center;
             align-items: center;
             padding: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .admin-panel.active {
             display: flex;
+            opacity: 1;
+            animation: panelFadeIn 0.3s ease;
+        }
+
+        @keyframes panelFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .admin-content {
-            background: white;
+            background: linear-gradient(135deg, #ffffff, #f8f8f8);
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             max-height: 90vh;
             overflow-y: auto;
-            border-radius: 20px;
+            border-radius: 25px;
             padding: 20px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-            animation: fadeInUp 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 2px var(--gold);
+            animation: contentFadeIn 0.4s ease;
+            border: 1px solid rgba(217, 179, 130, 0.3);
         }
 
-        @keyframes fadeInUp {
+        @keyframes contentFadeIn {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -423,124 +550,253 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--gold);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--gold);
         }
 
         .admin-header h2 {
             color: var(--brown);
             font-weight: 900;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-header h2 i {
+            color: var(--gold);
+            animation: crownGlow 2s infinite;
+        }
+
+        @keyframes crownGlow {
+            0%, 100% { filter: drop-shadow(0 0 5px var(--gold)); }
+            50% { filter: drop-shadow(0 0 15px var(--gold)); }
         }
 
         .admin-close {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: #f0f0f0;
             border: none;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
         }
 
-        .admin-close:active {
+        .admin-close:hover {
             background: #e74c3c;
             color: white;
-            transform: rotate(90deg);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .admin-tab {
+            flex: 1;
+            padding: 10px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .admin-tab:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .admin-tab.active {
+            background: var(--gold);
+            color: white;
+            box-shadow: 0 5px 15px rgba(217, 179, 130, 0.4);
         }
 
         .admin-section {
-            margin-bottom: 20px;
-            padding: 15px;
+            margin-bottom: 25px;
+            padding: 20px;
             background: #f8f8f8;
             border-radius: 15px;
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .admin-section:hover {
+            box-shadow: 0 5px 20px rgba(217, 179, 130, 0.2);
+            border-color: var(--gold);
         }
 
         .admin-section h3 {
-            color: var(--gold);
-            margin-bottom: 10px;
+            color: var(--gold-dark);
+            margin-bottom: 15px;
             font-weight: 900;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-section h3 i {
+            color: var(--gold);
         }
 
         .admin-input {
             width: 100%;
-            padding: 10px 12px;
-            margin-bottom: 8px;
+            padding: 12px 15px;
+            margin-bottom: 10px;
             border: 2px solid #eee;
-            border-radius: 8px;
+            border-radius: 10px;
             font-family: 'Cairo';
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
         }
 
         .admin-input:focus {
             border-color: var(--gold);
             outline: none;
+            box-shadow: 0 0 0 3px rgba(217, 179, 130, 0.2);
+            transform: scale(1.02);
         }
 
         .admin-btn {
-            background: var(--gold);
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
+            padding: 12px 20px;
+            border-radius: 10px;
             font-weight: 900;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             width: 100%;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .admin-btn:hover {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(217, 179, 130, 0.4);
         }
 
         .admin-btn:active {
-            background: var(--brown);
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         .admin-list {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            margin-top: 10px;
+            gap: 10px;
+            margin-top: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 5px;
         }
 
         .admin-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px;
+            padding: 12px;
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             border: 1px solid #eee;
+            transition: all 0.3s ease;
+            animation: slideInRight 0.3s ease;
+        }
+
+        .admin-item:hover {
+            transform: translateX(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .admin-item-info {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            flex: 1;
         }
 
         .admin-item-icon {
-            width: 30px;
-            height: 30px;
-            border-radius: 8px;
-            object-fit: cover;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            background: #f5f5f5;
+        }
+
+        .admin-item-details {
+            flex: 1;
+        }
+
+        .admin-item-title {
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--brown);
+            margin-bottom: 3px;
+        }
+
+        .admin-item-url {
+            font-size: 0.7rem;
+            color: #999;
+            display: block;
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .admin-item-actions {
             display: flex;
-            gap: 5px;
+            gap: 8px;
         }
 
         .admin-item-btn {
-            padding: 5px 8px;
+            width: 35px;
+            height: 35px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-size: 0.8rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .admin-item-btn.edit {
@@ -553,48 +809,70 @@
             color: white;
         }
 
-        .admin-item-btn:active {
-            transform: scale(1.05);
+        .admin-item-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
         }
 
-        /* ===== تذييل الصفحة (مصغر) ===== */
+        .admin-item-btn.edit:hover {
+            background: #2980b9;
+        }
+
+        .admin-item-btn.delete:hover {
+            background: #c0392b;
+        }
+
+        /* ===== تذييل الصفحة ===== */
         .footer {
             margin-top: 10px;
             color: rgba(255, 255, 255, 0.5);
             font-size: 0.7rem;
             text-align: center;
             animation: fadeIn 0.8s ease 0.9s both;
+            transition: all 0.3s ease;
+        }
+
+        .footer:hover {
+            color: var(--gold);
+            transform: scale(1.05);
         }
 
         .footer i {
             color: #ff6b6b;
             font-size: 0.6rem;
+            transition: all 0.3s ease;
         }
 
-        /* ===== إشعارات ===== */
+        .footer:hover i {
+            color: var(--gold);
+            transform: scale(1.2);
+        }
+
+        /* ===== إشعارات محسنة ===== */
         .notification {
             position: fixed;
-            top: 10px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
             background: white;
             color: #333;
-            padding: 8px 20px;
-            border-radius: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            padding: 12px 25px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 0 2px var(--gold);
             display: none;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             z-index: 3000;
-            border-right: 3px solid var(--gold);
-            animation: slideDown 0.3s ease;
-            font-size: 0.9rem;
+            border-right: 4px solid var(--gold);
+            animation: notificationSlide 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 600;
         }
 
-        @keyframes slideDown {
+        @keyframes notificationSlide {
             from {
                 opacity: 0;
-                transform: translate(-50%, -20px);
+                transform: translate(-50%, -30px);
             }
             to {
                 opacity: 1;
@@ -603,20 +881,36 @@
         }
 
         .notification i {
-            color: var(--gold);
-            font-size: 1rem;
+            font-size: 1.2rem;
         }
+
+        .notification.success i { color: var(--gold); }
+        .notification.error i { color: #e74c3c; }
+        .notification.warning i { color: #f39c12; }
 
         /* إخفاء أشرطة التمرير */
         ::-webkit-scrollbar {
-            width: 0;
-            height: 0;
-            display: none;
+            width: 5px;
+            height: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-dark);
         }
         
         body {
             -ms-overflow-style: none;
-            scrollbar-width: none;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold) rgba(255,255,255,0.1);
         }
     </style>
 </head>
@@ -658,16 +952,28 @@
         </div>
     </div>
 
-    <!-- نافذة لوحة التحكم (تظهر بعد 5 ضغطات) -->
+    <!-- نافذة لوحة التحكم المتطورة (تظهر بعد 5 ضغطات) -->
     <div class="admin-panel" id="adminPanel">
         <div class="admin-content">
             <div class="admin-header">
-                <h2><i class="fas fa-crown" style="color: var(--gold);"></i> لوحة التحكم</h2>
+                <h2><i class="fas fa-crown"></i> لوحة التحكم</h2>
                 <button class="admin-close" onclick="closeAdminPanel()"><i class="fas fa-times"></i></button>
             </div>
 
+            <div class="admin-tabs">
+                <button class="admin-tab active" onclick="switchAdminTab('social', this)">
+                    <i class="fas fa-hashtag"></i> تواصل
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('store', this)">
+                    <i class="fas fa-store"></i> خدمات
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('useful', this)">
+                    <i class="fas fa-link"></i> مفيدة
+                </button>
+            </div>
+
             <div class="admin-section">
-                <h3>➕ إضافة رابط جديد</h3>
+                <h3><i class="fas fa-plus-circle"></i> إضافة رابط جديد</h3>
                 <select id="linkCategory" class="admin-input">
                     <option value="social">📱 وسائل التواصل</option>
                     <option value="store">🛍️ خدمات المتجر</option>
@@ -675,19 +981,14 @@
                 </select>
                 <input type="text" id="linkTitle" class="admin-input" placeholder="العنوان (مثال: فيسبوك)">
                 <input type="text" id="linkDescription" class="admin-input" placeholder="الوصف (مثال: تابعنا على فيسبوك)">
-                <input type="url" id="linkUrl" class="admin-input" placeholder="الرابط (https://... أو tel: أو whatsapp://)">
+                <input type="url" id="linkUrl" class="admin-input" placeholder="الرابط (https://... أو whatsapp://)">
                 <input type="text" id="linkIcon" class="admin-input" placeholder="الأيقونة (مثال: fab fa-facebook)">
                 <input type="color" id="linkColor" class="admin-input" value="#d9b382">
                 <button class="admin-btn" onclick="addLink()"><i class="fas fa-plus"></i> إضافة الرابط</button>
             </div>
 
             <div class="admin-section">
-                <h3>📋 الروابط الحالية</h3>
-                <div style="display: flex; gap: 5px; margin-bottom: 10px;">
-                    <button onclick="showAdminLinks('social')" style="flex:1; padding:6px; background:var(--gold); color:white; border:none; border-radius:6px; font-weight:bold; font-size:0.8rem;">📱 تواصل</button>
-                    <button onclick="showAdminLinks('store')" style="flex:1; padding:6px; background:var(--gold); color:white; border:none; border-radius:6px; font-weight:bold; font-size:0.8rem;">🛍️ خدمات</button>
-                    <button onclick="showAdminLinks('useful')" style="flex:1; padding:6px; background:var(--gold); color:white; border:none; border-radius:6px; font-weight:bold; font-size:0.8rem;">🔗 مفيدة</button>
-                </div>
+                <h3><i class="fas fa-edit"></i> <span id="currentCategoryTitle">وسائل التواصل</span></h3>
                 <div id="adminLinksList" class="admin-list"></div>
             </div>
         </div>
@@ -703,43 +1004,35 @@
         // ========== نظام النقرات المخفي ==========
         let clickCount = 0;
         let clickTimer = null;
-        const REQUIRED_CLICKS = 5; // 5 ضغطات لفتح لوحة التحكم
+        const REQUIRED_CLICKS = 5;
+        let currentAdminTab = 'social';
 
         // ========== معالجة النقر على الشعار ==========
         function handleLogoClick(event) {
             event.stopPropagation();
             
-            // زيادة العداد
             clickCount++;
             
-            // تحديث عرض العداد
             const counterEl = document.getElementById('clickCounter');
             counterEl.textContent = clickCount;
             counterEl.classList.add('show');
             
-            // تأثير اهتزاز للشعار
             const logo = document.getElementById('mainLogo');
             logo.classList.add('shake');
             setTimeout(() => {
                 logo.classList.remove('shake');
             }, 300);
             
-            // إذا وصلنا للعدد المطلوب
             if (clickCount >= REQUIRED_CLICKS) {
-                // فتح لوحة التحكم
                 openAdminPanel();
-                
-                // إعادة تعيين العداد
                 clickCount = 0;
                 counterEl.classList.remove('show');
                 
-                // إلغاء المؤقت
                 if (clickTimer) {
                     clearTimeout(clickTimer);
                     clickTimer = null;
                 }
             } else {
-                // إعادة تعيين العداد بعد 3 ثواني من عدم النقر
                 if (clickTimer) {
                     clearTimeout(clickTimer);
                 }
@@ -751,178 +1044,57 @@
                 }, 3000);
             }
             
-            // عرض رسالة عند الاقتراب من العدد المطلوب
             if (clickCount === REQUIRED_CLICKS - 1) {
                 showNotification('⚠️ ضغطة واحدة تفصلك عن لوحة التحكم', 'warning');
             }
         }
 
-        // ========== الروابط المحدثة مع دعم التطبيقات ==========
+        // ========== الروابط الأساسية ==========
         let linksData = {
             social: [
-                { 
-                    title: 'فيسبوك', 
-                    description: 'تابعنا على فيسبوك', 
-                    url: 'https://www.facebook.com/profile.php?id=61587692021311', 
-                    intentUrl: 'fb://page/61587692021311',
-                    icon: 'fab fa-facebook', 
-                    color: '#1877F2',
-                    app: true
-                },
-                { 
-                    title: 'إنستغرام', 
-                    description: 'أحدث التصاميم', 
-                    url: 'https://www.instagram.com/shababek.curtains/', 
-                    intentUrl: 'instagram://user?username=shababek.curtains',
-                    icon: 'fab fa-instagram', 
-                    color: '#E4405F',
-                    app: true
-                },
-                { 
-                    title: 'تيك توك', 
-                    description: 'فيديوهات قصيرة', 
-                    url: 'https://www.tiktok.com/@shababek.curtains', 
-                    intentUrl: 'tiktok://user?username=shababek.curtains',
-                    icon: 'fab fa-tiktok', 
-                    color: '#000000',
-                    app: true
-                },
-                { 
-                    title: 'يوتيوب', 
-                    description: 'شاهد تصاميمنا', 
-                    url: 'https://youtube.com/@shababek.curtains?si=KKsEbL98N0fq2e2U', 
-                    intentUrl: 'vnd.youtube://www.youtube.com/channel/UCxxx', // سيتم تحديثه
-                    icon: 'fab fa-youtube', 
-                    color: '#FF0000',
-                    app: true
-                },
-                { 
-                    title: 'تويتر', 
-                    description: 'تغريدات على X', 
-                    url: 'https://x.com/ShababekCurtain', 
-                    intentUrl: 'twitter://user?screen_name=ShababekCurtain',
-                    icon: 'fa-brands fa-x-twitter', 
-                    color: '#1DA1F2',
-                    app: true
-                },
-                { 
-                    title: 'سناب شات', 
-                    description: 'يومياتنا', 
-                    url: 'https://www.snapchat.com/add/shababekcurtin', 
-                    intentUrl: 'snapchat://add/shababekcurtin',
-                    icon: 'fab fa-snapchat', 
-                    color: '#FFFC00',
-                    app: true
-                },
-                { 
-                    title: 'واتساب', 
-                    description: 'تواصل مباشر', 
-                    url: 'https://wa.me/9647883002797', 
-                    intentUrl: 'whatsapp://send?phone=9647883002797',
-                    icon: 'fab fa-whatsapp', 
-                    color: '#25D366',
-                    app: true
-                },
-                { 
-                    title: 'تيليجرام', 
-                    description: 'قناتنا', 
-                    url: 'https://t.me/shababekcurtains', 
-                    intentUrl: 'tg://resolve?domain=shababekcurtains',
-                    icon: 'fab fa-telegram', 
-                    color: '#0088cc',
-                    app: true
-                }
+                { title: 'فيسبوك', description: 'تابعنا على فيسبوك', url: 'https://www.facebook.com/profile.php?id=61587692021311', intentUrl: 'fb://page/61587692021311', icon: 'fab fa-facebook', color: '#1877F2', app: true },
+                { title: 'إنستغرام', description: 'أحدث التصاميم', url: 'https://www.instagram.com/shababek.curtains/', intentUrl: 'instagram://user?username=shababek.curtains', icon: 'fab fa-instagram', color: '#E4405F', app: true },
+                { title: 'تيك توك', description: 'فيديوهات قصيرة', url: 'https://www.tiktok.com/@shababek.curtains', intentUrl: 'tiktok://user?username=shababek.curtains', icon: 'fab fa-tiktok', color: '#000000', app: true },
+                { title: 'يوتيوب', description: 'شاهد تصاميمنا', url: 'https://youtube.com/@shababek.curtains?si=KKsEbL98N0fq2e2U', intentUrl: 'vnd.youtube://www.youtube.com/channel/UCxxx', icon: 'fab fa-youtube', color: '#FF0000', app: true },
+                { title: 'تويتر', description: 'تغريدات على X', url: 'https://x.com/ShababekCurtain', intentUrl: 'twitter://user?screen_name=ShababekCurtain', icon: 'fa-brands fa-x-twitter', color: '#1DA1F2', app: true },
+                { title: 'سناب شات', description: 'يومياتنا', url: 'https://www.snapchat.com/add/shababekcurtin', intentUrl: 'snapchat://add/shababekcurtin', icon: 'fab fa-snapchat', color: '#FFFC00', app: true },
+                { title: 'واتساب', description: 'تواصل مباشر', url: 'https://wa.me/9647883002797', intentUrl: 'whatsapp://send?phone=9647883002797', icon: 'fab fa-whatsapp', color: '#25D366', app: true },
+                { title: 'تيليجرام', description: 'قناتنا', url: 'https://t.me/shababekcurtains', intentUrl: 'tg://resolve?domain=shababekcurtains', icon: 'fab fa-telegram', color: '#0088cc', app: true }
             ],
             store: [
-                { 
-                    title: 'المتجر الإلكتروني', 
-                    description: 'تصفح جميع المنتجات', 
-                    url: 'https://shababekcurtains.com/index.html?page=categories#homePage', 
-                    icon: 'fas fa-store', 
-                    color: '#d9b382' 
-                },
-                { 
-                    title: 'عروض خاصة', 
-                    description: 'خصومات حتى 30%', 
-                    url: 'https://shababekcurtains.com/index.html?page=categories#homePage', 
-                    icon: 'fas fa-tags', 
-                    color: '#e74c3c' 
-                },
-                { 
-                    title: 'استشارة مجانية', 
-                    description: 'خبراء التصميم', 
-                    url: 'whatsapp://send?phone=9647883002797&text=استشارة%20مجانية', 
-                    intentUrl: 'whatsapp://send?phone=9647883002797&text=استشارة%20مجانية',
-                    icon: 'fas fa-headset', 
-                    color: '#27ae60',
-                    app: true
-                },
-                { 
-                    title: 'معرض الأعمال', 
-                    description: 'أحدث التصاميم', 
-                    url: 'https://www.instagram.com/shababek.curtains/', 
-                    intentUrl: 'instagram://user?username=shababek.curtains',
-                    icon: 'fas fa-images', 
-                    color: '#9b59b6',
-                    app: true
-                }
+                { title: 'المتجر الإلكتروني', description: 'تصفح جميع المنتجات', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-store', color: '#d9b382' },
+                { title: 'عروض خاصة', description: 'خصومات حتى 30%', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-tags', color: '#e74c3c' },
+                { title: 'استشارة مجانية', description: 'خبراء التصميم', url: 'whatsapp://send?phone=9647883002797&text=استشارة%20مجانية', intentUrl: 'whatsapp://send?phone=9647883002797&text=استشارة%20مجانية', icon: 'fas fa-headset', color: '#27ae60', app: true },
+                { title: 'معرض الأعمال', description: 'أحدث التصاميم', url: 'https://www.instagram.com/shababek.curtains/', intentUrl: 'instagram://user?username=shababek.curtains', icon: 'fas fa-images', color: '#9b59b6', app: true }
             ],
             useful: [
-                { 
-                    title: 'منتدى شبابيك', 
-                    description: 'مجتمع الديكور', 
-                    url: 'https://shababekcurtains.com/ai.html', 
-                    icon: 'fas fa-comments', 
-                    color: '#3498db' 
-                },
-                { 
-                    title: 'طرق الدفع', 
-                    description: 'طرق دفع آمنة', 
-                    url: 'https://shababekcurtains.com/index.html?page=categories#paymentPage', 
-                    icon: 'fas fa-credit-card', 
-                    color: '#f39c12' 
-                },
-                { 
-                    title: 'من نحن', 
-                    description: 'تعرف على فريقنا', 
-                    url: 'https://shababekcurtains.com/index.html?page=categories#aboutPage', 
-                    icon: 'fas fa-info-circle', 
-                    color: '#16a085' 
-                },
-                { 
-                    title: 'تواصل معنا', 
-                    description: 'نرحب باستفساراتك', 
-                    url: 'whatsapp://send?phone=9647883002797', 
-                    intentUrl: 'whatsapp://send?phone=9647883002797',
-                    icon: 'fas fa-envelope', 
-                    color: '#e67e22',
-                    app: true
-                }
+                { title: 'منتدى شبابيك', description: 'مجتمع الديكور', url: 'https://shababekcurtains.com/ai.html', icon: 'fas fa-comments', color: '#3498db' },
+                { title: 'طرق الدفع', description: 'طرق دفع آمنة', url: 'https://shababekcurtains.com/index.html?page=categories#paymentPage', icon: 'fas fa-credit-card', color: '#f39c12' },
+                { title: 'من نحن', description: 'تعرف على فريقنا', url: 'https://shababekcurtains.com/index.html?page=categories#aboutPage', icon: 'fas fa-info-circle', color: '#16a085' },
+                { title: 'تواصل معنا', description: 'نرحب باستفساراتك', url: 'whatsapp://send?phone=9647883002797', intentUrl: 'whatsapp://send?phone=9647883002797', icon: 'fas fa-envelope', color: '#e67e22', app: true }
             ]
         };
 
-        // ========== تحميل الروابط من التخزين المحلي ==========
+        // ========== تحميل وحفظ البيانات ==========
         function loadLinks() {
-            const saved = localStorage.getItem('shababek_links_mobile_v2');
+            const saved = localStorage.getItem('shababek_links_v3');
             if (saved) {
                 linksData = JSON.parse(saved);
             }
             renderAllLinks();
         }
 
-        // ========== حفظ الروابط ==========
         function saveLinks() {
-            localStorage.setItem('shababek_links_mobile_v2', JSON.stringify(linksData));
+            localStorage.setItem('shababek_links_v3', JSON.stringify(linksData));
         }
 
-        // ========== عرض جميع الروابط ==========
+        // ========== عرض الروابط ==========
         function renderAllLinks() {
             renderLinks('social', 'socialLinksGrid');
             renderLinks('store', 'storeLinksGrid');
             renderLinks('useful', 'usefulLinksGrid');
         }
 
-        // ========== عرض روابط فئة معينة ==========
         function renderLinks(category, elementId) {
             const grid = document.getElementById(elementId);
             if (!grid) return;
@@ -930,7 +1102,6 @@
             const links = linksData[category] || [];
             
             grid.innerHTML = links.map((link, index) => {
-                // تحديد لون الخلفية للأيقونة
                 let bgClass = '';
                 if (link.title.includes('واتساب') || link.icon.includes('whatsapp')) bgClass = 'whatsapp-bg';
                 else if (link.title.includes('يوتيوب') || link.icon.includes('youtube')) bgClass = 'youtube-bg';
@@ -965,46 +1136,36 @@
             }).join('');
         }
 
-        // ========== فتح الرابط مع دعم التطبيقات ==========
+        // ========== فتح الرابط ==========
         function openLink(category, index) {
             const link = linksData[category][index];
             
-            // محاولة فتح التطبيق أولاً إذا كان مدعوماً
             if (link.app && link.intentUrl) {
-                // محاولة فتح رابط التطبيق
                 window.location.href = link.intentUrl;
-                
-                // إذا لم يتم فتح التطبيق خلال 500ms، نفتح الرابط العادي
                 setTimeout(() => {
                     window.location.href = link.url;
                 }, 500);
             } else {
-                // فتح الرابط العادي
                 window.location.href = link.url;
             }
             
-            // تسجيل النقر
             trackLinkClick(link.title);
-            
             return false;
         }
 
-        // ========== تتبع النقر على الروابط ==========
         function trackLinkClick(title) {
-            console.log(`تم النقر على: ${title}`);
             showNotification(`جاري فتح ${title}...`);
         }
 
-        // ========== دوال لوحة التحكم ==========
+        // ========== دوال لوحة التحكم المتطورة ==========
         function openAdminPanel() {
             document.getElementById('adminPanel').classList.add('active');
-            showAdminLinks('social');
+            switchAdminTab('social', document.querySelector('.admin-tab'));
             
-            // عرض كونفيتي
             if (typeof confetti !== 'undefined') {
                 confetti({ 
-                    particleCount: 50, 
-                    spread: 70, 
+                    particleCount: 100, 
+                    spread: 80, 
                     origin: { y: 0.6 },
                     colors: ['#d9b382', '#3d2e24', '#ffffff']
                 });
@@ -1017,6 +1178,21 @@
             document.getElementById('adminPanel').classList.remove('active');
         }
 
+        function switchAdminTab(tab, element) {
+            currentAdminTab = tab;
+            
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+            element.classList.add('active');
+            
+            let title = '';
+            if (tab === 'social') title = 'وسائل التواصل';
+            else if (tab === 'store') title = 'خدمات المتجر';
+            else title = 'روابط مفيدة';
+            
+            document.getElementById('currentCategoryTitle').textContent = title;
+            showAdminLinks(tab);
+        }
+
         function showAdminLinks(category) {
             const list = document.getElementById('adminLinksList');
             const links = linksData[category] || [];
@@ -1024,17 +1200,19 @@
             list.innerHTML = links.map((link, index) => `
                 <div class="admin-item">
                     <div class="admin-item-info">
-                        <i class="${link.icon}" style="color: ${link.color}; font-size: 1.2rem; width: 25px;"></i>
-                        <div>
-                            <strong style="font-size:0.9rem;">${link.title}</strong>
-                            <small style="color: #999; display: block; font-size:0.7rem;">${link.description}</small>
+                        <div class="admin-item-icon" style="background: ${link.color}20; color: ${link.color};">
+                            <i class="${link.icon}"></i>
+                        </div>
+                        <div class="admin-item-details">
+                            <div class="admin-item-title">${link.title}</div>
+                            <span class="admin-item-url">${link.url.substring(0, 30)}${link.url.length > 30 ? '...' : ''}</span>
                         </div>
                     </div>
                     <div class="admin-item-actions">
-                        <button class="admin-item-btn edit" onclick="editLink('${category}', ${index})">
+                        <button class="admin-item-btn edit" onclick="editLink('${category}', ${index})" title="تعديل">
                             <i class="fas fa-edit"></i>
                         </button>
-                        <button class="admin-item-btn delete" onclick="deleteLink('${category}', ${index})">
+                        <button class="admin-item-btn delete" onclick="deleteLink('${category}', ${index})" title="حذف">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
@@ -1055,7 +1233,6 @@
                 return;
             }
 
-            // إنشاء رابط intent إذا كان رابط واتساب أو غيره
             let intentUrl = '';
             if (url.includes('wa.me') || url.includes('whatsapp')) {
                 const phone = url.match(/\d+/g)?.join('') || '9647883002797';
@@ -1069,6 +1246,9 @@
             } else if (url.includes('tiktok')) {
                 const username = url.split('@')[1]?.split('?')[0] || 'shababek.curtains';
                 intentUrl = `tiktok://user?username=${username}`;
+            } else if (url.includes('t.me') || url.includes('telegram')) {
+                const domain = url.split('/').pop() || 'shababekcurtains';
+                intentUrl = `tg://resolve?domain=${domain}`;
             }
 
             const newLink = {
@@ -1086,9 +1266,8 @@
 
             saveLinks();
             renderAllLinks();
-            showAdminLinks(category);
+            showAdminLinks(currentAdminTab);
             
-            // تفريغ الحقول
             document.getElementById('linkTitle').value = '';
             document.getElementById('linkDescription').value = '';
             document.getElementById('linkUrl').value = '';
@@ -1115,16 +1294,16 @@
             
             saveLinks();
             renderAllLinks();
-            showAdminLinks(category);
+            showAdminLinks(currentAdminTab);
             showNotification('✅ تم تعديل الرابط');
         }
 
         function deleteLink(category, index) {
-            if (confirm('⚠️ حذف هذا الرابط؟')) {
+            if (confirm('⚠️ هل أنت متأكد من حذف هذا الرابط؟')) {
                 linksData[category].splice(index, 1);
                 saveLinks();
                 renderAllLinks();
-                showAdminLinks(category);
+                showAdminLinks(currentAdminTab);
                 showNotification('✅ تم حذف الرابط');
             }
         }
@@ -1133,19 +1312,18 @@
         function showNotification(message, type = 'success') {
             const notification = document.getElementById('notification');
             const messageEl = document.getElementById('notificationMessage');
+            const icon = notification.querySelector('i');
             
             messageEl.textContent = message;
+            notification.className = `notification ${type}`;
             notification.style.display = 'flex';
             
             if (type === 'error') {
-                notification.style.borderRightColor = '#e74c3c';
-                notification.querySelector('i').style.color = '#e74c3c';
+                icon.className = 'fas fa-exclamation-circle';
             } else if (type === 'warning') {
-                notification.style.borderRightColor = '#f39c12';
-                notification.querySelector('i').style.color = '#f39c12';
+                icon.className = 'fas fa-exclamation-triangle';
             } else {
-                notification.style.borderRightColor = 'var(--gold)';
-                notification.querySelector('i').style.color = 'var(--gold)';
+                icon.className = 'fas fa-check-circle';
             }
             
             setTimeout(() => {
@@ -1153,7 +1331,6 @@
             }, 2000);
         }
 
-        // ========== تحميل مكتبة الكونفيتي ==========
         function loadConfetti() {
             const script = document.createElement('script');
             script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js';
@@ -1165,13 +1342,11 @@
             loadLinks();
             loadConfetti();
             
-            // جعل الفيديو أبطأ
             const video = document.querySelector('video');
             if (video) {
                 video.playbackRate = 0.8;
             }
             
-            // رسالة ترحيب
             setTimeout(() => {
                 showNotification('👋 اضغط على الشعار 5 مرات للتحكم');
             }, 1000);
@@ -1194,7 +1369,6 @@
             }
         }, { passive: false });
 
-        // ========== إعادة تعيين العداد عند مغادرة الصفحة ==========
         window.addEventListener('beforeunload', () => {
             clickCount = 0;
         });
