@@ -5,35 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>روابط شبابيك للستائر | Shababek Curtains</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>روابط شبابيك للستائر</title>
     
-    <!-- Font Awesome 6 -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* ===== المتغيرات الأساسية ===== */
-        :root {
-            --gold: #d9b382;
-            --gold-light: #f0d8b0;
-            --gold-dark: #b58f5a;
-            --brown: #3d2e24;
-            --white: #ffffff;
-            --whatsapp: #25D366;
-            --youtube: #FF0000;
-            --instagram: #E4405F;
-            --facebook: #1877F2;
-            --tiktok: #000000;
-            --twitter: #1DA1F2;
-            --snapchat: #FFFC00;
-            --telegram: #0088cc;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            --shadow-gold: 0 5px 20px rgba(217, 179, 130, 0.5);
-        }
-
-        /* ===== إعادة تعيين ===== */
         * {
             margin: 0;
             padding: 0;
@@ -44,13 +25,13 @@
 
         body {
             min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
             background: #000;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        /* ===== خلفية الفيديو ===== */
-        .video-background {
+        /* فيديو الخلفية */
+        .video-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -60,7 +41,7 @@
             overflow: hidden;
         }
 
-        .video-background video {
+        .video-bg video {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -68,51 +49,46 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            filter: brightness(0.6) contrast(1.1);
+            filter: brightness(0.5);
         }
 
-        .video-overlay {
+        .video-bg::after {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 100%);
-            z-index: 1;
+            background: rgba(0,0,0,0.3);
         }
 
-        /* ===== الحاوية الرئيسية ===== */
+        /* الحاوية الرئيسية */
         .container {
             position: relative;
-            z-index: 2;
+            z-index: 1;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            padding: 10px;
+            justify-content: center;
+            padding: 15px 10px;
         }
 
-        /* ===== شعار الموقع مع عداد النقرات ===== */
-        .logo-container {
-            margin-bottom: 10px;
+        /* الشعار */
+        .logo-wrapper {
             text-align: center;
-            animation: fadeInDown 0.8s ease;
+            margin-bottom: 15px;
             position: relative;
         }
 
         .logo {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            border: 3px solid var(--gold);
-            box-shadow: var(--shadow);
-            margin-bottom: 5px;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 3px solid #d9b382;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
             cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-            position: relative;
-            z-index: 10;
+            transition: 0.2s;
         }
 
         .logo:active {
@@ -123,162 +99,106 @@
             position: absolute;
             top: -5px;
             right: -5px;
-            background: var(--gold);
-            color: var(--brown);
-            width: 24px;
-            height: 24px;
+            background: #d9b382;
+            color: #3d2e24;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
             font-weight: 900;
+            font-size: 16px;
             border: 2px solid white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             opacity: 0;
-            transition: opacity 0.2s ease;
-            pointer-events: none;
-            z-index: 20;
+            transition: 0.2s;
         }
 
         .click-counter.show {
             opacity: 1;
-            animation: pulse 0.5s ease;
+            animation: pop 0.3s;
         }
 
-        @keyframes pulse {
+        @keyframes pop {
             0% { transform: scale(1); }
             50% { transform: scale(1.2); }
             100% { transform: scale(1); }
         }
 
-        .site-title {
+        h1 {
             color: white;
-            font-size: 1.3rem;
+            font-size: 24px;
             font-weight: 900;
+            margin: 5px 0 0;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-            letter-spacing: 0.5px;
-            line-height: 1.2;
         }
 
-        .site-subtitle {
-            color: var(--gold);
-            font-size: 0.8rem;
+        .subtitle {
+            color: #d9b382;
+            font-size: 14px;
             font-weight: 600;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* ===== عنوان القسم ===== */
+        /* عنوان القسم */
         .section-title {
             color: white;
-            font-size: 1rem;
+            font-size: 16px;
             font-weight: 900;
-            margin: 8px 0 5px;
+            margin: 20px 0 10px;
             text-align: center;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
             position: relative;
-            animation: fadeIn 0.8s ease;
+            width: 100%;
         }
 
         .section-title i {
-            color: var(--gold);
+            color: #d9b382;
             margin-left: 5px;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 40px;
+            width: 50px;
             height: 2px;
-            background: var(--gold);
-            margin: 3px auto 0;
-            border-radius: 1px;
+            background: #d9b382;
+            margin: 5px auto 0;
         }
 
-        /* ===== شبكة الروابط ===== */
+        /* شبكة الروابط */
         .links-grid {
+            width: 100%;
+            max-width: 380px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            width: 100%;
-            max-width: 350px;
-            margin: 0 auto;
-            padding: 5px;
+            gap: 10px;
         }
 
-        /* ===== تصميم الروابط المحسن للهاتف ===== */
-        .link-card {
+        /* تصميم الرابط */
+        .link-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.15);
+            gap: 15px;
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             color: white;
-            transition: all 0.3s ease;
+            text-decoration: none;
+            transition: 0.2s;
             cursor: pointer;
-            animation: slideInLeft 0.5s ease forwards;
-            opacity: 0;
-            transform: translateX(-20px);
-            position: relative;
-            overflow: hidden;
             -webkit-touch-callout: none;
             touch-action: manipulation;
-            -webkit-user-select: none;
-            user-select: none;
         }
 
-        /* إزالة تأثير hover على الهاتف */
-        @media (hover: hover) {
-            .link-card:hover {
-                transform: translateX(10px) scale(1.02);
-                border-color: var(--gold);
-                background: rgba(217, 179, 130, 0.25);
-                box-shadow: 0 8px 25px rgba(217, 179, 130, 0.4);
-            }
-
-            .link-card:hover .link-icon {
-                transform: scale(1.15) rotate(10deg);
-                background: var(--gold);
-                border-color: white;
-                box-shadow: 0 0 15px var(--gold);
-            }
-
-            .link-card:hover .link-arrow {
-                transform: translateX(-8px) rotate(360deg);
-                background: var(--gold);
-                border-color: white;
-                box-shadow: 0 0 15px var(--gold);
-            }
-        }
-
-        /* تأثير active للهاتف */
-        .link-card:active {
+        .link-item:active {
             transform: scale(0.98);
-            background: rgba(217, 179, 130, 0.3);
-            border-color: var(--gold);
-        }
-
-        .link-card:active .link-icon {
-            transform: scale(1.1);
-            background: var(--gold);
-        }
-
-        .link-card:active .link-arrow {
-            transform: translateX(-5px);
-            background: var(--gold);
-        }
-
-        @keyframes slideInLeft {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            background: rgba(217,179,130,0.3);
+            border-color: #d9b382;
         }
 
         /* أيقونة الرابط */
@@ -289,58 +209,49 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 22px;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
             flex-shrink: 0;
         }
 
         /* محتوى الرابط */
         .link-content {
             flex: 1;
-            min-width: 0;
         }
 
         .link-title {
-            font-size: 1rem;
+            font-size: 16px;
             font-weight: 800;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
             display: flex;
             align-items: center;
-            gap: 5px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            gap: 8px;
         }
 
-        .link-badge {
-            background: var(--gold);
-            color: var(--brown);
-            font-size: 0.6rem;
+        .badge {
+            background: #d9b382;
+            color: #3d2e24;
+            font-size: 10px;
             padding: 2px 8px;
             border-radius: 20px;
             font-weight: 700;
-            white-space: nowrap;
         }
 
-        .link-description {
-            font-size: 0.7rem;
+        .link-desc {
+            font-size: 12px;
             opacity: 0.8;
             display: flex;
             align-items: center;
-            gap: 3px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            gap: 5px;
         }
 
-        .link-description i {
-            font-size: 0.5rem;
-            color: var(--gold);
+        .link-desc i {
+            font-size: 6px;
+            color: #d9b382;
         }
 
-        /* السهم */
+        /* سهم الرابط */
         .link-arrow {
             width: 35px;
             height: 35px;
@@ -348,112 +259,63 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
             flex-shrink: 0;
         }
 
         .link-arrow i {
-            font-size: 1rem;
+            font-size: 14px;
         }
 
-        /* ألوان خاصة للروابط */
-        .whatsapp-bg { background: var(--whatsapp); }
-        .youtube-bg { background: var(--youtube); }
-        .instagram-bg { background: var(--instagram); }
-        .facebook-bg { background: var(--facebook); }
-        .tiktok-bg { background: var(--tiktok); }
-        .twitter-bg { background: var(--twitter); }
-        .snapchat-bg { background: var(--snapchat); color: #000; }
-        .telegram-bg { background: var(--telegram); }
-        .gold-bg { background: var(--gold); color: var(--brown); }
+        /* ألوان خاصة */
+        .whatsapp { background: #25D366; }
+        .youtube { background: #FF0000; }
+        .instagram { background: #E4405F; }
+        .facebook { background: #1877F2; }
+        .tiktok { background: #000000; }
+        .twitter { background: #1DA1F2; }
+        .snapchat { background: #FFFC00; color: #000; }
+        .telegram { background: #0088cc; }
+        .gold { background: #d9b382; color: #3d2e24; }
 
-        /* ===== أنيميشنات ===== */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        /* تذييل الصفحة */
+        .footer {
+            margin-top: 25px;
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+            text-align: center;
         }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-15px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-
-        .shake {
-            animation: shake 0.3s ease;
-        }
-
-        /* ===== نافذة لوحة التحكم المتطورة ===== */
+        /* لوحة التحكم */
         .admin-panel {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.98);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(0,0,0,0.98);
+            backdrop-filter: blur(10px);
             z-index: 2000;
             display: none;
             justify-content: center;
             align-items: center;
             padding: 10px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
-        .admin-panel.active {
+        .admin-panel.show {
             display: flex;
-            opacity: 1;
-            animation: panelFadeIn 0.3s ease;
-        }
-
-        @keyframes panelFadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
         }
 
         .admin-content {
-            background: linear-gradient(135deg, #ffffff, #f8f8f8);
+            background: white;
             width: 100%;
-            max-width: 450px;
+            max-width: 400px;
             max-height: 90vh;
             overflow-y: auto;
             border-radius: 25px;
             padding: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 2px var(--gold);
-            animation: contentFadeIn 0.4s ease;
-            border: 1px solid rgba(217, 179, 130, 0.3);
-        }
-
-        @keyframes contentFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            border: 2px solid #d9b382;
         }
 
         .admin-header {
@@ -462,20 +324,13 @@
             align-items: center;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 3px solid var(--gold);
+            border-bottom: 2px solid #d9b382;
         }
 
         .admin-header h2 {
-            color: var(--brown);
+            color: #3d2e24;
             font-weight: 900;
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .admin-header h2 i {
-            color: var(--gold);
+            font-size: 20px;
         }
 
         .admin-close {
@@ -484,206 +339,128 @@
             border-radius: 50%;
             background: #f0f0f0;
             border: none;
-            font-size: 1.3rem;
+            font-size: 20px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
             touch-action: manipulation;
         }
 
         .admin-close:active {
             background: #e74c3c;
             color: white;
-            transform: rotate(90deg);
         }
 
         .admin-tabs {
             display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 20px;
         }
 
         .admin-tab {
             flex: 1;
-            padding: 12px;
+            padding: 10px;
             background: #f0f0f0;
             border: none;
             border-radius: 10px;
             font-weight: 700;
-            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            color: #666;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
             touch-action: manipulation;
-        }
-
-        .admin-tab:active {
-            background: var(--gold);
-            color: white;
-            transform: scale(0.98);
+            font-size: 13px;
         }
 
         .admin-tab.active {
-            background: var(--gold);
+            background: #d9b382;
             color: white;
-            box-shadow: 0 5px 15px rgba(217, 179, 130, 0.4);
         }
 
         .admin-section {
-            margin-bottom: 25px;
-            padding: 20px;
             background: #f8f8f8;
             border-radius: 15px;
-            border: 1px solid #eee;
+            padding: 15px;
+            margin-bottom: 20px;
         }
 
         .admin-section h3 {
-            color: var(--gold-dark);
-            margin-bottom: 15px;
-            font-weight: 900;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .admin-section h3 i {
-            color: var(--gold);
+            color: #b58f5a;
+            margin-bottom: 10px;
+            font-size: 16px;
         }
 
         .admin-input {
             width: 100%;
-            padding: 12px 15px;
+            padding: 12px;
             margin-bottom: 10px;
             border: 2px solid #eee;
             border-radius: 10px;
             font-family: 'Cairo';
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            -webkit-appearance: none;
-            appearance: none;
+            font-size: 14px;
         }
 
         .admin-input:focus {
-            border-color: var(--gold);
+            border-color: #d9b382;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(217, 179, 130, 0.2);
         }
 
         .admin-btn {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            background: #d9b382;
             color: white;
             border: none;
-            padding: 14px 20px;
+            padding: 12px;
             border-radius: 10px;
             font-weight: 900;
-            cursor: pointer;
-            transition: all 0.3s ease;
             width: 100%;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            cursor: pointer;
             touch-action: manipulation;
         }
 
         .admin-btn:active {
-            transform: scale(0.98);
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            background: #b58f5a;
         }
 
         .admin-list {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            margin-top: 15px;
             max-height: 300px;
             overflow-y: auto;
-            padding: 5px;
-            -webkit-overflow-scrolling: touch;
         }
 
         .admin-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px;
+            padding: 10px;
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
             border: 1px solid #eee;
-            transition: all 0.3s ease;
-            animation: slideInRight 0.3s ease;
-        }
-
-        .admin-item:active {
-            transform: scale(0.99);
-            border-color: var(--gold);
         }
 
         .admin-item-info {
             display: flex;
             align-items: center;
-            gap: 12px;
-            flex: 1;
+            gap: 10px;
         }
 
         .admin-item-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
             background: #f5f5f5;
-        }
-
-        .admin-item-details {
-            flex: 1;
-        }
-
-        .admin-item-title {
-            font-weight: 800;
-            font-size: 0.95rem;
-            color: var(--brown);
-            margin-bottom: 3px;
-        }
-
-        .admin-item-url {
-            font-size: 0.7rem;
-            color: #999;
-            display: block;
-            max-width: 150px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
         }
 
         .admin-item-actions {
             display: flex;
-            gap: 8px;
+            gap: 5px;
         }
 
         .admin-item-btn {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             touch-action: manipulation;
         }
 
@@ -701,21 +478,7 @@
             transform: scale(0.95);
         }
 
-        /* ===== تذييل الصفحة ===== */
-        .footer {
-            margin-top: 10px;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.7rem;
-            text-align: center;
-            animation: fadeIn 0.8s ease 0.9s both;
-        }
-
-        .footer i {
-            color: #ff6b6b;
-            font-size: 0.6rem;
-        }
-
-        /* ===== إشعارات محسنة للهاتف ===== */
+        /* إشعار */
         .notification {
             position: fixed;
             top: 20px;
@@ -723,16 +486,14 @@
             transform: translateX(-50%);
             background: white;
             color: #333;
-            padding: 15px 25px;
+            padding: 12px 25px;
             border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 0 2px var(--gold);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
             display: none;
             align-items: center;
             gap: 10px;
             z-index: 3000;
-            border-right: 4px solid var(--gold);
-            animation: notificationSlide 0.3s ease;
-            font-size: 0.95rem;
+            border-right: 4px solid #d9b382;
             font-weight: 600;
             width: 90%;
             max-width: 350px;
@@ -740,504 +501,407 @@
             justify-content: center;
         }
 
-        @keyframes notificationSlide {
-            from {
-                opacity: 0;
-                transform: translate(-50%, -30px);
-            }
-            to {
-                opacity: 1;
-                transform: translate(-50%, 0);
-            }
-        }
-
-        .notification i {
-            font-size: 1.2rem;
-        }
-
-        .notification.success i { color: var(--gold); }
-        .notification.error i { color: #e74c3c; }
-        .notification.warning i { color: #f39c12; }
-
-        /* إخفاء أشرطة التمرير مع الاحتفاظ بالوظيفة */
+        /* إخفاء شريط التمرير */
         ::-webkit-scrollbar {
-            width: 3px;
-            height: 3px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.1);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--gold);
-            border-radius: 3px;
-        }
-        
-        body {
-            -ms-overflow-style: none;
-            scrollbar-width: thin;
-            scrollbar-color: var(--gold) rgba(255,255,255,0.1);
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- خلفية الفيديو المتحركة -->
-    <div class="video-background">
-        <video autoplay loop muted playsinline webkit-playsinline>
+    <!-- فيديو الخلفية -->
+    <div class="video-bg">
+        <video autoplay loop muted playsinline>
             <source src="https://res.cloudinary.com/dnkuwf8q9/video/upload/v1772571247/%D9%81%D9%8A%D8%AF%D9%8A%D9%88_%D8%B3%D8%AA%D8%A7%D8%A6%D8%B1_%D8%B1%D9%88%D9%85%D8%A7%D9%86%D8%B3%D9%8A_%D8%A8%D8%B3%D9%8A%D8%B7_iyila0.mp4" type="video/mp4">
         </video>
-        <div class="video-overlay"></div>
     </div>
 
-    <!-- الحاوية الرئيسية -->
+    <!-- المحتوى الرئيسي -->
     <div class="container">
-        <!-- الشعار مع عداد النقرات المخفي -->
-        <div class="logo-container" onclick="handleLogoClick(event)">
-            <img src="https://i.ibb.co/3y1ZNCk0/1.png" alt="شبابيك للستائر" class="logo" id="mainLogo">
+        <!-- الشعار -->
+        <div class="logo-wrapper" onclick="handleLogoClick()">
+            <img src="https://i.ibb.co/3y1ZNCk0/1.png" class="logo" id="logo">
             <div class="click-counter" id="clickCounter">0</div>
-            <h1 class="site-title">شبابيك للستائر</h1>
-            <p class="site-subtitle">ظل وذوق</p>
+            <h1>شبابيك للستائر</h1>
+            <div class="subtitle">ظل وذوق</div>
         </div>
 
-        <!-- روابط التواصل الاجتماعي -->
-        <h2 class="section-title"><i class="fas fa-hashtag"></i> تابعنا على</h2>
-        <div class="links-grid" id="socialLinksGrid"></div>
+        <!-- روابط التواصل -->
+        <div class="section-title"><i class="fas fa-hashtag"></i> تابعنا على</div>
+        <div class="links-grid" id="social-links"></div>
 
-        <!-- روابط المتجر والخدمات -->
-        <h2 class="section-title"><i class="fas fa-store"></i> خدماتنا</h2>
-        <div class="links-grid" id="storeLinksGrid"></div>
+        <!-- روابط الخدمات -->
+        <div class="section-title"><i class="fas fa-store"></i> خدماتنا</div>
+        <div class="links-grid" id="store-links"></div>
 
-        <!-- روابط مهمة (تم التعديل هنا) -->
-        <h2 class="section-title"><i class="fas fa-star"></i> روابط مهمة</h2>
-        <div class="links-grid" id="usefulLinksGrid"></div>
+        <!-- روابط مهمة (تم التعديل) -->
+        <div class="section-title"><i class="fas fa-star"></i> روابط مهمة</div>
+        <div class="links-grid" id="important-links"></div>
 
-        <!-- تذييل الصفحة -->
-        <div class="footer">
-            <p>© 2026 شبابيك للستائر • <i class="fas fa-heart"></i> من العراق</p>
-        </div>
+        <!-- تذييل -->
+        <div class="footer">© 2026 شبابيك للستائر</div>
     </div>
 
-    <!-- نافذة لوحة التحكم -->
+    <!-- لوحة التحكم -->
     <div class="admin-panel" id="adminPanel">
         <div class="admin-content">
             <div class="admin-header">
-                <h2><i class="fas fa-crown"></i> لوحة التحكم</h2>
-                <button class="admin-close" onclick="closeAdminPanel()"><i class="fas fa-times"></i></button>
+                <h2>⚙️ لوحة التحكم</h2>
+                <button class="admin-close" onclick="closeAdmin()">✕</button>
             </div>
 
             <div class="admin-tabs">
-                <button class="admin-tab active" onclick="switchAdminTab('social', this)">
-                    <i class="fas fa-hashtag"></i> تواصل
-                </button>
-                <button class="admin-tab" onclick="switchAdminTab('store', this)">
-                    <i class="fas fa-store"></i> خدمات
-                </button>
-                <button class="admin-tab" onclick="switchAdminTab('useful', this)">
-                    <i class="fas fa-star"></i> مهمة
-                </button>
+                <button class="admin-tab active" onclick="switchTab('social')">📱 تواصل</button>
+                <button class="admin-tab" onclick="switchTab('store')">🛍️ خدمات</button>
+                <button class="admin-tab" onclick="switchTab('important')">⭐ مهمة</button>
             </div>
 
             <div class="admin-section">
-                <h3><i class="fas fa-plus-circle"></i> إضافة رابط جديد</h3>
-                <select id="linkCategory" class="admin-input">
+                <h3>➕ إضافة رابط</h3>
+                <select id="link-category" class="admin-input">
                     <option value="social">📱 وسائل التواصل</option>
                     <option value="store">🛍️ خدمات المتجر</option>
-                    <option value="useful">⭐ روابط مهمة</option>
+                    <option value="important">⭐ روابط مهمة</option>
                 </select>
-                <input type="text" id="linkTitle" class="admin-input" placeholder="العنوان (مثال: فيسبوك)">
-                <input type="text" id="linkDescription" class="admin-input" placeholder="الوصف (مثال: تابعنا على فيسبوك)">
-                <input type="url" id="linkUrl" class="admin-input" placeholder="الرابط (https://...)">
-                <input type="text" id="linkIcon" class="admin-input" placeholder="الأيقونة (مثال: fab fa-facebook)">
-                <input type="color" id="linkColor" class="admin-input" value="#d9b382">
-                <button class="admin-btn" onclick="addLink()"><i class="fas fa-plus"></i> إضافة الرابط</button>
+                <input type="text" id="link-title" class="admin-input" placeholder="العنوان">
+                <input type="text" id="link-desc" class="admin-input" placeholder="الوصف">
+                <input type="url" id="link-url" class="admin-input" placeholder="الرابط">
+                <input type="text" id="link-icon" class="admin-input" placeholder="الأيقونة (fab fa-facebook)">
+                <button class="admin-btn" onclick="addLink()">➕ إضافة</button>
             </div>
 
             <div class="admin-section">
-                <h3><i class="fas fa-edit"></i> <span id="currentCategoryTitle">وسائل التواصل</span></h3>
-                <div id="adminLinksList" class="admin-list"></div>
+                <h3>📋 الروابط</h3>
+                <div id="admin-links-list" class="admin-list"></div>
             </div>
         </div>
     </div>
 
-    <!-- نافذة الإشعارات -->
+    <!-- الإشعار -->
     <div class="notification" id="notification">
-        <i class="fas fa-check-circle"></i>
-        <span id="notificationMessage">تم النسخ!</span>
+        <i class="fas fa-check-circle" style="color: #d9b382;"></i>
+        <span id="notif-message"></span>
     </div>
 
     <script>
-        // ========== نظام النقرات المخفي ==========
-        let clickCount = 0;
-        let clickTimer = null;
-        const REQUIRED_CLICKS = 5;
-        let currentAdminTab = 'social';
-
-        // ========== معالجة النقر على الشعار ==========
-        function handleLogoClick(event) {
-            event.stopPropagation();
-            
-            clickCount++;
-            
-            const counterEl = document.getElementById('clickCounter');
-            counterEl.textContent = clickCount;
-            counterEl.classList.add('show');
-            
-            const logo = document.getElementById('mainLogo');
-            logo.classList.add('shake');
-            setTimeout(() => {
-                logo.classList.remove('shake');
-            }, 300);
-            
-            if (clickCount >= REQUIRED_CLICKS) {
-                openAdminPanel();
-                clickCount = 0;
-                counterEl.classList.remove('show');
-                
-                if (clickTimer) {
-                    clearTimeout(clickTimer);
-                    clickTimer = null;
-                }
-            } else {
-                if (clickTimer) {
-                    clearTimeout(clickTimer);
-                }
-                
-                clickTimer = setTimeout(() => {
-                    clickCount = 0;
-                    counterEl.classList.remove('show');
-                    clickTimer = null;
-                }, 3000);
-            }
-            
-            if (clickCount === REQUIRED_CLICKS - 1) {
-                showNotification('⚠️ ضغطة واحدة تفصلك عن لوحة التحكم', 'warning');
-            }
-        }
-
-        // ========== الروابط الأساسية ==========
+        // ========== البيانات ==========
         let linksData = {
             social: [
-                { title: 'فيسبوك', description: 'تابعنا على فيسبوك', url: 'https://www.facebook.com/profile.php?id=61587692021311', intentUrl: 'fb://page/61587692021311', icon: 'fab fa-facebook', color: '#1877F2', app: true },
-                { title: 'إنستغرام', description: 'أحدث التصاميم', url: 'https://www.instagram.com/shababek.curtains/', intentUrl: 'instagram://user?username=shababek.curtains', icon: 'fab fa-instagram', color: '#E4405F', app: true },
-                { title: 'تيك توك', description: 'فيديوهات قصيرة', url: 'https://www.tiktok.com/@shababek.curtains', intentUrl: 'tiktok://user?username=shababek.curtains', icon: 'fab fa-tiktok', color: '#000000', app: true },
-                { title: 'يوتيوب', description: 'شاهد تصاميمنا', url: 'https://youtube.com/@shababek.curtains?si=KKsEbL98N0fq2e2U', intentUrl: 'vnd.youtube://www.youtube.com/channel/UCxxx', icon: 'fab fa-youtube', color: '#FF0000', app: true },
-                { title: 'تويتر', description: 'تغريدات على X', url: 'https://x.com/ShababekCurtain', intentUrl: 'twitter://user?screen_name=ShababekCurtain', icon: 'fa-brands fa-x-twitter', color: '#1DA1F2', app: true },
-                { title: 'سناب شات', description: 'يومياتنا', url: 'https://www.snapchat.com/add/shababekcurtin', intentUrl: 'snapchat://add/shababekcurtin', icon: 'fab fa-snapchat', color: '#FFFC00', app: true },
-                { title: 'واتساب', description: 'تواصل مباشر', url: 'https://wa.me/9647883002797', intentUrl: 'whatsapp://send?phone=9647883002797', icon: 'fab fa-whatsapp', color: '#25D366', app: true },
-                { title: 'تيليجرام', description: 'قناتنا', url: 'https://t.me/shababekcurtains', intentUrl: 'tg://resolve?domain=shababekcurtains', icon: 'fab fa-telegram', color: '#0088cc', app: true }
+                { title: 'فيسبوك', desc: 'تابعنا على فيسبوك', url: 'https://www.facebook.com/profile.php?id=61587692021311', icon: 'fab fa-facebook', color: 'facebook' },
+                { title: 'إنستغرام', desc: 'أحدث التصاميم', url: 'https://www.instagram.com/shababek.curtains/', icon: 'fab fa-instagram', color: 'instagram' },
+                { title: 'تيك توك', desc: 'فيديوهات قصيرة', url: 'https://www.tiktok.com/@shababek.curtains', icon: 'fab fa-tiktok', color: 'tiktok' },
+                { title: 'يوتيوب', desc: 'شاهد تصاميمنا', url: 'https://youtube.com/@shababek.curtains', icon: 'fab fa-youtube', color: 'youtube' },
+                { title: 'تويتر', desc: 'تغريدات على X', url: 'https://x.com/ShababekCurtain', icon: 'fa-brands fa-x-twitter', color: 'twitter' },
+                { title: 'سناب شات', desc: 'يومياتنا', url: 'https://www.snapchat.com/add/shababekcurtin', icon: 'fab fa-snapchat', color: 'snapchat' },
+                { title: 'واتساب', desc: 'تواصل مباشر', url: 'https://wa.me/9647883002797', icon: 'fab fa-whatsapp', color: 'whatsapp' },
+                { title: 'تيليجرام', desc: 'قناتنا', url: 'https://t.me/shababekcurtains', icon: 'fab fa-telegram', color: 'telegram' }
             ],
             store: [
-                { title: 'المتجر الإلكتروني', description: 'تصفح جميع المنتجات', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-store', color: '#d9b382' },
-                { title: 'عروض خاصة', description: 'خصومات حتى 30%', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-tags', color: '#e74c3c' },
-                { title: 'استشارة مجانية', description: 'خبراء التصميم', url: 'whatsapp://send?phone=9647883002797&text=استشارة%20مجانية', intentUrl: 'whatsapp://send?phone=9647883002797&text=استشارة%20مجانية', icon: 'fas fa-headset', color: '#27ae60', app: true },
-                { title: 'معرض الأعمال', description: 'أحدث التصاميم', url: 'https://www.instagram.com/shababek.curtains/', intentUrl: 'instagram://user?username=shababek.curtains', icon: 'fas fa-images', color: '#9b59b6', app: true }
+                { title: 'المتجر الإلكتروني', desc: 'تصفح المنتجات', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-store', color: 'gold' },
+                { title: 'عروض خاصة', desc: 'خصومات حتى 30%', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-tags', color: 'gold' },
+                { title: 'استشارة مجانية', desc: 'خبراء التصميم', url: 'https://wa.me/9647883002797?text=استشارة', icon: 'fas fa-headset', color: 'whatsapp' },
+                { title: 'معرض الأعمال', desc: 'أحدث التصاميم', url: 'https://www.instagram.com/shababek.curtains/', icon: 'fas fa-images', color: 'instagram' }
             ],
-            useful: [
-                { title: 'منتدى شبابيك', description: 'مجتمع الديكور', url: 'https://shababekcurtains.com/ai.html', icon: 'fas fa-comments', color: '#3498db' },
-                { title: 'طرق الدفع', description: 'طرق دفع آمنة', url: 'https://shababekcurtains.com/index.html?page=categories#paymentPage', icon: 'fas fa-credit-card', color: '#f39c12' },
-                { title: 'من نحن', description: 'تعرف على فريقنا', url: 'https://shababekcurtains.com/index.html?page=categories#aboutPage', icon: 'fas fa-info-circle', color: '#16a085' },
-                { title: 'تواصل معنا', description: 'نرحب باستفساراتك', url: 'whatsapp://send?phone=9647883002797', intentUrl: 'whatsapp://send?phone=9647883002797', icon: 'fas fa-envelope', color: '#e67e22', app: true }
+            important: [
+                { title: 'منتدى شبابيك', desc: 'مجتمع الديكور', url: 'https://shababekcurtains.com/ai.html', icon: 'fas fa-comments', color: 'gold' },
+                { title: 'طرق الدفع', desc: 'طرق دفع آمنة', url: 'https://shababekcurtains.com/index.html?page=categories#paymentPage', icon: 'fas fa-credit-card', color: 'gold' },
+                { title: 'من نحن', desc: 'تعرف على فريقنا', url: 'https://shababekcurtains.com/index.html?page=categories#aboutPage', icon: 'fas fa-info-circle', color: 'gold' },
+                { title: 'تواصل معنا', desc: 'نرحب باستفساراتك', url: 'https://wa.me/9647883002797', icon: 'fas fa-envelope', color: 'whatsapp' }
             ]
         };
 
-        // ========== تحميل وحفظ البيانات ==========
-        function loadLinks() {
-            const saved = localStorage.getItem('shababek_links_v3');
+        let currentTab = 'social';
+        let clickCount = 0;
+        let clickTimer;
+
+        // ========== تحميل البيانات ==========
+        function loadData() {
+            const saved = localStorage.getItem('shababek_links');
             if (saved) {
                 linksData = JSON.parse(saved);
             }
             renderAllLinks();
         }
 
-        function saveLinks() {
-            localStorage.setItem('shababek_links_v3', JSON.stringify(linksData));
+        function saveData() {
+            localStorage.setItem('shababek_links', JSON.stringify(linksData));
         }
 
         // ========== عرض الروابط ==========
         function renderAllLinks() {
-            renderLinks('social', 'socialLinksGrid');
-            renderLinks('store', 'storeLinksGrid');
-            renderLinks('useful', 'usefulLinksGrid');
+            renderLinks('social', 'social-links');
+            renderLinks('store', 'store-links');
+            renderLinks('important', 'important-links');
         }
 
         function renderLinks(category, elementId) {
-            const grid = document.getElementById(elementId);
-            if (!grid) return;
+            const container = document.getElementById(elementId);
+            if (!container) return;
 
             const links = linksData[category] || [];
             
-            grid.innerHTML = links.map((link, index) => {
-                let bgClass = '';
-                if (link.title.includes('واتساب') || link.icon.includes('whatsapp')) bgClass = 'whatsapp-bg';
-                else if (link.title.includes('يوتيوب') || link.icon.includes('youtube')) bgClass = 'youtube-bg';
-                else if (link.title.includes('إنستغرام') || link.icon.includes('instagram')) bgClass = 'instagram-bg';
-                else if (link.title.includes('فيسبوك') || link.icon.includes('facebook')) bgClass = 'facebook-bg';
-                else if (link.title.includes('تيك توك') || link.icon.includes('tiktok')) bgClass = 'tiktok-bg';
-                else if (link.title.includes('تويتر') || link.icon.includes('twitter') || link.icon.includes('x-')) bgClass = 'twitter-bg';
-                else if (link.title.includes('سناب') || link.icon.includes('snapchat')) bgClass = 'snapchat-bg';
-                else if (link.title.includes('تيليجرام') || link.icon.includes('telegram')) bgClass = 'telegram-bg';
-                else bgClass = 'gold-bg';
-                
-                return `
-                    <a href="#" onclick="openLink('${category}', ${index}); return false;" class="link-card">
-                        <div class="link-icon ${bgClass}">
-                            <i class="${link.icon}" style="${bgClass === 'snapchat-bg' ? 'color:#000;' : ''}"></i>
+            container.innerHTML = links.map(link => `
+                <a href="${link.url}" class="link-item" onclick="openAppLink('${link.url}', '${link.title}'); return false;">
+                    <div class="link-icon ${link.color}">
+                        <i class="${link.icon}"></i>
+                    </div>
+                    <div class="link-content">
+                        <div class="link-title">
+                            ${link.title}
+                            ${link.url.includes('wa.me') ? '<span class="badge">واتساب</span>' : ''}
                         </div>
-                        <div class="link-content">
-                            <div class="link-title">
-                                ${link.title}
-                                ${link.app ? '<span class="link-badge">تطبيق</span>' : ''}
-                            </div>
-                            <div class="link-description">
-                                <i class="fas fa-circle"></i>
-                                ${link.description}
-                            </div>
+                        <div class="link-desc">
+                            <i class="fas fa-circle"></i>
+                            ${link.desc}
                         </div>
-                        <div class="link-arrow">
-                            <i class="fas fa-arrow-left"></i>
-                        </div>
-                    </a>
-                `;
-            }).join('');
+                    </div>
+                    <div class="link-arrow">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                </a>
+            `).join('');
         }
 
-        // ========== فتح الرابط مع دعم التطبيقات ==========
-        function openLink(category, index) {
-            const link = linksData[category][index];
+        // ========== فتح الروابط مع دعم التطبيقات ==========
+        function openAppLink(url, title) {
+            showNotif(`جاري فتح ${title}...`);
             
-            if (link.app && link.intentUrl) {
-                window.location.href = link.intentUrl;
+            // روابط واتساب المباشرة
+            if (url.includes('wa.me')) {
+                const phone = url.split('/').pop().split('?')[0];
+                window.location.href = `whatsapp://send?phone=${phone}`;
                 setTimeout(() => {
-                    window.location.href = link.url;
+                    window.location.href = url;
                 }, 500);
-            } else {
-                window.location.href = link.url;
+                return;
             }
             
-            trackLinkClick(link.title);
-            return false;
+            // روابط انستغرام
+            if (url.includes('instagram.com')) {
+                const username = url.split('/').filter(s => s).pop();
+                window.location.href = `instagram://user?username=${username}`;
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 500);
+                return;
+            }
+            
+            // روابط فيسبوك
+            if (url.includes('facebook.com')) {
+                const id = '61587692021311';
+                window.location.href = `fb://page/${id}`;
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 500);
+                return;
+            }
+            
+            // روابط تيك توك
+            if (url.includes('tiktok.com')) {
+                const username = url.split('@')[1]?.split('/')[0] || 'shababek.curtains';
+                window.location.href = `tiktok://user?username=${username}`;
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 500);
+                return;
+            }
+            
+            // روابط تيليجرام
+            if (url.includes('t.me')) {
+                const username = url.split('/').pop();
+                window.location.href = `tg://resolve?domain=${username}`;
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 500);
+                return;
+            }
+            
+            // روابط تويتر
+            if (url.includes('x.com') || url.includes('twitter.com')) {
+                const username = url.split('/').pop();
+                window.location.href = `twitter://user?screen_name=${username}`;
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 500);
+                return;
+            }
+            
+            // روابط يوتيوب
+            if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                window.location.href = `vnd.youtube://www.youtube.com/channel/UCxxx`;
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 500);
+                return;
+            }
+            
+            // باقي الروابط
+            window.location.href = url;
         }
 
-        function trackLinkClick(title) {
-            showNotification(`جاري فتح ${title}...`);
+        // ========== نظام الـ 5 نقرات ==========
+        function handleLogoClick() {
+            clickCount++;
+            
+            const counter = document.getElementById('clickCounter');
+            counter.textContent = clickCount;
+            counter.classList.add('show');
+            
+            document.getElementById('logo').style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                document.getElementById('logo').style.transform = '';
+            }, 200);
+            
+            if (clickTimer) clearTimeout(clickTimer);
+            
+            clickTimer = setTimeout(() => {
+                clickCount = 0;
+                counter.classList.remove('show');
+            }, 3000);
+            
+            if (clickCount >= 5) {
+                clickCount = 0;
+                counter.classList.remove('show');
+                openAdminPanel();
+            }
         }
 
-        // ========== دوال لوحة التحكم المتطورة ==========
+        // ========== لوحة التحكم ==========
         function openAdminPanel() {
-            document.getElementById('adminPanel').classList.add('active');
-            switchAdminTab('social', document.querySelector('.admin-tab'));
-            
-            if (typeof confetti !== 'undefined') {
-                confetti({ 
-                    particleCount: 100, 
-                    spread: 80, 
-                    origin: { y: 0.6 },
-                    colors: ['#d9b382', '#3d2e24', '#ffffff']
-                });
-            }
-            
-            showNotification('👑 مرحباً بك في لوحة التحكم', 'success');
+            document.getElementById('adminPanel').classList.add('show');
+            showAdminLinks('social');
         }
 
-        function closeAdminPanel() {
-            document.getElementById('adminPanel').classList.remove('active');
+        function closeAdmin() {
+            document.getElementById('adminPanel').classList.remove('show');
         }
 
-        function switchAdminTab(tab, element) {
-            currentAdminTab = tab;
+        function switchTab(tab) {
+            currentTab = tab;
             
             document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
-            element.classList.add('active');
+            event.target.classList.add('active');
             
-            let title = '';
-            if (tab === 'social') title = 'وسائل التواصل';
-            else if (tab === 'store') title = 'خدمات المتجر';
-            else title = 'روابط مهمة';
-            
-            document.getElementById('currentCategoryTitle').textContent = title;
             showAdminLinks(tab);
         }
 
         function showAdminLinks(category) {
-            const list = document.getElementById('adminLinksList');
+            const list = document.getElementById('admin-links-list');
             const links = linksData[category] || [];
             
             list.innerHTML = links.map((link, index) => `
                 <div class="admin-item">
                     <div class="admin-item-info">
-                        <div class="admin-item-icon" style="background: ${link.color}20; color: ${link.color};">
-                            <i class="${link.icon}"></i>
+                        <div class="admin-item-icon" style="background: #f5f5f5;">
+                            <i class="${link.icon}" style="color: #d9b382;"></i>
                         </div>
-                        <div class="admin-item-details">
-                            <div class="admin-item-title">${link.title}</div>
-                            <span class="admin-item-url">${link.url.substring(0, 30)}${link.url.length > 30 ? '...' : ''}</span>
+                        <div>
+                            <strong>${link.title}</strong>
+                            <div style="font-size: 10px; color: #999;">${link.url.substring(0,30)}</div>
                         </div>
                     </div>
                     <div class="admin-item-actions">
-                        <button class="admin-item-btn edit" onclick="editLink('${category}', ${index})" title="تعديل">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button class="admin-item-btn delete" onclick="deleteLink('${category}', ${index})" title="حذف">
-                            <i class="fas fa-trash"></i>
-                        </button>
+                        <button class="admin-item-btn edit" onclick="editLink('${category}', ${index})">✏️</button>
+                        <button class="admin-item-btn delete" onclick="deleteLink('${category}', ${index})">🗑️</button>
                     </div>
                 </div>
             `).join('');
         }
 
         function addLink() {
-            const category = document.getElementById('linkCategory').value;
-            const title = document.getElementById('linkTitle').value;
-            const description = document.getElementById('linkDescription').value;
-            const url = document.getElementById('linkUrl').value;
-            const icon = document.getElementById('linkIcon').value;
-            const color = document.getElementById('linkColor').value;
+            const category = document.getElementById('link-category').value;
+            const title = document.getElementById('link-title').value;
+            const desc = document.getElementById('link-desc').value;
+            const url = document.getElementById('link-url').value;
+            const icon = document.getElementById('link-icon').value;
 
             if (!title || !url) {
-                showNotification('❌ الرجاء إدخال العنوان والرابط', 'error');
+                showNotif('الرجاء إدخال العنوان والرابط', 'error');
                 return;
-            }
-
-            let intentUrl = '';
-            if (url.includes('wa.me') || url.includes('whatsapp')) {
-                const phone = url.match(/\d+/g)?.join('') || '9647883002797';
-                intentUrl = `whatsapp://send?phone=${phone}`;
-            } else if (url.includes('instagram')) {
-                const username = url.split('/').filter(s => s.length > 0).pop() || 'shababek.curtains';
-                intentUrl = `instagram://user?username=${username}`;
-            } else if (url.includes('facebook')) {
-                const id = url.match(/\d+/g)?.join('') || '61587692021311';
-                intentUrl = `fb://page/${id}`;
-            } else if (url.includes('tiktok')) {
-                const username = url.split('@')[1]?.split('?')[0] || 'shababek.curtains';
-                intentUrl = `tiktok://user?username=${username}`;
-            } else if (url.includes('t.me') || url.includes('telegram')) {
-                const domain = url.split('/').pop() || 'shababekcurtains';
-                intentUrl = `tg://resolve?domain=${domain}`;
             }
 
             const newLink = {
                 title,
-                description: description || `تابعنا على ${title}`,
+                desc: desc || `تابعنا على ${title}`,
                 url,
-                intentUrl: intentUrl || undefined,
                 icon: icon || 'fas fa-link',
-                color,
-                app: intentUrl ? true : false
+                color: 'gold'
             };
 
             if (!linksData[category]) linksData[category] = [];
             linksData[category].push(newLink);
 
-            saveLinks();
+            saveData();
             renderAllLinks();
-            showAdminLinks(currentAdminTab);
+            showAdminLinks(currentTab);
             
-            document.getElementById('linkTitle').value = '';
-            document.getElementById('linkDescription').value = '';
-            document.getElementById('linkUrl').value = '';
-            document.getElementById('linkIcon').value = '';
+            document.getElementById('link-title').value = '';
+            document.getElementById('link-desc').value = '';
+            document.getElementById('link-url').value = '';
+            document.getElementById('link-icon').value = '';
             
-            showNotification('✅ تم إضافة الرابط بنجاح');
+            showNotif('✅ تمت الإضافة');
         }
 
         function editLink(category, index) {
             const link = linksData[category][index];
             
             const newTitle = prompt('تعديل العنوان:', link.title);
-            if (newTitle === null) return;
-            
-            const newDescription = prompt('تعديل الوصف:', link.description);
-            if (newDescription === null) return;
+            if (newTitle) link.title = newTitle;
             
             const newUrl = prompt('تعديل الرابط:', link.url);
-            if (newUrl === null) return;
+            if (newUrl) link.url = newUrl;
             
-            link.title = newTitle;
-            link.description = newDescription;
-            link.url = newUrl;
-            
-            saveLinks();
+            saveData();
             renderAllLinks();
-            showAdminLinks(currentAdminTab);
-            showNotification('✅ تم تعديل الرابط');
+            showAdminLinks(currentTab);
+            showNotif('✅ تم التعديل');
         }
 
         function deleteLink(category, index) {
-            if (confirm('⚠️ هل أنت متأكد من حذف هذا الرابط؟')) {
+            if (confirm('حذف الرابط؟')) {
                 linksData[category].splice(index, 1);
-                saveLinks();
+                saveData();
                 renderAllLinks();
-                showAdminLinks(currentAdminTab);
-                showNotification('✅ تم حذف الرابط');
+                showAdminLinks(currentTab);
+                showNotif('✅ تم الحذف');
             }
         }
 
-        // ========== دوال مساعدة ==========
-        function showNotification(message, type = 'success') {
-            const notification = document.getElementById('notification');
-            const messageEl = document.getElementById('notificationMessage');
-            const icon = notification.querySelector('i');
+        // ========== الإشعارات ==========
+        function showNotif(msg, type = 'success') {
+            const notif = document.getElementById('notification');
+            const msgEl = document.getElementById('notif-message');
             
-            messageEl.textContent = message;
-            notification.className = `notification ${type}`;
-            notification.style.display = 'flex';
-            
-            if (type === 'error') {
-                icon.className = 'fas fa-exclamation-circle';
-            } else if (type === 'warning') {
-                icon.className = 'fas fa-exclamation-triangle';
-            } else {
-                icon.className = 'fas fa-check-circle';
-            }
+            msgEl.textContent = msg;
+            notif.style.display = 'flex';
             
             setTimeout(() => {
-                notification.style.display = 'none';
+                notif.style.display = 'none';
             }, 2000);
         }
 
-        function loadConfetti() {
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js';
-            document.head.appendChild(script);
-        }
-
-        // ========== أحداث التحميل ==========
+        // ========== بدء التشغيل ==========
         document.addEventListener('DOMContentLoaded', () => {
-            loadLinks();
-            loadConfetti();
+            loadData();
             
+            // جعل الفيديو أبطأ
             const video = document.querySelector('video');
-            if (video) {
-                video.playbackRate = 0.8;
-            }
+            if (video) video.playbackRate = 0.8;
             
             setTimeout(() => {
-                showNotification('👋 اضغط على الشعار 5 مرات للتحكم');
+                showNotif('👋 اضغط على الشعار 5 مرات');
             }, 1000);
         });
 
-        // ========== إغلاق لوحة التحكم بالضغط خارجها للهاتف ==========
+        // إغلاق لوحة التحكم عند الضغط خارجها
         document.addEventListener('click', (e) => {
             const panel = document.getElementById('adminPanel');
             const content = document.querySelector('.admin-content');
             
-            if (panel.classList.contains('active') && !content.contains(e.target) && !e.target.closest('.logo')) {
-                closeAdminPanel();
+            if (panel.classList.contains('show') && !content.contains(e.target) && !e.target.closest('.logo')) {
+                closeAdmin();
             }
-        });
-
-        // ========== منع السلوك الافتراضي للروابط مع الحفاظ على اللمس ==========
-        document.addEventListener('touchstart', (e) => {
-            if (e.target.closest('.link-card')) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-
-        window.addEventListener('beforeunload', () => {
-            clickCount = 0;
         });
     </script>
 </body>
