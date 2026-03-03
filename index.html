@@ -115,12 +115,6 @@
             z-index: 10;
         }
 
-        .logo:hover {
-            transform: scale(1.1) rotate(5deg);
-            border-color: white;
-            box-shadow: var(--shadow-gold);
-        }
-
         .logo:active {
             transform: scale(0.95);
         }
@@ -165,12 +159,6 @@
             text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
             letter-spacing: 0.5px;
             line-height: 1.2;
-            transition: all 0.3s ease;
-        }
-
-        .site-title:hover {
-            color: var(--gold);
-            text-shadow: 0 0 10px rgba(217, 179, 130, 0.5);
         }
 
         .site-subtitle {
@@ -190,22 +178,11 @@
             text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
             position: relative;
             animation: fadeIn 0.8s ease;
-            transition: all 0.3s ease;
-        }
-
-        .section-title:hover {
-            color: var(--gold);
-            transform: scale(1.05);
         }
 
         .section-title i {
             color: var(--gold);
             margin-left: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .section-title:hover i {
-            transform: rotate(360deg);
         }
 
         .section-title::after {
@@ -216,12 +193,6 @@
             background: var(--gold);
             margin: 3px auto 0;
             border-radius: 1px;
-            transition: all 0.3s ease;
-        }
-
-        .section-title:hover::after {
-            width: 60px;
-            background: white;
         }
 
         /* ===== شبكة الروابط ===== */
@@ -235,21 +206,21 @@
             padding: 5px;
         }
 
-        /* ===== تصميم الروابط مع التأثيرات الذهبية ===== */
+        /* ===== تصميم الروابط المحسن للهاتف ===== */
         .link-card {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 8px 12px;
+            padding: 12px 15px;
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-radius: 40px;
+            border-radius: 50px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             text-decoration: none;
             color: white;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             cursor: pointer;
             animation: slideInLeft 0.5s ease forwards;
             opacity: 0;
@@ -257,50 +228,50 @@
             position: relative;
             overflow: hidden;
             -webkit-touch-callout: none;
+            touch-action: manipulation;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
-        /* التأثير الذهبي عند تمرير الماوس */
-        .link-card:hover {
-            transform: translateX(10px) scale(1.02);
+        /* إزالة تأثير hover على الهاتف */
+        @media (hover: hover) {
+            .link-card:hover {
+                transform: translateX(10px) scale(1.02);
+                border-color: var(--gold);
+                background: rgba(217, 179, 130, 0.25);
+                box-shadow: 0 8px 25px rgba(217, 179, 130, 0.4);
+            }
+
+            .link-card:hover .link-icon {
+                transform: scale(1.15) rotate(10deg);
+                background: var(--gold);
+                border-color: white;
+                box-shadow: 0 0 15px var(--gold);
+            }
+
+            .link-card:hover .link-arrow {
+                transform: translateX(-8px) rotate(360deg);
+                background: var(--gold);
+                border-color: white;
+                box-shadow: 0 0 15px var(--gold);
+            }
+        }
+
+        /* تأثير active للهاتف */
+        .link-card:active {
+            transform: scale(0.98);
+            background: rgba(217, 179, 130, 0.3);
             border-color: var(--gold);
-            background: rgba(217, 179, 130, 0.25);
-            box-shadow: 0 8px 25px rgba(217, 179, 130, 0.4);
         }
 
-        /* تأثير الحدود الذهبية المتحركة */
-        .link-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(217, 179, 130, 0.3), transparent);
-            transition: left 0.6s ease;
-            pointer-events: none;
+        .link-card:active .link-icon {
+            transform: scale(1.1);
+            background: var(--gold);
         }
 
-        .link-card:hover::before {
-            left: 100%;
-        }
-
-        /* تأثير لمعان ذهبي */
-        .link-card::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, var(--gold), transparent, var(--gold));
-            border-radius: 42px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .link-card:hover::after {
-            opacity: 0.3;
+        .link-card:active .link-arrow {
+            transform: translateX(-5px);
+            background: var(--gold);
         }
 
         @keyframes slideInLeft {
@@ -310,30 +281,19 @@
             }
         }
 
-        .link-card:active {
-            transform: scale(0.98);
-        }
-
         /* أيقونة الرابط */
         .link-icon {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 20px;
             background: rgba(255, 255, 255, 0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.3);
             flex-shrink: 0;
-        }
-
-        .link-card:hover .link-icon {
-            transform: scale(1.15) rotate(10deg);
-            background: var(--gold);
-            border-color: white;
-            box-shadow: 0 0 15px var(--gold);
         }
 
         /* محتوى الرابط */
@@ -343,42 +303,29 @@
         }
 
         .link-title {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 800;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
             display: flex;
             align-items: center;
             gap: 5px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            transition: all 0.3s ease;
-        }
-
-        .link-card:hover .link-title {
-            color: var(--gold);
-            transform: translateX(-5px);
         }
 
         .link-badge {
             background: var(--gold);
             color: var(--brown);
-            font-size: 0.55rem;
-            padding: 2px 6px;
+            font-size: 0.6rem;
+            padding: 2px 8px;
             border-radius: 20px;
             font-weight: 700;
             white-space: nowrap;
-            transition: all 0.3s ease;
-        }
-
-        .link-card:hover .link-badge {
-            background: white;
-            color: var(--gold);
-            transform: scale(1.1);
         }
 
         .link-description {
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             opacity: 0.8;
             display: flex;
             align-items: center;
@@ -386,56 +333,32 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            transition: all 0.3s ease;
-        }
-
-        .link-card:hover .link-description {
-            opacity: 1;
-            color: var(--gold-light);
         }
 
         .link-description i {
             font-size: 0.5rem;
             color: var(--gold);
-            transition: all 0.3s ease;
-        }
-
-        .link-card:hover .link-description i {
-            transform: scale(1.5);
-            color: white;
         }
 
         /* السهم */
         .link-arrow {
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(255, 255, 255, 0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.3);
             flex-shrink: 0;
         }
 
-        .link-card:hover .link-arrow {
-            transform: translateX(-8px) rotate(360deg);
-            background: var(--gold);
-            border-color: white;
-            box-shadow: 0 0 15px var(--gold);
-        }
-
         .link-arrow i {
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            font-size: 1rem;
         }
 
-        .link-card:hover .link-arrow i {
-            color: white;
-        }
-
-        /* ألوان خاصة للروابط عند hover */
+        /* ألوان خاصة للروابط */
         .whatsapp-bg { background: var(--whatsapp); }
         .youtube-bg { background: var(--youtube); }
         .instagram-bg { background: var(--instagram); }
@@ -445,19 +368,6 @@
         .snapchat-bg { background: var(--snapchat); color: #000; }
         .telegram-bg { background: var(--telegram); }
         .gold-bg { background: var(--gold); color: var(--brown); }
-
-        .link-card:hover .whatsapp-bg,
-        .link-card:hover .youtube-bg,
-        .link-card:hover .instagram-bg,
-        .link-card:hover .facebook-bg,
-        .link-card:hover .tiktok-bg,
-        .link-card:hover .twitter-bg,
-        .link-card:hover .snapchat-bg,
-        .link-card:hover .telegram-bg,
-        .link-card:hover .gold-bg {
-            background: var(--gold) !important;
-            color: var(--brown) !important;
-        }
 
         /* ===== أنيميشنات ===== */
         @keyframes fadeIn {
@@ -566,12 +476,6 @@
 
         .admin-header h2 i {
             color: var(--gold);
-            animation: crownGlow 2s infinite;
-        }
-
-        @keyframes crownGlow {
-            0%, 100% { filter: drop-shadow(0 0 5px var(--gold)); }
-            50% { filter: drop-shadow(0 0 15px var(--gold)); }
         }
 
         .admin-close {
@@ -587,12 +491,13 @@
             align-items: center;
             justify-content: center;
             color: #666;
+            touch-action: manipulation;
         }
 
-        .admin-close:hover {
+        .admin-close:active {
             background: #e74c3c;
             color: white;
-            transform: rotate(90deg) scale(1.1);
+            transform: rotate(90deg);
         }
 
         .admin-tabs {
@@ -604,7 +509,7 @@
 
         .admin-tab {
             flex: 1;
-            padding: 10px;
+            padding: 12px;
             background: #f0f0f0;
             border: none;
             border-radius: 10px;
@@ -617,11 +522,13 @@
             align-items: center;
             justify-content: center;
             gap: 5px;
+            touch-action: manipulation;
         }
 
-        .admin-tab:hover {
-            background: var(--gold-light);
-            transform: translateY(-2px);
+        .admin-tab:active {
+            background: var(--gold);
+            color: white;
+            transform: scale(0.98);
         }
 
         .admin-tab.active {
@@ -636,12 +543,6 @@
             background: #f8f8f8;
             border-radius: 15px;
             border: 1px solid #eee;
-            transition: all 0.3s ease;
-        }
-
-        .admin-section:hover {
-            box-shadow: 0 5px 20px rgba(217, 179, 130, 0.2);
-            border-color: var(--gold);
         }
 
         .admin-section h3 {
@@ -667,20 +568,21 @@
             font-family: 'Cairo';
             font-size: 0.95rem;
             transition: all 0.3s ease;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .admin-input:focus {
             border-color: var(--gold);
             outline: none;
             box-shadow: 0 0 0 3px rgba(217, 179, 130, 0.2);
-            transform: scale(1.02);
         }
 
         .admin-btn {
             background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 14px 20px;
             border-radius: 10px;
             font-weight: 900;
             cursor: pointer;
@@ -691,16 +593,12 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-        }
-
-        .admin-btn:hover {
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(217, 179, 130, 0.4);
+            touch-action: manipulation;
         }
 
         .admin-btn:active {
-            transform: translateY(-1px);
+            transform: scale(0.98);
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
         }
 
         .admin-list {
@@ -711,6 +609,7 @@
             max-height: 300px;
             overflow-y: auto;
             padding: 5px;
+            -webkit-overflow-scrolling: touch;
         }
 
         .admin-item {
@@ -725,21 +624,9 @@
             animation: slideInRight 0.3s ease;
         }
 
-        .admin-item:hover {
-            transform: translateX(-5px);
+        .admin-item:active {
+            transform: scale(0.99);
             border-color: var(--gold);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
 
         .admin-item-info {
@@ -787,8 +674,8 @@
         }
 
         .admin-item-btn {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -797,6 +684,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            touch-action: manipulation;
         }
 
         .admin-item-btn.edit {
@@ -809,17 +697,8 @@
             color: white;
         }
 
-        .admin-item-btn:hover {
-            transform: scale(1.15);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-        }
-
-        .admin-item-btn.edit:hover {
-            background: #2980b9;
-        }
-
-        .admin-item-btn.delete:hover {
-            background: #c0392b;
+        .admin-item-btn:active {
+            transform: scale(0.95);
         }
 
         /* ===== تذييل الصفحة ===== */
@@ -829,26 +708,14 @@
             font-size: 0.7rem;
             text-align: center;
             animation: fadeIn 0.8s ease 0.9s both;
-            transition: all 0.3s ease;
-        }
-
-        .footer:hover {
-            color: var(--gold);
-            transform: scale(1.05);
         }
 
         .footer i {
             color: #ff6b6b;
             font-size: 0.6rem;
-            transition: all 0.3s ease;
         }
 
-        .footer:hover i {
-            color: var(--gold);
-            transform: scale(1.2);
-        }
-
-        /* ===== إشعارات محسنة ===== */
+        /* ===== إشعارات محسنة للهاتف ===== */
         .notification {
             position: fixed;
             top: 20px;
@@ -856,7 +723,7 @@
             transform: translateX(-50%);
             background: white;
             color: #333;
-            padding: 12px 25px;
+            padding: 15px 25px;
             border-radius: 50px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 0 2px var(--gold);
             display: none;
@@ -867,6 +734,10 @@
             animation: notificationSlide 0.3s ease;
             font-size: 0.95rem;
             font-weight: 600;
+            width: 90%;
+            max-width: 350px;
+            text-align: center;
+            justify-content: center;
         }
 
         @keyframes notificationSlide {
@@ -888,10 +759,10 @@
         .notification.error i { color: #e74c3c; }
         .notification.warning i { color: #f39c12; }
 
-        /* إخفاء أشرطة التمرير */
+        /* إخفاء أشرطة التمرير مع الاحتفاظ بالوظيفة */
         ::-webkit-scrollbar {
-            width: 5px;
-            height: 5px;
+            width: 3px;
+            height: 3px;
         }
 
         ::-webkit-scrollbar-track {
@@ -900,11 +771,7 @@
 
         ::-webkit-scrollbar-thumb {
             background: var(--gold);
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--gold-dark);
+            border-radius: 3px;
         }
         
         body {
@@ -942,8 +809,8 @@
         <h2 class="section-title"><i class="fas fa-store"></i> خدماتنا</h2>
         <div class="links-grid" id="storeLinksGrid"></div>
 
-        <!-- روابط مفيدة -->
-        <h2 class="section-title"><i class="fas fa-link"></i> روابط مفيدة</h2>
+        <!-- روابط مهمة (تم التعديل هنا) -->
+        <h2 class="section-title"><i class="fas fa-star"></i> روابط مهمة</h2>
         <div class="links-grid" id="usefulLinksGrid"></div>
 
         <!-- تذييل الصفحة -->
@@ -952,7 +819,7 @@
         </div>
     </div>
 
-    <!-- نافذة لوحة التحكم المتطورة (تظهر بعد 5 ضغطات) -->
+    <!-- نافذة لوحة التحكم -->
     <div class="admin-panel" id="adminPanel">
         <div class="admin-content">
             <div class="admin-header">
@@ -968,7 +835,7 @@
                     <i class="fas fa-store"></i> خدمات
                 </button>
                 <button class="admin-tab" onclick="switchAdminTab('useful', this)">
-                    <i class="fas fa-link"></i> مفيدة
+                    <i class="fas fa-star"></i> مهمة
                 </button>
             </div>
 
@@ -977,11 +844,11 @@
                 <select id="linkCategory" class="admin-input">
                     <option value="social">📱 وسائل التواصل</option>
                     <option value="store">🛍️ خدمات المتجر</option>
-                    <option value="useful">🔗 روابط مفيدة</option>
+                    <option value="useful">⭐ روابط مهمة</option>
                 </select>
                 <input type="text" id="linkTitle" class="admin-input" placeholder="العنوان (مثال: فيسبوك)">
                 <input type="text" id="linkDescription" class="admin-input" placeholder="الوصف (مثال: تابعنا على فيسبوك)">
-                <input type="url" id="linkUrl" class="admin-input" placeholder="الرابط (https://... أو whatsapp://)">
+                <input type="url" id="linkUrl" class="admin-input" placeholder="الرابط (https://...)">
                 <input type="text" id="linkIcon" class="admin-input" placeholder="الأيقونة (مثال: fab fa-facebook)">
                 <input type="color" id="linkColor" class="admin-input" value="#d9b382">
                 <button class="admin-btn" onclick="addLink()"><i class="fas fa-plus"></i> إضافة الرابط</button>
@@ -1136,7 +1003,7 @@
             }).join('');
         }
 
-        // ========== فتح الرابط ==========
+        // ========== فتح الرابط مع دعم التطبيقات ==========
         function openLink(category, index) {
             const link = linksData[category][index];
             
@@ -1187,7 +1054,7 @@
             let title = '';
             if (tab === 'social') title = 'وسائل التواصل';
             else if (tab === 'store') title = 'خدمات المتجر';
-            else title = 'روابط مفيدة';
+            else title = 'روابط مهمة';
             
             document.getElementById('currentCategoryTitle').textContent = title;
             showAdminLinks(tab);
@@ -1352,7 +1219,7 @@
             }, 1000);
         });
 
-        // ========== إغلاق لوحة التحكم بالضغط خارجها ==========
+        // ========== إغلاق لوحة التحكم بالضغط خارجها للهاتف ==========
         document.addEventListener('click', (e) => {
             const panel = document.getElementById('adminPanel');
             const content = document.querySelector('.admin-content');
@@ -1362,7 +1229,7 @@
             }
         });
 
-        // ========== منع السلوك الافتراضي للروابط ==========
+        // ========== منع السلوك الافتراضي للروابط مع الحفاظ على اللمس ==========
         document.addEventListener('touchstart', (e) => {
             if (e.target.closest('.link-card')) {
                 e.preventDefault();
