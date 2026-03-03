@@ -3,245 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شبابيك للستائر | جميع الروابط</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold: #d9b382;
-            --brown: #3d2e24;
-            --bg: #f9f6f2;
-            --white: #ffffff;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, var(--brown) 0%, #2d1f17 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 500px;
-            width: 100%;
-            background: var(--white);
-            border-radius: 40px;
-            padding: 40px 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-            border: 2px solid var(--gold);
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .profile {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .logo-placeholder {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
-            background: linear-gradient(145deg, var(--gold), #c9a067);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 4px solid var(--brown);
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--brown);
-        }
-        
-        h1 {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--brown);
-            margin-bottom: 5px;
-        }
-        
-        .subtitle {
-            color: var(--gold);
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .bio {
-            color: #666;
-            font-size: 1rem;
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-        
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .link-card {
-            background: var(--bg);
-            border-radius: 20px;
-            padding: 15px 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .link-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold);
-            box-shadow: 0 10px 25px rgba(217, 179, 130, 0.3);
-        }
-        
-        .link-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 15px;
-            background: var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--brown);
-        }
-        
-        .link-content {
-            flex: 1;
-        }
-        
-        .link-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--brown);
-            margin-bottom: 3px;
-        }
-        
-        .link-desc {
-            font-size: 0.9rem;
-            color: #888;
-        }
-        
-        .footer {
-            text-align: center;
-            color: #999;
-            font-size: 0.9rem;
-            padding-top: 20px;
-            border-top: 2px solid #f0f0f0;
-        }
-        
-        .footer i {
-            color: var(--gold);
-        }
-    </style>
+    <title>صفحة الروابط | Lower Thirds التفاعلية</title>
+    
+    <!-- تحسين محركات البحث SEO -->
+    <meta name="description" content="صفحة روابط احترافية مع أزرار Lower Thirds تفاعلية - جميع روابطي في مكان واحد">
+    <meta name="keywords" content="روابط, مواقع التواصل, lower thirds, أزرار تفاعلية">
+    <meta name="author" content="اسمك">
+    
+    <!-- Font Awesome للأيقونات (الإصدار الأحدث) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts للخطوط العربية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- ربط ملف التصميم -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="profile">
-            <div class="logo-placeholder">🪟</div>
-            <h1>شبابيك للستائر</h1>
-            <div class="subtitle">Shababek Curtains</div>
-            <div class="bio">
-                ✨ فخامة التفاصيل تبدأ من شبابيك منزلك<br>
-                📍 العراق | توصيل لجميع المحافظات
+    <!-- ========== خلفية متحركة ========== -->
+    <div class="animated-bg">
+        <div class="gradient-bg"></div>
+        <div class="particles"></div>
+    </div>
+
+    <!-- ========== المحتوى الرئيسي ========== -->
+    <main class="main-content">
+        <!-- صورة الملف الشخصي -->
+        <div class="profile-section">
+            <div class="profile-image-wrapper">
+                <img src="https://via.placeholder.com/150" alt="الصورة الشخصية" class="profile-image" id="profileImage">
+                <div class="online-indicator"></div>
+            </div>
+            <h1 class="profile-name">أحمد محمد</h1>
+            <p class="profile-bio">مطور واجهات أمامية | مصمم تجارب مستخدم</p>
+            
+            <!-- الإحصائيات السريعة -->
+            <div class="quick-stats">
+                <div class="stat-item">
+                    <span class="stat-value">١٢٬٥٠٠</span>
+                    <span class="stat-label">متابع</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">٣٤٢</span>
+                    <span class="stat-label">مشروع</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">٥٢</span>
+                    <span class="stat-label">مقال</span>
+                </div>
             </div>
         </div>
-        
-        <div class="links">
-            <!-- المتجر الإلكتروني -->
-            <a href="https://shababekcurtains.com" class="link-card" target="_blank">
-                <div class="link-icon"><i class="fas fa-store"></i></div>
-                <div class="link-content">
-                    <div class="link-title">🛍️ المتجر الإلكتروني</div>
-                    <div class="link-desc">تصفح أحدث الستائر والموديلات</div>
-                </div>
-            </a>
-            
-            <!-- واتساب -->
-            <a href="https://wa.me/9647883002797" class="link-card" target="_blank">
-                <div class="link-icon"><i class="fab fa-whatsapp"></i></div>
-                <div class="link-content">
-                    <div class="link-title">📞 تواصل واتساب</div>
-                    <div class="link-desc">استشارات مجانية وطلبات سريعة</div>
-                </div>
-            </a>
-            
-            <!-- انستغرام -->
-            <a href="https://www.instagram.com/shababek.curtains/" class="link-card" target="_blank">
-                <div class="link-icon"><i class="fab fa-instagram"></i></div>
-                <div class="link-content">
-                    <div class="link-title">📸 انستغرام</div>
-                    <div class="link-desc">أحدث التصاميم والعروض اليومية</div>
-                </div>
-            </a>
-            
-            <!-- تيك توك -->
-            <a href="https://www.tiktok.com/@shababek.curtains" class="link-card" target="_blank">
-                <div class="link-icon"><i class="fab fa-tiktok"></i></div>
-                <div class="link-content">
-                    <div class="link-title">🎵 تيك توك</div>
-                    <div class="link-desc">فيديوهات ممتعة وإلهامات ديكور</div>
-                </div>
-            </a>
-            
-            <!-- فيسبوك -->
-            <a href="https://www.facebook.com/profile.php?id=61587692021311" class="link-card" target="_blank">
-                <div class="link-icon"><i class="fab fa-facebook"></i></div>
-                <div class="link-content">
-                    <div class="link-title">📘 فيسبوك</div>
-                    <div class="link-desc">تابعنا للحصول على عروض حصرية</div>
-                </div>
-            </a>
-            
-            <!-- يوتيوب -->
-            <a href="https://youtube.com/@shababek.curtains" class="link-card" target="_blank">
-                <div class="link-icon"><i class="fab fa-youtube"></i></div>
-                <div class="link-content">
-                    <div class="link-title">▶️ يوتيوب</div>
-                    <div class="link-desc">شاهد فيديوهات التركيب والنصائح</div>
-                </div>
-            </a>
-            
-            <!-- تويتر / X -->
-            <a href="https://x.com/ShababekCurtain" class="link-card" target="_blank">
-                <div class="link-icon"><i class="fab fa-x-twitter"></i></div>
-                <div class="link-content">
-                    <div class="link-title">🐦 إكس (تويتر)</div>
-                    <div class="link-desc">آخر التحديثات والأخبار</div>
-                </div>
-            </a>
-            
-            <!-- سناب شات -->
-            <a href="https://www.snapchat.com/add/shababekcurtin" class="link-card" target="_blank">
-                <div class="link-icon"><i class="fab fa-snapchat"></i></div>
-                <div class="link-content">
-                    <div class="link-title">👻 سناب شات</div>
-                    <div class="link-desc">يومياتنا من ورشة العمل</div>
-                </div>
-            </a>
+
+        <!-- ========== قسم Lower Thirds ========== -->
+        <div class="section-title">
+            <i class="fas fa-bolt"></i>
+            <h2>روابط سريعة - Lower Thirds</h2>
         </div>
-        
-        <div class="footer">
-            <p>© 2026 شبابيك للستائر | <i class="fas fa-heart"></i> ظل وذوق</p>
+
+        <div class="lower-thirds-container">
+            <!-- الرابط 1: يوتيوب -->
+            <div class="lower-third-btn youtube-btn" data-action="youtube" data-link="https://youtube.com/@yourchannel">
+                <div class="btn-content">
+                    <div class="icon-wrapper youtube-bg">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>قناة يوتيوب</h3>
+                        <p>دروس برمجة وتصميم - اشترك الآن</p>
+                    </div>
+                    <div class="meta-info">
+                        <span class="subscribers">١٢٬٥٠٠ مشترك</span>
+                        <i class="fas fa-arrow-left arrow-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الرابط 2: تويتر -->
+            <div class="lower-third-btn twitter-btn" data-action="twitter" data-link="https://twitter.com/yourusername">
+                <div class="btn-content">
+                    <div class="icon-wrapper twitter-bg">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>تويتر</h3>
+                        <p>آخر التحديثات والأفكار</p>
+                    </div>
+                    <div class="meta-info">
+                        <span class="tweets">٣٬٤٥٢ تغريدة</span>
+                        <i class="fas fa-arrow-left arrow-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الرابط 3: إنستغرام -->
+            <div class="lower-third-btn instagram-btn" data-action="instagram" data-link="https://instagram.com/yourusername">
+                <div class="btn-content">
+                    <div class="icon-wrapper instagram-bg">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>إنستغرام</h3>
+                        <p>لحظات يومية ومشاريع جديدة</p>
+                    </div>
+                    <div class="meta-info">
+                        <span class="posts">٨٩٢ منشور</span>
+                        <i class="fas fa-arrow-left arrow-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الرابط 4: لينكد إن -->
+            <div class="lower-third-btn linkedin-btn" data-action="linkedin" data-link="https://linkedin.com/in/yourusername">
+                <div class="btn-content">
+                    <div class="icon-wrapper linkedin-bg">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>لينكد إن</h3>
+                        <p>السيرة الذاتية والخبرات المهنية</p>
+                    </div>
+                    <div class="meta-info">
+                        <span class="connections">٤٬٥٠٠+</span>
+                        <i class="fas fa-arrow-left arrow-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الرابط 5: فيسبوك -->
+            <div class="lower-third-btn facebook-btn" data-action="facebook" data-link="https://facebook.com/yourusername">
+                <div class="btn-content">
+                    <div class="icon-wrapper facebook-bg">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>فيسبوك</h3>
+                        <p>صفحتي الشخصية - تواصل معي</p>
+                    </div>
+                    <div class="meta-info">
+                        <span class="likes">٥٬٦٠٠ إعجاب</span>
+                        <i class="fas fa-arrow-left arrow-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الرابط 6: جيت هاب -->
+            <div class="lower-third-btn github-btn" data-action="github" data-link="https://github.com/yourusername">
+                <div class="btn-content">
+                    <div class="icon-wrapper github-bg">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3>GitHub</h3>
+                        <p>مشاريعي مفتوحة المصدر</p>
+                    </div>
+                    <div class="meta-info">
+                        <span class="repos">٤٥ مستودع</span>
+                        <i class="fas fa-arrow-left arrow-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== قسم الروابط الإضافية ========== -->
+        <div class="section-title">
+            <i class="fas fa-link"></i>
+            <h3>روابط مهمة</h3>
+        </div>
+
+        <div class="additional-links">
+            <!-- رابط المدونة -->
+            <a href="#" class="link-card blog-link" target="_blank">
+                <div class="link-icon">
+                    <i class="fas fa-blog"></i>
+                </div>
+                <div class="link-info">
+                    <h4>مدونتي الشخصية</h4>
+                    <p>أكتب عن البرمجة والتصميم</p>
+                </div>
+                <i class="fas fa-external-link-alt external-icon"></i>
+            </a>
+
+            <!-- رابط المتجر -->
+            <a href="#" class="link-card store-link" target="_blank">
+                <div class="link-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <div class="link-info">
+                    <h4>متجر المنتجات الرقمية</h4>
+                    <p>قوالب وكورسات وموارد</p>
+                </div>
+                <i class="fas fa-external-link-alt external-icon"></i>
+            </a>
+
+            <!-- رابط التيلجرام -->
+            <a href="#" class="link-card telegram-link" target="_blank">
+                <div class="link-icon">
+                    <i class="fab fa-telegram-plane"></i>
+                </div>
+                <div class="link-info">
+                    <h4>قناة تيلجرام</h4>
+                    <p>نصائح يومية ومصادر تعلم</p>
+                </div>
+                <i class="fas fa-external-link-alt external-icon"></i>
+            </a>
+
+            <!-- رابط واتساب -->
+            <a href="#" class="link-card whatsapp-link" target="_blank">
+                <div class="link-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="link-info">
+                    <h4>تواصل واتساب</h4>
+                    <p>للاستفسارات والمشاريع</p>
+                </div>
+                <i class="fas fa-external-link-alt external-icon"></i>
+            </a>
+
+            <!-- رابط العرض الخاص -->
+            <div class="link-card special-offer" onclick="copyDiscountCode('SAVE20')">
+                <div class="link-icon">
+                    <i class="fas fa-tag"></i>
+                </div>
+                <div class="link-info">
+                    <h4>عرض خاص <span class="new-badge">جديد</span></h4>
+                    <p>خصم ٢٠٪ على جميع الخدمات - كود: SAVE20</p>
+                </div>
+                <i class="fas fa-copy copy-icon"></i>
+            </div>
+        </div>
+
+        <!-- ========== قسم معرض الأعمال ========== -->
+        <div class="section-title">
+            <i class="fas fa-images"></i>
+            <h3>أحدث الأعمال</h3>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-item" onclick="openProject(1)">
+                <img src="https://via.placeholder.com/300x200" alt="مشروع ١">
+                <div class="overlay">
+                    <h4>مشروع تصميم موقع</h4>
+                    <p>HTML, CSS, JS</p>
+                </div>
+            </div>
+            <div class="portfolio-item" onclick="openProject(2)">
+                <img src="https://via.placeholder.com/300x200" alt="مشروع ٢">
+                <div class="overlay">
+                    <h4>تطبيق تفاعلي</h4>
+                    <p>React.js</p>
+                </div>
+            </div>
+            <div class="portfolio-item" onclick="openProject(3)">
+                <img src="https://via.placeholder.com/300x200" alt="مشروع ٣">
+                <div class="overlay">
+                    <h4>تصميم واجهات</h4>
+                    <p>Figma</p>
+                </div>
+            </div>
+            <div class="portfolio-item" onclick="openProject(4)">
+                <img src="https://via.placeholder.com/300x200" alt="مشروع ٤">
+                <div class="overlay">
+                    <h4>متجر إلكتروني</h4>
+                    <p>WooCommerce</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ========== شريط الأدوات السفلي ========== -->
+    <div class="bottom-toolbar">
+        <button class="toolbar-btn" onclick="scrollToTop()" title="الأعلى">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <button class="toolbar-btn" onclick="sharePage()" title="مشاركة">
+            <i class="fas fa-share-alt"></i>
+        </button>
+        <button class="toolbar-btn theme-toggle" onclick="toggleTheme()" title="تغيير المظهر">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="toolbar-btn" onclick="copyPageLink()" title="نسخ الرابط">
+            <i class="fas fa-link"></i>
+        </button>
+    </div>
+
+    <!-- ========== نافذة الإشعارات ========== -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- ========== نافذة منبثقة للعرض ========== -->
+    <div class="modal" id="offerModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <i class="fas fa-gift modal-icon"></i>
+            <h2>عرض خاص!</h2>
+            <p>استخدم كود <strong>SAVE20</strong> للحصول على خصم ٢٠٪</p>
+            <div class="discount-code" onclick="copyDiscountCode('SAVE20')">
+                <span>SAVE20</span>
+                <i class="fas fa-copy"></i>
+            </div>
+            <button class="modal-btn" onclick="closeModal()">تم</button>
         </div>
     </div>
+
+    <!-- ربط ملف JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
