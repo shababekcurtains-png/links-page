@@ -2,311 +2,1078 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة الروابط | Lower Thirds التفاعلية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>روابط شبابيك للستائر | Shababek Curtains Links</title>
     
-    <!-- تحسين محركات البحث SEO -->
-    <meta name="description" content="صفحة روابط احترافية مع أزرار Lower Thirds تفاعلية - جميع روابطي في مكان واحد">
-    <meta name="keywords" content="روابط, مواقع التواصل, lower thirds, أزرار تفاعلية">
-    <meta name="author" content="اسمك">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Font Awesome للأيقونات (الإصدار الأحدث) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     
-    <!-- Google Fonts للخطوط العربية -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- ربط ملف التصميم -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== المتغيرات الأساسية ===== */
+        :root {
+            --gold: #d9b382;
+            --brown: #3d2e24;
+            --white: #ffffff;
+            --whatsapp: #25D366;
+            --youtube: #FF0000;
+            --instagram: #E4405F;
+            --facebook: #1877F2;
+            --tiktok: #000000;
+            --twitter: #1DA1F2;
+            --snapchat: #FFFC00;
+            --telegram: #0088cc;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== إعادة تعيين ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ===== خلفية الفيديو ===== */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: brightness(0.7) contrast(1.1);
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 100%);
+            z-index: 1;
+        }
+
+        /* ===== الحاوية الرئيسية ===== */
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* ===== شعار الموقع ===== */
+        .logo-container {
+            margin-bottom: 30px;
+            text-align: center;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--gold);
+            box-shadow: var(--shadow);
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .site-title {
+            color: white;
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .site-subtitle {
+            color: var(--gold);
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        /* ===== عنوان القسم ===== */
+        .section-title {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin: 30px 0 20px;
+            text-align: center;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            position: relative;
+            animation: fadeIn 1s ease;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== شبكة الروابط الرئيسية ===== */
+        .links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ===== تصميم الروابط المحسن ===== */
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 18px 25px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            animation: slideInLeft 0.5s ease forwards;
+            opacity: 0;
+            transform: translateX(-30px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .link-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        /* تأخير ظهور الروابط */
+        .link-card:nth-child(1) { animation-delay: 0.1s; }
+        .link-card:nth-child(2) { animation-delay: 0.2s; }
+        .link-card:nth-child(3) { animation-delay: 0.3s; }
+        .link-card:nth-child(4) { animation-delay: 0.4s; }
+        .link-card:nth-child(5) { animation-delay: 0.5s; }
+        .link-card:nth-child(6) { animation-delay: 0.6s; }
+        .link-card:nth-child(7) { animation-delay: 0.7s; }
+        .link-card:nth-child(8) { animation-delay: 0.8s; }
+        .link-card:nth-child(9) { animation-delay: 0.9s; }
+        .link-card:nth-child(10) { animation-delay: 1s; }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .link-card:hover {
+            transform: translateX(10px) scale(1.02);
+            border-color: var(--gold);
+            box-shadow: 0 15px 40px rgba(217, 179, 130, 0.4);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .link-card:active {
+            transform: translateX(5px) scale(0.98);
+        }
+
+        /* أيقونة الرابط */
+        .link-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .link-card:hover .link-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* محتوى الرابط */
+        .link-content {
+            flex: 1;
+        }
+
+        .link-title {
+            font-size: 1.3rem;
+            font-weight: 900;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .link-badge {
+            background: var(--gold);
+            color: var(--brown);
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        .link-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .link-description i {
+            font-size: 0.7rem;
+            color: var(--gold);
+        }
+
+        /* السهم */
+        .link-arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .link-card:hover .link-arrow {
+            transform: translateX(-8px) rotate(-360deg);
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .link-arrow i {
+            font-size: 1.2rem;
+        }
+
+        /* ألوان خاصة لكل رابط عند hover */
+        .link-card[data-platform="website"]:hover .link-icon,
+        .link-card[data-platform="website"]:hover .link-arrow {
+            background: var(--gold);
+        }
+
+        .link-card[data-platform="youtube"]:hover .link-icon,
+        .link-card[data-platform="youtube"]:hover .link-arrow {
+            background: var(--youtube);
+        }
+
+        .link-card[data-platform="instagram"]:hover .link-icon,
+        .link-card[data-platform="instagram"]:hover .link-arrow {
+            background: var(--instagram);
+        }
+
+        .link-card[data-platform="facebook"]:hover .link-icon,
+        .link-card[data-platform="facebook"]:hover .link-arrow {
+            background: var(--facebook);
+        }
+
+        .link-card[data-platform="tiktok"]:hover .link-icon,
+        .link-card[data-platform="tiktok"]:hover .link-arrow {
+            background: var(--tiktok);
+        }
+
+        .link-card[data-platform="twitter"]:hover .link-icon,
+        .link-card[data-platform="twitter"]:hover .link-arrow {
+            background: var(--twitter);
+        }
+
+        .link-card[data-platform="snapchat"]:hover .link-icon,
+        .link-card[data-platform="snapchat"]:hover .link-arrow {
+            background: var(--snapchat);
+        }
+
+        .link-card[data-platform="telegram"]:hover .link-icon,
+        .link-card[data-platform="telegram"]:hover .link-arrow {
+            background: var(--telegram);
+        }
+
+        .link-card[data-platform="whatsapp"]:hover .link-icon,
+        .link-card[data-platform="whatsapp"]:hover .link-arrow {
+            background: var(--whatsapp);
+        }
+
+        /* ===== الأزرار الإضافية (لوحة التحكم) ===== */
+        .admin-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--gold);
+            color: white;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .admin-button:hover {
+            transform: scale(1.1) rotate(90deg);
+            background: var(--gold);
+            color: var(--brown);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--gold);
+            color: white;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .scroll-top:hover {
+            transform: scale(1.1) translateY(-5px);
+            background: var(--gold);
+            color: var(--brown);
+        }
+
+        /* ===== أنيميشنات ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* ===== نافذة لوحة التحكم ===== */
+        .admin-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .admin-panel.active {
+            display: flex;
+        }
+
+        .admin-content {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.3s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .admin-header h2 {
+            color: var(--brown);
+            font-weight: 900;
+            font-size: 1.8rem;
+        }
+
+        .admin-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .admin-close:hover {
+            background: var(--red);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .admin-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f8f8;
+            border-radius: 15px;
+        }
+
+        .admin-section h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+
+        .admin-input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-family: 'Cairo';
+            transition: all 0.3s ease;
+        }
+
+        .admin-input:focus {
+            border-color: var(--gold);
+            outline: none;
+        }
+
+        .admin-btn {
+            background: var(--gold);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .admin-btn:hover {
+            background: var(--brown);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(217, 179, 130, 0.3);
+        }
+
+        .admin-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .admin-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #eee;
+        }
+
+        .admin-item-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-item-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .admin-item-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .admin-item-btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .admin-item-btn.edit {
+            background: #3498db;
+            color: white;
+        }
+
+        .admin-item-btn.delete {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .admin-item-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* ===== تذييل الصفحة ===== */
+        .footer {
+            margin-top: 50px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            text-align: center;
+            animation: fadeIn 1s ease 1.2s both;
+        }
+
+        .footer i {
+            color: #ff6b6b;
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* ===== إشعارات ===== */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: #333;
+            padding: 12px 25px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 3000;
+            border-right: 4px solid var(--gold);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+
+        .notification i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        /* ===== تنسيقات للشاشات الصغيرة ===== */
+        @media (max-width: 768px) {
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .site-title {
+                font-size: 1.8rem;
+            }
+
+            .site-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .link-card {
+                padding: 15px 20px;
+            }
+
+            .link-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .link-title {
+                font-size: 1.1rem;
+            }
+
+            .link-description {
+                font-size: 0.8rem;
+            }
+
+            .link-arrow {
+                width: 35px;
+                height: 35px;
+            }
+
+            .admin-button, .scroll-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .links-grid {
+                padding: 10px;
+            }
+
+            .link-card {
+                padding: 12px 15px;
+            }
+
+            .link-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 22px;
+            }
+
+            .link-title {
+                font-size: 1rem;
+            }
+
+            .admin-content {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- ========== خلفية متحركة ========== -->
-    <div class="animated-bg">
-        <div class="gradient-bg"></div>
-        <div class="particles"></div>
+
+    <!-- خلفية الفيديو المتحركة -->
+    <div class="video-background">
+        <video autoplay loop muted playsinline>
+            <source src="https://res.cloudinary.com/dnkuwf8q9/video/upload/v1772571247/%D9%81%D9%8A%D8%AF%D9%8A%D9%88_%D8%B3%D8%AA%D8%A7%D8%A6%D8%B1_%D8%B1%D9%88%D9%85%D8%A7%D9%86%D8%B3%D9%8A_%D8%A8%D8%B3%D9%8A%D8%B7_iyila0.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
     </div>
 
-    <!-- ========== المحتوى الرئيسي ========== -->
-    <main class="main-content">
-        <!-- صورة الملف الشخصي -->
-        <div class="profile-section">
-            <div class="profile-image-wrapper">
-                <img src="https://via.placeholder.com/150" alt="الصورة الشخصية" class="profile-image" id="profileImage">
-                <div class="online-indicator"></div>
+    <!-- الحاوية الرئيسية -->
+    <div class="container">
+        <!-- الشعار -->
+        <div class="logo-container">
+            <img src="https://i.ibb.co/3y1ZNCk0/1.png" alt="شبابيك للستائر" class="logo pulse">
+            <h1 class="site-title">شبابيك للستائر</h1>
+            <p class="site-subtitle">ظل وذوق - Shababek Curtains</p>
+        </div>
+
+        <!-- روابط التواصل الاجتماعي - المجموعة الأولى -->
+        <h2 class="section-title">📱 تـابـعـنـا عـلـى</h2>
+        <div class="links-grid" id="socialLinksGrid"></div>
+
+        <!-- روابط المتجر والخدمات - المجموعة الثانية -->
+        <h2 class="section-title">🛍️ خـدمـاتـنـا</h2>
+        <div class="links-grid" id="storeLinksGrid"></div>
+
+        <!-- روابط مفيدة - المجموعة الثالثة -->
+        <h2 class="section-title">🔗 روابـط مـفـيـدة</h2>
+        <div class="links-grid" id="usefulLinksGrid"></div>
+
+        <!-- تذييل الصفحة -->
+        <div class="footer">
+            <p>جميع الحقوق محفوظة © 2026 شبابيك للستائر</p>
+            <p>صنع بـ <i class="fas fa-heart"></i> في العراق</p>
+        </div>
+    </div>
+
+    <!-- أزرار تحكم -->
+    <div class="admin-button" onclick="openAdminPanel()" title="لوحة التحكم">
+        <i class="fas fa-cog"></i>
+    </div>
+
+    <div class="scroll-top" onclick="scrollToTop()" title="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- نافذة لوحة التحكم -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-content">
+            <div class="admin-header">
+                <h2><i class="fas fa-crown" style="color: var(--gold);"></i> لوحة التحكم</h2>
+                <button class="admin-close" onclick="closeAdminPanel()"><i class="fas fa-times"></i></button>
             </div>
-            <h1 class="profile-name">أحمد محمد</h1>
-            <p class="profile-bio">مطور واجهات أمامية | مصمم تجارب مستخدم</p>
+
+            <div class="admin-section">
+                <h3>➕ إضافة رابط جديد</h3>
+                <select id="linkCategory" class="admin-input">
+                    <option value="social">📱 وسائل التواصل</option>
+                    <option value="store">🛍️ خدمات المتجر</option>
+                    <option value="useful">🔗 روابط مفيدة</option>
+                </select>
+                <input type="text" id="linkTitle" class="admin-input" placeholder="العنوان (مثال: فيسبوك)">
+                <input type="text" id="linkDescription" class="admin-input" placeholder="الوصف (مثال: تابعنا على فيسبوك)">
+                <input type="url" id="linkUrl" class="admin-input" placeholder="الرابط (https://...)">
+                <input type="text" id="linkIcon" class="admin-input" placeholder="الأيقونة (مثال: fab fa-facebook)">
+                <input type="color" id="linkColor" class="admin-input" value="#d9b382">
+                <button class="admin-btn" onclick="addLink()"><i class="fas fa-plus"></i> إضافة الرابط</button>
+            </div>
+
+            <div class="admin-section">
+                <h3>📋 الروابط الحالية</h3>
+                <div class="admin-tabs" style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <button onclick="showAdminLinks('social')" style="flex:1; padding:8px; background:var(--gold); color:white; border:none; border-radius:8px; font-weight:bold;">وسائل التواصل</button>
+                    <button onclick="showAdminLinks('store')" style="flex:1; padding:8px; background:var(--gold); color:white; border:none; border-radius:8px; font-weight:bold;">خدمات المتجر</button>
+                    <button onclick="showAdminLinks('useful')" style="flex:1; padding:8px; background:var(--gold); color:white; border:none; border-radius:8px; font-weight:bold;">روابط مفيدة</button>
+                </div>
+                <div id="adminLinksList" class="admin-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة الإشعارات -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationMessage">تم النسخ!</span>
+    </div>
+
+    <script>
+        // ========== البيانات الأولية للروابط ==========
+        let linksData = {
+            social: [
+                { title: 'فيسبوك', description: 'تابعنا على فيسبوك', url: 'https://www.facebook.com/profile.php?id=61587692021311', icon: 'fab fa-facebook', color: '#1877F2' },
+                { title: 'إنستغرام', description: 'أحدث التصاميم على إنستغرام', url: 'https://www.instagram.com/shababek.curtains/', icon: 'fab fa-instagram', color: '#E4405F' },
+                { title: 'تيك توك', description: 'فيديوهات قصيرة على تيك توك', url: 'https://www.tiktok.com/@shababek.curtains', icon: 'fab fa-tiktok', color: '#000000' },
+                { title: 'يوتيوب', description: 'شاهد تصاميمنا على يوتيوب', url: 'https://youtube.com/@shababek.curtains?si=KKsEbL98N0fq2e2U', icon: 'fab fa-youtube', color: '#FF0000' },
+                { title: 'تويتر', description: 'تغريدات على X', url: 'https://x.com/ShababekCurtain', icon: 'fa-brands fa-x-twitter', color: '#1DA1F2' },
+                { title: 'سناب شات', description: 'يومياتنا على سناب', url: 'https://www.snapchat.com/add/shababekcurtin?share_id=B2Prmbx5_Xo&locale=en-IQ', icon: 'fab fa-snapchat', color: '#FFFC00' },
+                { title: 'واتساب', description: 'تواصل مباشر', url: 'https://wa.me/9647883002797', icon: 'fab fa-whatsapp', color: '#25D366' },
+                { title: 'تيليجرام', description: 'قناة تيليجرام', url: 'https://t.me/shababekcurtains', icon: 'fab fa-telegram', color: '#0088cc' }
+            ],
+            store: [
+                { title: 'المتجر الإلكتروني', description: 'تصفح جميع المنتجات', url: '#', icon: 'fas fa-store', color: '#d9b382' },
+                { title: 'عروض خاصة', description: 'خصومات حتى 30%', url: '#', icon: 'fas fa-tags', color: '#e74c3c' },
+                { title: 'استشارة مجانية', description: 'خبراء التصميم', url: 'https://wa.me/9647883002797?text=استشارة%20مجانية', icon: 'fas fa-headset', color: '#27ae60' },
+                { title: 'معرض الأعمال', description: 'أحدث التصاميم', url: '#', icon: 'fas fa-images', color: '#9b59b6' }
+            ],
+            useful: [
+                { title: 'منتدى شبابيك', description: 'مجتمع الديكور', url: 'ai.html', icon: 'fas fa-comments', color: '#3498db' },
+                { title: 'طرق الدفع', description: 'طرق دفع آمنة', url: '#', icon: 'fas fa-credit-card', color: '#f39c12' },
+                { title: 'من نحن', description: 'تعرف على فريقنا', url: '#', icon: 'fas fa-info-circle', color: '#16a085' },
+                { title: 'تواصل معنا', description: 'نرحب باستفساراتك', url: '#', icon: 'fas fa-envelope', color: '#e67e22' }
+            ]
+        };
+
+        // ========== تحميل الروابط من التخزين المحلي ==========
+        function loadLinks() {
+            const saved = localStorage.getItem('shababek_links');
+            if (saved) {
+                linksData = JSON.parse(saved);
+            }
+            renderAllLinks();
+        }
+
+        // ========== حفظ الروابط ==========
+        function saveLinks() {
+            localStorage.setItem('shababek_links', JSON.stringify(linksData));
+        }
+
+        // ========== عرض جميع الروابط ==========
+        function renderAllLinks() {
+            renderLinks('social', 'socialLinksGrid');
+            renderLinks('store', 'storeLinksGrid');
+            renderLinks('useful', 'usefulLinksGrid');
+        }
+
+        // ========== عرض روابط فئة معينة ==========
+        function renderLinks(category, elementId) {
+            const grid = document.getElementById(elementId);
+            if (!grid) return;
+
+            const links = linksData[category] || [];
             
-            <!-- الإحصائيات السريعة -->
-            <div class="quick-stats">
-                <div class="stat-item">
-                    <span class="stat-value">١٢٬٥٠٠</span>
-                    <span class="stat-label">متابع</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-value">٣٤٢</span>
-                    <span class="stat-label">مشروع</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-value">٥٢</span>
-                    <span class="stat-label">مقال</span>
-                </div>
-            </div>
-        </div>
+            grid.innerHTML = links.map((link, index) => `
+                <a href="${link.url}" target="_blank" class="link-card" data-platform="${category}${index}" 
+                   style="border-right: 5px solid ${link.color};" onclick="trackLinkClick('${link.title}')">
+                    <div class="link-icon" style="color: ${link.color};">
+                        <i class="${link.icon}"></i>
+                    </div>
+                    <div class="link-content">
+                        <div class="link-title">
+                            ${link.title}
+                            ${index === 0 ? '<span class="link-badge">رسمي</span>' : ''}
+                        </div>
+                        <div class="link-description">
+                            <i class="fas fa-circle"></i>
+                            ${link.description}
+                        </div>
+                    </div>
+                    <div class="link-arrow" style="color: ${link.color};">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                </a>
+            `).join('');
+        }
 
-        <!-- ========== قسم Lower Thirds ========== -->
-        <div class="section-title">
-            <i class="fas fa-bolt"></i>
-            <h2>روابط سريعة - Lower Thirds</h2>
-        </div>
+        // ========== تتبع النقر على الروابط ==========
+        function trackLinkClick(title) {
+            console.log(`تم النقر على: ${title}`);
+            showNotification(`جاري فتح ${title}...`);
+        }
 
-        <div class="lower-thirds-container">
-            <!-- الرابط 1: يوتيوب -->
-            <div class="lower-third-btn youtube-btn" data-action="youtube" data-link="https://youtube.com/@yourchannel">
-                <div class="btn-content">
-                    <div class="icon-wrapper youtube-bg">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <div class="text-content">
-                        <h3>قناة يوتيوب</h3>
-                        <p>دروس برمجة وتصميم - اشترك الآن</p>
-                    </div>
-                    <div class="meta-info">
-                        <span class="subscribers">١٢٬٥٠٠ مشترك</span>
-                        <i class="fas fa-arrow-left arrow-icon"></i>
-                    </div>
-                </div>
-            </div>
+        // ========== دوال لوحة التحكم ==========
+        function openAdminPanel() {
+            const password = prompt('🔐 أدخل كلمة المرور للدخول إلى لوحة التحكم:');
+            
+            if (password === '8496') {
+                document.getElementById('adminPanel').classList.add('active');
+                showAdminLinks('social');
+                confetti({ particleCount: 50, spread: 70, origin: { y: 0.6 } });
+            } else if (password !== null) {
+                showNotification('❌ كلمة المرور غير صحيحة', 'error');
+            }
+        }
 
-            <!-- الرابط 2: تويتر -->
-            <div class="lower-third-btn twitter-btn" data-action="twitter" data-link="https://twitter.com/yourusername">
-                <div class="btn-content">
-                    <div class="icon-wrapper twitter-bg">
-                        <i class="fab fa-twitter"></i>
-                    </div>
-                    <div class="text-content">
-                        <h3>تويتر</h3>
-                        <p>آخر التحديثات والأفكار</p>
-                    </div>
-                    <div class="meta-info">
-                        <span class="tweets">٣٬٤٥٢ تغريدة</span>
-                        <i class="fas fa-arrow-left arrow-icon"></i>
-                    </div>
-                </div>
-            </div>
+        function closeAdminPanel() {
+            document.getElementById('adminPanel').classList.remove('active');
+        }
 
-            <!-- الرابط 3: إنستغرام -->
-            <div class="lower-third-btn instagram-btn" data-action="instagram" data-link="https://instagram.com/yourusername">
-                <div class="btn-content">
-                    <div class="icon-wrapper instagram-bg">
-                        <i class="fab fa-instagram"></i>
+        function showAdminLinks(category) {
+            const list = document.getElementById('adminLinksList');
+            const links = linksData[category] || [];
+            
+            list.innerHTML = links.map((link, index) => `
+                <div class="admin-item">
+                    <div class="admin-item-info">
+                        <i class="${link.icon}" style="color: ${link.color}; font-size: 1.5rem; width: 30px;"></i>
+                        <div>
+                            <strong>${link.title}</strong>
+                            <small style="color: #999; display: block;">${link.description}</small>
+                        </div>
                     </div>
-                    <div class="text-content">
-                        <h3>إنستغرام</h3>
-                        <p>لحظات يومية ومشاريع جديدة</p>
-                    </div>
-                    <div class="meta-info">
-                        <span class="posts">٨٩٢ منشور</span>
-                        <i class="fas fa-arrow-left arrow-icon"></i>
+                    <div class="admin-item-actions">
+                        <button class="admin-item-btn edit" onclick="editLink('${category}', ${index})">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="admin-item-btn delete" onclick="deleteLink('${category}', ${index})">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </div>
                 </div>
-            </div>
+            `).join('');
+        }
 
-            <!-- الرابط 4: لينكد إن -->
-            <div class="lower-third-btn linkedin-btn" data-action="linkedin" data-link="https://linkedin.com/in/yourusername">
-                <div class="btn-content">
-                    <div class="icon-wrapper linkedin-bg">
-                        <i class="fab fa-linkedin-in"></i>
-                    </div>
-                    <div class="text-content">
-                        <h3>لينكد إن</h3>
-                        <p>السيرة الذاتية والخبرات المهنية</p>
-                    </div>
-                    <div class="meta-info">
-                        <span class="connections">٤٬٥٠٠+</span>
-                        <i class="fas fa-arrow-left arrow-icon"></i>
-                    </div>
-                </div>
-            </div>
+        function addLink() {
+            const category = document.getElementById('linkCategory').value;
+            const title = document.getElementById('linkTitle').value;
+            const description = document.getElementById('linkDescription').value;
+            const url = document.getElementById('linkUrl').value;
+            const icon = document.getElementById('linkIcon').value;
+            const color = document.getElementById('linkColor').value;
 
-            <!-- الرابط 5: فيسبوك -->
-            <div class="lower-third-btn facebook-btn" data-action="facebook" data-link="https://facebook.com/yourusername">
-                <div class="btn-content">
-                    <div class="icon-wrapper facebook-bg">
-                        <i class="fab fa-facebook-f"></i>
-                    </div>
-                    <div class="text-content">
-                        <h3>فيسبوك</h3>
-                        <p>صفحتي الشخصية - تواصل معي</p>
-                    </div>
-                    <div class="meta-info">
-                        <span class="likes">٥٬٦٠٠ إعجاب</span>
-                        <i class="fas fa-arrow-left arrow-icon"></i>
-                    </div>
-                </div>
-            </div>
+            if (!title || !url) {
+                showNotification('❌ الرجاء إدخال العنوان والرابط', 'error');
+                return;
+            }
 
-            <!-- الرابط 6: جيت هاب -->
-            <div class="lower-third-btn github-btn" data-action="github" data-link="https://github.com/yourusername">
-                <div class="btn-content">
-                    <div class="icon-wrapper github-bg">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <div class="text-content">
-                        <h3>GitHub</h3>
-                        <p>مشاريعي مفتوحة المصدر</p>
-                    </div>
-                    <div class="meta-info">
-                        <span class="repos">٤٥ مستودع</span>
-                        <i class="fas fa-arrow-left arrow-icon"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+            const newLink = {
+                title,
+                description: description || `تابعنا على ${title}`,
+                url,
+                icon: icon || 'fas fa-link',
+                color
+            };
 
-        <!-- ========== قسم الروابط الإضافية ========== -->
-        <div class="section-title">
-            <i class="fas fa-link"></i>
-            <h3>روابط مهمة</h3>
-        </div>
+            if (!linksData[category]) linksData[category] = [];
+            linksData[category].push(newLink);
 
-        <div class="additional-links">
-            <!-- رابط المدونة -->
-            <a href="#" class="link-card blog-link" target="_blank">
-                <div class="link-icon">
-                    <i class="fas fa-blog"></i>
-                </div>
-                <div class="link-info">
-                    <h4>مدونتي الشخصية</h4>
-                    <p>أكتب عن البرمجة والتصميم</p>
-                </div>
-                <i class="fas fa-external-link-alt external-icon"></i>
-            </a>
+            saveLinks();
+            renderAllLinks();
+            showAdminLinks(category);
+            
+            // تفريغ الحقول
+            document.getElementById('linkTitle').value = '';
+            document.getElementById('linkDescription').value = '';
+            document.getElementById('linkUrl').value = '';
+            document.getElementById('linkIcon').value = '';
+            
+            showNotification('✅ تم إضافة الرابط بنجاح');
+        }
 
-            <!-- رابط المتجر -->
-            <a href="#" class="link-card store-link" target="_blank">
-                <div class="link-icon">
-                    <i class="fas fa-store"></i>
-                </div>
-                <div class="link-info">
-                    <h4>متجر المنتجات الرقمية</h4>
-                    <p>قوالب وكورسات وموارد</p>
-                </div>
-                <i class="fas fa-external-link-alt external-icon"></i>
-            </a>
+        function editLink(category, index) {
+            const link = linksData[category][index];
+            
+            const newTitle = prompt('تعديل العنوان:', link.title);
+            if (newTitle === null) return;
+            
+            const newDescription = prompt('تعديل الوصف:', link.description);
+            if (newDescription === null) return;
+            
+            const newUrl = prompt('تعديل الرابط:', link.url);
+            if (newUrl === null) return;
+            
+            link.title = newTitle;
+            link.description = newDescription;
+            link.url = newUrl;
+            
+            saveLinks();
+            renderAllLinks();
+            showAdminLinks(category);
+            showNotification('✅ تم تعديل الرابط');
+        }
 
-            <!-- رابط التيلجرام -->
-            <a href="#" class="link-card telegram-link" target="_blank">
-                <div class="link-icon">
-                    <i class="fab fa-telegram-plane"></i>
-                </div>
-                <div class="link-info">
-                    <h4>قناة تيلجرام</h4>
-                    <p>نصائح يومية ومصادر تعلم</p>
-                </div>
-                <i class="fas fa-external-link-alt external-icon"></i>
-            </a>
+        function deleteLink(category, index) {
+            if (confirm('⚠️ هل أنت متأكد من حذف هذا الرابط؟')) {
+                linksData[category].splice(index, 1);
+                saveLinks();
+                renderAllLinks();
+                showAdminLinks(category);
+                showNotification('✅ تم حذف الرابط');
+            }
+        }
 
-            <!-- رابط واتساب -->
-            <a href="#" class="link-card whatsapp-link" target="_blank">
-                <div class="link-icon">
-                    <i class="fab fa-whatsapp"></i>
-                </div>
-                <div class="link-info">
-                    <h4>تواصل واتساب</h4>
-                    <p>للاستفسارات والمشاريع</p>
-                </div>
-                <i class="fas fa-external-link-alt external-icon"></i>
-            </a>
+        // ========== دوال مساعدة ==========
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-            <!-- رابط العرض الخاص -->
-            <div class="link-card special-offer" onclick="copyDiscountCode('SAVE20')">
-                <div class="link-icon">
-                    <i class="fas fa-tag"></i>
-                </div>
-                <div class="link-info">
-                    <h4>عرض خاص <span class="new-badge">جديد</span></h4>
-                    <p>خصم ٢٠٪ على جميع الخدمات - كود: SAVE20</p>
-                </div>
-                <i class="fas fa-copy copy-icon"></i>
-            </div>
-        </div>
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const messageEl = document.getElementById('notificationMessage');
+            
+            messageEl.textContent = message;
+            notification.style.display = 'flex';
+            
+            if (type === 'error') {
+                notification.style.borderRightColor = '#e74c3c';
+                notification.querySelector('i').style.color = '#e74c3c';
+            } else {
+                notification.style.borderRightColor = 'var(--gold)';
+                notification.querySelector('i').style.color = 'var(--gold)';
+            }
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
 
-        <!-- ========== قسم معرض الأعمال ========== -->
-        <div class="section-title">
-            <i class="fas fa-images"></i>
-            <h3>أحدث الأعمال</h3>
-        </div>
+        // ========== إغلاق لوحة التحكم بالضغط على ESC ==========
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeAdminPanel();
+            }
+        });
 
-        <div class="portfolio-grid">
-            <div class="portfolio-item" onclick="openProject(1)">
-                <img src="https://via.placeholder.com/300x200" alt="مشروع ١">
-                <div class="overlay">
-                    <h4>مشروع تصميم موقع</h4>
-                    <p>HTML, CSS, JS</p>
-                </div>
-            </div>
-            <div class="portfolio-item" onclick="openProject(2)">
-                <img src="https://via.placeholder.com/300x200" alt="مشروع ٢">
-                <div class="overlay">
-                    <h4>تطبيق تفاعلي</h4>
-                    <p>React.js</p>
-                </div>
-            </div>
-            <div class="portfolio-item" onclick="openProject(3)">
-                <img src="https://via.placeholder.com/300x200" alt="مشروع ٣">
-                <div class="overlay">
-                    <h4>تصميم واجهات</h4>
-                    <p>Figma</p>
-                </div>
-            </div>
-            <div class="portfolio-item" onclick="openProject(4)">
-                <img src="https://via.placeholder.com/300x200" alt="مشروع ٤">
-                <div class="overlay">
-                    <h4>متجر إلكتروني</h4>
-                    <p>WooCommerce</p>
-                </div>
-            </div>
-        </div>
-    </main>
+        // ========== تحميل الروابط عند بدء التشغيل ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            loadLinks();
+            
+            // تأثير إضافي للفيديو
+            const video = document.querySelector('video');
+            video.playbackRate = 0.8; // جعل الفيديو أبطأ قليلاً
+            
+            // رسالة ترحيب
+            setTimeout(() => {
+                showNotification('👋 مرحباً بك في صفحة روابط شبابيك');
+            }, 1000);
+        });
 
-    <!-- ========== شريط الأدوات السفلي ========== -->
-    <div class="bottom-toolbar">
-        <button class="toolbar-btn" onclick="scrollToTop()" title="الأعلى">
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        <button class="toolbar-btn" onclick="sharePage()" title="مشاركة">
-            <i class="fas fa-share-alt"></i>
-        </button>
-        <button class="toolbar-btn theme-toggle" onclick="toggleTheme()" title="تغيير المظهر">
-            <i class="fas fa-moon"></i>
-        </button>
-        <button class="toolbar-btn" onclick="copyPageLink()" title="نسخ الرابط">
-            <i class="fas fa-link"></i>
-        </button>
-    </div>
-
-    <!-- ========== نافذة الإشعارات ========== -->
-    <div class="notification-container" id="notificationContainer"></div>
-
-    <!-- ========== نافذة منبثقة للعرض ========== -->
-    <div class="modal" id="offerModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <i class="fas fa-gift modal-icon"></i>
-            <h2>عرض خاص!</h2>
-            <p>استخدم كود <strong>SAVE20</strong> للحصول على خصم ٢٠٪</p>
-            <div class="discount-code" onclick="copyDiscountCode('SAVE20')">
-                <span>SAVE20</span>
-                <i class="fas fa-copy"></i>
-            </div>
-            <button class="modal-btn" onclick="closeModal()">تم</button>
-        </div>
-    </div>
-
-    <!-- ربط ملف JavaScript -->
-    <script src="script.js"></script>
+        // ========== كود الكونفيتي للاحتفال ==========
+        (function() {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js';
+            document.head.appendChild(script);
+        })();
+    </script>
 </body>
 </html>
