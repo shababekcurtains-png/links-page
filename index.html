@@ -1,567 +1,197 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>شبابيك للستائر - أيقونات سريعة</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شبابيك للستائر - أيقونات دائرية</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-        body {
-            min-height: 100vh;
-            background: #f5efe8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-            position: relative;
-            width: 100%;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    min-height:100vh;
+    background:#f5efe8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
 
-        /* الصورة كعنصر منفصل */
-        .bg-image-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-            z-index: -1;
-        }
+/* الخلفية */
+.bg-image-container{
+    position:fixed;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:-1;
+}
+.bg-image{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+}
 
-        .bg-image {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-        }
+/* الحاوية الدوارة */
+.center-wrapper{
+    position:relative;
+    width:380px;
+    height:380px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    animation:rotateOrbit 25s linear infinite;
+}
 
-        @media (min-width: 769px) {
-            .bg-image {
-                max-width: 1200px;
-                width: 100%;
-                height: auto;
-            }
-        }
+.center-wrapper.paused{
+    animation-play-state:paused;
+}
 
-        .container {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+@keyframes rotateOrbit{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+}
 
-        /* الحاوية الرئيسية للشعار والأيقونات */
-        .center-wrapper {
-            position: relative;
-            width: 380px;
-            height: 380px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-        }
+/* الشعار */
+.logo-image{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    object-fit:cover;
+    position:absolute;
+    z-index:10;
+    border:3px solid #d9b382;
+    box-shadow:0 15px 30px rgba(0,0,0,.2);
+}
 
-        /* الشعار كصورة في المنتصف */
-        .logo-image {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 20;
-            border: 3px solid #d9b382;
-        }
+/* الأيقونات */
+.icon-item{
+    position:absolute;
+    width:55px;
+    height:55px;
+    top:50%;
+    left:50%;
+    transform-origin:center;
+}
 
-        /* الأيقونات حول الشعار - بدون نصوص */
-        .icon-item {
-            position: absolute;
-            width: 55px;
-            height: 55px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.2));
-            z-index: 10;
-            animation: orbitRotate 25s linear infinite;
-            animation-delay: calc(var(--icon-index) * -2.5s);
-            top: 50%;
-            left: 50%;
-            transform-origin: center;
-        }
+.icon-circle{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    background:rgba(0,0,0,.85);
+    border:2px solid #d9b382;
+    color:white;
+    box-shadow:0 6px 15px rgba(0,0,0,.3);
+}
 
-        @keyframes orbitRotate {
-            0% { 
-                transform: rotate(0deg) translateX(130px) rotate(0deg);
-            }
-            100% { 
-                transform: rotate(360deg) translateX(130px) rotate(-360deg);
-            }
-        }
+/* زر الاتصال */
+.contact-link{
+    text-align:center;
+    margin-top:40px;
+}
+.contact-button{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:#d9b382;
+    padding:12px 28px;
+    border-radius:50px;
+    text-decoration:none;
+    color:#2b1e16;
+    font-weight:bold;
+    border:2px solid white;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+    transition:.3s;
+}
+.contact-button:hover{
+    transform:scale(1.05);
+    background:#b58f5a;
+    color:white;
+}
 
-        /* المسافات متساوية بين الأيقونات */
-        .icon-item:nth-child(1) { --icon-index: 0; }
-        .icon-item:nth-child(2) { --icon-index: 1; }
-        .icon-item:nth-child(3) { --icon-index: 2; }
-        .icon-item:nth-child(4) { --icon-index: 3; }
-        .icon-item:nth-child(5) { --icon-index: 4; }
-        .icon-item:nth-child(6) { --icon-index: 5; }
-        .icon-item:nth-child(7) { --icon-index: 6; }
-        .icon-item:nth-child(8) { --icon-index: 7; }
-        .icon-item:nth-child(9) { --icon-index: 8; }
-
-        .icon-item:hover {
-            animation-play-state: paused;
-            transform: rotate(0deg) translateX(130px) rotate(0deg) scale(1.2) !important;
-            filter: drop-shadow(0 12px 20px #d9b382);
-            z-index: 30;
-        }
-
-        .icon-circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            background: rgba(0, 0, 0, 0.8);
-            transition: all 0.3s ease;
-            border: 2px solid #d9b382;
-            color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        .icon-item:hover .icon-circle {
-            background: #d9b382;
-            transform: scale(1.1);
-            border-color: white;
-        }
-
-        .icon-item:hover .icon-circle i {
-            color: #2b1e16 !important;
-        }
-
-        /* ألوان الأيقونات */
-        .fa-store { color: #ffd700; }
-        .fa-whatsapp { color: #25D366; }
-        .fa-instagram { color: #E4405F; }
-        .fa-facebook { color: #1877F2; }
-        .fa-tiktok { color: #ffffff; }
-        .fa-youtube { color: #FF0000; }
-        .fa-x-twitter { color: #ffffff; }
-        .fa-snapchat { color: #FFFC00; }
-        .fa-telegram { color: #0088cc; }
-
-        .icon-item:hover .fa-store,
-        .icon-item:hover .fa-whatsapp,
-        .icon-item:hover .fa-instagram,
-        .icon-item:hover .fa-facebook,
-        .icon-item:hover .fa-tiktok,
-        .icon-item:hover .fa-youtube,
-        .icon-item:hover .fa-x-twitter,
-        .icon-item:hover .fa-snapchat,
-        .icon-item:hover .fa-telegram {
-            color: #2b1e16 !important;
-        }
-
-        /* رابط إضافة جهة الاتصال */
-        .contact-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .contact-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: #d9b382;
-            padding: 12px 30px;
-            border-radius: 60px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: #2b1e16;
-            border: 2px solid white;
-        }
-
-        .contact-button:hover {
-            transform: scale(1.05);
-            background: #b58f5a;
-            color: white;
-        }
-
-        .contact-button i {
-            font-size: 20px;
-        }
-
-        .contact-button .fa-phone-alt {
-            animation: ring 2s infinite;
-        }
-
-        @keyframes ring {
-            0%, 100% { transform: rotate(0); }
-            20% { transform: rotate(15deg); }
-            40% { transform: rotate(-15deg); }
-        }
-
-        @media (max-width: 768px) {
-            .center-wrapper {
-                width: 320px;
-                height: 320px;
-            }
-            
-            .logo-image {
-                width: 110px;
-                height: 110px;
-            }
-            
-            @keyframes orbitRotate {
-                0% { transform: rotate(0deg) translateX(110px) rotate(0deg); }
-                100% { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
-            }
-            
-            .icon-item {
-                width: 48px;
-                height: 48px;
-            }
-            
-            .icon-circle {
-                width: 44px;
-                height: 44px;
-                font-size: 22px;
-            }
-        }
-
-        /* لوحة التحكم */
-        .admin-panel {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.98);
-            backdrop-filter: blur(15px);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .admin-panel.show { display: flex; }
-
-        .admin-content {
-            background: white;
-            width: 100%;
-            max-width: 350px;
-            max-height: 90vh;
-            overflow-y: auto;
-            border-radius: 20px;
-            padding: 15px;
-            border: 2px solid #d9b382;
-        }
-
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #d9b382;
-        }
-
-        .admin-close {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #f0f0f0;
-            border: none;
-            cursor: pointer;
-        }
-
-        .admin-tabs {
-            display: flex;
-            gap: 3px;
-            margin-bottom: 10px;
-        }
-
-        .admin-tab {
-            flex: 1;
-            padding: 6px;
-            background: #f0f0f0;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .admin-tab.active { background: #d9b382; color: white; }
-
-        .admin-section {
-            background: #f8f8f8;
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 10px;
-        }
-
-        .admin-section h3 { font-size: 13px; margin-bottom: 8px; }
-
-        .admin-input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 6px;
-            border: 2px solid #eee;
-            border-radius: 8px;
-            font-size: 12px;
-        }
-
-        .admin-btn {
-            padding: 8px;
-            font-size: 13px;
-        }
-
-        .admin-list {
-            max-height: 180px;
-        }
-
-        .admin-item {
-            padding: 6px;
-        }
-
-        .admin-item-btn {
-            width: 28px;
-            height: 28px;
-            font-size: 11px;
-        }
-
-        .notification {
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            color: #2b1e16;
-            padding: 6px 15px;
-            border-radius: 30px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.3), 0 0 0 2px #d9b382;
-            display: none;
-            z-index: 3000;
-            font-size: 11px;
-        }
-
-        ::-webkit-scrollbar { display: none; }
-    </style>
+/* موبايل */
+@media(max-width:768px){
+.center-wrapper{width:320px;height:320px}
+.logo-image{width:110px;height:110px}
+}
+</style>
 </head>
 <body>
-    <div class="bg-image-container">
-        <img src="https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772594834/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_1_kmg4fd.png" alt="خلفية" class="bg-image">
+
+<div class="bg-image-container">
+<img src="https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772594834/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_1_kmg4fd.png" class="bg-image">
+</div>
+
+<div>
+    <div class="center-wrapper" id="centerWrapper">
+        <img src="https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772592833/shababek_logo.png" class="logo-image">
     </div>
 
-    <div class="container">
-        <div class="center-wrapper" id="centerWrapper">
-            <img src="https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772592833/shababek_logo.png" alt="شعار شبابيك" class="logo-image">
-        </div>
-
-        <div class="contact-link">
-            <a href="https://myqrcode.mobi/0148f3e2" target="_blank" class="contact-button">
-                <i class="fas fa-qrcode"></i>
-                <span>➕ اضف جهة اتصال</span>
-                <i class="fas fa-phone-alt"></i>
-            </a>
-        </div>
+    <div class="contact-link">
+        <a href="https://myqrcode.mobi/0148f3e2" target="_blank" class="contact-button">
+            ➕ اضف جهة اتصال
+        </a>
     </div>
+</div>
 
-    <div class="admin-panel" id="adminPanel">
-        <div class="admin-content">
-            <div class="admin-header">
-                <h2>⚙️ لوحة التحكم</h2>
-                <button class="admin-close" onclick="closeAdmin()">✕</button>
-            </div>
-            <div class="admin-tabs">
-                <button class="admin-tab active" onclick="switchTab('icons')">🔘 الأيقونات</button>
-            </div>
-            <div class="admin-section">
-                <h3>➕ إضافة أيقونة</h3>
-                <input type="text" id="icon-class" class="admin-input" placeholder="اسم الأيقونة (fab fa-facebook)">
-                <input type="url" id="icon-url" class="admin-input" placeholder="الرابط">
-                <button class="admin-btn" onclick="addIcon()">➕ إضافة</button>
-            </div>
-            <div class="admin-section">
-                <h3>📋 الأيقونات الحالية</h3>
-                <div id="admin-icons-list" class="admin-list"></div>
-            </div>
+<script>
+
+/* بيانات الأيقونات */
+let iconsData = [
+{ icon:'fas fa-store', url:'https://shababekcurtains.com/index.html?page=categories#homePage'},
+{ icon:'fab fa-whatsapp', url:'whatsapp://send?phone=9647883002797'},
+{ icon:'fab fa-instagram', url:'instagram://user?username=shababek.curtains'},
+{ icon:'fab fa-facebook', url:'fb://page/61587692021311'},
+{ icon:'fab fa-tiktok', url:'tiktok://user?username=shababek.curtains'},
+{ icon:'fab fa-youtube', url:'https://youtube.com'},
+{ icon:'fa-brands fa-x-twitter', url:'https://twitter.com'},
+{ icon:'fab fa-snapchat', url:'snapchat://add/shababekcurtin'},
+{ icon:'fab fa-telegram', url:'tg://resolve?domain=shababekcurtains'}
+];
+
+/* توزيع دائري متساوي */
+function renderIcons(){
+    const container=document.getElementById('centerWrapper');
+    const oldIcons=container.querySelectorAll('.icon-item');
+    oldIcons.forEach(e=>e.remove());
+
+    const total=iconsData.length;
+    const radius=140;
+
+    iconsData.forEach((item,index)=>{
+        const angle=(index/total)*(2*Math.PI);
+        const x=radius*Math.cos(angle);
+        const y=radius*Math.sin(angle);
+
+        const icon=document.createElement('a');
+        icon.className='icon-item';
+        icon.href=item.url;
+        icon.style.transform=`
+            translate(-50%,-50%)
+            translate(${x}px,${y}px)
+        `;
+
+        icon.innerHTML=`
+        <div class="icon-circle">
+            <i class="${item.icon}"></i>
         </div>
-    </div>
+        `;
 
-    <div class="notification" id="notification"><span id="notif-message"></span></div>
-
-    <script>
-        // قائمة الأيقونات مع روابط مباشرة للتطبيقات
-        let iconsData = [
-            { icon: 'fas fa-store', url: 'https://shababekcurtains.com/index.html?page=categories#homePage' },
-            { icon: 'fab fa-whatsapp', url: 'whatsapp://send?phone=9647883002797' }, // رابط مباشر لتطبيق واتساب
-            { icon: 'fab fa-instagram', url: 'instagram://user?username=shababek.curtains' }, // رابط مباشر لتطبيق إنستغرام
-            { icon: 'fab fa-facebook', url: 'fb://page/61587692021311' }, // رابط مباشر لتطبيق فيسبوك
-            { icon: 'fab fa-tiktok', url: 'tiktok://user?username=shababek.curtains' }, // رابط مباشر لتطبيق تيك توك
-            { icon: 'fab fa-youtube', url: 'vnd.youtube://channel/UCxxx' }, // رابط مباشر لتطبيق يوتيوب
-            { icon: 'fa-brands fa-x-twitter', url: 'twitter://user?screen_name=ShababekCurtain' }, // رابط مباشر لتطبيق تويتر
-            { icon: 'fab fa-snapchat', url: 'snapchat://add/shababekcurtin' }, // رابط مباشر لتطبيق سناب شات
-            { icon: 'fab fa-telegram', url: 'tg://resolve?domain=shababekcurtains' } // رابط مباشر لتطبيق تيليجرام
-        ];
-
-        let clickCount = 0;
-        let clickTimer;
-
-        function renderIcons() {
-            const container = document.getElementById('centerWrapper');
-            if (!container) return;
-
-            const existingIcons = container.querySelectorAll('.icon-item');
-            existingIcons.forEach(icon => icon.remove());
-
-            iconsData.forEach((item, index) => {
-                const iconElement = document.createElement('a');
-                iconElement.className = 'icon-item';
-                iconElement.href = item.url;
-                iconElement.setAttribute('target', '_blank');
-                iconElement.setAttribute('rel', 'noopener noreferrer');
-                iconElement.setAttribute('onclick', `handleIconClick(event, ${index}); return true;`);
-                
-                // روابط التطبيقات تحتاج معالجة خاصة
-                if (item.url.startsWith('whatsapp://') || 
-                    item.url.startsWith('instagram://') || 
-                    item.url.startsWith('fb://') || 
-                    item.url.startsWith('tiktok://') || 
-                    item.url.startsWith('vnd.youtube://') || 
-                    item.url.startsWith('twitter://') || 
-                    item.url.startsWith('snapchat://') || 
-                    item.url.startsWith('tg://')) {
-                    iconElement.setAttribute('target', '_self'); // الروابط المباشرة تفتح في نفس الصفحة
-                }
-                
-                iconElement.innerHTML = `
-                    <div class="icon-circle">
-                        <i class="${item.icon}"></i>
-                    </div>
-                `;
-                
-                container.appendChild(iconElement);
-            });
-        }
-
-        // نظام الـ 5 نقرات (بدون تأثير على فتح الرابط)
-        function handleIconClick(event, index) {
-            clickCount++;
-            if (clickTimer) clearTimeout(clickTimer);
-            clickTimer = setTimeout(() => { clickCount = 0; }, 3000);
-            if (clickCount >= 5) {
-                clickCount = 0;
-                openAdminPanel();
-                event.preventDefault(); // منع فتح الرابط عند فتح لوحة التحكم
-                return false;
-            }
-            return true; // السماح بفتح الرابط بشكل طبيعي
-        }
-
-        function openAdminPanel() {
-            document.getElementById('adminPanel').classList.add('show');
-            showAdminIcons();
-        }
-
-        function closeAdmin() {
-            document.getElementById('adminPanel').classList.remove('show');
-        }
-
-        function switchTab(tab) {
-            showAdminIcons();
-        }
-
-        function showAdminIcons() {
-            let list = document.getElementById('admin-icons-list');
-            list.innerHTML = iconsData.map((item, index) => `
-                <div class="admin-item">
-                    <div style="display:flex; align-items:center; gap:8px;">
-                        <i class="${item.icon}" style="color:#d9b382; font-size:16px;"></i>
-                        <span style="font-size:12px;">${item.url.substring(0,30)}</span>
-                    </div>
-                    <div class="admin-item-actions">
-                        <button class="admin-item-btn edit" onclick="editIcon(${index})">✏️</button>
-                        <button class="admin-item-btn delete" onclick="deleteIcon(${index})">🗑️</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function addIcon() {
-            let iconClass = document.getElementById('icon-class').value;
-            let iconUrl = document.getElementById('icon-url').value;
-            if (!iconClass || !iconUrl) { showNotif('أكمل البيانات'); return; }
-            iconsData.push({ icon: iconClass, url: iconUrl });
-            saveData(); renderIcons(); showAdminIcons();
-            document.getElementById('icon-class').value = '';
-            document.getElementById('icon-url').value = '';
-            showNotif('✅ تمت الإضافة');
-        }
-
-        function editIcon(index) {
-            let newUrl = prompt('الرابط الجديد:', iconsData[index].url);
-            if (newUrl) iconsData[index].url = newUrl;
-            saveData(); renderIcons(); showAdminIcons();
-            showNotif('✅ تم التعديل');
-        }
-
-        function deleteIcon(index) {
-            if (confirm('حذف الأيقونة؟')) {
-                iconsData.splice(index, 1);
-                saveData(); renderIcons(); showAdminIcons();
-                showNotif('✅ تم الحذف');
-            }
-        }
-
-        function saveData() {
-            localStorage.setItem('shababek_icons_no_text', JSON.stringify(iconsData));
-        }
-
-        function loadData() {
-            const saved = localStorage.getItem('shababek_icons_no_text');
-            if (saved) iconsData = JSON.parse(saved);
-            renderIcons();
-        }
-
-        function showNotif(msg) {
-            let n = document.getElementById('notification');
-            document.getElementById('notif-message').innerText = msg;
-            n.style.display = 'flex';
-            setTimeout(() => n.style.display = 'none', 1500);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadData();
-            setTimeout(() => showNotif('👋 5 مرات على أي أيقونة'), 1000);
+        icon.addEventListener('click',()=>{
+            document.getElementById('centerWrapper').classList.add('paused');
         });
-    </script>
+
+        container.appendChild(icon);
+    });
+}
+
+renderIcons();
+
+</script>
+
 </body>
 </html>
