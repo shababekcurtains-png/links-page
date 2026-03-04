@@ -41,10 +41,10 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    margin-top:-40px; /* رفع الشعار والايقونات للأعلى */
+    margin-top:-40px;
 }
 
-/* الشعار ثابت */
+/* الشعار */
 .logo-image{
     width:140px;
     height:140px;
@@ -55,31 +55,26 @@ body{
     z-index:20;
 }
 
-/* حاوية الأيقونات الدوارة */
+/* orbit */
 .orbit{
     position:absolute;
     width:100%;
     height:100%;
     animation:rotateOrbit 25s linear infinite;
 }
-
-.orbit.paused{
-    animation-play-state:paused;
-}
+.orbit.paused{animation-play-state:paused;}
 
 @keyframes rotateOrbit{
     from{transform:rotate(0deg)}
     to{transform:rotate(360deg)}
 }
 
-/* الأيقونات */
 .icon-item{
     position:absolute;
     width:55px;
     height:55px;
     top:50%;
     left:50%;
-    transform-origin:center;
 }
 
 .icon-circle{
@@ -95,7 +90,7 @@ body{
     box-shadow:0 6px 15px rgba(0,0,0,.3);
 }
 
-/* ألوان الأيقونات */
+/* ألوان */
 .fa-store{color:#ffd700;}
 .fa-whatsapp{color:#25D366;}
 .fa-instagram{color:#E4405F;}
@@ -109,7 +104,7 @@ body{
 /* زر الاتصال */
 .contact-link{
     text-align:center;
-    margin-top:80px; /* تنزيل زر جهة الاتصال للأسفل */
+    margin-top:110px; /* نزلناه أكثر */
 }
 
 .contact-button{
@@ -136,7 +131,7 @@ body{
 @media(max-width:768px){
 .wrapper{width:320px;height:320px;margin-top:-30px}
 .logo-image{width:110px;height:110px}
-.contact-link{margin-top:60px}
+.contact-link{margin-top:90px}
 }
 </style>
 </head>
@@ -163,14 +158,22 @@ body{
 
 let iconsData=[
 {icon:'fas fa-store',url:'https://shababekcurtains.com'},
-{icon:'fab fa-whatsapp',url:'whatsapp://send?phone=9647883002797'},
-{icon:'fab fa-instagram',url:'instagram://user?username=shababek.curtains'},
-{icon:'fab fa-facebook',url:'fb://page/61587692021311'},
-{icon:'fab fa-tiktok',url:'tiktok://user?username=shababek.curtains'},
-{icon:'fab fa-youtube',url:'https://youtube.com'},
-{icon:'fa-brands fa-x-twitter',url:'https://twitter.com'},
-{icon:'fab fa-snapchat',url:'snapchat://add/shababekcurtin'},
-{icon:'fab fa-telegram',url:'tg://resolve?domain=shababekcurtains'}
+
+{icon:'fab fa-whatsapp',url:'https://wa.me/9647883002797'},
+
+{icon:'fab fa-instagram',url:'https://instagram.com/shababek.curtains'},
+
+{icon:'fab fa-facebook',url:'https://facebook.com/61587692021311'},
+
+{icon:'fab fa-tiktok',url:'https://tiktok.com/@shababek.curtains'},
+
+{icon:'fab fa-youtube',url:'https://youtube.com/@shababekcurtains'},
+
+{icon:'fa-brands fa-x-twitter',url:'https://x.com/shababekcurtains'},
+
+{icon:'fab fa-snapchat',url:'https://snapchat.com/add/shababekcurtin'},
+
+{icon:'fab fa-telegram',url:'https://t.me/shababekcurtains'}
 ];
 
 function renderIcons(){
@@ -188,6 +191,7 @@ function renderIcons(){
         const icon=document.createElement('a');
         icon.className='icon-item';
         icon.href=item.url;
+        icon.target="_blank";
 
         icon.style.transform=`
         translate(-50%,-50%)
@@ -199,10 +203,6 @@ function renderIcons(){
             <i class="${item.icon}"></i>
         </div>
         `;
-
-        icon.addEventListener('click',()=>{
-            orbit.classList.add('paused');
-        });
 
         orbit.appendChild(icon);
     });
