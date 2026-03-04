@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>شبابيك للستائر - أيقونات سريعة</title>
+    <title>شبابيك للستائر - بطاقة التواصل</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
@@ -27,24 +27,15 @@
             height: 100%;
         }
 
-        /* الصورة كخلفية */
-        .custom-bg {
+        /* خلفية متدرجة أنيقة */
+        .bg-gradient {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772594834/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_1_kmg4fd.png') no-repeat center center;
-            background-size: contain;
-            background-color: #2b1e16;
+            background: radial-gradient(circle at 30% 30%, #d9b38230, #2b1e16 80%);
             z-index: -1;
-        }
-
-        @media (min-width: 769px) {
-            .custom-bg {
-                background-size: auto 100%;
-                background-position: center center;
-            }
         }
 
         .container {
@@ -55,27 +46,85 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            padding: 5px 15px 0;
+            justify-content: center;
+            padding: 15px;
         }
 
-        .top-spacer {
-            height: 16vh;
-            width: 100%;
+        /* الحاوية الرئيسية للشعار والأيقونات */
+        .center-wrapper {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
         }
 
-        /* شبكة 3×3 */
-        .icons-grid {
-            width: 100%;
-            max-width: 280px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px 10px;
-            padding: 0;
+        /* الشعار في المنتصف */
+        .logo-container {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #d9b382, #b58f5a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 0 4px #d9b38280;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            animation: logoGlow 3s infinite ease-in-out;
         }
 
-        /* أيقونة بدون خلفية */
+        @keyframes logoGlow {
+            0%, 100% { 
+                box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 0 4px #d9b38280;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                box-shadow: 0 20px 45px rgba(217,179,130,0.5), 0 0 0 6px #d9b382;
+                transform: translate(-50%, -50%) scale(1.02);
+            }
+        }
+
+        .logo-text {
+            text-align: center;
+            color: #2b1e16;
+        }
+
+        .logo-text .line1 {
+            font-size: 24px;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: 2px;
+        }
+
+        .logo-text .line2 {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 2px 0;
+        }
+
+        .logo-text .line3 {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .logo-text .line4 {
+            font-size: 10px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        /* الأيقونات الدوارة حول الشعار */
         .icon-item {
+            position: absolute;
+            width: 60px;
+            height: 60px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -83,83 +132,78 @@
             text-decoration: none;
             color: white;
             cursor: pointer;
-            transition: all 0.3s ease;
-            animation: fadeIn 0.3s ease forwards;
-            opacity: 0;
-            padding: 5px 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: floatIcon 3s infinite ease-in-out;
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.5));
+            z-index: 10;
         }
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
+        /* تأخير مختلف لكل أيقونة في الحركة */
+        .icon-item:nth-child(1) { animation-delay: 0s; }
+        .icon-item:nth-child(2) { animation-delay: 0.2s; }
+        .icon-item:nth-child(3) { animation-delay: 0.4s; }
+        .icon-item:nth-child(4) { animation-delay: 0.6s; }
+        .icon-item:nth-child(5) { animation-delay: 0.8s; }
+        .icon-item:nth-child(6) { animation-delay: 1s; }
+        .icon-item:nth-child(7) { animation-delay: 1.2s; }
+        .icon-item:nth-child(8) { animation-delay: 1.4s; }
+        .icon-item:nth-child(9) { animation-delay: 1.6s; }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-8px); }
         }
 
-        .icon-item:nth-child(1) { animation-delay: 0.02s; }
-        .icon-item:nth-child(2) { animation-delay: 0.04s; }
-        .icon-item:nth-child(3) { animation-delay: 0.06s; }
-        .icon-item:nth-child(4) { animation-delay: 0.08s; }
-        .icon-item:nth-child(5) { animation-delay: 0.1s; }
-        .icon-item:nth-child(6) { animation-delay: 0.12s; }
-        .icon-item:nth-child(7) { animation-delay: 0.14s; }
-        .icon-item:nth-child(8) { animation-delay: 0.16s; }
-        .icon-item:nth-child(9) { animation-delay: 0.18s; }
-
-        .icon-item:active {
-            transform: scale(0.95);
+        .icon-item:hover {
+            transform: translate(-50%, -50%) scale(1.2) !important;
+            filter: drop-shadow(0 15px 25px #d9b382);
+            z-index: 30;
+            animation-play-state: paused;
         }
 
-        /* أيقونة بدون خلفية - شفافة تماماً */
         .icon-circle {
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px; /* أيقونات أكبر */
-            color: white;
-            background: transparent; /* شفافة تماماً */
-            margin-bottom: 8px;
-            transition: all 0.3s ease;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-        }
-
-        /* تأثير تفاعلي بسيط */
-        .icon-item:hover .icon-circle,
-        .icon-item:active .icon-circle {
-            transform: scale(1.15);
-            text-shadow: 0 0 20px #d9b382, 0 0 40px rgba(217, 179, 130, 0.5);
-        }
-
-        /* عنوان الأيقونة مع تضليل فقط */
-        .icon-label {
-            font-size: 11px;
-            font-weight: 800;
-            color: white;
-            text-align: center;
-            padding: 4px 12px;
-            border-radius: 30px;
-            background: rgba(0, 0, 0, 0.5); /* تضليل للعنوان فقط */
+            font-size: 24px;
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
-            max-width: 75px;
+            border: 2px solid rgba(217,179,130,0.7);
+            margin-bottom: 4px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .icon-item:hover .icon-circle {
+            background: rgba(217,179,130,0.3);
+            border-color: #d9b382;
+            transform: rotate(360deg);
+            box-shadow: 0 0 30px #d9b382;
+        }
+
+        .icon-label {
+            font-size: 9px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            padding: 3px 8px;
+            border-radius: 20px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
             white-space: nowrap;
+            max-width: 65px;
             overflow: hidden;
             text-overflow: ellipsis;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(217, 179, 130, 0.3);
-            transition: all 0.3s ease;
-            letter-spacing: 0.3px;
+            border: 1px solid rgba(217,179,130,0.4);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
-        .icon-item:hover .icon-label,
-        .icon-item:active .icon-label {
-            background: rgba(217, 179, 130, 0.3);
-            border-color: #d9b382;
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(217, 179, 130, 0.3);
-        }
-
-        /* ألوان الأيقونات - أكثر إشراقاً */
+        /* ألوان الأيقونات */
         .fa-store { color: #ffd700; }
         .fa-whatsapp { color: #25D366; }
         .fa-instagram { color: #E4405F; }
@@ -170,55 +214,81 @@
         .fa-snapchat { color: #FFFC00; }
         .fa-telegram { color: #0088cc; }
 
-        /* تأثيرات إضافية عند hover */
-        .icon-item:hover .fa-store {
-            filter: drop-shadow(0 0 10px #ffd700);
-        }
-        .icon-item:hover .fa-whatsapp {
-            filter: drop-shadow(0 0 10px #25D366);
-        }
-        .icon-item:hover .fa-instagram {
-            filter: drop-shadow(0 0 10px #E4405F);
-        }
-        .icon-item:hover .fa-facebook {
-            filter: drop-shadow(0 0 10px #1877F2);
-        }
-        .icon-item:hover .fa-tiktok {
-            filter: drop-shadow(0 0 10px #ffffff);
-        }
-        .icon-item:hover .fa-youtube {
-            filter: drop-shadow(0 0 10px #FF0000);
-        }
-        .icon-item:hover .fa-x-twitter {
-            filter: drop-shadow(0 0 10px #ffffff);
-        }
-        .icon-item:hover .fa-snapchat {
-            filter: drop-shadow(0 0 10px #FFFC00);
-        }
-        .icon-item:hover .fa-telegram {
-            filter: drop-shadow(0 0 10px #0088cc);
+        /* QR code في الأسفل */
+        .qr-section {
+            text-align: center;
+            animation: fadeInUp 0.6s ease 0.5s both;
         }
 
-        .bottom-spacer {
-            flex: 1;
+        .qr-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .qr-box {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 20px;
+            padding: 5px;
+            border: 3px solid #d9b382;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .qr-box:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 35px rgba(217,179,130,0.4);
+        }
+
+        .qr-box img {
             width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
         }
 
-        /* ===== لوحة التحكم ===== */
+        .qr-text {
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+            padding: 6px 20px;
+            border-radius: 40px;
+            border: 1px solid #d9b382;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .qr-text i {
+            color: #d9b382;
+            font-size: 16px;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* لوحة التحكم */
         .admin-panel {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.98);
+            background: rgba(0,0,0,0.98);
             backdrop-filter: blur(15px);
             z-index: 2000;
             display: none;
             justify-content: center;
             align-items: center;
             padding: 10px;
-            overflow-y: auto;
         }
 
         .admin-panel.show { display: flex; }
@@ -243,8 +313,6 @@
             border-bottom: 2px solid #d9b382;
         }
 
-        .admin-header h2 { font-size: 16px; }
-
         .admin-close {
             width: 30px;
             height: 30px;
@@ -263,7 +331,6 @@
         .admin-tab {
             flex: 1;
             padding: 6px;
-            font-size: 11px;
             background: #f0f0f0;
             border: none;
             border-radius: 8px;
@@ -278,8 +345,6 @@
             padding: 12px;
             margin-bottom: 10px;
         }
-
-        .admin-section h3 { font-size: 13px; margin-bottom: 8px; }
 
         .admin-input {
             width: 100%;
@@ -315,28 +380,50 @@
             left: 50%;
             transform: translateX(-50%);
             background: white;
-            color: #3d2e24;
+            color: #2b1e16;
             padding: 6px 15px;
             border-radius: 30px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.3), 0 0 0 2px #d9b382;
             display: none;
-            align-items: center;
-            gap: 5px;
             z-index: 3000;
             font-size: 11px;
-            white-space: nowrap;
         }
 
         ::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body>
-    <div class="custom-bg"></div>
+    <div class="bg-gradient"></div>
 
     <div class="container">
-        <div class="top-spacer"></div>
-        <div class="icons-grid" id="iconsGrid"></div>
-        <div class="bottom-spacer"></div>
+        <!-- الحاوية التي تضم الشعار والأيقونات -->
+        <div class="center-wrapper" id="centerWrapper">
+            <!-- الشعار في المنتصف -->
+            <div class="logo-container">
+                <div class="logo-text">
+                    <div class="line1">SHA BABEK</div>
+                    <div class="line2">شابابك</div>
+                    <div class="line3">شاد و باغ</div>
+                    <div class="line4">SHADE & ELEGANCE</div>
+                </div>
+            </div>
+
+            <!-- الأيقونات ستتم إضافتها هنا عبر JavaScript -->
+        </div>
+
+        <!-- QR code في الأسفل -->
+        <div class="qr-section">
+            <div class="qr-container">
+                <div class="qr-box" onclick="openQRCode()">
+                    <img src="https://myqrcode.mobi/0148f3e2/qr.svg" alt="QR Code">
+                </div>
+                <div class="qr-text">
+                    <i class="fas fa-qrcode"></i>
+                    <span>➕ اضغط لإضافة جهات الاتصال</span>
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- لوحة التحكم -->
@@ -363,9 +450,10 @@
         </div>
     </div>
 
-    <div class="notification" id="notification"><i class="fas fa-check-circle"></i><span id="notif-message"></span></div>
+    <div class="notification" id="notification"><span id="notif-message"></span></div>
 
     <script>
+        // قائمة الأيقونات
         let iconsData = [
             { icon: 'fas fa-store', label: 'المتجر', url: 'https://shababekcurtains.com/index.html?page=categories#homePage' },
             { icon: 'fab fa-whatsapp', label: 'واتساب', url: 'https://wa.me/9647883002797' },
@@ -381,39 +469,55 @@
         let clickCount = 0;
         let clickTimer;
 
-        function loadData() {
-            const saved = localStorage.getItem('shababek_icons_transparent');
-            if (saved) iconsData = JSON.parse(saved);
-            renderIcons();
-        }
-
-        function saveData() {
-            localStorage.setItem('shababek_icons_transparent', JSON.stringify(iconsData));
-        }
-
+        // توزيع الأيقونات بشكل دائري حول الشعار
         function renderIcons() {
-            const container = document.getElementById('iconsGrid');
+            const container = document.getElementById('centerWrapper');
             if (!container) return;
 
-            let html = '';
+            // إزالة الأيقونات القديمة مع الاحتفاظ بالشعار
+            const existingIcons = container.querySelectorAll('.icon-item');
+            existingIcons.forEach(icon => icon.remove());
+
+            const radius = 130; // نصف قطر الدائرة
+            const centerX = 160; // مركز الدائرة (نصف عرض centerWrapper)
+            const centerY = 160;
+
             iconsData.forEach((item, index) => {
-                html += `
-                    <div class="icon-item" onclick="openIconLink('${item.url}'); handleIconClick(event, ${index}); return false;">
-                        <div class="icon-circle">
-                            <i class="${item.icon}"></i>
-                        </div>
-                        <span class="icon-label">${item.label}</span>
+                // حساب زاوية كل أيقونة (توزيع متساوي)
+                const angle = (index * 40) - 90; // 40 درجة بين كل أيقونة
+                const x = centerX + radius * Math.cos(angle * Math.PI / 180);
+                const y = centerY + radius * Math.sin(angle * Math.PI / 180);
+                
+                const iconElement = document.createElement('div');
+                iconElement.className = 'icon-item';
+                iconElement.style.left = `${x}px`;
+                iconElement.style.top = `${y}px`;
+                iconElement.setAttribute('onclick', `openIconLink('${item.url}'); handleIconClick(event, ${index}); return false;`);
+                
+                iconElement.innerHTML = `
+                    <div class="icon-circle">
+                        <i class="${item.icon}"></i>
                     </div>
+                    <span class="icon-label">${item.label}</span>
                 `;
+                
+                container.appendChild(iconElement);
             });
-            container.innerHTML = html;
         }
 
+        // فتح رابط QR code
+        function openQRCode() {
+            window.open('https://myqrcode.mobi/0148f3e2', '_blank');
+            showNotif('جاري فتح جهات الاتصال...');
+        }
+
+        // فتح رابط الأيقونة
         function openIconLink(url) {
             showNotif('جاري الفتح...');
             window.location.href = url;
         }
 
+        // نظام الـ 5 نقرات
         function handleIconClick(event, index) {
             clickCount++;
             if (clickTimer) clearTimeout(clickTimer);
@@ -483,11 +587,21 @@
             }
         }
 
+        function saveData() {
+            localStorage.setItem('shababek_icons_rotating', JSON.stringify(iconsData));
+        }
+
+        function loadData() {
+            const saved = localStorage.getItem('shababek_icons_rotating');
+            if (saved) iconsData = JSON.parse(saved);
+            renderIcons();
+        }
+
         function showNotif(msg) {
             let n = document.getElementById('notification');
             document.getElementById('notif-message').innerText = msg;
             n.style.display = 'flex';
-            setTimeout(() => n.style.display = 'none', 800);
+            setTimeout(() => n.style.display = 'none', 1500);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
