@@ -11,31 +11,15 @@
 
 body{
     min-height:100vh;
+    background:radial-gradient(circle at center,#f8f1e8 0%,#e8dccb 100%);
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     overflow:hidden;
-    background:#f5efe8;
 }
 
-/* 🔥 الخلفية الأصلية مع QR */
-.bg-image-container{
-    position:fixed;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    z-index:-1;
-}
-
-.bg-image{
-    max-width:100%;
-    max-height:100%;
-    object-fit:contain;
-}
-
-/* الحاوية */
+/* الحاوية الرئيسية */
 .wrapper{
     position:relative;
     width:380px;
@@ -43,7 +27,7 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    margin-top:-50px; /* مرفوع للأعلى */
+    margin-top:-50px; /* رفع للأعلى */
 }
 
 /* الشعار ثابت */
@@ -125,7 +109,7 @@ body{
 /* زر جهة الاتصال */
 .contact-link{
     text-align:center;
-    margin-top:90px; /* نازل للأسفل */
+    margin-top:90px; /* نزول للأسفل */
 }
 
 .contact-button{
@@ -158,11 +142,6 @@ body{
 </style>
 </head>
 <body>
-
-<!-- 🔥 الخلفية مع QR -->
-<div class="bg-image-container">
-<img src="https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772594834/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_1_kmg4fd.png" class="bg-image">
-</div>
 
 <div class="wrapper">
     <img src="https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772592833/shababek_logo.png" class="logo-image">
