@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>شبابيك للستائر - أيقونات سريعة</title>
+    <title>شبابيك للستائر - أيقونات تفاعلية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
@@ -27,7 +27,7 @@
             height: 100%;
         }
 
-        /* الصورة الجديدة كخلفية */
+        /* الصورة كخلفية */
         .custom-bg {
             position: absolute;
             top: 0;
@@ -40,7 +40,6 @@
             z-index: -1;
         }
 
-        /* للكمبيوتر */
         @media (min-width: 769px) {
             .custom-bg {
                 background-size: auto 100%;
@@ -48,7 +47,6 @@
             }
         }
 
-        /* الحاوية الرئيسية */
         .container {
             position: relative;
             z-index: 1;
@@ -61,24 +59,22 @@
             padding: 5px 15px 0;
         }
 
-        /* المساحة العلوية - 2 أيقونة للأسفل */
         .top-spacer {
-            height: 16vh; /* زيادة المساحة العلوية لإنزال الأيقونات */
+            height: 16vh;
             width: 100%;
         }
 
-        /* المنطقة الوسطى - شبكة 3×3 متقاربة جداً */
+        /* شبكة 3×3 مع أيقونات غامقة */
         .icons-grid {
             width: 100%;
-            max-width: 240px;
+            max-width: 260px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 5px 3px;
+            gap: 8px 6px;
             padding: 0;
-            margin-top: 0; /* إزالة الـ margin العلوي */
         }
 
-        /* عنصر الأيقونة الواحدة */
+        /* أيقونة تفاعلية غامقة */
         .icon-item {
             display: flex;
             flex-direction: column;
@@ -87,11 +83,11 @@
             text-decoration: none;
             color: white;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             animation: fadeIn 0.3s ease forwards;
             opacity: 0;
-            background: transparent;
-            padding: 1px 0;
+            padding: 5px 0;
+            position: relative;
         }
 
         @keyframes fadeIn {
@@ -108,78 +104,176 @@
         .icon-item:nth-child(8) { animation-delay: 0.16s; }
         .icon-item:nth-child(9) { animation-delay: 0.18s; }
 
-        .icon-item:active {
-            transform: scale(0.92);
+        /* تأثيرات تفاعلية متطورة */
+        .icon-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(217, 179, 130, 0.4) 0%, transparent 70%);
+            transition: all 0.4s ease;
+            z-index: -1;
+            opacity: 0;
         }
 
-        /* دائرة الأيقونة */
+        .icon-item:hover::before,
+        .icon-item:active::before {
+            width: 80px;
+            height: 80px;
+            opacity: 1;
+        }
+
+        /* دائرة الأيقونة - غامقة مع تأثيرات */
         .icon-circle {
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 24px;
             color: white;
-            background: rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            margin-bottom: 2px;
-            border: 1.5px solid rgba(217, 179, 130, 0.4);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-            transition: all 0.2s ease;
+            background: rgba(0, 0, 0, 0.5); /* أغمق */
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            margin-bottom: 4px;
+            border: 2px solid rgba(217, 179, 130, 0.5);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
 
+        /* تأثير التوهج الداخلي */
+        .icon-circle::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(217, 179, 130, 0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .icon-item:hover .icon-circle,
         .icon-item:active .icon-circle {
-            background: rgba(217, 179, 130, 0.3);
+            transform: scale(1.15) rotate(8deg);
             border-color: #d9b382;
-            transform: scale(1.05);
+            background: rgba(217, 179, 130, 0.25);
+            box-shadow: 0 0 20px #d9b382, 0 4px 15px rgba(0, 0, 0, 0.6);
         }
 
-        /* نص مختصر تحت الأيقونة */
+        .icon-item:hover .icon-circle::after,
+        .icon-item:active .icon-circle::after {
+            opacity: 1;
+        }
+
+        .icon-item:hover .icon-circle i,
+        .icon-item:active .icon-circle i {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 5px currentColor);
+        }
+
+        /* نص الأيقونة - غامق مع تأثير */
         .icon-label {
-            font-size: 9px;
-            font-weight: 700;
+            font-size: 10px;
+            font-weight: 800;
             color: white;
             text-align: center;
-            padding: 2px 5px;
+            padding: 3px 8px;
             border-radius: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(1px);
-            -webkit-backdrop-filter: blur(1px);
-            max-width: 55px;
+            background: rgba(0, 0, 0, 0.45); /* أغمق */
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            max-width: 65px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(217, 179, 130, 0.2);
-            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(217, 179, 130, 0.3);
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
         }
 
+        .icon-item:hover .icon-label,
         .icon-item:active .icon-label {
-            background: rgba(217, 179, 130, 0.3);
+            background: rgba(217, 179, 130, 0.35);
             border-color: #d9b382;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(217, 179, 130, 0.3);
         }
 
-        /* ألوان خاصة للأيقونات */
-        .fa-store { color: #d9b382; }
-        .fa-whatsapp { color: #25D366; }
-        .fa-instagram { color: #E4405F; }
-        .fa-facebook { color: #1877F2; }
-        .fa-youtube { color: #FF0000; }
-        .fa-telegram { color: #0088cc; }
-        .fa-tiktok { color: #ffffff; }
-        .fa-x-twitter { color: #ffffff; }
-        .fa-snapchat { color: #FFFC00; }
+        /* ألوان أيقونات أكثر إشراقاً */
+        .fa-store { 
+            color: #ffd700; 
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+        }
+        .fa-whatsapp { 
+            color: #25D366; 
+            filter: drop-shadow(0 0 5px rgba(37, 211, 102, 0.5));
+        }
+        .fa-instagram { 
+            color: #E4405F; 
+            filter: drop-shadow(0 0 5px rgba(228, 64, 95, 0.5));
+        }
+        .fa-facebook { 
+            color: #1877F2; 
+            filter: drop-shadow(0 0 5px rgba(24, 119, 242, 0.5));
+        }
+        .fa-tiktok { 
+            color: #ffffff; 
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+        }
+        .fa-youtube { 
+            color: #FF0000; 
+            filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.5));
+        }
+        .fa-x-twitter { 
+            color: #ffffff; 
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+        }
+        .fa-snapchat { 
+            color: #FFFC00; 
+            filter: drop-shadow(0 0 5px rgba(255, 252, 0, 0.5));
+        }
+        .fa-telegram { 
+            color: #0088cc; 
+            filter: drop-shadow(0 0 5px rgba(0, 136, 204, 0.5));
+        }
 
-        /* المساحة السفلية */
+        /* تأثيرات إضافية عند hover */
+        .icon-item:hover .fa-store,
+        .icon-item:active .fa-store {
+            color: #ffed4d;
+            text-shadow: 0 0 15px #ffd700;
+        }
+
+        .icon-item:hover .fa-whatsapp,
+        .icon-item:active .fa-whatsapp {
+            color: #6fdf8f;
+            text-shadow: 0 0 15px #25D366;
+        }
+
+        .icon-item:hover .fa-instagram,
+        .icon-item:active .fa-instagram {
+            color: #f77777;
+            text-shadow: 0 0 15px #E4405F;
+        }
+
         .bottom-spacer {
             flex: 1;
             width: 100%;
         }
 
-        /* لوحة التحكم */
+        /* لوحة التحكم - بدون تغيير */
         .admin-panel {
             position: fixed;
             top: 0;
@@ -306,17 +400,11 @@
     </style>
 </head>
 <body>
-    <!-- الصورة الجديدة كخلفية -->
     <div class="custom-bg"></div>
 
     <div class="container">
-        <!-- مساحة علوية بمقدار 2 أيقونة للأسفل -->
         <div class="top-spacer"></div>
-
-        <!-- أيقونات في المنتصف -->
         <div class="icons-grid" id="iconsGrid"></div>
-
-        <!-- مساحة سفلية -->
         <div class="bottom-spacer"></div>
     </div>
 
@@ -347,7 +435,6 @@
     <div class="notification" id="notification"><i class="fas fa-check-circle"></i><span id="notif-message"></span></div>
 
     <script>
-        // قائمة الأيقونات (9 أيقونات - 3×3)
         let iconsData = [
             { icon: 'fas fa-store', label: 'المتجر', url: 'https://shababekcurtains.com/index.html?page=categories#homePage' },
             { icon: 'fab fa-whatsapp', label: 'واتساب', url: 'https://wa.me/9647883002797' },
@@ -364,13 +451,13 @@
         let clickTimer;
 
         function loadData() {
-            const saved = localStorage.getItem('shababek_icons_final_v4');
+            const saved = localStorage.getItem('shababek_icons_dark_interactive');
             if (saved) iconsData = JSON.parse(saved);
             renderIcons();
         }
 
         function saveData() {
-            localStorage.setItem('shababek_icons_final_v4', JSON.stringify(iconsData));
+            localStorage.setItem('shababek_icons_dark_interactive', JSON.stringify(iconsData));
         }
 
         function renderIcons() {
