@@ -51,20 +51,21 @@
             padding: 20px 15px;
         }
 
-        /* المساحة العلوية (الشعار موجود في الصورة) */
+        /* المساحة العلوية (الشعار موجود في الصورة) - تم تقليلها لرفع الأيقونات */
         .top-spacer {
-            height: 22vh;
+            height: 18vh; /* تم التقليل من 22vh إلى 18vh لرفع الأيقونات للأعلى */
             width: 100%;
         }
 
         /* المنطقة الوسطى - شبكة 3×3 */
         .icons-grid {
             width: 100%;
-            max-width: 300px;
+            max-width: 280px; /* تم التصغير قليلاً */
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 18px 15px;
-            padding: 10px 0;
+            gap: 12px 10px; /* تم تقريب الأيقونات لبعضها */
+            padding: 5px 0;
+            margin-top: -5px; /* رفع الأيقونات أكثر */
         }
 
         /* عنصر الأيقونة الواحدة */
@@ -80,7 +81,7 @@
             animation: fadeIn 0.3s ease forwards;
             opacity: 0;
             background: transparent;
-            padding: 5px 0;
+            padding: 3px 0;
         }
 
         @keyframes fadeIn {
@@ -99,25 +100,25 @@
         .icon-item:nth-child(9) { animation-delay: 0.18s; }
 
         .icon-item:active {
-            transform: scale(0.9);
+            transform: scale(0.92);
         }
 
         /* دائرة الأيقونة مع تضليل خلفي */
         .icon-circle {
-            width: 55px;
-            height: 55px;
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
+            font-size: 28px;
             color: white;
-            background: rgba(0, 0, 0, 0.4);  /* تضليل دائري خفيف */
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
-            margin-bottom: 6px;
-            border: 1.5px solid rgba(217, 179, 130, 0.3);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            margin-bottom: 4px;
+            border: 1.5px solid rgba(217, 179, 130, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             transition: all 0.2s ease;
         }
 
@@ -127,18 +128,29 @@
             transform: scale(1.05);
         }
 
-        /* نص مختصر تحت الأيقونة */
+        /* نص مختصر تحت الأيقونة - مع تضليل خلفي */
         .icon-label {
             font-size: 11px;
-            font-weight: 600;
+            font-weight: 700;
             color: white;
             text-align: center;
-            max-width: 70px;
+            padding: 3px 10px; /* إضافة حشو داخلي */
+            border-radius: 20px; /* تدوير النص */
+            background: rgba(0, 0, 0, 0.35); /* تضليل خلفي للنص */
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            max-width: 75px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            background: transparent;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(217, 179, 130, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .icon-item:active .icon-label {
+            background: rgba(217, 179, 130, 0.3);
+            border-color: #d9b382;
         }
 
         /* ألوان خاصة للأيقونات */
@@ -154,7 +166,7 @@
 
         /* المساحة السفلية (QR code موجود في الصورة) */
         .bottom-spacer {
-            height: 16vh;
+            height: 14vh; /* تم تعديلها قليلاً */
             width: 100%;
         }
 
@@ -289,10 +301,10 @@
     <div class="custom-bg"></div>
 
     <div class="container">
-        <!-- مساحة علوية (الشعار موجود في الصورة) -->
+        <!-- مساحة علوية (الشعار موجود في الصورة) - تم تقليلها لرفع الأيقونات -->
         <div class="top-spacer"></div>
 
-        <!-- المنطقة الوسطى - أيقونات 3×3 مع نصوص مختصرة -->
+        <!-- المنطقة الوسطى - أيقونات 3×3 مع نصوص داخل التضليل -->
         <div class="icons-grid" id="iconsGrid"></div>
 
         <!-- مساحة سفلية (QR code موجود في الصورة) -->
@@ -326,7 +338,7 @@
     <div class="notification" id="notification"><i class="fas fa-check-circle"></i><span id="notif-message"></span></div>
 
     <script>
-        // قائمة الأيقونات المطلوبة فقط (9 أيقونات - 3×3)
+        // قائمة الأيقونات (9 أيقونات - 3×3)
         let iconsData = [
             { icon: 'fas fa-store', label: 'المتجر', url: 'https://shababekcurtains.com/index.html?page=categories#homePage' },
             { icon: 'fab fa-whatsapp', label: 'واتساب', url: 'https://wa.me/9647883002797' },
@@ -344,13 +356,13 @@
 
         // تحميل البيانات
         function loadData() {
-            const saved = localStorage.getItem('shababek_icons_3x3');
+            const saved = localStorage.getItem('shababek_icons_final');
             if (saved) iconsData = JSON.parse(saved);
             renderIcons();
         }
 
         function saveData() {
-            localStorage.setItem('shababek_icons_3x3', JSON.stringify(iconsData));
+            localStorage.setItem('shababek_icons_final', JSON.stringify(iconsData));
         }
 
         // عرض الأيقونات في شبكة 3 أعمدة
