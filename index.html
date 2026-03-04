@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>شبابيك للستائر - الروابط</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>شبابيك للستائر - بطاقة الروابط</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
@@ -18,319 +18,314 @@
         body {
             min-height: 100vh;
             background: #000;
-            position: relative;
-            overflow-x: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* منع التمرير نهائياً */
+            position: fixed;
+            width: 100%;
+            height: 100%;
         }
 
         /* الخلفية - الصورة الجديدة */
         .custom-bg {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: url('https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772584034/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_k0xc3e.png') no-repeat center center/cover;
-            z-index: -1;
+            z-index: -2;
         }
 
         /* طبقة شفافة داكنة لتحسين وضوح النصوص */
         .bg-overlay {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             z-index: -1;
         }
 
+        /* الحاوية الرئيسية - بحجم الشاشة بالكامل */
         .container {
             position: relative;
             z-index: 1;
-            min-height: 100vh;
+            width: 100%;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px 15px;
+            padding: 10px;
+            overflow: hidden;
         }
 
-        /* النص الترحيبي من الصورة */
+        /* النص الترحيبي من الصورة - مصغر */
         .brand-header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 8px;
             color: white;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            transform: scale(0.9);
         }
 
         .brand-title-ar {
-            font-size: 48px;
+            font-size: 28px;
             font-weight: 900;
-            line-height: 1.2;
+            line-height: 1.1;
             color: #d9b382;
         }
 
         .brand-title-ar span {
-            font-size: 28px;
+            font-size: 16px;
             color: white;
             display: block;
         }
 
         .brand-title-en {
-            font-size: 24px;
+            font-size: 14px;
             font-weight: 700;
             text-transform: uppercase;
-            margin-top: 5px;
+            margin-top: 2px;
         }
 
         .brand-title-en small {
-            font-size: 16px;
+            font-size: 10px;
             color: #d9b382;
             display: block;
         }
 
-        /* عنوان القسم */
+        /* عنوان القسم - مصغر جداً */
         .section-title {
             color: white;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: 900;
-            margin: 15px 0 10px;
+            margin: 5px 0 3px;
             text-align: center;
             width: 100%;
-            max-width: 400px;
+            max-width: 350px;
             text-shadow: 1px 1px 3px black;
         }
 
         .section-title i {
             color: #d9b382;
-            margin-left: 5px;
+            margin-left: 3px;
+            font-size: 10px;
         }
 
-        /* شبكة الروابط */
+        /* شبكة الروابط - مصغرة جداً */
         .links-grid {
             width: 100%;
-            max-width: 400px;
+            max-width: 350px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 6px;
         }
 
-        /* تصميم الرابط داخل المستطيل - للهاتف */
+        /* تصميم الرابط المصغر جداً */
         .link-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 12px 20px;
+            gap: 8px;
+            padding: 6px 12px;
             background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 2px solid rgba(217, 179, 130, 0.6);
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1.5px solid rgba(217, 179, 130, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             color: white;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             cursor: pointer;
-            animation: fadeInUp 0.5s ease forwards;
+            animation: fadeIn 0.3s ease forwards;
             opacity: 0;
-            transform: translateY(20px);
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
 
-        /* تأخير ظهور الروابط */
-        .link-item:nth-child(1) { animation-delay: 0.1s; }
-        .link-item:nth-child(2) { animation-delay: 0.15s; }
-        .link-item:nth-child(3) { animation-delay: 0.2s; }
-        .link-item:nth-child(4) { animation-delay: 0.25s; }
-        .link-item:nth-child(5) { animation-delay: 0.3s; }
-        .link-item:nth-child(6) { animation-delay: 0.35s; }
-        .link-item:nth-child(7) { animation-delay: 0.4s; }
-        .link-item:nth-child(8) { animation-delay: 0.45s; }
+        /* تأخير بسيط للظهور */
+        .link-item:nth-child(1) { animation-delay: 0.05s; }
+        .link-item:nth-child(2) { animation-delay: 0.1s; }
+        .link-item:nth-child(3) { animation-delay: 0.15s; }
+        .link-item:nth-child(4) { animation-delay: 0.2s; }
+        .link-item:nth-child(5) { animation-delay: 0.25s; }
+        .link-item:nth-child(6) { animation-delay: 0.3s; }
+        .link-item:nth-child(7) { animation-delay: 0.35s; }
+        .link-item:nth-child(8) { animation-delay: 0.4s; }
 
-        /* التأثير الذهبي عند المرور (للحواسيب) أو الضغط (للهواتف) */
-        .link-item:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: #d9b382;
-            background: rgba(217, 179, 130, 0.3);
-            box-shadow: 0 15px 30px rgba(217, 179, 130, 0.4);
-        }
-
+        /* تأثير اللمس للهاتف */
         .link-item:active {
             transform: scale(0.98);
+            background: rgba(217, 179, 130, 0.3);
+            border-color: #d9b382;
         }
 
-        /* أيقونة الرابط داخل مربع */
+        /* أيقونة الرابط - مصغرة */
         .link-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 15px;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 16px;
             background: rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(217, 179, 130, 0.5);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             flex-shrink: 0;
         }
 
-        .link-item:hover .link-icon {
+        .link-item:active .link-icon {
             background: #d9b382;
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.05);
         }
 
-        .link-item:hover .link-icon i {
+        .link-item:active .link-icon i {
             color: #3d2e24 !important;
         }
 
-        /* محتوى الرابط */
+        /* محتوى الرابط - مصغر */
         .link-content {
             flex: 1;
         }
 
         .link-title {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .badge {
-            background: #d9b382;
-            color: #3d2e24;
-            font-size: 10px;
-            padding: 3px 8px;
-            border-radius: 30px;
-            font-weight: 700;
-        }
-
-        .link-desc {
             font-size: 13px;
-            opacity: 0.9;
+            font-weight: 800;
+            margin-bottom: 2px;
             display: flex;
             align-items: center;
             gap: 5px;
         }
 
+        .badge {
+            background: #d9b382;
+            color: #3d2e24;
+            font-size: 8px;
+            padding: 2px 5px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        .link-desc {
+            font-size: 9px;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
         .link-desc i {
-            font-size: 6px;
+            font-size: 4px;
             color: #d9b382;
         }
 
-        /* السهم */
+        /* السهم - مصغر */
         .link-arrow {
-            width: 35px;
-            height: 35px;
-            border-radius: 12px;
+            width: 25px;
+            height: 25px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(217, 179, 130, 0.5);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             flex-shrink: 0;
         }
 
-        .link-item:hover .link-arrow {
-            transform: translateX(-5px) rotate(360deg);
+        .link-item:active .link-arrow {
+            transform: translateX(-3px);
             background: #d9b382;
         }
 
-        .link-item:hover .link-arrow i {
+        .link-item:active .link-arrow i {
             color: #3d2e24;
         }
 
-        /* ألوان خاصة للأيقونات */
-        .whatsapp { background: #25D366; }
-        .youtube { background: #FF0000; }
-        .instagram { background: radial-gradient(circle at 30% 30%, #FCAF45, #E4405F, #833AB4); }
-        .facebook { background: #1877F2; }
-        .tiktok { background: #000000; }
-        .twitter { background: #1DA1F2; }
-        .snapchat { background: #FFFC00; color: #000; }
-        .telegram { background: #0088cc; }
-        .gold { background: #d9b382; }
+        .link-arrow i {
+            font-size: 10px;
+        }
 
-        /* قسم QR Code (مستطيل أنيق) */
+        /* قسم QR Code - مصغر جداً */
         .qr-section {
             width: 100%;
-            max-width: 400px;
-            margin-top: 25px;
+            max-width: 350px;
+            margin-top: 8px;
             background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 2px solid #d9b382;
-            border-radius: 30px;
-            padding: 20px 15px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1.5px solid #d9b382;
+            border-radius: 20px;
+            padding: 8px 10px;
             text-align: center;
-            animation: fadeIn 1s ease 0.8s both;
+            animation: fadeIn 0.3s ease 0.5s both;
         }
 
         .qr-title {
             color: #d9b382;
-            font-size: 18px;
+            font-size: 11px;
             font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
         }
 
         .qr-title i {
-            margin-left: 8px;
-            font-size: 22px;
+            margin-left: 4px;
+            font-size: 12px;
         }
 
-        /* QR code حقيقي (تم إنشاؤه من الرابط) */
         .qr-code-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 15px;
+            margin-bottom: 3px;
         }
 
         .qr-code {
-            width: 150px;
-            height: 150px;
+            width: 60px;
+            height: 60px;
             background: white;
-            border-radius: 20px;
-            padding: 5px;
+            border-radius: 12px;
+            padding: 3px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px solid #d9b382;
+            border: 2px solid #d9b382;
         }
 
-        .qr-code svg {
+        .qr-code svg, .qr-code canvas {
             width: 100%;
             height: 100%;
+            border-radius: 8px;
         }
 
         .qr-note {
             color: white;
-            font-size: 14px;
+            font-size: 8px;
             font-weight: 600;
         }
 
         .qr-note i {
             color: #d9b382;
-            margin-left: 5px;
+            margin-left: 3px;
+            font-size: 8px;
         }
 
-        /* تذييل الصفحة */
+        /* تذييل الصفحة - مصغر جداً */
         .footer {
-            margin-top: 20px;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 12px;
+            margin-top: 5px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 7px;
             text-align: center;
         }
 
-        /* ===== لوحة التحكم (5 نقرات على أول رابط) ===== */
+        /* ===== لوحة التحكم (تظهر عند الحاجة) ===== */
         .admin-panel {
             position: fixed;
             top: 0;
@@ -343,19 +338,20 @@
             display: none;
             justify-content: center;
             align-items: center;
-            padding: 15px;
+            padding: 10px;
+            overflow-y: auto;
         }
 
-        .admin-panel.show { display: flex; animation: fadeIn 0.3s; }
+        .admin-panel.show { display: flex; }
 
         .admin-content {
             background: white;
             width: 100%;
-            max-width: 420px;
+            max-width: 380px;
             max-height: 90vh;
             overflow-y: auto;
-            border-radius: 30px;
-            padding: 25px;
+            border-radius: 25px;
+            padding: 20px;
             border: 3px solid #d9b382;
         }
 
@@ -363,126 +359,100 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
             border-bottom: 2px solid #d9b382;
         }
 
-        .admin-header h2 { color: #3d2e24; font-weight: 900; font-size: 22px; }
+        .admin-header h2 { font-size: 18px; }
 
         .admin-close {
-            width: 45px;
-            height: 45px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             background: #f0f0f0;
             border: none;
-            font-size: 22px;
             cursor: pointer;
         }
 
-        .admin-close:active { background: #e74c3c; color: white; }
-
         .admin-tabs {
             display: flex;
-            gap: 5px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+            gap: 3px;
+            margin-bottom: 15px;
         }
 
         .admin-tab {
             flex: 1;
-            padding: 12px;
+            padding: 8px;
+            font-size: 12px;
             background: #f0f0f0;
             border: none;
-            border-radius: 15px;
-            font-weight: 700;
+            border-radius: 10px;
             cursor: pointer;
-            min-width: 80px;
         }
 
         .admin-tab.active { background: #d9b382; color: white; }
 
         .admin-section {
             background: #f8f8f8;
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
         }
 
-        .admin-section h3 { color: #b58f5a; margin-bottom: 15px; }
+        .admin-section h3 { font-size: 14px; margin-bottom: 10px; }
 
         .admin-input {
             width: 100%;
-            padding: 14px;
-            margin-bottom: 12px;
+            padding: 10px;
+            margin-bottom: 8px;
             border: 2px solid #eee;
-            border-radius: 15px;
-            font-family: 'Cairo';
+            border-radius: 10px;
+            font-size: 13px;
         }
 
-        .admin-input:focus { border-color: #d9b382; outline: none; }
-
         .admin-btn {
-            background: #d9b382;
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 15px;
-            font-weight: 900;
-            width: 100%;
-            cursor: pointer;
+            padding: 10px;
+            font-size: 14px;
         }
 
         .admin-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-height: 250px;
-            overflow-y: auto;
+            max-height: 200px;
         }
 
         .admin-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px;
-            background: white;
-            border-radius: 12px;
-            border: 1px solid #eee;
+            padding: 8px;
         }
-
-        .admin-item-actions { display: flex; gap: 5px; }
 
         .admin-item-btn {
-            width: 40px;
-            height: 40px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            font-size: 12px;
         }
-
-        .admin-item-btn.edit { background: #3498db; color: white; }
-        .admin-item-btn.delete { background: #e74c3c; color: white; }
 
         /* إشعار */
         .notification {
             position: fixed;
-            top: 20px;
+            top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255,255,255,0.95);
+            background: white;
             color: #3d2e24;
-            padding: 15px 30px;
-            border-radius: 60px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 0 2px #d9b382;
+            padding: 8px 20px;
+            border-radius: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3), 0 0 0 2px #d9b382;
             display: none;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             z-index: 3000;
-            font-weight: 700;
+            font-size: 12px;
+            white-space: nowrap;
         }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* إخفاء شريط التمرير */
+        ::-webkit-scrollbar {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -490,11 +460,10 @@
     <div class="bg-overlay"></div>
 
     <div class="container">
-        <!-- النص الترحيبي من الصورة -->
+        <!-- النص الترحيبي من الصورة - مصغر -->
         <div class="brand-header">
             <div class="brand-title-ar">
-                0.00<br>
-                SHABABE<br>
+                0.00 SHABABE
                 <span>على وثوقه</span>
             </div>
             <div class="brand-title-en">
@@ -503,30 +472,28 @@
             </div>
         </div>
 
-        <!-- خدماتنا -->
+        <!-- خدماتنا - روابط مصغرة -->
         <div class="section-title"><i class="fas fa-store"></i> خدماتنا</div>
         <div class="links-grid" id="store-links"></div>
 
-        <!-- تابعنا على -->
+        <!-- تابعنا على - روابط مصغرة -->
         <div class="section-title"><i class="fas fa-hashtag"></i> تابعنا على</div>
         <div class="links-grid" id="social-links"></div>
 
-        <!-- روابط مهمة -->
+        <!-- روابط مهمة - روابط مصغرة -->
         <div class="section-title"><i class="fas fa-star"></i> روابط مهمة</div>
         <div class="links-grid" id="important-links"></div>
 
-        <!-- QR Code أنيق كما في الصورة -->
+        <!-- QR Code مصغر -->
         <div class="qr-section">
             <div class="qr-title"><i class="fas fa-qrcode"></i> SCAN ME!</div>
             <div class="qr-code-container">
-                <div class="qr-code" id="qrCodeContainer">
-                    <!-- سيتم إنشاء QR code عبر JavaScript -->
-                </div>
+                <div class="qr-code" id="qrCodeContainer"></div>
             </div>
             <div class="qr-note"><i class="fas fa-camera"></i> أضف شبابيك على تيليجرام</div>
         </div>
 
-        <div class="footer">© 2026 شبابيك للستائر • ظل وذوق</div>
+        <div class="footer">© 2026 شبابيك للستائر</div>
     </div>
 
     <!-- لوحة التحكم -->
@@ -546,7 +513,7 @@
                 <input type="text" id="link-title" class="admin-input" placeholder="العنوان">
                 <input type="text" id="link-desc" class="admin-input" placeholder="الوصف">
                 <input type="url" id="link-url" class="admin-input" placeholder="الرابط">
-                <input type="text" id="link-icon" class="admin-input" placeholder="الأيقونة (fab fa-facebook)">
+                <input type="text" id="link-icon" class="admin-input" placeholder="الأيقونة">
                 <button class="admin-btn" onclick="addLink()">➕ إضافة</button>
             </div>
             <div class="admin-section">
@@ -560,44 +527,43 @@
 
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
     <script>
-        // بيانات الروابط (محدثة)
+        // بيانات الروابط (14 رابط في المجموع - مناسبة لشاشة واحدة)
         let linksData = {
             store: [
-                { title: 'المتجر الإلكتروني', desc: 'تصفح جميع المنتجات', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-store' },
+                { title: 'المتجر', desc: 'تسوق الآن', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-store' },
                 { title: 'منتجاتنا', desc: 'أحدث التصاميم', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-tag' },
-                { title: 'استشارة مجانية', desc: 'خبراء التصميم', url: 'https://wa.me/9647883002797?text=استشارة', icon: 'fas fa-headset' }
+                { title: 'استشارة', desc: 'خبراء التصميم', url: 'https://wa.me/9647883002797?text=استشارة', icon: 'fas fa-headset' }
             ],
             social: [
-                { title: 'فيسبوك', desc: 'تابعنا على فيسبوك', url: 'https://www.facebook.com/profile.php?id=61587692021311', icon: 'fab fa-facebook' },
+                { title: 'فيسبوك', desc: 'تابعنا', url: 'https://www.facebook.com/profile.php?id=61587692021311', icon: 'fab fa-facebook' },
                 { title: 'إنستغرام', desc: 'أحدث التصاميم', url: 'https://www.instagram.com/shababek.curtains/', icon: 'fab fa-instagram' },
-                { title: 'تيك توك', desc: 'فيديوهات قصيرة', url: 'https://www.tiktok.com/@shababek.curtains', icon: 'fab fa-tiktok' },
-                { title: 'يوتيوب', desc: 'شاهد تصاميمنا', url: 'https://youtube.com/@shababek.curtains', icon: 'fab fa-youtube' },
-                { title: 'تويتر', desc: 'تغريدات على X', url: 'https://x.com/ShababekCurtain', icon: 'fa-brands fa-x-twitter' },
-                { title: 'سناب شات', desc: 'يومياتنا', url: 'https://www.snapchat.com/add/shababekcurtin', icon: 'fab fa-snapchat' },
-                { title: 'واتساب', desc: 'تواصل مباشر', url: 'https://wa.me/9647883002797', icon: 'fab fa-whatsapp' },
+                { title: 'تيك توك', desc: 'فيديوهات', url: 'https://www.tiktok.com/@shababek.curtains', icon: 'fab fa-tiktok' },
+                { title: 'يوتيوب', desc: 'شاهد', url: 'https://youtube.com/@shababek.curtains', icon: 'fab fa-youtube' },
+                { title: 'تويتر', desc: 'تغريدات', url: 'https://x.com/ShababekCurtain', icon: 'fa-brands fa-x-twitter' },
+                { title: 'سناب', desc: 'يوميات', url: 'https://www.snapchat.com/add/shababekcurtin', icon: 'fab fa-snapchat' },
+                { title: 'واتساب', desc: 'تواصل', url: 'https://wa.me/9647883002797', icon: 'fab fa-whatsapp' },
                 { title: 'تيليجرام', desc: 'قناتنا', url: 'https://t.me/shababekcurtains', icon: 'fab fa-telegram' }
             ],
             important: [
-                { title: 'منتدى شبابيك', desc: 'مجتمع الديكور', url: 'https://shababekcurtains.com/ai.html', icon: 'fas fa-comments' },
-                { title: 'طرق الدفع', desc: 'طرق دفع آمنة', url: 'https://shababekcurtains.com/index.html?page=categories#paymentPage', icon: 'fas fa-credit-card' },
-                { title: 'من نحن', desc: 'تعرف على فريقنا', url: 'https://shababekcurtains.com/index.html?page=categories#aboutPage', icon: 'fas fa-info-circle' }
+                { title: 'منتدى', desc: 'مجتمع الديكور', url: 'https://shababekcurtains.com/ai.html', icon: 'fas fa-comments' },
+                { title: 'طرق الدفع', desc: 'آمنة', url: 'https://shababekcurtains.com/index.html?page=categories#paymentPage', icon: 'fas fa-credit-card' },
+                { title: 'من نحن', desc: 'تعرف علينا', url: 'https://shababekcurtains.com/index.html?page=categories#aboutPage', icon: 'fas fa-info-circle' }
             ]
         };
 
         let currentTab = 'store';
         let clickCount = 0;
         let clickTimer;
-        let firstLinkClicked = false;
 
         // تحميل البيانات
         function loadData() {
-            const saved = localStorage.getItem('shababek_links_final');
+            const saved = localStorage.getItem('shababek_links_card');
             if (saved) linksData = JSON.parse(saved);
             renderAllLinks();
         }
 
         function saveData() {
-            localStorage.setItem('shababek_links_final', JSON.stringify(linksData));
+            localStorage.setItem('shababek_links_card', JSON.stringify(linksData));
         }
 
         // عرض الروابط
@@ -622,34 +588,13 @@
             `).join('');
         }
 
-        // فتح الروابط المباشرة
+        // فتح الروابط
         function openAppLink(url, title) {
-            showNotif(`جاري فتح ${title}...`);
-            if (url.includes('wa.me') || url.includes('whatsapp')) {
-                let phone = url.match(/\d+/g)?.join('') || '9647883002797';
-                window.location.href = `whatsapp://send?phone=${phone}`;
-                setTimeout(() => window.location.href = url, 800);
-            } else if (url.includes('instagram.com')) {
-                let username = url.split('/').filter(s => s && !s.includes('?')).pop() || 'shababek.curtains';
-                window.location.href = `instagram://user?username=${username}`;
-                setTimeout(() => window.location.href = url, 800);
-            } else if (url.includes('facebook.com')) {
-                window.location.href = `fb://page/61587692021311`;
-                setTimeout(() => window.location.href = url, 800);
-            } else if (url.includes('tiktok.com')) {
-                let username = url.split('@')[1]?.split('/')[0] || 'shababek.curtains';
-                window.location.href = `tiktok://user?username=${username}`;
-                setTimeout(() => window.location.href = url, 800);
-            } else if (url.includes('t.me')) {
-                let username = url.split('/').pop()?.split('?')[0] || 'shababekcurtains';
-                window.location.href = `tg://resolve?domain=${username}`;
-                setTimeout(() => window.location.href = url, 800);
-            } else {
-                window.location.href = url;
-            }
+            showNotif(`${title}`);
+            window.location.href = url;
         }
 
-        // نظام الـ 5 نقرات على أول رابط فقط
+        // نظام الـ 5 نقرات على أول رابط
         function handleFirstLinkClick(event, index, category) {
             if (category === 'store' && index === 0) {
                 clickCount++;
@@ -665,30 +610,16 @@
         // إنشاء QR Code
         function generateQRCode() {
             const container = document.getElementById('qrCodeContainer');
-            // تجميع جميع الروابط في نص واحد
-            const allLinks = 
-                "شبابيك للستائر\n" +
-                "SHABABEK CURTAINS\n" +
-                "ظل وذوق\n\n" +
-                "📱 وسائل التواصل:\n" +
-                linksData.social.map(l => `${l.title}: ${l.url}`).join('\n') +
-                "\n\n🛍️ خدمات:\n" +
-                linksData.store.map(l => `${l.title}: ${l.url}`).join('\n') +
-                "\n\n⭐ روابط مهمة:\n" +
-                linksData.important.map(l => `${l.title}: ${l.url}`).join('\n') +
-                "\n\n📞 للتواصل: +9647883002797";
-
-            // استخدام مكتبة QRCode لإنشاء كود حقيقي
-            QRCode.toCanvas(document.createElement('canvas'), allLinks, { width: 200, margin: 2 }, function(err, canvas) {
+            const allLinks = "شبابيك للستائر\n" + window.location.href;
+            
+            QRCode.toCanvas(document.createElement('canvas'), allLinks, { width: 150, margin: 1 }, function(err, canvas) {
                 if (err) {
-                    console.error(err);
-                    // إذا فشل، نعرض نص بديل
-                    container.innerHTML = '<div style="color:white;">QR Code</div>';
+                    container.innerHTML = '<div style="color:white;">QR</div>';
                 } else {
                     container.innerHTML = '';
                     canvas.style.width = '100%';
                     canvas.style.height = '100%';
-                    canvas.style.borderRadius = '15px';
+                    canvas.style.borderRadius = '8px';
                     container.appendChild(canvas);
                 }
             });
@@ -715,9 +646,9 @@
             let list = document.getElementById('admin-links-list');
             list.innerHTML = linksData[category].map((link, index) => `
                 <div class="admin-item">
-                    <div style="display:flex; align-items:center; gap:10px;">
-                        <i class="${link.icon}" style="color:#d9b382; font-size:20px;"></i>
-                        <div><strong>${link.title}</strong><div style="font-size:11px; color:#999;">${link.url.substring(0,30)}</div></div>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <i class="${link.icon}" style="color:#d9b382;"></i>
+                        <div><strong>${link.title}</strong></div>
                     </div>
                     <div class="admin-item-actions">
                         <button class="admin-item-btn edit" onclick="editLink('${category}', ${index})">✏️</button>
@@ -732,32 +663,26 @@
             let desc = document.getElementById('link-desc').value;
             let url = document.getElementById('link-url').value;
             let icon = document.getElementById('link-icon').value;
-            if (!title || !url) { showNotif('الرجاء إدخال العنوان والرابط', 'error'); return; }
-            linksData[currentTab].push({ title, desc: desc || `تابعنا على ${title}`, url, icon: icon || 'fas fa-link' });
+            if (!title || !url) { showNotif('أكمل البيانات'); return; }
+            linksData[currentTab].push({ title, desc: desc || title, url, icon: icon || 'fas fa-link' });
             saveData(); renderAllLinks(); showAdminLinks(currentTab);
-            document.getElementById('link-title').value = ''; document.getElementById('link-desc').value = '';
-            document.getElementById('link-url').value = ''; document.getElementById('link-icon').value = '';
-            showNotif('✅ تمت الإضافة');
-            generateQRCode(); // تحديث QR code بعد الإضافة
+            document.getElementById('link-title').value = '';
+            showNotif('✅ تم');
         }
 
         function editLink(category, index) {
             let link = linksData[category][index];
-            let newTitle = prompt('تعديل العنوان:', link.title);
+            let newTitle = prompt('العنوان:', link.title);
             if (newTitle) link.title = newTitle;
-            let newUrl = prompt('تعديل الرابط:', link.url);
-            if (newUrl) link.url = newUrl;
             saveData(); renderAllLinks(); showAdminLinks(currentTab);
             showNotif('✅ تم التعديل');
-            generateQRCode(); // تحديث QR code بعد التعديل
         }
 
         function deleteLink(category, index) {
-            if (confirm('حذف الرابط؟')) {
+            if (confirm('حذف؟')) {
                 linksData[category].splice(index, 1);
                 saveData(); renderAllLinks(); showAdminLinks(currentTab);
                 showNotif('✅ تم الحذف');
-                generateQRCode(); // تحديث QR code بعد الحذف
             }
         }
 
@@ -765,14 +690,14 @@
             let n = document.getElementById('notification');
             document.getElementById('notif-message').innerText = msg;
             n.style.display = 'flex';
-            setTimeout(() => n.style.display = 'none', 2000);
+            setTimeout(() => n.style.display = 'none', 1000);
         }
 
         // بدء التشغيل
         document.addEventListener('DOMContentLoaded', () => {
             loadData();
             generateQRCode();
-            setTimeout(() => showNotif('👋 اضغط 5 مرات على أول رابط للتحكم'), 1500);
+            setTimeout(() => showNotif('👋 اضغط 5 مرات على "المتجر"'), 1000);
         });
     </script>
 </body>
