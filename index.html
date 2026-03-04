@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>شبابيك للستائر - أيقونات سريعة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -25,14 +27,14 @@
             height: 100%;
         }
 
-        /* الصورة المرفقة كخلفية */
+        /* الصورة الجديدة كخلفية */
         .custom-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772584034/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_k0xc3e.png') no-repeat center center/cover;
+            background: url('https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772592833/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_k1da5w.png') no-repeat center center/cover;
             z-index: -1;
         }
 
@@ -46,59 +48,39 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 15px 10px;
+            padding: 20px 15px;
         }
 
-        /* المساحة العلوية (الشعار) - نتركها فارغة لأنها موجودة في الصورة */
+        /* المساحة العلوية (الشعار موجود في الصورة) */
         .top-spacer {
-            height: 18vh;
+            height: 22vh;
             width: 100%;
         }
 
-        /* المنطقة الوسطى - أيقونات فقط (بدون نصوص) */
-        .icons-container {
+        /* المنطقة الوسطى - شبكة الأيقونات */
+        .icons-grid {
             width: 100%;
-            max-width: 300px;
+            max-width: 320px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px 8px;
+            padding: 5px 0;
+        }
+
+        /* عنصر الأيقونة الواحدة */
+        .icon-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(2px);
-            border-radius: 30px;
-            padding: 12px 10px;
-            margin: 5px 0;
-        }
-
-        /* صف الأيقونات */
-        .icons-row {
-            display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 12px;
-            width: 100%;
-            flex-wrap: wrap;
-        }
-
-        /* أيقونة مفردة */
-        .icon-item {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1.5px solid rgba(217, 179, 130, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            text-decoration: none;
             color: white;
-            font-size: 22px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.15s ease;
             animation: fadeIn 0.3s ease forwards;
             opacity: 0;
+            background: transparent; /* خلفية شفافة تماماً */
+            padding: 5px 0;
         }
 
         @keyframes fadeIn {
@@ -114,18 +96,47 @@
         .icon-item:nth-child(6) { animation-delay: 0.12s; }
         .icon-item:nth-child(7) { animation-delay: 0.14s; }
         .icon-item:nth-child(8) { animation-delay: 0.16s; }
+        .icon-item:nth-child(9) { animation-delay: 0.18s; }
+        .icon-item:nth-child(10) { animation-delay: 0.2s; }
+        .icon-item:nth-child(11) { animation-delay: 0.22s; }
+        .icon-item:nth-child(12) { animation-delay: 0.24s; }
+        .icon-item:nth-child(13) { animation-delay: 0.26s; }
+        .icon-item:nth-child(14) { animation-delay: 0.28s; }
 
         .icon-item:active {
-            transform: scale(0.92);
-            background: #d9b382;
-            border-color: white;
+            transform: scale(0.9);
         }
 
-        .icon-item:active i {
-            color: #3d2e24 !important;
+        /* دائرة الأيقونة - شفافة تماماً */
+        .icon-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            background: transparent; /* خلفية شفافة */
+            margin-bottom: 4px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
 
-        /* ألوان خاصة لبعض الأيقونات عند التمرير (اختياري) */
+        /* نص مختصر تحت الأيقونة */
+        .icon-label {
+            font-size: 9px;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            max-width: 55px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            background: transparent;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ألوان خاصة للأيقونات */
         .fa-whatsapp { color: #25D366; }
         .fa-instagram { color: #E4405F; }
         .fa-facebook { color: #1877F2; }
@@ -134,47 +145,20 @@
         .fa-tiktok { color: #ffffff; }
         .fa-x-twitter { color: #ffffff; }
         .fa-snapchat { color: #FFFC00; }
+        .fa-store { color: #d9b382; }
+        .fa-tag { color: #d9b382; }
+        .fa-headset { color: #d9b382; }
+        .fa-comments { color: #d9b382; }
+        .fa-credit-card { color: #d9b382; }
+        .fa-info-circle { color: #d9b382; }
 
-        /* المنطقة السفلية - QR code */
-        .qr-container {
-            width: 100%;
-            max-width: 300px;
-            margin-top: 5px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .qr-box {
-            width: 60px;
-            height: 60px;
-            background: white;
-            border-radius: 12px;
-            padding: 3px;
-            border: 2px solid #d9b382;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .qr-box:active {
-            transform: scale(0.95);
-        }
-
-        .qr-box canvas {
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
-        }
-
-        /* المساحة السفلية الفارغة */
+        /* المساحة السفلية (QR code موجود في الصورة) */
         .bottom-spacer {
-            height: 10vh;
+            height: 16vh;
             width: 100%;
         }
 
-        /* لوحة التحكم (تبقى كما هي) */
+        /* لوحة التحكم */
         .admin-panel {
             position: fixed;
             top: 0;
@@ -301,24 +285,17 @@
     </style>
 </head>
 <body>
-    <!-- الصورة المرفقة كخلفية -->
+    <!-- الصورة الجديدة كخلفية (بها QR code) -->
     <div class="custom-bg"></div>
 
     <div class="container">
         <!-- مساحة علوية (الشعار موجود في الصورة) -->
         <div class="top-spacer"></div>
 
-        <!-- المنطقة الوسطى - أيقونات فقط -->
-        <div class="icons-container" id="iconsContainer"></div>
+        <!-- المنطقة الوسطى - أيقونات مع نصوص مختصرة -->
+        <div class="icons-grid" id="iconsGrid"></div>
 
-        <!-- QR code -->
-        <div class="qr-container">
-            <div class="qr-box" id="qrBox" onclick="openQRCode()">
-                <div id="qrCodeContainer"></div>
-            </div>
-        </div>
-
-        <!-- مساحة سفلية -->
+        <!-- مساحة سفلية (QR code موجود في الصورة) -->
         <div class="bottom-spacer"></div>
     </div>
 
@@ -335,6 +312,7 @@
             <div class="admin-section">
                 <h3>➕ إضافة أيقونة</h3>
                 <input type="text" id="icon-class" class="admin-input" placeholder="اسم الأيقونة (fab fa-facebook)">
+                <input type="text" id="icon-label" class="admin-input" placeholder="النص (فيسبوك)">
                 <input type="url" id="icon-url" class="admin-input" placeholder="الرابط">
                 <button class="admin-btn" onclick="addIcon()">➕ إضافة</button>
             </div>
@@ -347,24 +325,23 @@
 
     <div class="notification" id="notification"><i class="fas fa-check-circle"></i><span id="notif-message"></span></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
     <script>
-        // قائمة الأيقونات فقط
+        // قائمة الأيقونات مع النصوص المختصرة
         let iconsData = [
-            { icon: 'fab fa-facebook', url: 'https://www.facebook.com/profile.php?id=61587692021311' },
-            { icon: 'fab fa-instagram', url: 'https://www.instagram.com/shababek.curtains/' },
-            { icon: 'fab fa-tiktok', url: 'https://www.tiktok.com/@shababek.curtains' },
-            { icon: 'fab fa-youtube', url: 'https://youtube.com/@shababek.curtains' },
-            { icon: 'fa-brands fa-x-twitter', url: 'https://x.com/ShababekCurtain' },
-            { icon: 'fab fa-snapchat', url: 'https://www.snapchat.com/add/shababekcurtin' },
-            { icon: 'fab fa-whatsapp', url: 'https://wa.me/9647883002797' },
-            { icon: 'fab fa-telegram', url: 'https://t.me/shababekcurtains' },
-            { icon: 'fas fa-store', url: 'https://shababekcurtains.com/index.html?page=categories#homePage' },
-            { icon: 'fas fa-tag', url: 'https://shababekcurtains.com/index.html?page=categories#homePage' },
-            { icon: 'fas fa-headset', url: 'https://wa.me/9647883002797?text=استشارة' },
-            { icon: 'fas fa-comments', url: 'https://shababekcurtains.com/ai.html' },
-            { icon: 'fas fa-credit-card', url: 'https://shababekcurtains.com/index.html?page=categories#paymentPage' },
-            { icon: 'fas fa-info-circle', url: 'https://shababekcurtains.com/index.html?page=categories#aboutPage' }
+            { icon: 'fab fa-facebook', label: 'فيسبوك', url: 'https://www.facebook.com/profile.php?id=61587692021311' },
+            { icon: 'fab fa-instagram', label: 'إنستغرام', url: 'https://www.instagram.com/shababek.curtains/' },
+            { icon: 'fab fa-tiktok', label: 'تيك توك', url: 'https://www.tiktok.com/@shababek.curtains' },
+            { icon: 'fab fa-youtube', label: 'يوتيوب', url: 'https://youtube.com/@shababek.curtains' },
+            { icon: 'fa-brands fa-x-twitter', label: 'تويتر', url: 'https://x.com/ShababekCurtain' },
+            { icon: 'fab fa-snapchat', label: 'سناب', url: 'https://www.snapchat.com/add/shababekcurtin' },
+            { icon: 'fab fa-whatsapp', label: 'واتساب', url: 'https://wa.me/9647883002797' },
+            { icon: 'fab fa-telegram', label: 'تيليجرام', url: 'https://t.me/shababekcurtains' },
+            { icon: 'fas fa-store', label: 'المتجر', url: 'https://shababekcurtains.com/index.html?page=categories#homePage' },
+            { icon: 'fas fa-tag', label: 'منتجات', url: 'https://shababekcurtains.com/index.html?page=categories#homePage' },
+            { icon: 'fas fa-headset', label: 'استشارة', url: 'https://wa.me/9647883002797?text=استشارة' },
+            { icon: 'fas fa-comments', label: 'منتدى', url: 'https://shababekcurtains.com/ai.html' },
+            { icon: 'fas fa-credit-card', label: 'طرق دفع', url: 'https://shababekcurtains.com/index.html?page=categories#paymentPage' },
+            { icon: 'fas fa-info-circle', label: 'من نحن', url: 'https://shababekcurtains.com/index.html?page=categories#aboutPage' }
         ];
 
         let clickCount = 0;
@@ -372,32 +349,31 @@
 
         // تحميل البيانات
         function loadData() {
-            const saved = localStorage.getItem('shababek_icons');
+            const saved = localStorage.getItem('shababek_icons_with_labels');
             if (saved) iconsData = JSON.parse(saved);
             renderIcons();
         }
 
         function saveData() {
-            localStorage.setItem('shababek_icons', JSON.stringify(iconsData));
+            localStorage.setItem('shababek_icons_with_labels', JSON.stringify(iconsData));
         }
 
-        // عرض الأيقونات في المنطقة الوسطى (صفوف متعددة)
+        // عرض الأيقونات في شبكة 4 أعمدة
         function renderIcons() {
-            const container = document.getElementById('iconsContainer');
+            const container = document.getElementById('iconsGrid');
             if (!container) return;
 
-            // تقسيم الأيقونات إلى صفوف (4 أيقونات في كل صف)
             let html = '';
-            for (let i = 0; i < iconsData.length; i += 4) {
-                html += '<div class="icons-row">';
-                for (let j = i; j < i + 4 && j < iconsData.length; j++) {
-                    const icon = iconsData[j];
-                    html += `<div class="icon-item" onclick="openIconLink('${icon.url}'); handleIconClick(event, ${j}); return false;">
-                        <i class="${icon.icon}"></i>
-                    </div>`;
-                }
-                html += '</div>';
-            }
+            iconsData.forEach((item, index) => {
+                html += `
+                    <div class="icon-item" onclick="openIconLink('${item.url}'); handleIconClick(event, ${index}); return false;">
+                        <div class="icon-circle">
+                            <i class="${item.icon}"></i>
+                        </div>
+                        <span class="icon-label">${item.label}</span>
+                    </div>
+                `;
+            });
             container.innerHTML = html;
         }
 
@@ -418,29 +394,6 @@
             }
         }
 
-        // إنشاء QR code
-        function generateQRCode() {
-            const container = document.getElementById('qrCodeContainer');
-            const allLinks = "شبابيك للستائر\n" + window.location.href;
-            
-            QRCode.toCanvas(document.createElement('canvas'), allLinks, { width: 100, margin: 1 }, function(err, canvas) {
-                if (err) {
-                    container.innerHTML = 'QR';
-                } else {
-                    container.innerHTML = '';
-                    canvas.style.width = '100%';
-                    canvas.style.height = '100%';
-                    canvas.style.borderRadius = '8px';
-                    container.appendChild(canvas);
-                }
-            });
-        }
-
-        // فتح QR code (يمكن ربطه برابط)
-        function openQRCode() {
-            showNotif('شبابيك للستائر');
-        }
-
         // لوحة التحكم
         function openAdminPanel() {
             document.getElementById('adminPanel').classList.add('show');
@@ -457,11 +410,11 @@
 
         function showAdminIcons() {
             let list = document.getElementById('admin-icons-list');
-            list.innerHTML = iconsData.map((icon, index) => `
+            list.innerHTML = iconsData.map((item, index) => `
                 <div class="admin-item">
                     <div style="display:flex; align-items:center; gap:8px;">
-                        <i class="${icon.icon}" style="color:#d9b382; font-size:16px;"></i>
-                        <span style="font-size:12px;">${icon.url.substring(0,20)}...</span>
+                        <i class="${item.icon}" style="color:#d9b382; font-size:16px;"></i>
+                        <span style="font-size:12px;">${item.label}</span>
                     </div>
                     <div class="admin-item-actions">
                         <button class="admin-item-btn edit" onclick="editIcon(${index})">✏️</button>
@@ -473,16 +426,20 @@
 
         function addIcon() {
             let iconClass = document.getElementById('icon-class').value;
+            let iconLabel = document.getElementById('icon-label').value;
             let iconUrl = document.getElementById('icon-url').value;
-            if (!iconClass || !iconUrl) { showNotif('أكمل البيانات'); return; }
-            iconsData.push({ icon: iconClass, url: iconUrl });
+            if (!iconClass || !iconLabel || !iconUrl) { showNotif('أكمل البيانات'); return; }
+            iconsData.push({ icon: iconClass, label: iconLabel, url: iconUrl });
             saveData(); renderIcons(); showAdminIcons();
             document.getElementById('icon-class').value = '';
+            document.getElementById('icon-label').value = '';
             document.getElementById('icon-url').value = '';
             showNotif('✅ تمت الإضافة');
         }
 
         function editIcon(index) {
+            let newLabel = prompt('النص الجديد:', iconsData[index].label);
+            if (newLabel) iconsData[index].label = newLabel;
             let newUrl = prompt('الرابط الجديد:', iconsData[index].url);
             if (newUrl) iconsData[index].url = newUrl;
             saveData(); renderIcons(); showAdminIcons();
@@ -506,7 +463,6 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             loadData();
-            generateQRCode();
             setTimeout(() => showNotif('👋 5 مرات على أي أيقونة'), 1000);
         });
     </script>
