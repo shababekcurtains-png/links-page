@@ -3,16 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <title>شبابيك للستائر - روابطنا</title>
-    
-    <!-- Font Awesome 6 -->
+    <title>شبابيك للستائر - الروابط</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -21,659 +14,255 @@
             font-family: 'Cairo', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
-
         body {
             min-height: 100vh;
-            background: linear-gradient(145deg, #1a0f0a 0%, #3d2e24 50%, #5c4a3a 100%);
+            background: linear-gradient(145deg, #1a0f0a 0%, #3d2e24 100%);
             position: relative;
             overflow-x: hidden;
         }
-
-        /* خلفية متحركة بنقوش ذهبية */
-        .bg-pattern {
+        /* خلفية الصورة الجديدة التي أرسلتها */
+        .custom-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M20,20 L30,20 L25,30 Z" fill="%23d9b382"/><circle cx="70" cy="70" r="5" fill="%23d9b382"/><circle cx="30" cy="70" r="3" fill="%23d9b382"/><circle cx="70" cy="30" r="8" fill="%23d9b382"/><path d="M45,45 L55,45 L50,60 Z" fill="%23d9b382"/></svg>');
-            background-size: 150px 150px;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772584034/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_k0xc3e.png') no-repeat center center/cover;
+            opacity: 0.2;
             z-index: -1;
-            animation: movePattern 60s linear infinite;
         }
-
-        @keyframes movePattern {
-            0% { background-position: 0 0; }
-            100% { background-position: 300px 300px; }
-        }
-
         .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(217,179,130,0.15), transparent 50%);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(217,179,130,0.15), transparent 60%);
             z-index: -1;
         }
-
-        /* الحاوية الرئيسية */
         .container {
-            position: relative;
-            z-index: 1;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            position: relative; z-index: 1;
+            min-height: 100vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
             padding: 20px 15px;
         }
-
-        /* الشعار مع تأثيرات */
-        .logo-wrapper {
-            text-align: center;
-            margin-bottom: 25px;
-            position: relative;
-            animation: floatIn 0.8s ease;
+        /* شعار النص "شبابيك" من الصورة */
+        .brand-header {
+            text-align: center; margin-bottom: 20px;
+            animation: fadeInDown 0.8s ease;
         }
-
-        @keyframes floatIn {
-            0% { opacity: 0; transform: translateY(-30px); }
-            100% { opacity: 1; transform: translateY(0); }
+        .brand-title-ar {
+            font-size: 42px; font-weight: 900; line-height: 1.2;
+            color: #d9b382; text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
-
-        .logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 4px solid #d9b382;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 2px rgba(217,179,130,0.3);
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            z-index: 10;
+        .brand-title-ar span {
+            display: block; font-size: 24px; font-weight: 600;
+            color: rgba(255,255,255,0.9); letter-spacing: 2px;
         }
-
-        .logo:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 15px 40px rgba(217,179,130,0.5), 0 0 0 4px rgba(255,255,255,0.3);
+        .brand-title-en {
+            font-size: 24px; font-weight: 700; color: white;
+            text-transform: uppercase; margin-top: 5px;
         }
-
-        .logo-glow {
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(217,179,130,0.3), transparent 70%);
-            z-index: -1;
-            animation: pulseGlow 3s infinite;
+        .brand-title-en small {
+            font-size: 14px; color: #d9b382; display: block;
         }
-
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.1); }
-        }
-
-        .click-counter {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #d9b382;
-            color: #3d2e24;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 16px;
-            border: 2px solid white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            opacity: 0;
-            transition: 0.2s;
-        }
-
-        .click-counter.show {
-            opacity: 1;
-            animation: pop 0.3s;
-        }
-
-        @keyframes pop {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(1); }
-        }
-
-        h1 {
-            color: white;
-            font-size: 28px;
-            font-weight: 900;
-            margin: 10px 0 0;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5), 0 0 20px rgba(217,179,130,0.5);
-            letter-spacing: 1px;
-        }
-
-        .subtitle {
-            color: #d9b382;
-            font-size: 16px;
-            font-weight: 600;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-            margin-bottom: 5px;
-        }
-
-        /* عنوان القسم مع تأثيرات */
+        /* عنوان القسم */
         .section-title {
-            color: white;
-            font-size: 18px;
-            font-weight: 900;
-            margin: 25px 0 15px;
-            text-align: center;
-            position: relative;
-            width: 100%;
-            max-width: 380px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            animation: fadeIn 0.8s ease;
+            color: white; font-size: 18px; font-weight: 900;
+            margin: 25px 0 15px; text-align: center;
+            display: flex; align-items: center; justify-content: center;
+            gap: 10px; width: 100%; max-width: 400px;
         }
-
-        .section-title::before,
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 2px;
+        .section-title::before, .section-title::after {
+            content: ''; flex: 1; height: 2px;
             background: linear-gradient(90deg, transparent, #d9b382, transparent);
         }
-
-        .section-title i {
-            color: #d9b382;
-            font-size: 22px;
-            filter: drop-shadow(0 0 5px rgba(217,179,130,0.5));
-        }
-
+        .section-title i { color: #d9b382; font-size: 22px; }
         /* شبكة الروابط */
         .links-grid {
-            width: 100%;
-            max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            width: 100%; max-width: 400px;
+            display: flex; flex-direction: column; gap: 15px;
         }
-
-        /* تصميم الرابط المتطور */
+        /* تصميم الرابط داخل المستطيل (جميع الأيقونات داخله) */
         .link-item {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            padding: 15px 20px;
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 60px;
-            border: 1px solid rgba(217,179,130,0.3);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 1px rgba(217,179,130,0.2) inset;
-            color: white;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
+            display: flex; align-items: center; gap: 15px;
+            padding: 12px 20px;
+            background: rgba(0,0,0,0.4); backdrop-filter: blur(8px);
+            border: 2px solid rgba(217,179,130,0.5);
+            border-radius: 20px;  /* مستطيل بحواف ناعمة */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            color: white; text-decoration: none;
+            transition: all 0.3s ease; cursor: pointer;
             animation: slideIn 0.5s ease forwards;
-            opacity: 0;
-            transform: translateX(-20px);
-            position: relative;
-            overflow: hidden;
+            opacity: 0; transform: translateX(-20px);
         }
-
-        /* تأخير ظهور الروابط */
-        .link-item:nth-child(1) { animation-delay: 0.1s; }
-        .link-item:nth-child(2) { animation-delay: 0.15s; }
-        .link-item:nth-child(3) { animation-delay: 0.2s; }
-        .link-item:nth-child(4) { animation-delay: 0.25s; }
-        .link-item:nth-child(5) { animation-delay: 0.3s; }
-        .link-item:nth-child(6) { animation-delay: 0.35s; }
-        .link-item:nth-child(7) { animation-delay: 0.4s; }
-        .link-item:nth-child(8) { animation-delay: 0.45s; }
-
-        @keyframes slideIn {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* تأثير التوهج الذهبي عند المرور */
-        .link-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(217,179,130,0.3), transparent);
-            transition: left 0.6s ease;
-            z-index: -1;
-        }
-
-        .link-item:hover::before {
-            left: 100%;
-        }
-
-        .link-item::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #d9b382, transparent, #d9b382);
-            border-radius: 62px;
-            z-index: -2;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .link-item:hover::after {
-            opacity: 0.5;
-        }
-
+        /* التأثير الذهبي عند المرور (مع الحفاظ على التصميم) */
         .link-item:hover {
             transform: translateY(-5px) scale(1.02);
-            background: rgba(217,179,130,0.15);
             border-color: #d9b382;
-            box-shadow: 0 15px 35px rgba(217,179,130,0.4), 0 0 0 2px rgba(217,179,130,0.3) inset;
+            background: rgba(217,179,130,0.2);
+            box-shadow: 0 15px 30px rgba(217,179,130,0.4);
         }
-
-        .link-item:active {
-            transform: translateY(-2px) scale(0.98);
-        }
-
-        /* أيقونة الرابط */
-        .link-icon {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(217,179,130,0.4);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            flex-shrink: 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
         .link-item:hover .link-icon {
-            transform: scale(1.15) rotate(10deg);
             background: #d9b382;
-            border-color: white;
-            box-shadow: 0 0 25px #d9b382;
+            transform: scale(1.1) rotate(5deg);
         }
-
         .link-item:hover .link-icon i {
             color: #3d2e24 !important;
         }
-
-        /* محتوى الرابط */
-        .link-content {
-            flex: 1;
-        }
-
-        .link-title {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .link-item:hover .link-title {
-            color: #d9b382;
-            transform: translateX(-3px);
-        }
-
-        .badge {
-            background: #d9b382;
-            color: #3d2e24;
-            font-size: 11px;
-            padding: 3px 10px;
-            border-radius: 30px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
-
-        .link-item:hover .badge {
-            background: white;
-            color: #d9b382;
-            transform: scale(1.1);
-        }
-
-        .link-desc {
-            font-size: 13px;
-            opacity: 0.8;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .link-item:hover .link-desc {
-            opacity: 1;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .link-desc i {
-            font-size: 6px;
-            color: #d9b382;
-            transition: all 0.3s ease;
-        }
-
-        .link-item:hover .link-desc i {
-            transform: scale(1.5);
-            color: white;
-        }
-
-        /* سهم الرابط */
-        .link-arrow {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(217,179,130,0.4);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            flex-shrink: 0;
-        }
-
         .link-item:hover .link-arrow {
-            transform: translateX(-10px) rotate(360deg);
-            background: #d9b382;
-            border-color: white;
-            box-shadow: 0 0 20px #d9b382;
-        }
-
-        .link-item:hover .link-arrow i {
-            color: #3d2e24 !important;
-        }
-
-        .link-arrow i {
-            font-size: 16px;
+            transform: translateX(-5px);
             color: #d9b382;
-            transition: all 0.3s ease;
         }
-
-        /* ألوان خاصة للأيقونات */
-        .whatsapp-bg { background: #25D366; }
-        .youtube-bg { background: #FF0000; }
-        .instagram-bg { background: linear-gradient(45deg, #FCAF45, #E4405F, #833AB4); }
-        .facebook-bg { background: #1877F2; }
-        .tiktok-bg { background: #000000; }
-        .twitter-bg { background: #1DA1F2; }
-        .snapchat-bg { background: #FFFC00; color: #000; }
-        .telegram-bg { background: #0088cc; }
-        .gold-bg { background: #d9b382; }
-
-        /* تذييل الصفحة */
+        /* أيقونة الرابط داخل المستطيل */
+        .link-icon {
+            width: 50px; height: 50px; border-radius: 12px; /* مربع بحواف ناعمة */
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(217,179,130,0.5);
+            transition: all 0.3s ease; flex-shrink: 0;
+        }
+        /* محتوى الرابط */
+        .link-content { flex: 1; }
+        .link-title {
+            font-size: 18px; font-weight: 800; margin-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+        .link-desc {
+            font-size: 13px; opacity: 0.8;
+            display: flex; align-items: center; gap: 5px;
+        }
+        .link-desc i { font-size: 6px; color: #d9b382; }
+        /* السهم */
+        .link-arrow {
+            width: 35px; height: 35px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease; flex-shrink: 0;
+        }
+        /* قسم QR Code (كما في الصورة) */
+        .qr-section {
+            width: 100%; max-width: 400px; margin-top: 25px;
+            background: rgba(0,0,0,0.3); backdrop-filter: blur(4px);
+            border: 2px solid #d9b382; border-radius: 25px;
+            padding: 15px; text-align: center;
+            animation: fadeIn 1s ease 0.8s both;
+        }
+        .qr-title {
+            color: #d9b382; font-size: 16px; font-weight: 700;
+            letter-spacing: 2px; margin-bottom: 10px;
+        }
+        .qr-title i { margin-left: 5px; }
+        .qr-placeholder {
+            width: 120px; height: 120px; margin: 0 auto;
+            background: white; border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            border: 3px solid #d9b382;
+        }
+        .qr-placeholder svg {
+            width: 100px; height: 100px;
+        }
+        .qr-note {
+            color: white; font-size: 14px; margin-top: 8px;
+        }
+        .qr-note i { color: #d9b382; margin-left: 4px; }
+        /* تذييل */
         .footer {
-            margin-top: 35px;
-            color: rgba(255,255,255,0.4);
-            font-size: 13px;
-            text-align: center;
-            animation: fadeIn 1s ease 1s both;
+            margin-top: 25px; color: rgba(255,255,255,0.4);
+            font-size: 13px; text-align: center;
         }
+        .footer i { color: #d9b382; animation: heartbeat 1.5s infinite; }
+        @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
+        @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes slideIn { to{opacity:1;transform:translateX(0)} }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
-        .footer i {
-            color: #d9b382;
-            animation: heartbeat 1.5s infinite;
+        /* ===== لوحة التحكم (5 نقرات على أول رابط) ===== */
+        .admin-panel {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98); backdrop-filter: blur(15px);
+            z-index: 2000; display: none; justify-content: center; align-items: center;
+            padding: 15px;
         }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+        .admin-panel.show { display: flex; animation: fadeIn 0.3s; }
+        .admin-content {
+            background: white; width: 100%; max-width: 420px;
+            max-height: 90vh; overflow-y: auto; border-radius: 30px;
+            padding: 25px; border: 3px solid #d9b382;
         }
+        .admin-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #d9b382;
+        }
+        .admin-header h2 { color: #3d2e24; font-weight: 900; font-size: 22px; }
+        .admin-close {
+            width: 45px; height: 45px; border-radius: 50%; background: #f0f0f0;
+            border: none; font-size: 22px; cursor: pointer; transition: 0.3s;
+        }
+        .admin-close:active { background: #e74c3c; color: white; transform: rotate(90deg); }
+        .admin-tabs {
+            display: flex; gap: 5px; margin-bottom: 20px; flex-wrap: wrap;
+        }
+        .admin-tab {
+            flex: 1; padding: 12px; background: #f0f0f0; border: none;
+            border-radius: 15px; font-weight: 700; cursor: pointer;
+            min-width: 80px;
+        }
+        .admin-tab.active { background: #d9b382; color: white; }
+        .admin-section {
+            background: #f8f8f8; border-radius: 20px; padding: 20px; margin-bottom: 20px;
+        }
+        .admin-section h3 { color: #b58f5a; margin-bottom: 15px; font-size: 18px; }
+        .admin-input {
+            width: 100%; padding: 14px; margin-bottom: 12px;
+            border: 2px solid #eee; border-radius: 15px;
+            font-family: 'Cairo'; font-size: 15px;
+        }
+        .admin-input:focus { border-color: #d9b382; outline: none; }
+        .admin-btn {
+            background: #d9b382; color: white; border: none;
+            padding: 15px; border-radius: 15px; font-weight: 900;
+            width: 100%; cursor: pointer; font-size: 16px;
+        }
+        .admin-btn:active { background: #b58f5a; transform: scale(0.98); }
+        .admin-list {
+            display: flex; flex-direction: column; gap: 10px;
+            max-height: 250px; overflow-y: auto;
+        }
+        .admin-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px; background: white; border-radius: 12px;
+            border: 1px solid #eee;
+        }
+        .admin-item-actions { display: flex; gap: 5px; }
+        .admin-item-btn {
+            width: 40px; height: 40px; border: none; border-radius: 10px;
+            cursor: pointer; font-size: 16px;
+        }
+        .admin-item-btn.edit { background: #3498db; color: white; }
+        .admin-item-btn.delete { background: #e74c3c; color: white; }
 
         /* إشعار */
         .notification {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            color: #3d2e24;
-            padding: 15px 30px;
-            border-radius: 60px;
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+            color: #3d2e24; padding: 15px 30px; border-radius: 60px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 0 2px #d9b382;
-            display: none;
-            align-items: center;
-            gap: 12px;
-            z-index: 3000;
-            border-right: 5px solid #d9b382;
-            font-weight: 700;
-            font-size: 15px;
-            width: 90%;
-            max-width: 350px;
-            text-align: center;
-            justify-content: center;
-            animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translate(-50%, -30px); }
-            to { opacity: 1; transform: translate(-50%, 0); }
-        }
-
-        .notification i {
-            font-size: 20px;
-            color: #d9b382;
-        }
-
-        /* ===== لوحة التحكم (مخفية) ===== */
-        .admin-panel {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.98);
-            backdrop-filter: blur(15px);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-        }
-
-        .admin-panel.show {
-            display: flex;
-            animation: fadeIn 0.3s;
-        }
-
-        .admin-content {
-            background: white;
-            width: 100%;
-            max-width: 420px;
-            max-height: 90vh;
-            overflow-y: auto;
-            border-radius: 30px;
-            padding: 25px;
-            border: 3px solid #d9b382;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #d9b382;
-        }
-
-        .admin-header h2 {
-            color: #3d2e24;
-            font-weight: 900;
-            font-size: 22px;
-        }
-
-        .admin-close {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: #f0f0f0;
-            border: none;
-            font-size: 22px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .admin-close:active {
-            background: #e74c3c;
-            color: white;
-            transform: rotate(90deg);
-        }
-
-        .admin-tabs {
-            display: flex;
-            gap: 5px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .admin-tab {
-            flex: 1;
-            padding: 12px;
-            background: #f0f0f0;
-            border: none;
-            border-radius: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-            min-width: 80px;
-        }
-
-        .admin-tab.active {
-            background: #d9b382;
-            color: white;
-        }
-
-        .admin-section {
-            background: #f8f8f8;
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .admin-section h3 {
-            color: #b58f5a;
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-
-        .admin-input {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 12px;
-            border: 2px solid #eee;
-            border-radius: 15px;
-            font-family: 'Cairo';
-            font-size: 15px;
-        }
-
-        .admin-input:focus {
-            border-color: #d9b382;
-            outline: none;
-        }
-
-        .admin-btn {
-            background: #d9b382;
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 15px;
-            font-weight: 900;
-            width: 100%;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-
-        .admin-btn:active {
-            background: #b58f5a;
-            transform: scale(0.98);
-        }
-
-        .admin-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-height: 250px;
-            overflow-y: auto;
-        }
-
-        .admin-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px;
-            background: white;
-            border-radius: 12px;
-            border: 1px solid #eee;
-        }
-
-        .admin-item-actions {
-            display: flex;
-            gap: 5px;
-        }
-
-        .admin-item-btn {
-            width: 40px;
-            height: 40px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .admin-item-btn.edit {
-            background: #3498db;
-            color: white;
-        }
-
-        .admin-item-btn.delete {
-            background: #e74c3c;
-            color: white;
-        }
-
-        /* أنيميشن عام */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            display: none; align-items: center; gap: 12px; z-index: 3000;
+            border-right: 5px solid #d9b382; font-weight: 700;
+            font-size: 15px; width: 90%; max-width: 350px;
+            text-align: center; justify-content: center;
         }
     </style>
 </head>
 <body>
-
-    <!-- خلفية متحركة -->
-    <div class="bg-pattern"></div>
+    <div class="custom-bg"></div>
     <div class="bg-overlay"></div>
 
-    <!-- المحتوى الرئيسي -->
     <div class="container">
-        <!-- الشعار مع نظام الـ 5 نقرات -->
-        <div class="logo-wrapper" onclick="handleLogoClick()">
-            <div class="logo-glow"></div>
-            <img src="https://i.ibb.co/3y1ZNCk0/1.png" class="logo" id="logo">
-            <div class="click-counter" id="clickCounter">0</div>
-            <h1>شبابيك للستائر</h1>
-            <div class="subtitle">ظل وذوق</div>
+        <!-- Header من الصورة -->
+        <div class="brand-header">
+            <div class="brand-title-ar">
+                شبابيك
+                <span>شـــــابـــــيـــــك</span>
+            </div>
+            <div class="brand-title-en">
+                SHABABEK
+                <small>SHADE & ELEGANCE</small>
+            </div>
         </div>
 
         <!-- خدماتنا -->
@@ -688,89 +277,93 @@
         <div class="section-title"><i class="fas fa-star"></i> روابط مهمة</div>
         <div class="links-grid" id="important-links"></div>
 
-        <!-- تذييل -->
+        <!-- QR Code (كما في الصورة) -->
+        <div class="qr-section">
+            <div class="qr-title"><i class="fas fa-qrcode"></i> SCAN TO ADD</div>
+            <div class="qr-placeholder">
+                <svg viewBox="0 0 100 100">
+                    <rect x="10" y="10" width="30" height="30" fill="#d9b382"/>
+                    <rect x="50" y="10" width="30" height="30" fill="#3d2e24"/>
+                    <rect x="10" y="50" width="30" height="30" fill="#3d2e24"/>
+                    <rect x="50" y="50" width="30" height="30" fill="#d9b382"/>
+                    <rect x="70" y="70" width="15" height="15" fill="#d9b382"/>
+                    <rect x="20" y="20" width="10" height="10" fill="white"/>
+                    <rect x="60" y="20" width="10" height="10" fill="white"/>
+                    <rect x="20" y="60" width="10" height="10" fill="white"/>
+                </svg>
+            </div>
+            <div class="qr-note"><i class="fas fa-camera"></i> أضف شبابيك على تيليجرام</div>
+        </div>
+
         <div class="footer">© 2026 شبابيك للستائر • <i class="fas fa-heart"></i> من العراق</div>
     </div>
 
-    <!-- لوحة التحكم (تظهر بعد 5 نقرات) -->
+    <!-- لوحة التحكم (تظهر بعد 5 نقرات على أول رابط) -->
     <div class="admin-panel" id="adminPanel">
         <div class="admin-content">
             <div class="admin-header">
                 <h2>⚙️ لوحة التحكم</h2>
                 <button class="admin-close" onclick="closeAdmin()">✕</button>
             </div>
-
             <div class="admin-tabs">
                 <button class="admin-tab active" onclick="switchTab('store')">🛍️ خدمات</button>
                 <button class="admin-tab" onclick="switchTab('social')">📱 تواصل</button>
                 <button class="admin-tab" onclick="switchTab('important')">⭐ مهمة</button>
             </div>
-
             <div class="admin-section">
                 <h3>➕ إضافة رابط</h3>
-                <input type="text" id="link-title" class="admin-input" placeholder="العنوان (مثال: المتجر)">
-                <input type="text" id="link-desc" class="admin-input" placeholder="الوصف (مثال: تسوق الآن)">
+                <input type="text" id="link-title" class="admin-input" placeholder="العنوان">
+                <input type="text" id="link-desc" class="admin-input" placeholder="الوصف">
                 <input type="url" id="link-url" class="admin-input" placeholder="الرابط">
                 <input type="text" id="link-icon" class="admin-input" placeholder="الأيقونة (fab fa-facebook)">
                 <button class="admin-btn" onclick="addLink()">➕ إضافة</button>
             </div>
-
             <div class="admin-section">
-                <h3>📋 الروابط</h3>
+                <h3>📋 الروابط الحالية</h3>
                 <div id="admin-links-list" class="admin-list"></div>
             </div>
         </div>
     </div>
 
-    <!-- الإشعار -->
-    <div class="notification" id="notification">
-        <i class="fas fa-check-circle"></i>
-        <span id="notif-message"></span>
-    </div>
+    <div class="notification" id="notification"><i class="fas fa-check-circle"></i><span id="notif-message"></span></div>
 
     <script>
-        // ========== البيانات الأساسية (مطابقة للطلبات) ==========
+        // بيانات الروابط (محدثة)
         let linksData = {
             store: [
-                { title: 'المتجر الإلكتروني', desc: 'تصفح جميع المنتجات', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-store', color: 'gold' },
-                { title: 'منتجاتنا', desc: 'أحدث التصاميم', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-tag', color: 'gold' }, // تم التعديل من "عروض خاصة" إلى "منتجاتنا"
-                { title: 'استشارة مجانية', desc: 'خبراء التصميم', url: 'https://wa.me/9647883002797?text=استشارة', icon: 'fas fa-headset', color: 'whatsapp' }
+                { title: 'المتجر الإلكتروني', desc: 'تصفح جميع المنتجات', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-store' },
+                { title: 'منتجاتنا', desc: 'أحدث التصاميم', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-tag' },
+                { title: 'استشارة مجانية', desc: 'خبراء التصميم', url: 'https://wa.me/9647883002797?text=استشارة', icon: 'fas fa-headset' }
             ],
             social: [
-                { title: 'فيسبوك', desc: 'تابعنا على فيسبوك', url: 'https://www.facebook.com/profile.php?id=61587692021311', icon: 'fab fa-facebook', color: 'facebook' },
-                { title: 'إنستغرام', desc: 'أحدث التصاميم', url: 'https://www.instagram.com/shababek.curtains/', icon: 'fab fa-instagram', color: 'instagram' },
-                { title: 'تيك توك', desc: 'فيديوهات قصيرة', url: 'https://www.tiktok.com/@shababek.curtains', icon: 'fab fa-tiktok', color: 'tiktok' },
-                { title: 'يوتيوب', desc: 'شاهد تصاميمنا', url: 'https://youtube.com/@shababek.curtains', icon: 'fab fa-youtube', color: 'youtube' },
-                { title: 'تويتر', desc: 'تغريدات على X', url: 'https://x.com/ShababekCurtain', icon: 'fa-brands fa-x-twitter', color: 'twitter' },
-                { title: 'سناب شات', desc: 'يومياتنا', url: 'https://www.snapchat.com/add/shababekcurtin', icon: 'fab fa-snapchat', color: 'snapchat' },
-                { title: 'واتساب', desc: 'تواصل مباشر', url: 'https://wa.me/9647883002797', icon: 'fab fa-whatsapp', color: 'whatsapp' },
-                { title: 'تيليجرام', desc: 'قناتنا', url: 'https://t.me/shababekcurtains', icon: 'fab fa-telegram', color: 'telegram' } // تم التعديل لفتح المحادثة مباشرة
+                { title: 'فيسبوك', desc: 'تابعنا على فيسبوك', url: 'https://www.facebook.com/profile.php?id=61587692021311', icon: 'fab fa-facebook' },
+                { title: 'إنستغرام', desc: 'أحدث التصاميم', url: 'https://www.instagram.com/shababek.curtains/', icon: 'fab fa-instagram' },
+                { title: 'تيك توك', desc: 'فيديوهات قصيرة', url: 'https://www.tiktok.com/@shababek.curtains', icon: 'fab fa-tiktok' },
+                { title: 'يوتيوب', desc: 'شاهد تصاميمنا', url: 'https://youtube.com/@shababek.curtains', icon: 'fab fa-youtube' },
+                { title: 'تويتر', desc: 'تغريدات على X', url: 'https://x.com/ShababekCurtain', icon: 'fa-brands fa-x-twitter' },
+                { title: 'سناب شات', desc: 'يومياتنا', url: 'https://www.snapchat.com/add/shababekcurtin', icon: 'fab fa-snapchat' },
+                { title: 'واتساب', desc: 'تواصل مباشر', url: 'https://wa.me/9647883002797', icon: 'fab fa-whatsapp' },
+                { title: 'تيليجرام', desc: 'قناتنا', url: 'https://t.me/shababekcurtains', icon: 'fab fa-telegram' }
             ],
             important: [
-                { title: 'منتدى شبابيك', desc: 'مجتمع الديكور', url: 'https://shababekcurtains.com/ai.html', icon: 'fas fa-comments', color: 'gold' },
-                { title: 'طرق الدفع', desc: 'طرق دفع آمنة', url: 'https://shababekcurtains.com/index.html?page=categories#paymentPage', icon: 'fas fa-credit-card', color: 'gold' },
-                { title: 'من نحن', desc: 'تعرف على فريقنا', url: 'https://shababekcurtains.com/index.html?page=categories#aboutPage', icon: 'fas fa-info-circle', color: 'gold' }
+                { title: 'منتدى شبابيك', desc: 'مجتمع الديكور', url: 'https://shababekcurtains.com/ai.html', icon: 'fas fa-comments' },
+                { title: 'طرق الدفع', desc: 'طرق دفع آمنة', url: 'https://shababekcurtains.com/index.html?page=categories#paymentPage', icon: 'fas fa-credit-card' },
+                { title: 'من نحن', desc: 'تعرف على فريقنا', url: 'https://shababekcurtains.com/index.html?page=categories#aboutPage', icon: 'fas fa-info-circle' }
             ]
         };
 
         let currentTab = 'store';
         let clickCount = 0;
         let clickTimer;
+        let firstLinkClicked = false;  // لتمييز أول رابط
 
-        // ========== تحميل البيانات ==========
         function loadData() {
             const saved = localStorage.getItem('shababek_links_final');
-            if (saved) {
-                linksData = JSON.parse(saved);
-            }
+            if (saved) linksData = JSON.parse(saved);
             renderAllLinks();
         }
+        function saveData() { localStorage.setItem('shababek_links_final', JSON.stringify(linksData)); }
 
-        function saveData() {
-            localStorage.setItem('shababek_links_final', JSON.stringify(linksData));
-        }
-
-        // ========== عرض الروابط ==========
         function renderAllLinks() {
             renderLinks('store', 'store-links');
             renderLinks('social', 'social-links');
@@ -780,172 +373,85 @@
         function renderLinks(category, elementId) {
             const container = document.getElementById(elementId);
             if (!container) return;
-
-            const links = linksData[category] || [];
-            
-            container.innerHTML = links.map(link => `
-                <a href="#" class="link-item" onclick="openAppLink('${link.url}', '${link.title}', '${link.color}'); return false;">
-                    <div class="link-icon ${link.color}-bg">
-                        <i class="${link.icon}" style="${link.color === 'snapchat' ? 'color:#000;' : ''}"></i>
-                    </div>
+            container.innerHTML = linksData[category].map((link, idx) => `
+                <a href="#" class="link-item" onclick="openAppLink('${link.url}', '${link.title}'); handleFirstLinkClick(event, ${idx}, '${category}'); return false;">
+                    <div class="link-icon"><i class="${link.icon}"></i></div>
                     <div class="link-content">
-                        <div class="link-title">
-                            ${link.title}
-                            ${link.url.includes('wa.me') ? '<span class="badge">واتساب</span>' : ''}
-                        </div>
-                        <div class="link-desc">
-                            <i class="fas fa-circle"></i>
-                            ${link.desc}
-                        </div>
+                        <div class="link-title">${link.title}</div>
+                        <div class="link-desc"><i class="fas fa-circle"></i> ${link.desc}</div>
                     </div>
-                    <div class="link-arrow">
-                        <i class="fas fa-arrow-left"></i>
-                    </div>
+                    <div class="link-arrow"><i class="fas fa-arrow-left"></i></div>
                 </a>
             `).join('');
         }
 
-        // ========== فتح الروابط مع دعم التطبيقات (بدون رسالة الاستمرار) ==========
-        function openAppLink(url, title, color) {
+        // دالة فتح الروابط المباشرة
+        function openAppLink(url, title) {
             showNotif(`جاري فتح ${title}...`);
-            
-            // واتساب - فتح مباشر
             if (url.includes('wa.me') || url.includes('whatsapp')) {
-                const phone = url.match(/\d+/g)?.join('') || '9647883002797';
+                let phone = url.match(/\d+/g)?.join('') || '9647883002797';
                 window.location.href = `whatsapp://send?phone=${phone}`;
-                setTimeout(() => {
-                    window.location.href = url;
-                }, 800);
-                return;
-            }
-            
-            // إنستغرام - فتح مباشر
-            if (url.includes('instagram.com')) {
-                const username = url.split('/').filter(s => s && !s.includes('?')).pop() || 'shababek.curtains';
+                setTimeout(() => window.location.href = url, 800);
+            } else if (url.includes('instagram.com')) {
+                let username = url.split('/').filter(s => s && !s.includes('?')).pop() || 'shababek.curtains';
                 window.location.href = `instagram://user?username=${username}`;
-                setTimeout(() => {
-                    window.location.href = url;
-                }, 800);
-                return;
-            }
-            
-            // فيسبوك - فتح مباشر
-            if (url.includes('facebook.com')) {
-                const id = '61587692021311';
-                window.location.href = `fb://page/${id}`;
-                setTimeout(() => {
-                    window.location.href = url;
-                }, 800);
-                return;
-            }
-            
-            // تيك توك - تم إصلاحه ليعمل على الهاتف
-            if (url.includes('tiktok.com')) {
-                const username = url.split('@')[1]?.split('/')[0] || 'shababek.curtains';
+                setTimeout(() => window.location.href = url, 800);
+            } else if (url.includes('facebook.com')) {
+                window.location.href = `fb://page/61587692021311`;
+                setTimeout(() => window.location.href = url, 800);
+            } else if (url.includes('tiktok.com')) {
+                let username = url.split('@')[1]?.split('/')[0] || 'shababek.curtains';
                 window.location.href = `tiktok://user?username=${username}`;
-                setTimeout(() => {
-                    window.location.href = url;
-                }, 800);
-                return;
-            }
-            
-            // تيليجرام - فتح المحادثة مباشرة (تم الإصلاح)
-            if (url.includes('t.me')) {
-                const username = url.split('/').pop()?.split('?')[0] || 'shababekcurtains';
-                // استخدام رابط المحادثة المباشرة
+                setTimeout(() => window.location.href = url, 800);
+            } else if (url.includes('t.me')) {
+                let username = url.split('/').pop()?.split('?')[0] || 'shababekcurtains';
                 window.location.href = `tg://resolve?domain=${username}`;
-                setTimeout(() => {
-                    window.location.href = `https://t.me/${username}`;
-                }, 800);
-                return;
-            }
-            
-            // تويتر
-            if (url.includes('x.com') || url.includes('twitter.com')) {
-                const username = url.split('/').pop()?.split('?')[0] || 'ShababekCurtain';
+                setTimeout(() => window.location.href = url, 800);
+            } else if (url.includes('x.com') || url.includes('twitter.com')) {
+                let username = url.split('/').pop()?.split('?')[0] || 'ShababekCurtain';
                 window.location.href = `twitter://user?screen_name=${username}`;
-                setTimeout(() => {
-                    window.location.href = url;
-                }, 800);
-                return;
-            }
-            
-            // يوتيوب
-            if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                setTimeout(() => window.location.href = url, 800);
+            } else if (url.includes('youtube.com') || url.includes('youtu.be')) {
                 window.location.href = `vnd.youtube://www.youtube.com/channel/UCxxx`;
-                setTimeout(() => {
-                    window.location.href = url;
-                }, 800);
-                return;
+                setTimeout(() => window.location.href = url, 800);
+            } else {
+                window.location.href = url;
             }
-            
-            // باقي الروابط
-            window.location.href = url;
         }
 
-        // ========== نظام الـ 5 نقرات ==========
-        function handleLogoClick() {
-            clickCount++;
-            
-            const counter = document.getElementById('clickCounter');
-            counter.textContent = clickCount;
-            counter.classList.add('show');
-            
-            document.getElementById('logo').style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                document.getElementById('logo').style.transform = '';
-            }, 200);
-            
-            if (clickTimer) clearTimeout(clickTimer);
-            
-            clickTimer = setTimeout(() => {
-                clickCount = 0;
-                counter.classList.remove('show');
-            }, 3000);
-            
-            if (clickCount >= 5) {
-                clickCount = 0;
-                counter.classList.remove('show');
-                openAdminPanel();
-                
-                // تأثير احتفالي
-                if (typeof confetti !== 'undefined') {
-                    confetti({ particleCount: 100, spread: 70, colors: ['#d9b382', '#3d2e24', '#ffffff'] });
+        // نظام الـ 5 نقرات على أول رابط فقط
+        function handleFirstLinkClick(event, index, category) {
+            if (category === 'store' && index === 0) { // أول رابط في "خدماتنا"
+                clickCount++;
+                if (clickTimer) clearTimeout(clickTimer);
+                clickTimer = setTimeout(() => { clickCount = 0; }, 3000);
+                if (clickCount >= 5) {
+                    clickCount = 0;
+                    openAdminPanel();
                 }
             }
         }
 
-        // ========== لوحة التحكم ==========
         function openAdminPanel() {
             document.getElementById('adminPanel').classList.add('show');
             switchTab('store');
         }
-
-        function closeAdmin() {
-            document.getElementById('adminPanel').classList.remove('show');
-        }
+        function closeAdmin() { document.getElementById('adminPanel').classList.remove('show'); }
 
         function switchTab(tab) {
             currentTab = tab;
-            
             document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
             event.target.classList.add('active');
-            
             showAdminLinks(tab);
         }
 
         function showAdminLinks(category) {
-            const list = document.getElementById('admin-links-list');
-            const links = linksData[category] || [];
-            
-            list.innerHTML = links.map((link, index) => `
+            let list = document.getElementById('admin-links-list');
+            list.innerHTML = linksData[category].map((link, index) => `
                 <div class="admin-item">
                     <div style="display:flex; align-items:center; gap:10px;">
-                        <i class="${link.icon}" style="color: #d9b382; font-size:20px;"></i>
-                        <div>
-                            <strong>${link.title}</strong>
-                            <div style="font-size: 11px; color: #999;">${link.url.substring(0,30)}</div>
-                        </div>
+                        <i class="${link.icon}" style="color:#d9b382; font-size:20px;"></i>
+                        <div><strong>${link.title}</strong><div style="font-size:11px; color:#999;">${link.url.substring(0,30)}</div></div>
                     </div>
                     <div class="admin-item-actions">
                         <button class="admin-item-btn edit" onclick="editLink('${category}', ${index})">✏️</button>
@@ -956,102 +462,47 @@
         }
 
         function addLink() {
-            const title = document.getElementById('link-title').value;
-            const desc = document.getElementById('link-desc').value;
-            const url = document.getElementById('link-url').value;
-            const icon = document.getElementById('link-icon').value;
-
-            if (!title || !url) {
-                showNotif('الرجاء إدخال العنوان والرابط', 'error');
-                return;
-            }
-
-            const newLink = {
-                title,
-                desc: desc || `تابعنا على ${title}`,
-                url,
-                icon: icon || 'fas fa-link',
-                color: 'gold'
-            };
-
-            if (!linksData[currentTab]) linksData[currentTab] = [];
-            linksData[currentTab].push(newLink);
-
-            saveData();
-            renderAllLinks();
-            showAdminLinks(currentTab);
-            
-            document.getElementById('link-title').value = '';
-            document.getElementById('link-desc').value = '';
-            document.getElementById('link-url').value = '';
-            document.getElementById('link-icon').value = '';
-            
+            let title = document.getElementById('link-title').value;
+            let desc = document.getElementById('link-desc').value;
+            let url = document.getElementById('link-url').value;
+            let icon = document.getElementById('link-icon').value;
+            if (!title || !url) { showNotif('الرجاء إدخال العنوان والرابط', 'error'); return; }
+            linksData[currentTab].push({ title, desc: desc || `تابعنا على ${title}`, url, icon: icon || 'fas fa-link' });
+            saveData(); renderAllLinks(); showAdminLinks(currentTab);
+            document.getElementById('link-title').value = ''; document.getElementById('link-desc').value = '';
+            document.getElementById('link-url').value = ''; document.getElementById('link-icon').value = '';
             showNotif('✅ تمت الإضافة');
         }
 
         function editLink(category, index) {
-            const link = linksData[category][index];
-            
-            const newTitle = prompt('تعديل العنوان:', link.title);
+            let link = linksData[category][index];
+            let newTitle = prompt('تعديل العنوان:', link.title);
             if (newTitle) link.title = newTitle;
-            
-            const newUrl = prompt('تعديل الرابط:', link.url);
+            let newUrl = prompt('تعديل الرابط:', link.url);
             if (newUrl) link.url = newUrl;
-            
-            saveData();
-            renderAllLinks();
-            showAdminLinks(currentTab);
+            saveData(); renderAllLinks(); showAdminLinks(currentTab);
             showNotif('✅ تم التعديل');
         }
 
         function deleteLink(category, index) {
             if (confirm('حذف الرابط؟')) {
                 linksData[category].splice(index, 1);
-                saveData();
-                renderAllLinks();
-                showAdminLinks(currentTab);
+                saveData(); renderAllLinks(); showAdminLinks(currentTab);
                 showNotif('✅ تم الحذف');
             }
         }
 
-        // ========== الإشعارات ==========
-        function showNotif(msg, type = 'success') {
-            const notif = document.getElementById('notification');
-            const msgEl = document.getElementById('notif-message');
-            
-            msgEl.textContent = msg;
-            notif.style.display = 'flex';
-            
-            setTimeout(() => {
-                notif.style.display = 'none';
-            }, 2000);
+        function showNotif(msg) {
+            let n = document.getElementById('notification');
+            document.getElementById('notif-message').innerText = msg;
+            n.style.display = 'flex';
+            setTimeout(() => n.style.display = 'none', 2000);
         }
 
-        // ========== تحميل مكتبة الكونفيتي ==========
-        function loadConfetti() {
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js';
-            document.head.appendChild(script);
-        }
-
-        // ========== بدء التشغيل ==========
+        // تحميل عند البدء
         document.addEventListener('DOMContentLoaded', () => {
             loadData();
-            loadConfetti();
-            
-            setTimeout(() => {
-                showNotif('👋 اضغط على الشعار 5 مرات للتحكم');
-            }, 1000);
-        });
-
-        // إغلاق لوحة التحكم عند الضغط خارجها
-        document.addEventListener('click', (e) => {
-            const panel = document.getElementById('adminPanel');
-            const content = document.querySelector('.admin-content');
-            
-            if (panel.classList.contains('show') && !content.contains(e.target) && !e.target.closest('.logo')) {
-                closeAdmin();
-            }
+            setTimeout(() => showNotif('👋 اضغط 5 مرات على أول رابط للتحكم'), 1500);
         });
     </script>
 </body>
