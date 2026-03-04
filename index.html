@@ -1,853 +1,779 @@
-# 🛍️ **كود متجر شبابيك - نسخة كاملة مع تسجيل الدخول**
-
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>شيبابك - للستائر والديكور</title>
-    
-    <!-- Font Awesome 6 -->
+    <title>شبابيك للستائر - الروابط</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Cairo', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: linear-gradient(145deg, #faf7f2 0%, #f5efe8 100%);
             min-height: 100vh;
-        }
-
-        /* الشريط العلوي */
-        .top-bar {
-            background: #3d2e24;
-            color: #d9b382;
-            padding: 8px 20px;
-            text-align: center;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        /* الهيدر */
-        header {
-            background: white;
-            padding: 15px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 900;
-            color: #3d2e24;
-        }
-
-        .logo span {
-            color: #d9b382;
-            font-size: 14px;
-            display: block;
-            font-weight: 600;
-        }
-
-        .header-icons {
-            display: flex;
-            gap: 20px;
-        }
-
-        .header-icons i {
-            font-size: 22px;
-            color: #3d2e24;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .header-icons i:hover {
-            color: #d9b382;
-        }
-
-        /* شاشة الترحيب الرئيسية */
-        .welcome-section {
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, rgba(217,179,130,0.1) 0%, rgba(255,255,255,0.5) 100%);
-        }
-
-        .welcome-container {
-            max-width: 1200px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        /* الجانب الأيمن - النصوص */
-        .welcome-text {
-            animation: fadeInRight 0.8s ease;
-        }
-
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .brand-name {
-            font-size: 48px;
-            font-weight: 900;
-            color: #3d2e24;
-            line-height: 1.2;
-            margin-bottom: 10px;
-        }
-
-        .brand-name span {
-            color: #d9b382;
-            font-size: 24px;
-            display: block;
-            font-weight: 700;
-        }
-
-        .welcome-title {
-            font-size: 32px;
-            font-weight: 800;
-            color: #3d2e24;
-            margin: 20px 0 15px;
-        }
-
-        .welcome-desc {
-            color: #666;
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .welcome-desc-ar {
-            color: #d9b382;
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .welcome-desc-en {
-            color: #888;
-            font-size: 16px;
-            font-style: italic;
-            margin-bottom: 30px;
-        }
-
-        /* أزرار التسجيل */
-        .auth-buttons {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .auth-btn {
-            flex: 1;
-            min-width: 150px;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            background: white;
-            color: #333;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .auth-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .auth-btn.facebook {
-            background: #1877F2;
-            color: white;
-        }
-
-        .auth-btn.google {
-            background: white;
-            color: #333;
-            border: 1px solid #ddd;
-        }
-
-        .auth-btn.instagram {
-            background: linear-gradient(45deg, #FCAF45, #E4405F, #833AB4);
-            color: white;
-        }
-
-        .auth-btn i {
-            font-size: 20px;
-        }
-
-        /* زر استكشاف المنتجات */
-        .explore-btn {
-            display: inline-block;
-            padding: 18px 45px;
-            background: #d9b382;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 900;
-            font-size: 20px;
-            margin: 20px 0;
-            box-shadow: 0 10px 25px rgba(217,179,130,0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid transparent;
-        }
-
-        .explore-btn:hover {
-            transform: scale(1.05) translateY(-5px);
-            background: #3d2e24;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        }
-
-        .explore-btn i {
-            margin-right: 10px;
-        }
-
-        /* مميزات المتجر */
-        .features {
-            display: flex;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #3d2e24;
-            font-weight: 600;
-        }
-
-        .feature-item i {
-            color: #d9b382;
-            font-size: 24px;
-        }
-
-        /* الجانب الأيسر - الصورة/التصميم */
-        .welcome-image {
-            background: linear-gradient(145deg, #3d2e24, #5c4a3a);
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            animation: fadeInLeft 0.8s ease;
+            background: #000;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .welcome-image::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(217,179,130,0.2) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .image-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
-
-        .image-content i {
-            font-size: 120px;
-            color: #d9b382;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
-        }
-
-        .image-content h3 {
-            color: white;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .image-content p {
-            color: rgba(255,255,255,0.8);
-            font-size: 16px;
-            line-height: 1.8;
-        }
-
-        .qr-preview {
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        .qr-preview i {
-            font-size: 60px;
-            color: #d9b382;
-            margin: 0;
-        }
-
-        /* القائمة السفلية */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: white;
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-            z-index: 100;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #999;
-            font-size: 12px;
-            cursor: pointer;
-            transition: 0.3s;
-            padding: 5px 15px;
-            border-radius: 30px;
-        }
-
-        .nav-item i {
-            font-size: 22px;
-            margin-bottom: 5px;
-        }
-
-        .nav-item.active {
-            color: #d9b382;
-            background: rgba(217,179,130,0.1);
-        }
-
-        .nav-item:hover {
-            color: #d9b382;
-        }
-
-        /* نافذة منبثقة للتسجيل */
-        .modal {
-            display: none;
+        /* الخلفية - الصورة الجديدة */
+        .custom-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
+            background: url('https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772584034/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_k0xc3e.png') no-repeat center center/cover;
+            z-index: -1;
         }
 
-        .modal.active {
+        /* طبقة شفافة داكنة لتحسين وضوح النصوص */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 15px;
         }
 
-        .modal-content {
-            background: white;
-            width: 90%;
-            max-width: 400px;
-            border-radius: 30px;
-            padding: 30px;
+        /* النص الترحيبي من الصورة */
+        .brand-header {
             text-align: center;
-            animation: modalSlide 0.3s ease;
+            margin-bottom: 25px;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
         }
 
-        @keyframes modalSlide {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .brand-title-ar {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.2;
+            color: #d9b382;
         }
 
-        .modal-icon {
-            width: 80px;
-            height: 80px;
-            background: #d9b382;
-            border-radius: 50%;
+        .brand-title-ar span {
+            font-size: 28px;
+            color: white;
+            display: block;
+        }
+
+        .brand-title-en {
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .brand-title-en small {
+            font-size: 16px;
+            color: #d9b382;
+            display: block;
+        }
+
+        /* عنوان القسم */
+        .section-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 900;
+            margin: 15px 0 10px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            text-shadow: 1px 1px 3px black;
+        }
+
+        .section-title i {
+            color: #d9b382;
+            margin-left: 5px;
+        }
+
+        /* شبكة الروابط */
+        .links-grid {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* تصميم الرابط داخل المستطيل - للهاتف */
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(217, 179, 130, 0.6);
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* تأخير ظهور الروابط */
+        .link-item:nth-child(1) { animation-delay: 0.1s; }
+        .link-item:nth-child(2) { animation-delay: 0.15s; }
+        .link-item:nth-child(3) { animation-delay: 0.2s; }
+        .link-item:nth-child(4) { animation-delay: 0.25s; }
+        .link-item:nth-child(5) { animation-delay: 0.3s; }
+        .link-item:nth-child(6) { animation-delay: 0.35s; }
+        .link-item:nth-child(7) { animation-delay: 0.4s; }
+        .link-item:nth-child(8) { animation-delay: 0.45s; }
+
+        /* التأثير الذهبي عند المرور (للحواسيب) أو الضغط (للهواتف) */
+        .link-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: #d9b382;
+            background: rgba(217, 179, 130, 0.3);
+            box-shadow: 0 15px 30px rgba(217, 179, 130, 0.4);
+        }
+
+        .link-item:active {
+            transform: scale(0.98);
+        }
+
+        /* أيقونة الرابط داخل مربع */
+        .link-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 40px;
-            color: white;
+            font-size: 24px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(217, 179, 130, 0.5);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
-        .modal h2 {
-            color: #3d2e24;
-            margin-bottom: 20px;
-        }
-
-        .modal-input {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: 2px solid #eee;
-            border-radius: 15px;
-            font-family: 'Cairo';
-            font-size: 16px;
-        }
-
-        .modal-input:focus {
-            border-color: #d9b382;
-            outline: none;
-        }
-
-        .modal-btn {
-            width: 100%;
-            padding: 15px;
+        .link-item:hover .link-icon {
             background: #d9b382;
-            color: white;
-            border: none;
-            border-radius: 15px;
-            font-weight: 900;
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .link-item:hover .link-icon i {
+            color: #3d2e24 !important;
+        }
+
+        /* محتوى الرابط */
+        .link-content {
+            flex: 1;
+        }
+
+        .link-title {
             font-size: 18px;
-            margin: 15px 0;
-            cursor: pointer;
+            font-weight: 800;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .modal-close {
-            color: #999;
-            cursor: pointer;
+        .badge {
+            background: #d9b382;
+            color: #3d2e24;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 30px;
+            font-weight: 700;
+        }
+
+        .link-desc {
+            font-size: 13px;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .link-desc i {
+            font-size: 6px;
+            color: #d9b382;
+        }
+
+        /* السهم */
+        .link-arrow {
+            width: 35px;
+            height: 35px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(217, 179, 130, 0.5);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .link-item:hover .link-arrow {
+            transform: translateX(-5px) rotate(360deg);
+            background: #d9b382;
+        }
+
+        .link-item:hover .link-arrow i {
+            color: #3d2e24;
+        }
+
+        /* ألوان خاصة للأيقونات */
+        .whatsapp { background: #25D366; }
+        .youtube { background: #FF0000; }
+        .instagram { background: radial-gradient(circle at 30% 30%, #FCAF45, #E4405F, #833AB4); }
+        .facebook { background: #1877F2; }
+        .tiktok { background: #000000; }
+        .twitter { background: #1DA1F2; }
+        .snapchat { background: #FFFC00; color: #000; }
+        .telegram { background: #0088cc; }
+        .gold { background: #d9b382; }
+
+        /* قسم QR Code (مستطيل أنيق) */
+        .qr-section {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 25px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid #d9b382;
+            border-radius: 30px;
+            padding: 20px 15px;
+            text-align: center;
+            animation: fadeIn 1s ease 0.8s both;
+        }
+
+        .qr-title {
+            color: #d9b382;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .qr-title i {
+            margin-left: 8px;
+            font-size: 22px;
+        }
+
+        /* QR code حقيقي (تم إنشاؤه من الرابط) */
+        .qr-code-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 20px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #d9b382;
+        }
+
+        .qr-code svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .qr-note {
+            color: white;
             font-size: 14px;
+            font-weight: 600;
         }
 
-        .modal-close:hover {
-            color: #e74c3c;
+        .qr-note i {
+            color: #d9b382;
+            margin-left: 5px;
         }
 
         /* تذييل الصفحة */
-        footer {
-            background: #3d2e24;
-            color: white;
-            padding: 40px 20px 80px;
+        .footer {
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
             text-align: center;
         }
 
-        .footer-logo {
-            font-size: 32px;
-            font-weight: 900;
-            color: #d9b382;
+        /* ===== لوحة التحكم (5 نقرات على أول رابط) ===== */
+        .admin-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .admin-panel.show { display: flex; animation: fadeIn 0.3s; }
+
+        .admin-content {
+            background: white;
+            width: 100%;
+            max-width: 420px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 30px;
+            padding: 25px;
+            border: 3px solid #d9b382;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #d9b382;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
+        .admin-header h2 { color: #3d2e24; font-weight: 900; font-size: 22px; }
 
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: #d9b382;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .social-links a {
+        .admin-close {
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+            background: #f0f0f0;
+            border: none;
             font-size: 22px;
-            transition: 0.3s;
+            cursor: pointer;
         }
 
-        .social-links a:hover {
+        .admin-close:active { background: #e74c3c; color: white; }
+
+        .admin-tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .admin-tab {
+            flex: 1;
+            padding: 12px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            min-width: 80px;
+        }
+
+        .admin-tab.active { background: #d9b382; color: white; }
+
+        .admin-section {
+            background: #f8f8f8;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .admin-section h3 { color: #b58f5a; margin-bottom: 15px; }
+
+        .admin-input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            font-family: 'Cairo';
+        }
+
+        .admin-input:focus { border-color: #d9b382; outline: none; }
+
+        .admin-btn {
             background: #d9b382;
-            transform: translateY(-5px);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: 900;
+            width: 100%;
+            cursor: pointer;
         }
 
-        .copyright {
-            color: rgba(255,255,255,0.5);
-            font-size: 14px;
+        .admin-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 250px;
+            overflow-y: auto;
         }
 
-        /* تصميم متجاوب */
-        @media (max-width: 768px) {
-            .welcome-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .brand-name {
-                font-size: 36px;
-            }
-
-            .welcome-title {
-                font-size: 24px;
-            }
-
-            .auth-buttons {
-                flex-direction: column;
-            }
-
-            .auth-btn {
-                width: 100%;
-            }
-
-            .features {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+        .admin-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #eee;
         }
+
+        .admin-item-actions { display: flex; gap: 5px; }
+
+        .admin-item-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .admin-item-btn.edit { background: #3498db; color: white; }
+        .admin-item-btn.delete { background: #e74c3c; color: white; }
+
+        /* إشعار */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.95);
+            color: #3d2e24;
+            padding: 15px 30px;
+            border-radius: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 0 2px #d9b382;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            z-index: 3000;
+            font-weight: 700;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
-    <!-- الشريط العلوي -->
-    <div class="top-bar">
-        <i class="fas fa-truck"></i> توصيل سريع لجميع المحافظات | <i class="fas fa-star"></i> جودة عالية | <i class="fas fa-credit-card"></i> دفع آمن
+    <div class="custom-bg"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <!-- النص الترحيبي من الصورة -->
+        <div class="brand-header">
+            <div class="brand-title-ar">
+                0.00<br>
+                SHABABE<br>
+                <span>على وثوقه</span>
+            </div>
+            <div class="brand-title-en">
+                SHADE & ELEGANCE
+                <small>( Scan me! )</small>
+            </div>
+        </div>
+
+        <!-- خدماتنا -->
+        <div class="section-title"><i class="fas fa-store"></i> خدماتنا</div>
+        <div class="links-grid" id="store-links"></div>
+
+        <!-- تابعنا على -->
+        <div class="section-title"><i class="fas fa-hashtag"></i> تابعنا على</div>
+        <div class="links-grid" id="social-links"></div>
+
+        <!-- روابط مهمة -->
+        <div class="section-title"><i class="fas fa-star"></i> روابط مهمة</div>
+        <div class="links-grid" id="important-links"></div>
+
+        <!-- QR Code أنيق كما في الصورة -->
+        <div class="qr-section">
+            <div class="qr-title"><i class="fas fa-qrcode"></i> SCAN ME!</div>
+            <div class="qr-code-container">
+                <div class="qr-code" id="qrCodeContainer">
+                    <!-- سيتم إنشاء QR code عبر JavaScript -->
+                </div>
+            </div>
+            <div class="qr-note"><i class="fas fa-camera"></i> أضف شبابيك على تيليجرام</div>
+        </div>
+
+        <div class="footer">© 2026 شبابيك للستائر • ظل وذوق</div>
     </div>
 
-    <!-- الهيدر -->
-    <header>
-        <div class="logo">
-            شيبابك
-            <span>للسنار والديكور</span>
-        </div>
-        <div class="header-icons">
-            <i class="fas fa-search"></i>
-            <i class="fas fa-heart"></i>
-            <i class="fas fa-shopping-bag"></i>
-            <i class="fas fa-user" onclick="openLoginModal()"></i>
-        </div>
-    </header>
-
-    <!-- قسم الترحيب الرئيسي -->
-    <section class="welcome-section">
-        <div class="welcome-container">
-            <!-- الجانب الأيمن - النصوص -->
-            <div class="welcome-text">
-                <h1 class="brand-name">
-                    شيبابك
-                    <span>للسنار والديكور</span>
-                </h1>
-                
-                <h2 class="welcome-title">أهلاً بك في شيبابك</h2>
-                
-                <p class="welcome-desc">
-                    Discover the unique and elegant design of your home.
-                </p>
-                
-                <p class="welcome-desc-ar">
-                    حاولنا أن نتعرف على كل شيء عنك وكنت هنا.
-                </p>
-                
-                <p class="welcome-desc-en">
-                    Shade & Elegance for every corner of your life.
-                </p>
-
-                <!-- أزرار التسجيل -->
-                <div class="auth-buttons">
-                    <button class="auth-btn facebook" onclick="registerWith('facebook')">
-                        <i class="fab fa-facebook-f"></i>
-                        فيسبوك
-                    </button>
-                    <button class="auth-btn google" onclick="registerWith('google')">
-                        <i class="fab fa-google"></i>
-                        جوجل
-                    </button>
-                    <button class="auth-btn instagram" onclick="registerWith('instagram')">
-                        <i class="fab fa-instagram"></i>
-                        إنستغرام
-                    </button>
-                </div>
-
-                <!-- زر استكشاف المنتجات -->
-                <a href="#" class="explore-btn" onclick="exploreProducts()">
-                    <i class="fas fa-arrow-left"></i>
-                    ابدأ التسوق الآن
-                </a>
-
-                <p style="color: #d9b382; font-weight: 600; margin: 10px 0;">
-                    Explore the Collections
-                </p>
-
-                <!-- المميزات -->
-                <div class="features">
-                    <div class="feature-item">
-                        <i class="fas fa-medal"></i>
-                        <span>جودة عالية</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-list"></i>
-                        <span>خيارات متنوعة</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-rocket"></i>
-                        <span>توصيل سريع</span>
-                    </div>
-                </div>
+    <!-- لوحة التحكم -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-content">
+            <div class="admin-header">
+                <h2>⚙️ لوحة التحكم</h2>
+                <button class="admin-close" onclick="closeAdmin()">✕</button>
             </div>
-
-            <!-- الجانب الأيسر - التصميم -->
-            <div class="welcome-image">
-                <div class="image-content">
-                    <i class="fas fa-tshirt"></i>
-                    <h3>ستائر فاخرة</h3>
-                    <p>أفخم الستائر المنزلية<br>بأحدث التصاميم العصرية</p>
-                    
-                    <div class="qr-preview">
-                        <i class="fas fa-qrcode"></i>
-                        <p style="color: white; font-size: 12px;">مسح للتواصل</p>
-                    </div>
-                </div>
+            <div class="admin-tabs">
+                <button class="admin-tab active" onclick="switchTab('store')">🛍️ خدمات</button>
+                <button class="admin-tab" onclick="switchTab('social')">📱 تواصل</button>
+                <button class="admin-tab" onclick="switchTab('important')">⭐ مهمة</button>
             </div>
-        </div>
-    </section>
-
-    <!-- نافذة تسجيل الدخول -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <div class="modal-icon">
-                <i class="fas fa-user"></i>
+            <div class="admin-section">
+                <h3>➕ إضافة رابط</h3>
+                <input type="text" id="link-title" class="admin-input" placeholder="العنوان">
+                <input type="text" id="link-desc" class="admin-input" placeholder="الوصف">
+                <input type="url" id="link-url" class="admin-input" placeholder="الرابط">
+                <input type="text" id="link-icon" class="admin-input" placeholder="الأيقونة (fab fa-facebook)">
+                <button class="admin-btn" onclick="addLink()">➕ إضافة</button>
             </div>
-            <h2>تسجيل الدخول</h2>
-            
-            <input type="email" class="modal-input" placeholder="البريد الإلكتروني" id="loginEmail">
-            <input type="password" class="modal-input" placeholder="كلمة المرور" id="loginPassword">
-            
-            <button class="modal-btn" onclick="login()">
-                <i class="fas fa-sign-in-alt"></i>
-                دخول
-            </button>
-            
-            <div style="margin: 15px 0; color: #999; position: relative;">
-                <span style="background: white; padding: 0 10px;">أو</span>
-                <hr style="border: 1px solid #eee; position: relative; top: -12px; z-index: -1;">
-            </div>
-            
-            <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 15px;">
-                <button class="auth-btn facebook" style="width: 50px; min-width: 50px; padding: 12px;" onclick="registerWith('facebook')">
-                    <i class="fab fa-facebook-f"></i>
-                </button>
-                <button class="auth-btn google" style="width: 50px; min-width: 50px; padding: 12px;" onclick="registerWith('google')">
-                    <i class="fab fa-google"></i>
-                </button>
-                <button class="auth-btn instagram" style="width: 50px; min-width: 50px; padding: 12px;" onclick="registerWith('instagram')">
-                    <i class="fab fa-instagram"></i>
-                </button>
-            </div>
-            
-            <div class="modal-close" onclick="closeModal()">
-                لست مشتركاً؟ سجل الآن
+            <div class="admin-section">
+                <h3>📋 الروابط الحالية</h3>
+                <div id="admin-links-list" class="admin-list"></div>
             </div>
         </div>
     </div>
 
-    <!-- القائمة السفلية -->
-    <div class="bottom-nav">
-        <div class="nav-item active">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </div>
-        <div class="nav-item">
-            <i class="fas fa-store"></i>
-            <span>Store</span>
-        </div>
-        <div class="nav-item">
-            <i class="fas fa-heart"></i>
-            <span>Favorites</span>
-        </div>
-        <div class="nav-item" onclick="openLoginModal()">
-            <i class="fas fa-user"></i>
-            <span>Account</span>
-        </div>
-    </div>
+    <div class="notification" id="notification"><i class="fas fa-check-circle"></i><span id="notif-message"></span></div>
 
-    <!-- تذييل الصفحة -->
-    <footer>
-        <div class="footer-logo">شيبابك</div>
-        
-        <div class="footer-links">
-            <a href="#">الرئيسية</a>
-            <a href="#">المتجر</a>
-            <a href="#">من نحن</a>
-            <a href="#">اتصل بنا</a>
-            <a href="#">سياسة الخصوصية</a>
-        </div>
-        
-        <div class="social-links">
-            <a href="https://www.facebook.com/profile.php?id=61587692021311"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/shababek.curtains/"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-google"></i></a>
-            <a href="https://www.tiktok.com/@shababek.curtains"><i class="fab fa-tiktok"></i></a>
-            <a href="https://wa.me/9647883002797"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        
-        <div class="copyright">
-            © 2026 شيبابك للستائر والديكور - جميع الحقوق محفوظة
-        </div>
-    </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
     <script>
-        // فتح نافذة تسجيل الدخول
-        function openLoginModal() {
-            document.getElementById('loginModal').classList.add('active');
+        // بيانات الروابط (محدثة)
+        let linksData = {
+            store: [
+                { title: 'المتجر الإلكتروني', desc: 'تصفح جميع المنتجات', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-store' },
+                { title: 'منتجاتنا', desc: 'أحدث التصاميم', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-tag' },
+                { title: 'استشارة مجانية', desc: 'خبراء التصميم', url: 'https://wa.me/9647883002797?text=استشارة', icon: 'fas fa-headset' }
+            ],
+            social: [
+                { title: 'فيسبوك', desc: 'تابعنا على فيسبوك', url: 'https://www.facebook.com/profile.php?id=61587692021311', icon: 'fab fa-facebook' },
+                { title: 'إنستغرام', desc: 'أحدث التصاميم', url: 'https://www.instagram.com/shababek.curtains/', icon: 'fab fa-instagram' },
+                { title: 'تيك توك', desc: 'فيديوهات قصيرة', url: 'https://www.tiktok.com/@shababek.curtains', icon: 'fab fa-tiktok' },
+                { title: 'يوتيوب', desc: 'شاهد تصاميمنا', url: 'https://youtube.com/@shababek.curtains', icon: 'fab fa-youtube' },
+                { title: 'تويتر', desc: 'تغريدات على X', url: 'https://x.com/ShababekCurtain', icon: 'fa-brands fa-x-twitter' },
+                { title: 'سناب شات', desc: 'يومياتنا', url: 'https://www.snapchat.com/add/shababekcurtin', icon: 'fab fa-snapchat' },
+                { title: 'واتساب', desc: 'تواصل مباشر', url: 'https://wa.me/9647883002797', icon: 'fab fa-whatsapp' },
+                { title: 'تيليجرام', desc: 'قناتنا', url: 'https://t.me/shababekcurtains', icon: 'fab fa-telegram' }
+            ],
+            important: [
+                { title: 'منتدى شبابيك', desc: 'مجتمع الديكور', url: 'https://shababekcurtains.com/ai.html', icon: 'fas fa-comments' },
+                { title: 'طرق الدفع', desc: 'طرق دفع آمنة', url: 'https://shababekcurtains.com/index.html?page=categories#paymentPage', icon: 'fas fa-credit-card' },
+                { title: 'من نحن', desc: 'تعرف على فريقنا', url: 'https://shababekcurtains.com/index.html?page=categories#aboutPage', icon: 'fas fa-info-circle' }
+            ]
+        };
+
+        let currentTab = 'store';
+        let clickCount = 0;
+        let clickTimer;
+        let firstLinkClicked = false;
+
+        // تحميل البيانات
+        function loadData() {
+            const saved = localStorage.getItem('shababek_links_final');
+            if (saved) linksData = JSON.parse(saved);
+            renderAllLinks();
         }
 
-        // إغلاق النافذة
-        function closeModal() {
-            document.getElementById('loginModal').classList.remove('active');
+        function saveData() {
+            localStorage.setItem('shababek_links_final', JSON.stringify(linksData));
         }
 
-        // تسجيل الدخول عبر فيسبوك/جوجل/إنستغرام
-        function registerWith(platform) {
-            let message = '';
-            switch(platform) {
-                case 'facebook':
-                    message = 'جاري التسجيل عبر فيسبوك...';
-                    break;
-                case 'google':
-                    message = 'جاري التسجيل عبر جوجل...';
-                    break;
-                case 'instagram':
-                    message = 'جاري التسجيل عبر إنستغرام...';
-                    break;
+        // عرض الروابط
+        function renderAllLinks() {
+            renderLinks('store', 'store-links');
+            renderLinks('social', 'social-links');
+            renderLinks('important', 'important-links');
+        }
+
+        function renderLinks(category, elementId) {
+            const container = document.getElementById(elementId);
+            if (!container) return;
+            container.innerHTML = linksData[category].map((link, idx) => `
+                <a href="#" class="link-item" onclick="openAppLink('${link.url}', '${link.title}'); handleFirstLinkClick(event, ${idx}, '${category}'); return false;">
+                    <div class="link-icon"><i class="${link.icon}"></i></div>
+                    <div class="link-content">
+                        <div class="link-title">${link.title}</div>
+                        <div class="link-desc"><i class="fas fa-circle"></i> ${link.desc}</div>
+                    </div>
+                    <div class="link-arrow"><i class="fas fa-arrow-left"></i></div>
+                </a>
+            `).join('');
+        }
+
+        // فتح الروابط المباشرة
+        function openAppLink(url, title) {
+            showNotif(`جاري فتح ${title}...`);
+            if (url.includes('wa.me') || url.includes('whatsapp')) {
+                let phone = url.match(/\d+/g)?.join('') || '9647883002797';
+                window.location.href = `whatsapp://send?phone=${phone}`;
+                setTimeout(() => window.location.href = url, 800);
+            } else if (url.includes('instagram.com')) {
+                let username = url.split('/').filter(s => s && !s.includes('?')).pop() || 'shababek.curtains';
+                window.location.href = `instagram://user?username=${username}`;
+                setTimeout(() => window.location.href = url, 800);
+            } else if (url.includes('facebook.com')) {
+                window.location.href = `fb://page/61587692021311`;
+                setTimeout(() => window.location.href = url, 800);
+            } else if (url.includes('tiktok.com')) {
+                let username = url.split('@')[1]?.split('/')[0] || 'shababek.curtains';
+                window.location.href = `tiktok://user?username=${username}`;
+                setTimeout(() => window.location.href = url, 800);
+            } else if (url.includes('t.me')) {
+                let username = url.split('/').pop()?.split('?')[0] || 'shababekcurtains';
+                window.location.href = `tg://resolve?domain=${username}`;
+                setTimeout(() => window.location.href = url, 800);
+            } else {
+                window.location.href = url;
             }
-            
-            alert(message);
-            
-            // محاكاة نجاح التسجيل
-            setTimeout(() => {
-                alert(`✅ تم التسجيل بنجاح عبر ${platform}`);
-                closeModal();
-            }, 1500);
         }
 
-        // تسجيل الدخول العادي
-        function login() {
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            if (!email || !password) {
-                alert('❌ الرجاء إدخال البريد الإلكتروني وكلمة المرور');
-                return;
-            }
-            
-            alert('✅ جاري تسجيل الدخول...');
-            setTimeout(() => {
-                alert('مرحباً بك في شيبابك!');
-                closeModal();
-            }, 1500);
-        }
-
-        // استكشاف المنتجات
-        function exploreProducts() {
-            alert('🛍️ جاري تحميل المنتجات...');
-            // هنا يمكن إضافة توجيه إلى صفحة المنتجات
-        }
-
-        // إغلاق النافذة عند الضغط خارجها
-        window.onclick = function(event) {
-            const modal = document.getElementById('loginModal');
-            if (event.target === modal) {
-                closeModal();
+        // نظام الـ 5 نقرات على أول رابط فقط
+        function handleFirstLinkClick(event, index, category) {
+            if (category === 'store' && index === 0) {
+                clickCount++;
+                if (clickTimer) clearTimeout(clickTimer);
+                clickTimer = setTimeout(() => { clickCount = 0; }, 3000);
+                if (clickCount >= 5) {
+                    clickCount = 0;
+                    openAdminPanel();
+                }
             }
         }
 
-        // تفعيل القائمة السفلية
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function() {
-                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-                this.classList.add('active');
+        // إنشاء QR Code
+        function generateQRCode() {
+            const container = document.getElementById('qrCodeContainer');
+            // تجميع جميع الروابط في نص واحد
+            const allLinks = 
+                "شبابيك للستائر\n" +
+                "SHABABEK CURTAINS\n" +
+                "ظل وذوق\n\n" +
+                "📱 وسائل التواصل:\n" +
+                linksData.social.map(l => `${l.title}: ${l.url}`).join('\n') +
+                "\n\n🛍️ خدمات:\n" +
+                linksData.store.map(l => `${l.title}: ${l.url}`).join('\n') +
+                "\n\n⭐ روابط مهمة:\n" +
+                linksData.important.map(l => `${l.title}: ${l.url}`).join('\n') +
+                "\n\n📞 للتواصل: +9647883002797";
+
+            // استخدام مكتبة QRCode لإنشاء كود حقيقي
+            QRCode.toCanvas(document.createElement('canvas'), allLinks, { width: 200, margin: 2 }, function(err, canvas) {
+                if (err) {
+                    console.error(err);
+                    // إذا فشل، نعرض نص بديل
+                    container.innerHTML = '<div style="color:white;">QR Code</div>';
+                } else {
+                    container.innerHTML = '';
+                    canvas.style.width = '100%';
+                    canvas.style.height = '100%';
+                    canvas.style.borderRadius = '15px';
+                    container.appendChild(canvas);
+                }
             });
+        }
+
+        // لوحة التحكم
+        function openAdminPanel() {
+            document.getElementById('adminPanel').classList.add('show');
+            switchTab('store');
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminPanel').classList.remove('show');
+        }
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            showAdminLinks(tab);
+        }
+
+        function showAdminLinks(category) {
+            let list = document.getElementById('admin-links-list');
+            list.innerHTML = linksData[category].map((link, index) => `
+                <div class="admin-item">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <i class="${link.icon}" style="color:#d9b382; font-size:20px;"></i>
+                        <div><strong>${link.title}</strong><div style="font-size:11px; color:#999;">${link.url.substring(0,30)}</div></div>
+                    </div>
+                    <div class="admin-item-actions">
+                        <button class="admin-item-btn edit" onclick="editLink('${category}', ${index})">✏️</button>
+                        <button class="admin-item-btn delete" onclick="deleteLink('${category}', ${index})">🗑️</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addLink() {
+            let title = document.getElementById('link-title').value;
+            let desc = document.getElementById('link-desc').value;
+            let url = document.getElementById('link-url').value;
+            let icon = document.getElementById('link-icon').value;
+            if (!title || !url) { showNotif('الرجاء إدخال العنوان والرابط', 'error'); return; }
+            linksData[currentTab].push({ title, desc: desc || `تابعنا على ${title}`, url, icon: icon || 'fas fa-link' });
+            saveData(); renderAllLinks(); showAdminLinks(currentTab);
+            document.getElementById('link-title').value = ''; document.getElementById('link-desc').value = '';
+            document.getElementById('link-url').value = ''; document.getElementById('link-icon').value = '';
+            showNotif('✅ تمت الإضافة');
+            generateQRCode(); // تحديث QR code بعد الإضافة
+        }
+
+        function editLink(category, index) {
+            let link = linksData[category][index];
+            let newTitle = prompt('تعديل العنوان:', link.title);
+            if (newTitle) link.title = newTitle;
+            let newUrl = prompt('تعديل الرابط:', link.url);
+            if (newUrl) link.url = newUrl;
+            saveData(); renderAllLinks(); showAdminLinks(currentTab);
+            showNotif('✅ تم التعديل');
+            generateQRCode(); // تحديث QR code بعد التعديل
+        }
+
+        function deleteLink(category, index) {
+            if (confirm('حذف الرابط؟')) {
+                linksData[category].splice(index, 1);
+                saveData(); renderAllLinks(); showAdminLinks(currentTab);
+                showNotif('✅ تم الحذف');
+                generateQRCode(); // تحديث QR code بعد الحذف
+            }
+        }
+
+        function showNotif(msg) {
+            let n = document.getElementById('notification');
+            document.getElementById('notif-message').innerText = msg;
+            n.style.display = 'flex';
+            setTimeout(() => n.style.display = 'none', 2000);
+        }
+
+        // بدء التشغيل
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+            generateQRCode();
+            setTimeout(() => showNotif('👋 اضغط 5 مرات على أول رابط للتحكم'), 1500);
         });
     </script>
 </body>
 </html>
-```
-
-## ✨ **مميزات المتجر الجديد:**
-
-### ✅ **شاشة ترحيب مطابقة للصورة:**
-- عنوان "شيبابك للسنار والديكور" كما في الصورة
-- نص "أهلاً بك في شيبابك"
-- الجمل الإنكليزية والعربية الموجودة في الصورة
-- "Discover the unique and elegant design of your home."
-- "حاولنا أن نتعرف على كل شيء عنك وكنت هنا."
-- "Shade & Elegance for every corner of your life."
-
-### ✅ **ثلاث طرق للتسجيل:**
-- **فيسبوك** - زر أزرق مع أيقونة فيسبوك
-- **جوجل** - زر أبيض مع أيقونة جوجل
-- **إنستغرام** - زر بتدرج ألوان إنستغرام
-
-### ✅ **زر استكشاف المنتجات:**
-- "ابدأ التسوق الآن"
-- "Explore the Collections" تحتها
-
-### ✅ **المميزات الثلاث:**
-- جودة عالية
-- خيارات متنوعة
-- توصيل سريع
-
-### ✅ **القائمة السفلية:**
-- Home 🏠
-- Store 🛍️
-- Favorites ❤️
-- Account 👤
-
-### ✅ **تذييل الصفحة:**
-- روابط سريعة
-- أيقونات التواصل الاجتماعي
-- حقوق النشر
-
-### ✅ **نافذة تسجيل دخول منبثقة:**
-- تصميم أنيق مع أيقونة
-- حقول إدخال البريد وكلمة المرور
-- أزرار التسجيل عبر المنصات الثلاث
-
----
-
-انسخ الكود وجربه في متصفحك! 🎉
