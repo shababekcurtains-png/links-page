@@ -27,14 +27,26 @@
             height: 100%;
         }
 
-        /* خلفية متدرجة أنيقة */
-        .bg-gradient {
+        /* الصورة الأصلية كخلفية (التي تحتوي على QR code) */
+        .custom-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 30%, #d9b38230, #2b1e16 80%);
+            background: url('https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772594834/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_1_kmg4fd.png') no-repeat center center;
+            background-size: cover;
+            z-index: -2;
+        }
+
+        /* طبقة شفافة داكنة لتحسين وضوح العناصر */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
             z-index: -1;
         }
 
@@ -46,57 +58,63 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 15px;
+            justify-content: space-between;
+            padding: 30px 15px 80px;
         }
 
         /* الحاوية الرئيسية للشعار والأيقونات */
         .center-wrapper {
             position: relative;
-            width: 320px;
-            height: 320px;
+            width: 350px;
+            height: 350px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 30px;
+            margin: 0 auto;
         }
 
-        /* الشعار في المنتصف */
+        /* الشعار ثلاثي الأبعاد في المنتصف */
         .logo-container {
-            width: 160px;
-            height: 160px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             background: linear-gradient(145deg, #d9b382, #b58f5a);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 0 4px #d9b38280;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.6),
+                0 0 0 5px #d9b38280,
+                inset 0 -5px 15px rgba(0,0,0,0.4);
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) rotateX(10deg) rotateY(5deg);
             z-index: 20;
-            animation: logoGlow 3s infinite ease-in-out;
+            animation: logo3d 5s infinite ease-in-out;
+            border: 2px solid rgba(255,255,255,0.3);
         }
 
-        @keyframes logoGlow {
+        @keyframes logo3d {
             0%, 100% { 
-                box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 0 4px #d9b38280;
-                transform: translate(-50%, -50%) scale(1);
+                transform: translate(-50%, -50%) rotateX(10deg) rotateY(5deg) scale(1);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 0 5px #d9b38280;
             }
             50% { 
-                box-shadow: 0 20px 45px rgba(217,179,130,0.5), 0 0 0 6px #d9b382;
-                transform: translate(-50%, -50%) scale(1.02);
+                transform: translate(-50%, -50%) rotateX(5deg) rotateY(-5deg) scale(1.05);
+                box-shadow: 0 30px 50px rgba(217,179,130,0.4), 0 0 0 8px #d9b382;
             }
         }
 
         .logo-text {
             text-align: center;
             color: #2b1e16;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.3);
+            transform: rotateX(-5deg);
         }
 
         .logo-text .line1 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 900;
             line-height: 1;
             letter-spacing: 2px;
@@ -120,11 +138,11 @@
             opacity: 0.9;
         }
 
-        /* الأيقونات الدوارة حول الشعار */
+        /* الأيقونات ثلاثية الأبعاد الدوارة حول الشعار */
         .icon-item {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -132,75 +150,87 @@
             text-decoration: none;
             color: white;
             cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: floatIcon 3s infinite ease-in-out;
-            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.5));
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            filter: drop-shadow(0 15px 20px rgba(0,0,0,0.6));
             z-index: 10;
+            transform-style: preserve-3d;
+            animation: orbitRotate 15s linear infinite;
+            animation-delay: calc(var(--icon-index) * -2s);
         }
 
-        /* تأخير مختلف لكل أيقونة في الحركة */
-        .icon-item:nth-child(1) { animation-delay: 0s; }
-        .icon-item:nth-child(2) { animation-delay: 0.2s; }
-        .icon-item:nth-child(3) { animation-delay: 0.4s; }
-        .icon-item:nth-child(4) { animation-delay: 0.6s; }
-        .icon-item:nth-child(5) { animation-delay: 0.8s; }
-        .icon-item:nth-child(6) { animation-delay: 1s; }
-        .icon-item:nth-child(7) { animation-delay: 1.2s; }
-        .icon-item:nth-child(8) { animation-delay: 1.4s; }
-        .icon-item:nth-child(9) { animation-delay: 1.6s; }
-
-        @keyframes floatIcon {
-            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-            50% { transform: translate(-50%, -50%) translateY(-8px); }
+        /* حركة مدارية ثلاثية الأبعاد */
+        @keyframes orbitRotate {
+            0% { 
+                transform: rotate(0deg) translateX(120px) rotate(0deg) scale(1);
+                filter: drop-shadow(0 15px 20px rgba(0,0,0,0.6));
+            }
+            25% { 
+                transform: rotate(90deg) translateX(120px) rotate(-90deg) scale(1.1);
+                filter: drop-shadow(0 20px 30px #d9b382);
+            }
+            50% { 
+                transform: rotate(180deg) translateX(120px) rotate(-180deg) scale(1);
+                filter: drop-shadow(0 15px 20px rgba(0,0,0,0.6));
+            }
+            75% { 
+                transform: rotate(270deg) translateX(120px) rotate(-270deg) scale(1.1);
+                filter: drop-shadow(0 20px 30px #d9b382);
+            }
+            100% { 
+                transform: rotate(360deg) translateX(120px) rotate(-360deg) scale(1);
+                filter: drop-shadow(0 15px 20px rgba(0,0,0,0.6));
+            }
         }
 
         .icon-item:hover {
-            transform: translate(-50%, -50%) scale(1.2) !important;
-            filter: drop-shadow(0 15px 25px #d9b382);
-            z-index: 30;
             animation-play-state: paused;
+            transform: scale(1.4) translateY(-10px) !important;
+            filter: drop-shadow(0 25px 35px #d9b382);
+            z-index: 30;
         }
 
         .icon-circle {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            background: rgba(0, 0, 0, 0.5);
+            font-size: 26px;
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
-            border: 2px solid rgba(217,179,130,0.7);
-            margin-bottom: 4px;
+            border: 2px solid rgba(217,179,130,0.8);
+            margin-bottom: 5px;
             transition: all 0.4s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.2);
+            transform: rotateX(10deg);
         }
 
         .icon-item:hover .icon-circle {
             background: rgba(217,179,130,0.3);
             border-color: #d9b382;
-            transform: rotate(360deg);
-            box-shadow: 0 0 30px #d9b382;
+            transform: rotateX(0deg) rotate(360deg);
+            box-shadow: 0 0 40px #d9b382;
         }
 
         .icon-label {
-            font-size: 9px;
+            font-size: 10px;
             font-weight: 700;
             color: white;
             text-align: center;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 20px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
             white-space: nowrap;
-            max-width: 65px;
+            max-width: 70px;
             overflow: hidden;
             text-overflow: ellipsis;
-            border: 1px solid rgba(217,179,130,0.4);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            border: 1px solid rgba(217,179,130,0.5);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            transform: rotateX(5deg);
         }
 
         /* ألوان الأيقونات */
@@ -214,60 +244,57 @@
         .fa-snapchat { color: #FFFC00; }
         .fa-telegram { color: #0088cc; }
 
-        /* QR code في الأسفل */
-        .qr-section {
+        /* رابط إضافة جهة الاتصال في الأسفل */
+        .contact-link {
             text-align: center;
             animation: fadeInUp 0.6s ease 0.5s both;
+            margin-bottom: 10px;
         }
 
-        .qr-container {
-            display: flex;
-            flex-direction: column;
+        .contact-button {
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .qr-box {
-            width: 100px;
-            height: 100px;
-            background: white;
-            border-radius: 20px;
-            padding: 5px;
-            border: 3px solid #d9b382;
+            gap: 12px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 12px 30px;
+            border-radius: 60px;
+            border: 2px solid #d9b382;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            transition: all 0.3s ease;
             cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
         }
 
-        .qr-box:hover {
-            transform: scale(1.1);
+        .contact-button:hover {
+            transform: scale(1.05);
+            background: rgba(217,179,130,0.3);
             box-shadow: 0 15px 35px rgba(217,179,130,0.4);
         }
 
-        .qr-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 12px;
-        }
-
-        .qr-text {
-            color: white;
-            font-size: 13px;
-            font-weight: 700;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(4px);
-            padding: 6px 20px;
-            border-radius: 40px;
-            border: 1px solid #d9b382;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .qr-text i {
+        .contact-button i {
+            font-size: 20px;
             color: #d9b382;
+        }
+
+        .contact-button span {
             font-size: 16px;
+            font-weight: 700;
+        }
+
+        .contact-button .fa-phone-alt {
+            color: #d9b382;
+            animation: ring 2s infinite;
+        }
+
+        @keyframes ring {
+            0%, 100% { transform: rotate(0); }
+            20% { transform: rotate(15deg); }
+            40% { transform: rotate(-15deg); }
+            60% { transform: rotate(10deg); }
+            80% { transform: rotate(-10deg); }
         }
 
         @keyframes fadeInUp {
@@ -393,12 +420,14 @@
     </style>
 </head>
 <body>
-    <div class="bg-gradient"></div>
+    <!-- الخلفية الأصلية مع QR code -->
+    <div class="custom-bg"></div>
+    <div class="overlay"></div>
 
     <div class="container">
         <!-- الحاوية التي تضم الشعار والأيقونات -->
         <div class="center-wrapper" id="centerWrapper">
-            <!-- الشعار في المنتصف -->
+            <!-- الشعار ثلاثي الأبعاد في المنتصف -->
             <div class="logo-container">
                 <div class="logo-text">
                     <div class="line1">SHA BABEK</div>
@@ -411,18 +440,13 @@
             <!-- الأيقونات ستتم إضافتها هنا عبر JavaScript -->
         </div>
 
-        <!-- QR code في الأسفل -->
-        <div class="qr-section">
-            <div class="qr-container">
-                <div class="qr-box" onclick="openQRCode()">
-                    <img src="https://myqrcode.mobi/0148f3e2/qr.svg" alt="QR Code">
-                </div>
-                <div class="qr-text">
-                    <i class="fas fa-qrcode"></i>
-                    <span>➕ اضغط لإضافة جهات الاتصال</span>
-                    <i class="fas fa-phone-alt"></i>
-                </div>
-            </div>
+        <!-- رابط إضافة جهة الاتصال (بدون QR code مكرر) -->
+        <div class="contact-link">
+            <a href="https://myqrcode.mobi/0148f3e2" target="_blank" class="contact-button">
+                <i class="fas fa-qrcode"></i>
+                <span>➕ اضف جهة اتصال</span>
+                <i class="fas fa-phone-alt"></i>
+            </a>
         </div>
     </div>
 
@@ -478,20 +502,10 @@
             const existingIcons = container.querySelectorAll('.icon-item');
             existingIcons.forEach(icon => icon.remove());
 
-            const radius = 130; // نصف قطر الدائرة
-            const centerX = 160; // مركز الدائرة (نصف عرض centerWrapper)
-            const centerY = 160;
-
             iconsData.forEach((item, index) => {
-                // حساب زاوية كل أيقونة (توزيع متساوي)
-                const angle = (index * 40) - 90; // 40 درجة بين كل أيقونة
-                const x = centerX + radius * Math.cos(angle * Math.PI / 180);
-                const y = centerY + radius * Math.sin(angle * Math.PI / 180);
-                
                 const iconElement = document.createElement('div');
                 iconElement.className = 'icon-item';
-                iconElement.style.left = `${x}px`;
-                iconElement.style.top = `${y}px`;
+                iconElement.style.setProperty('--icon-index', index);
                 iconElement.setAttribute('onclick', `openIconLink('${item.url}'); handleIconClick(event, ${index}); return false;`);
                 
                 iconElement.innerHTML = `
@@ -503,12 +517,6 @@
                 
                 container.appendChild(iconElement);
             });
-        }
-
-        // فتح رابط QR code
-        function openQRCode() {
-            window.open('https://myqrcode.mobi/0148f3e2', '_blank');
-            showNotif('جاري فتح جهات الاتصال...');
         }
 
         // فتح رابط الأيقونة
@@ -588,11 +596,11 @@
         }
 
         function saveData() {
-            localStorage.setItem('shababek_icons_rotating', JSON.stringify(iconsData));
+            localStorage.setItem('shababek_icons_3d_orbiting', JSON.stringify(iconsData));
         }
 
         function loadData() {
-            const saved = localStorage.getItem('shababek_icons_rotating');
+            const saved = localStorage.getItem('shababek_icons_3d_orbiting');
             if (saved) iconsData = JSON.parse(saved);
             renderIcons();
         }
