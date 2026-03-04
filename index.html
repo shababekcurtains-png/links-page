@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shababek Premium Orbit</title>
+<title>شبابيك للستائر</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
@@ -11,12 +11,26 @@
 
 body{
     min-height:100vh;
-    background:radial-gradient(circle at center,#f8f1e8 0%,#e8dccb 100%);
+    background:#f5efe8;
     display:flex;
-    flex-direction:column;
     align-items:center;
     justify-content:center;
     overflow:hidden;
+}
+
+/* الخلفية */
+.bg-image-container{
+    position:fixed;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:-1;
+}
+.bg-image{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
 }
 
 /* الحاوية الرئيسية */
@@ -27,7 +41,6 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    margin-top:-50px; /* رفع للأعلى */
 }
 
 /* الشعار ثابت */
@@ -37,22 +50,16 @@ body{
     border-radius:50%;
     object-fit:cover;
     border:3px solid #d9b382;
-    box-shadow:
-        0 0 0 6px rgba(217,179,130,.15),
-        0 20px 40px rgba(0,0,0,.25);
+    box-shadow:0 15px 30px rgba(0,0,0,.2);
     z-index:20;
 }
 
-/* المدار */
+/* حاوية الأيقونات الدوارة */
 .orbit{
     position:absolute;
     width:100%;
     height:100%;
-    animation:rotateOrbit 30s linear infinite;
-}
-
-.orbit.slowing{
-    animation:rotateOrbit 3s ease-out forwards;
+    animation:rotateOrbit 25s linear infinite;
 }
 
 .orbit.paused{
@@ -84,15 +91,7 @@ body{
     font-size:22px;
     background:rgba(0,0,0,.85);
     border:2px solid #d9b382;
-    box-shadow:0 8px 18px rgba(0,0,0,.35);
-    transition:.4s;
-}
-
-.icon-item.active .icon-circle{
-    box-shadow:
-        0 0 15px #d9b382,
-        0 0 30px rgba(217,179,130,.6);
-    transform:scale(1.15);
+    box-shadow:0 6px 15px rgba(0,0,0,.3);
 }
 
 /* ألوان الأيقونات */
@@ -106,18 +105,17 @@ body{
 .fa-snapchat{color:#FFFC00;}
 .fa-telegram{color:#0088cc;}
 
-/* زر جهة الاتصال */
+/* زر الاتصال */
 .contact-link{
     text-align:center;
-    margin-top:90px; /* نزول للأسفل */
+    margin-top:40px;
 }
-
 .contact-button{
     display:inline-flex;
     align-items:center;
     gap:10px;
     background:#d9b382;
-    padding:14px 32px;
+    padding:12px 28px;
     border-radius:50px;
     text-decoration:none;
     color:#2b1e16;
@@ -126,53 +124,59 @@ body{
     box-shadow:0 8px 20px rgba(0,0,0,.2);
     transition:.3s;
 }
-
 .contact-button:hover{
-    transform:scale(1.07);
+    transform:scale(1.05);
     background:#b58f5a;
     color:white;
 }
 
 /* موبايل */
 @media(max-width:768px){
-.wrapper{width:320px;height:320px;margin-top:-40px}
+.wrapper{width:320px;height:320px}
 .logo-image{width:110px;height:110px}
-.contact-link{margin-top:70px}
 }
 </style>
 </head>
 <body>
 
-<div class="wrapper">
-    <img src="https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772592833/shababek_logo.png" class="logo-image">
-    <div class="orbit" id="orbit"></div>
+<div class="bg-image-container">
+<img src="https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772594834/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_1_kmg4fd.png" class="bg-image">
 </div>
 
-<div class="contact-link">
-    <a href="https://myqrcode.mobi/0148f3e2" target="_blank" class="contact-button">
-        ➕ اضف جهة اتصال
-    </a>
+<div>
+    <div class="wrapper">
+        <img src="https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772592833/shababek_logo.png" class="logo-image">
+
+        <div class="orbit" id="orbit"></div>
+    </div>
+
+    <div class="contact-link">
+        <a href="https://myqrcode.mobi/0148f3e2" target="_blank" class="contact-button">
+            ➕ اضف جهة اتصال
+        </a>
+    </div>
 </div>
 
 <script>
 
 let iconsData=[
-{icon:'fas fa-store',url:'#'},
-{icon:'fab fa-whatsapp',url:'#'},
-{icon:'fab fa-instagram',url:'#'},
-{icon:'fab fa-facebook',url:'#'},
-{icon:'fab fa-tiktok',url:'#'},
-{icon:'fab fa-youtube',url:'#'},
-{icon:'fa-brands fa-x-twitter',url:'#'},
-{icon:'fab fa-snapchat',url:'#'},
-{icon:'fab fa-telegram',url:'#'}
+{icon:'fas fa-store',url:'https://shababekcurtains.com'},
+{icon:'fab fa-whatsapp',url:'whatsapp://send?phone=9647883002797'},
+{icon:'fab fa-instagram',url:'instagram://user?username=shababek.curtains'},
+{icon:'fab fa-facebook',url:'fb://page/61587692021311'},
+{icon:'fab fa-tiktok',url:'tiktok://user?username=shababek.curtains'},
+{icon:'fab fa-youtube',url:'https://youtube.com'},
+{icon:'fa-brands fa-x-twitter',url:'https://twitter.com'},
+{icon:'fab fa-snapchat',url:'snapchat://add/shababekcurtin'},
+{icon:'fab fa-telegram',url:'tg://resolve?domain=shababekcurtains'}
 ];
 
 function renderIcons(){
     const orbit=document.getElementById('orbit');
     orbit.innerHTML='';
+
     const total=iconsData.length;
-    const radius=105;
+    const radius=110; /* قربتها من الشعار */
 
     iconsData.forEach((item,index)=>{
         const angle=(index/total)*(2*Math.PI);
@@ -195,12 +199,7 @@ function renderIcons(){
         `;
 
         icon.addEventListener('click',()=>{
-            document.querySelectorAll('.icon-item').forEach(i=>i.classList.remove('active'));
-            icon.classList.add('active');
-            orbit.classList.add('slowing');
-            setTimeout(()=>{
-                orbit.classList.add('paused');
-            },2800);
+            orbit.classList.add('paused');
         });
 
         orbit.appendChild(icon);
