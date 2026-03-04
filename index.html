@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>شبابيك للستائر - أيقونات دائرية</title>
+<title>شبابيك للستائر</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
     min-height:100vh;
     background:#f5efe8;
@@ -32,36 +33,42 @@ body{
     object-fit:contain;
 }
 
-/* الحاوية الدوارة */
-.center-wrapper{
+/* الحاوية الرئيسية */
+.wrapper{
     position:relative;
     width:380px;
     height:380px;
     display:flex;
     align-items:center;
     justify-content:center;
+}
+
+/* الشعار ثابت */
+.logo-image{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #d9b382;
+    box-shadow:0 15px 30px rgba(0,0,0,.2);
+    z-index:20;
+}
+
+/* حاوية الأيقونات الدوارة */
+.orbit{
+    position:absolute;
+    width:100%;
+    height:100%;
     animation:rotateOrbit 25s linear infinite;
 }
 
-.center-wrapper.paused{
+.orbit.paused{
     animation-play-state:paused;
 }
 
 @keyframes rotateOrbit{
     from{transform:rotate(0deg)}
     to{transform:rotate(360deg)}
-}
-
-/* الشعار */
-.logo-image{
-    width:140px;
-    height:140px;
-    border-radius:50%;
-    object-fit:cover;
-    position:absolute;
-    z-index:10;
-    border:3px solid #d9b382;
-    box-shadow:0 15px 30px rgba(0,0,0,.2);
 }
 
 /* الأيقونات */
@@ -84,9 +91,19 @@ body{
     font-size:22px;
     background:rgba(0,0,0,.85);
     border:2px solid #d9b382;
-    color:white;
     box-shadow:0 6px 15px rgba(0,0,0,.3);
 }
+
+/* ألوان الأيقونات */
+.fa-store{color:#ffd700;}
+.fa-whatsapp{color:#25D366;}
+.fa-instagram{color:#E4405F;}
+.fa-facebook{color:#1877F2;}
+.fa-tiktok{color:#ffffff;}
+.fa-youtube{color:#FF0000;}
+.fa-x-twitter{color:#ffffff;}
+.fa-snapchat{color:#FFFC00;}
+.fa-telegram{color:#0088cc;}
 
 /* زر الاتصال */
 .contact-link{
@@ -115,7 +132,7 @@ body{
 
 /* موبايل */
 @media(max-width:768px){
-.center-wrapper{width:320px;height:320px}
+.wrapper{width:320px;height:320px}
 .logo-image{width:110px;height:110px}
 }
 </style>
@@ -127,8 +144,10 @@ body{
 </div>
 
 <div>
-    <div class="center-wrapper" id="centerWrapper">
+    <div class="wrapper">
         <img src="https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772592833/shababek_logo.png" class="logo-image">
+
+        <div class="orbit" id="orbit"></div>
     </div>
 
     <div class="contact-link">
@@ -140,27 +159,24 @@ body{
 
 <script>
 
-/* بيانات الأيقونات */
-let iconsData = [
-{ icon:'fas fa-store', url:'https://shababekcurtains.com/index.html?page=categories#homePage'},
-{ icon:'fab fa-whatsapp', url:'whatsapp://send?phone=9647883002797'},
-{ icon:'fab fa-instagram', url:'instagram://user?username=shababek.curtains'},
-{ icon:'fab fa-facebook', url:'fb://page/61587692021311'},
-{ icon:'fab fa-tiktok', url:'tiktok://user?username=shababek.curtains'},
-{ icon:'fab fa-youtube', url:'https://youtube.com'},
-{ icon:'fa-brands fa-x-twitter', url:'https://twitter.com'},
-{ icon:'fab fa-snapchat', url:'snapchat://add/shababekcurtin'},
-{ icon:'fab fa-telegram', url:'tg://resolve?domain=shababekcurtains'}
+let iconsData=[
+{icon:'fas fa-store',url:'https://shababekcurtains.com'},
+{icon:'fab fa-whatsapp',url:'whatsapp://send?phone=9647883002797'},
+{icon:'fab fa-instagram',url:'instagram://user?username=shababek.curtains'},
+{icon:'fab fa-facebook',url:'fb://page/61587692021311'},
+{icon:'fab fa-tiktok',url:'tiktok://user?username=shababek.curtains'},
+{icon:'fab fa-youtube',url:'https://youtube.com'},
+{icon:'fa-brands fa-x-twitter',url:'https://twitter.com'},
+{icon:'fab fa-snapchat',url:'snapchat://add/shababekcurtin'},
+{icon:'fab fa-telegram',url:'tg://resolve?domain=shababekcurtains'}
 ];
 
-/* توزيع دائري متساوي */
 function renderIcons(){
-    const container=document.getElementById('centerWrapper');
-    const oldIcons=container.querySelectorAll('.icon-item');
-    oldIcons.forEach(e=>e.remove());
+    const orbit=document.getElementById('orbit');
+    orbit.innerHTML='';
 
     const total=iconsData.length;
-    const radius=140;
+    const radius=110; /* قربتها من الشعار */
 
     iconsData.forEach((item,index)=>{
         const angle=(index/total)*(2*Math.PI);
@@ -170,9 +186,10 @@ function renderIcons(){
         const icon=document.createElement('a');
         icon.className='icon-item';
         icon.href=item.url;
+
         icon.style.transform=`
-            translate(-50%,-50%)
-            translate(${x}px,${y}px)
+        translate(-50%,-50%)
+        translate(${x}px,${y}px)
         `;
 
         icon.innerHTML=`
@@ -182,10 +199,10 @@ function renderIcons(){
         `;
 
         icon.addEventListener('click',()=>{
-            document.getElementById('centerWrapper').classList.add('paused');
+            orbit.classList.add('paused');
         });
 
-        container.appendChild(icon);
+        orbit.appendChild(icon);
     });
 }
 
