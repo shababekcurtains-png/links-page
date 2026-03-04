@@ -57,14 +57,14 @@
             width: 100%;
         }
 
-        /* المنطقة الوسطى - شبكة الأيقونات */
+        /* المنطقة الوسطى - شبكة 3×3 */
         .icons-grid {
             width: 100%;
-            max-width: 320px;
+            max-width: 300px;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px 8px;
-            padding: 5px 0;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px 15px;
+            padding: 10px 0;
         }
 
         /* عنصر الأيقونة الواحدة */
@@ -76,10 +76,10 @@
             text-decoration: none;
             color: white;
             cursor: pointer;
-            transition: transform 0.15s ease;
+            transition: transform 0.2s ease;
             animation: fadeIn 0.3s ease forwards;
             opacity: 0;
-            background: transparent; /* خلفية شفافة تماماً */
+            background: transparent;
             padding: 5px 0;
         }
 
@@ -97,46 +97,52 @@
         .icon-item:nth-child(7) { animation-delay: 0.14s; }
         .icon-item:nth-child(8) { animation-delay: 0.16s; }
         .icon-item:nth-child(9) { animation-delay: 0.18s; }
-        .icon-item:nth-child(10) { animation-delay: 0.2s; }
-        .icon-item:nth-child(11) { animation-delay: 0.22s; }
-        .icon-item:nth-child(12) { animation-delay: 0.24s; }
-        .icon-item:nth-child(13) { animation-delay: 0.26s; }
-        .icon-item:nth-child(14) { animation-delay: 0.28s; }
 
         .icon-item:active {
             transform: scale(0.9);
         }
 
-        /* دائرة الأيقونة - شفافة تماماً */
+        /* دائرة الأيقونة مع تضليل خلفي */
         .icon-circle {
-            width: 45px;
-            height: 45px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 26px;
             color: white;
-            background: transparent; /* خلفية شفافة */
-            margin-bottom: 4px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);  /* تضليل دائري خفيف */
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            margin-bottom: 6px;
+            border: 1.5px solid rgba(217, 179, 130, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .icon-item:active .icon-circle {
+            background: rgba(217, 179, 130, 0.3);
+            border-color: #d9b382;
+            transform: scale(1.05);
         }
 
         /* نص مختصر تحت الأيقونة */
         .icon-label {
-            font-size: 9px;
+            font-size: 11px;
             font-weight: 600;
             color: white;
             text-align: center;
-            max-width: 55px;
+            max-width: 70px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             background: transparent;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
         }
 
         /* ألوان خاصة للأيقونات */
+        .fa-store { color: #d9b382; }
         .fa-whatsapp { color: #25D366; }
         .fa-instagram { color: #E4405F; }
         .fa-facebook { color: #1877F2; }
@@ -145,12 +151,6 @@
         .fa-tiktok { color: #ffffff; }
         .fa-x-twitter { color: #ffffff; }
         .fa-snapchat { color: #FFFC00; }
-        .fa-store { color: #d9b382; }
-        .fa-tag { color: #d9b382; }
-        .fa-headset { color: #d9b382; }
-        .fa-comments { color: #d9b382; }
-        .fa-credit-card { color: #d9b382; }
-        .fa-info-circle { color: #d9b382; }
 
         /* المساحة السفلية (QR code موجود في الصورة) */
         .bottom-spacer {
@@ -292,7 +292,7 @@
         <!-- مساحة علوية (الشعار موجود في الصورة) -->
         <div class="top-spacer"></div>
 
-        <!-- المنطقة الوسطى - أيقونات مع نصوص مختصرة -->
+        <!-- المنطقة الوسطى - أيقونات 3×3 مع نصوص مختصرة -->
         <div class="icons-grid" id="iconsGrid"></div>
 
         <!-- مساحة سفلية (QR code موجود في الصورة) -->
@@ -326,22 +326,17 @@
     <div class="notification" id="notification"><i class="fas fa-check-circle"></i><span id="notif-message"></span></div>
 
     <script>
-        // قائمة الأيقونات مع النصوص المختصرة
+        // قائمة الأيقونات المطلوبة فقط (9 أيقونات - 3×3)
         let iconsData = [
-            { icon: 'fab fa-facebook', label: 'فيسبوك', url: 'https://www.facebook.com/profile.php?id=61587692021311' },
+            { icon: 'fas fa-store', label: 'المتجر', url: 'https://shababekcurtains.com/index.html?page=categories#homePage' },
+            { icon: 'fab fa-whatsapp', label: 'واتساب', url: 'https://wa.me/9647883002797' },
             { icon: 'fab fa-instagram', label: 'إنستغرام', url: 'https://www.instagram.com/shababek.curtains/' },
+            { icon: 'fab fa-facebook', label: 'فيسبوك', url: 'https://www.facebook.com/profile.php?id=61587692021311' },
             { icon: 'fab fa-tiktok', label: 'تيك توك', url: 'https://www.tiktok.com/@shababek.curtains' },
             { icon: 'fab fa-youtube', label: 'يوتيوب', url: 'https://youtube.com/@shababek.curtains' },
             { icon: 'fa-brands fa-x-twitter', label: 'تويتر', url: 'https://x.com/ShababekCurtain' },
             { icon: 'fab fa-snapchat', label: 'سناب', url: 'https://www.snapchat.com/add/shababekcurtin' },
-            { icon: 'fab fa-whatsapp', label: 'واتساب', url: 'https://wa.me/9647883002797' },
-            { icon: 'fab fa-telegram', label: 'تيليجرام', url: 'https://t.me/shababekcurtains' },
-            { icon: 'fas fa-store', label: 'المتجر', url: 'https://shababekcurtains.com/index.html?page=categories#homePage' },
-            { icon: 'fas fa-tag', label: 'منتجات', url: 'https://shababekcurtains.com/index.html?page=categories#homePage' },
-            { icon: 'fas fa-headset', label: 'استشارة', url: 'https://wa.me/9647883002797?text=استشارة' },
-            { icon: 'fas fa-comments', label: 'منتدى', url: 'https://shababekcurtains.com/ai.html' },
-            { icon: 'fas fa-credit-card', label: 'طرق دفع', url: 'https://shababekcurtains.com/index.html?page=categories#paymentPage' },
-            { icon: 'fas fa-info-circle', label: 'من نحن', url: 'https://shababekcurtains.com/index.html?page=categories#aboutPage' }
+            { icon: 'fab fa-telegram', label: 'تيليجرام', url: 'https://t.me/shababekcurtains' }
         ];
 
         let clickCount = 0;
@@ -349,16 +344,16 @@
 
         // تحميل البيانات
         function loadData() {
-            const saved = localStorage.getItem('shababek_icons_with_labels');
+            const saved = localStorage.getItem('shababek_icons_3x3');
             if (saved) iconsData = JSON.parse(saved);
             renderIcons();
         }
 
         function saveData() {
-            localStorage.setItem('shababek_icons_with_labels', JSON.stringify(iconsData));
+            localStorage.setItem('shababek_icons_3x3', JSON.stringify(iconsData));
         }
 
-        // عرض الأيقونات في شبكة 4 أعمدة
+        // عرض الأيقونات في شبكة 3 أعمدة
         function renderIcons() {
             const container = document.getElementById('iconsGrid');
             if (!container) return;
