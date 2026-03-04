@@ -21,13 +21,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* منع التمرير نهائياً */
+            overflow: hidden;
             position: fixed;
             width: 100%;
             height: 100%;
         }
 
-        /* الخلفية - الصورة الجديدة */
+        /* الصورة المرفقة فقط (بدون خلفية إضافية) */
         .custom-bg {
             position: absolute;
             top: 0;
@@ -35,21 +35,10 @@
             width: 100%;
             height: 100%;
             background: url('https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772584034/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_k0xc3e.png') no-repeat center center/cover;
-            z-index: -2;
-        }
-
-        /* طبقة شفافة داكنة لتحسين وضوح النصوص */
-        .bg-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
             z-index: -1;
         }
 
-        /* الحاوية الرئيسية - بحجم الشاشة بالكامل */
+        /* الحاوية الرئيسية */
         .container {
             position: relative;
             z-index: 1;
@@ -59,41 +48,40 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 15px 10px;
             overflow: hidden;
         }
 
-        /* النص الترحيبي من الصورة - مصغر */
+        /* النص الترحيبي من الصورة */
         .brand-header {
             text-align: center;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             color: white;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-            transform: scale(0.9);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
         .brand-title-ar {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 900;
-            line-height: 1.1;
+            line-height: 1;
             color: #d9b382;
         }
 
         .brand-title-ar span {
-            font-size: 16px;
+            font-size: 14px;
             color: white;
             display: block;
         }
 
         .brand-title-en {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             margin-top: 2px;
         }
 
         .brand-title-en small {
-            font-size: 10px;
+            font-size: 9px;
             color: #d9b382;
             display: block;
         }
@@ -101,47 +89,47 @@
         /* عنوان القسم - مصغر جداً */
         .section-title {
             color: white;
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 900;
-            margin: 5px 0 3px;
+            margin: 3px 0 2px;
             text-align: center;
             width: 100%;
-            max-width: 350px;
-            text-shadow: 1px 1px 3px black;
+            max-width: 320px;
+            text-shadow: 1px 1px 2px black;
         }
 
         .section-title i {
             color: #d9b382;
             margin-left: 3px;
-            font-size: 10px;
+            font-size: 9px;
         }
 
         /* شبكة الروابط - مصغرة جداً */
         .links-grid {
             width: 100%;
-            max-width: 350px;
+            max-width: 320px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
 
         /* تصميم الرابط المصغر جداً */
         .link-item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 12px;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1.5px solid rgba(217, 179, 130, 0.6);
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(217, 179, 130, 0.5);
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             color: white;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: all 0.15s ease;
             cursor: pointer;
-            animation: fadeIn 0.3s ease forwards;
+            animation: fadeIn 0.2s ease forwards;
             opacity: 0;
         }
 
@@ -150,98 +138,96 @@
         }
 
         /* تأخير بسيط للظهور */
-        .link-item:nth-child(1) { animation-delay: 0.05s; }
-        .link-item:nth-child(2) { animation-delay: 0.1s; }
-        .link-item:nth-child(3) { animation-delay: 0.15s; }
-        .link-item:nth-child(4) { animation-delay: 0.2s; }
-        .link-item:nth-child(5) { animation-delay: 0.25s; }
-        .link-item:nth-child(6) { animation-delay: 0.3s; }
-        .link-item:nth-child(7) { animation-delay: 0.35s; }
-        .link-item:nth-child(8) { animation-delay: 0.4s; }
+        .link-item:nth-child(1) { animation-delay: 0.02s; }
+        .link-item:nth-child(2) { animation-delay: 0.04s; }
+        .link-item:nth-child(3) { animation-delay: 0.06s; }
+        .link-item:nth-child(4) { animation-delay: 0.08s; }
+        .link-item:nth-child(5) { animation-delay: 0.1s; }
+        .link-item:nth-child(6) { animation-delay: 0.12s; }
+        .link-item:nth-child(7) { animation-delay: 0.14s; }
+        .link-item:nth-child(8) { animation-delay: 0.16s; }
 
-        /* تأثير اللمس للهاتف */
+        /* تأثير اللمس */
         .link-item:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
             background: rgba(217, 179, 130, 0.3);
             border-color: #d9b382;
         }
 
-        /* أيقونة الرابط - مصغرة */
+        /* أيقونة الرابط - أصغر حجم */
         .link-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
+            width: 24px;
+            height: 24px;
+            border-radius: 7px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 13px;
             background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(217, 179, 130, 0.5);
-            transition: all 0.2s ease;
+            border: 1px solid rgba(217, 179, 130, 0.4);
+            transition: all 0.15s ease;
             flex-shrink: 0;
         }
 
         .link-item:active .link-icon {
             background: #d9b382;
-            transform: scale(1.05);
         }
 
         .link-item:active .link-icon i {
             color: #3d2e24 !important;
         }
 
-        /* محتوى الرابط - مصغر */
+        /* محتوى الرابط */
         .link-content {
             flex: 1;
         }
 
         .link-title {
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 800;
-            margin-bottom: 2px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            margin-bottom: 1px;
+            line-height: 1.2;
         }
 
         .badge {
             background: #d9b382;
             color: #3d2e24;
-            font-size: 8px;
-            padding: 2px 5px;
+            font-size: 7px;
+            padding: 1px 4px;
             border-radius: 20px;
             font-weight: 700;
         }
 
         .link-desc {
-            font-size: 9px;
-            opacity: 0.9;
+            font-size: 7px;
+            opacity: 0.8;
             display: flex;
             align-items: center;
-            gap: 3px;
+            gap: 2px;
+            line-height: 1;
         }
 
         .link-desc i {
-            font-size: 4px;
+            font-size: 3px;
             color: #d9b382;
         }
 
-        /* السهم - مصغر */
+        /* السهم - أصغر حجم */
         .link-arrow {
-            width: 25px;
-            height: 25px;
-            border-radius: 8px;
+            width: 20px;
+            height: 20px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(217, 179, 130, 0.5);
-            transition: all 0.2s ease;
+            border: 1px solid rgba(217, 179, 130, 0.4);
+            transition: all 0.15s ease;
             flex-shrink: 0;
         }
 
         .link-item:active .link-arrow {
-            transform: translateX(-3px);
+            transform: translateX(-2px);
             background: #d9b382;
         }
 
@@ -250,82 +236,82 @@
         }
 
         .link-arrow i {
-            font-size: 10px;
+            font-size: 8px;
         }
 
-        /* قسم QR Code - مصغر جداً */
+        /* قسم QR Code - في الأسفل */
         .qr-section {
             width: 100%;
-            max-width: 350px;
-            margin-top: 8px;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1.5px solid #d9b382;
-            border-radius: 20px;
-            padding: 8px 10px;
+            max-width: 320px;
+            margin-top: 5px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid #d9b382;
+            border-radius: 15px;
+            padding: 5px 8px;
             text-align: center;
-            animation: fadeIn 0.3s ease 0.5s both;
+            animation: fadeIn 0.2s ease 0.5s both;
         }
 
         .qr-title {
             color: #d9b382;
-            font-size: 11px;
+            font-size: 9px;
             font-weight: 700;
             letter-spacing: 1px;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
         .qr-title i {
-            margin-left: 4px;
-            font-size: 12px;
+            margin-left: 3px;
+            font-size: 10px;
         }
 
         .qr-code-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
 
         .qr-code {
-            width: 60px;
-            height: 60px;
+            width: 45px;
+            height: 45px;
             background: white;
-            border-radius: 12px;
-            padding: 3px;
+            border-radius: 8px;
+            padding: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid #d9b382;
+            border: 1.5px solid #d9b382;
         }
 
-        .qr-code svg, .qr-code canvas {
+        .qr-code canvas {
             width: 100%;
             height: 100%;
-            border-radius: 8px;
+            border-radius: 5px;
         }
 
         .qr-note {
             color: white;
-            font-size: 8px;
+            font-size: 6px;
             font-weight: 600;
         }
 
         .qr-note i {
             color: #d9b382;
-            margin-left: 3px;
-            font-size: 8px;
+            margin-left: 2px;
+            font-size: 6px;
         }
 
-        /* تذييل الصفحة - مصغر جداً */
+        /* تذييل الصفحة */
         .footer {
-            margin-top: 5px;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 7px;
+            margin-top: 3px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 5px;
             text-align: center;
         }
 
-        /* ===== لوحة التحكم (تظهر عند الحاجة) ===== */
+        /* ===== لوحة التحكم ===== */
         .admin-panel {
             position: fixed;
             top: 0;
@@ -347,28 +333,28 @@
         .admin-content {
             background: white;
             width: 100%;
-            max-width: 380px;
+            max-width: 350px;
             max-height: 90vh;
             overflow-y: auto;
-            border-radius: 25px;
-            padding: 20px;
-            border: 3px solid #d9b382;
+            border-radius: 20px;
+            padding: 15px;
+            border: 2px solid #d9b382;
         }
 
         .admin-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
             border-bottom: 2px solid #d9b382;
         }
 
-        .admin-header h2 { font-size: 18px; }
+        .admin-header h2 { font-size: 16px; }
 
         .admin-close {
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             background: #f0f0f0;
             border: none;
@@ -378,16 +364,16 @@
         .admin-tabs {
             display: flex;
             gap: 3px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .admin-tab {
             flex: 1;
-            padding: 8px;
-            font-size: 12px;
+            padding: 6px;
+            font-size: 11px;
             background: #f0f0f0;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
         }
 
@@ -395,39 +381,39 @@
 
         .admin-section {
             background: #f8f8f8;
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 15px;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
         }
 
-        .admin-section h3 { font-size: 14px; margin-bottom: 10px; }
+        .admin-section h3 { font-size: 13px; margin-bottom: 8px; }
 
         .admin-input {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 8px;
+            padding: 8px;
+            margin-bottom: 6px;
             border: 2px solid #eee;
-            border-radius: 10px;
-            font-size: 13px;
+            border-radius: 8px;
+            font-size: 12px;
         }
 
         .admin-btn {
-            padding: 10px;
-            font-size: 14px;
+            padding: 8px;
+            font-size: 13px;
         }
 
         .admin-list {
-            max-height: 200px;
+            max-height: 180px;
         }
 
         .admin-item {
-            padding: 8px;
+            padding: 6px;
         }
 
         .admin-item-btn {
-            width: 30px;
-            height: 30px;
-            font-size: 12px;
+            width: 28px;
+            height: 28px;
+            font-size: 11px;
         }
 
         /* إشعار */
@@ -438,14 +424,14 @@
             transform: translateX(-50%);
             background: white;
             color: #3d2e24;
-            padding: 8px 20px;
-            border-radius: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3), 0 0 0 2px #d9b382;
+            padding: 6px 15px;
+            border-radius: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3), 0 0 0 2px #d9b382;
             display: none;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
             z-index: 3000;
-            font-size: 12px;
+            font-size: 11px;
             white-space: nowrap;
         }
 
@@ -456,11 +442,11 @@
     </style>
 </head>
 <body>
+    <!-- الصورة المرفقة فقط -->
     <div class="custom-bg"></div>
-    <div class="bg-overlay"></div>
 
     <div class="container">
-        <!-- النص الترحيبي من الصورة - مصغر -->
+        <!-- النص الترحيبي من الصورة (الجزء العلوي) -->
         <div class="brand-header">
             <div class="brand-title-ar">
                 0.00 SHABABE
@@ -472,19 +458,19 @@
             </div>
         </div>
 
-        <!-- خدماتنا - روابط مصغرة -->
+        <!-- خدماتنا - روابط مصغرة جداً -->
         <div class="section-title"><i class="fas fa-store"></i> خدماتنا</div>
         <div class="links-grid" id="store-links"></div>
 
-        <!-- تابعنا على - روابط مصغرة -->
+        <!-- تابعنا على - روابط مصغرة جداً -->
         <div class="section-title"><i class="fas fa-hashtag"></i> تابعنا على</div>
         <div class="links-grid" id="social-links"></div>
 
-        <!-- روابط مهمة - روابط مصغرة -->
+        <!-- روابط مهمة - روابط مصغرة جداً -->
         <div class="section-title"><i class="fas fa-star"></i> روابط مهمة</div>
         <div class="links-grid" id="important-links"></div>
 
-        <!-- QR Code مصغر -->
+        <!-- QR Code في الأسفل -->
         <div class="qr-section">
             <div class="qr-title"><i class="fas fa-qrcode"></i> SCAN ME!</div>
             <div class="qr-code-container">
@@ -493,7 +479,7 @@
             <div class="qr-note"><i class="fas fa-camera"></i> أضف شبابيك على تيليجرام</div>
         </div>
 
-        <div class="footer">© 2026 شبابيك للستائر</div>
+        <div class="footer">© 2026 شبابيك</div>
     </div>
 
     <!-- لوحة التحكم -->
@@ -527,7 +513,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
     <script>
-        // بيانات الروابط (14 رابط في المجموع - مناسبة لشاشة واحدة)
+        // بيانات الروابط
         let linksData = {
             store: [
                 { title: 'المتجر', desc: 'تسوق الآن', url: 'https://shababekcurtains.com/index.html?page=categories#homePage', icon: 'fas fa-store' },
@@ -555,18 +541,16 @@
         let clickCount = 0;
         let clickTimer;
 
-        // تحميل البيانات
         function loadData() {
-            const saved = localStorage.getItem('shababek_links_card');
+            const saved = localStorage.getItem('shababek_links_final_card');
             if (saved) linksData = JSON.parse(saved);
             renderAllLinks();
         }
 
         function saveData() {
-            localStorage.setItem('shababek_links_card', JSON.stringify(linksData));
+            localStorage.setItem('shababek_links_final_card', JSON.stringify(linksData));
         }
 
-        // عرض الروابط
         function renderAllLinks() {
             renderLinks('store', 'store-links');
             renderLinks('social', 'social-links');
@@ -588,13 +572,11 @@
             `).join('');
         }
 
-        // فتح الروابط
         function openAppLink(url, title) {
             showNotif(`${title}`);
             window.location.href = url;
         }
 
-        // نظام الـ 5 نقرات على أول رابط
         function handleFirstLinkClick(event, index, category) {
             if (category === 'store' && index === 0) {
                 clickCount++;
@@ -607,25 +589,23 @@
             }
         }
 
-        // إنشاء QR Code
         function generateQRCode() {
             const container = document.getElementById('qrCodeContainer');
-            const allLinks = "شبابيك للستائر\n" + window.location.href;
+            const allLinks = "شبابيك للستائر\nرابط المتجر: " + window.location.href;
             
-            QRCode.toCanvas(document.createElement('canvas'), allLinks, { width: 150, margin: 1 }, function(err, canvas) {
+            QRCode.toCanvas(document.createElement('canvas'), allLinks, { width: 100, margin: 1 }, function(err, canvas) {
                 if (err) {
                     container.innerHTML = '<div style="color:white;">QR</div>';
                 } else {
                     container.innerHTML = '';
                     canvas.style.width = '100%';
                     canvas.style.height = '100%';
-                    canvas.style.borderRadius = '8px';
+                    canvas.style.borderRadius = '5px';
                     container.appendChild(canvas);
                 }
             });
         }
 
-        // لوحة التحكم
         function openAdminPanel() {
             document.getElementById('adminPanel').classList.add('show');
             switchTab('store');
@@ -646,7 +626,7 @@
             let list = document.getElementById('admin-links-list');
             list.innerHTML = linksData[category].map((link, index) => `
                 <div class="admin-item">
-                    <div style="display:flex; align-items:center; gap:8px;">
+                    <div style="display:flex; align-items:center; gap:5px;">
                         <i class="${link.icon}" style="color:#d9b382;"></i>
                         <div><strong>${link.title}</strong></div>
                     </div>
@@ -690,14 +670,13 @@
             let n = document.getElementById('notification');
             document.getElementById('notif-message').innerText = msg;
             n.style.display = 'flex';
-            setTimeout(() => n.style.display = 'none', 1000);
+            setTimeout(() => n.style.display = 'none', 800);
         }
 
-        // بدء التشغيل
         document.addEventListener('DOMContentLoaded', () => {
             loadData();
             generateQRCode();
-            setTimeout(() => showNotif('👋 اضغط 5 مرات على "المتجر"'), 1000);
+            setTimeout(() => showNotif('👋 5 مرات على "المتجر"'), 1000);
         });
     </script>
 </body>
