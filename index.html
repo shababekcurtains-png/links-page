@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>شبابيك للستائر - أيقونات تفاعلية</title>
+    <title>شبابيك للستائر - أيقونات سريعة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
@@ -64,17 +64,17 @@
             width: 100%;
         }
 
-        /* شبكة 3×3 مع أيقونات غامقة */
+        /* شبكة 3×3 */
         .icons-grid {
             width: 100%;
-            max-width: 260px;
+            max-width: 280px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px 6px;
+            gap: 15px 10px;
             padding: 0;
         }
 
-        /* أيقونة تفاعلية غامقة */
+        /* أيقونة بدون خلفية */
         .icon-item {
             display: flex;
             flex-direction: column;
@@ -83,11 +83,10 @@
             text-decoration: none;
             color: white;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             animation: fadeIn 0.3s ease forwards;
             opacity: 0;
             padding: 5px 0;
-            position: relative;
         }
 
         @keyframes fadeIn {
@@ -104,99 +103,49 @@
         .icon-item:nth-child(8) { animation-delay: 0.16s; }
         .icon-item:nth-child(9) { animation-delay: 0.18s; }
 
-        /* تأثيرات تفاعلية متطورة */
-        .icon-item::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(217, 179, 130, 0.4) 0%, transparent 70%);
-            transition: all 0.4s ease;
-            z-index: -1;
-            opacity: 0;
+        .icon-item:active {
+            transform: scale(0.95);
         }
 
-        .icon-item:hover::before,
-        .icon-item:active::before {
-            width: 80px;
-            height: 80px;
-            opacity: 1;
-        }
-
-        /* دائرة الأيقونة - غامقة مع تأثيرات */
+        /* أيقونة بدون خلفية - شفافة تماماً */
         .icon-circle {
-            width: 52px;
-            height: 52px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 32px; /* أيقونات أكبر */
             color: white;
-            background: rgba(0, 0, 0, 0.5); /* أغمق */
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
-            margin-bottom: 4px;
-            border: 2px solid rgba(217, 179, 130, 0.5);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
+            background: transparent; /* شفافة تماماً */
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
         }
 
-        /* تأثير التوهج الداخلي */
-        .icon-circle::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(217, 179, 130, 0.3) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-
+        /* تأثير تفاعلي بسيط */
         .icon-item:hover .icon-circle,
         .icon-item:active .icon-circle {
-            transform: scale(1.15) rotate(8deg);
-            border-color: #d9b382;
-            background: rgba(217, 179, 130, 0.25);
-            box-shadow: 0 0 20px #d9b382, 0 4px 15px rgba(0, 0, 0, 0.6);
+            transform: scale(1.15);
+            text-shadow: 0 0 20px #d9b382, 0 0 40px rgba(217, 179, 130, 0.5);
         }
 
-        .icon-item:hover .icon-circle::after,
-        .icon-item:active .icon-circle::after {
-            opacity: 1;
-        }
-
-        .icon-item:hover .icon-circle i,
-        .icon-item:active .icon-circle i {
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 5px currentColor);
-        }
-
-        /* نص الأيقونة - غامق مع تأثير */
+        /* عنوان الأيقونة مع تضليل فقط */
         .icon-label {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 800;
             color: white;
             text-align: center;
-            padding: 3px 8px;
-            border-radius: 20px;
-            background: rgba(0, 0, 0, 0.45); /* أغمق */
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            max-width: 65px;
+            padding: 4px 12px;
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.5); /* تضليل للعنوان فقط */
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            max-width: 75px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(217, 179, 130, 0.3);
             transition: all 0.3s ease;
             letter-spacing: 0.3px;
@@ -204,68 +153,50 @@
 
         .icon-item:hover .icon-label,
         .icon-item:active .icon-label {
-            background: rgba(217, 179, 130, 0.35);
+            background: rgba(217, 179, 130, 0.3);
             border-color: #d9b382;
-            color: white;
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(217, 179, 130, 0.3);
         }
 
-        /* ألوان أيقونات أكثر إشراقاً */
-        .fa-store { 
-            color: #ffd700; 
-            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
-        }
-        .fa-whatsapp { 
-            color: #25D366; 
-            filter: drop-shadow(0 0 5px rgba(37, 211, 102, 0.5));
-        }
-        .fa-instagram { 
-            color: #E4405F; 
-            filter: drop-shadow(0 0 5px rgba(228, 64, 95, 0.5));
-        }
-        .fa-facebook { 
-            color: #1877F2; 
-            filter: drop-shadow(0 0 5px rgba(24, 119, 242, 0.5));
-        }
-        .fa-tiktok { 
-            color: #ffffff; 
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
-        }
-        .fa-youtube { 
-            color: #FF0000; 
-            filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.5));
-        }
-        .fa-x-twitter { 
-            color: #ffffff; 
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
-        }
-        .fa-snapchat { 
-            color: #FFFC00; 
-            filter: drop-shadow(0 0 5px rgba(255, 252, 0, 0.5));
-        }
-        .fa-telegram { 
-            color: #0088cc; 
-            filter: drop-shadow(0 0 5px rgba(0, 136, 204, 0.5));
-        }
+        /* ألوان الأيقونات - أكثر إشراقاً */
+        .fa-store { color: #ffd700; }
+        .fa-whatsapp { color: #25D366; }
+        .fa-instagram { color: #E4405F; }
+        .fa-facebook { color: #1877F2; }
+        .fa-tiktok { color: #ffffff; }
+        .fa-youtube { color: #FF0000; }
+        .fa-x-twitter { color: #ffffff; }
+        .fa-snapchat { color: #FFFC00; }
+        .fa-telegram { color: #0088cc; }
 
         /* تأثيرات إضافية عند hover */
-        .icon-item:hover .fa-store,
-        .icon-item:active .fa-store {
-            color: #ffed4d;
-            text-shadow: 0 0 15px #ffd700;
+        .icon-item:hover .fa-store {
+            filter: drop-shadow(0 0 10px #ffd700);
         }
-
-        .icon-item:hover .fa-whatsapp,
-        .icon-item:active .fa-whatsapp {
-            color: #6fdf8f;
-            text-shadow: 0 0 15px #25D366;
+        .icon-item:hover .fa-whatsapp {
+            filter: drop-shadow(0 0 10px #25D366);
         }
-
-        .icon-item:hover .fa-instagram,
-        .icon-item:active .fa-instagram {
-            color: #f77777;
-            text-shadow: 0 0 15px #E4405F;
+        .icon-item:hover .fa-instagram {
+            filter: drop-shadow(0 0 10px #E4405F);
+        }
+        .icon-item:hover .fa-facebook {
+            filter: drop-shadow(0 0 10px #1877F2);
+        }
+        .icon-item:hover .fa-tiktok {
+            filter: drop-shadow(0 0 10px #ffffff);
+        }
+        .icon-item:hover .fa-youtube {
+            filter: drop-shadow(0 0 10px #FF0000);
+        }
+        .icon-item:hover .fa-x-twitter {
+            filter: drop-shadow(0 0 10px #ffffff);
+        }
+        .icon-item:hover .fa-snapchat {
+            filter: drop-shadow(0 0 10px #FFFC00);
+        }
+        .icon-item:hover .fa-telegram {
+            filter: drop-shadow(0 0 10px #0088cc);
         }
 
         .bottom-spacer {
@@ -273,7 +204,7 @@
             width: 100%;
         }
 
-        /* لوحة التحكم - بدون تغيير */
+        /* ===== لوحة التحكم ===== */
         .admin-panel {
             position: fixed;
             top: 0;
@@ -451,13 +382,13 @@
         let clickTimer;
 
         function loadData() {
-            const saved = localStorage.getItem('shababek_icons_dark_interactive');
+            const saved = localStorage.getItem('shababek_icons_transparent');
             if (saved) iconsData = JSON.parse(saved);
             renderIcons();
         }
 
         function saveData() {
-            localStorage.setItem('shababek_icons_dark_interactive', JSON.stringify(iconsData));
+            localStorage.setItem('shababek_icons_transparent', JSON.stringify(iconsData));
         }
 
         function renderIcons() {
