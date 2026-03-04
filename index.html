@@ -17,7 +17,7 @@
 
         body {
             min-height: 100vh;
-            background: #3d2e24; /* نفس اللون الداكن في الصورة */
+            background: #2b1e16;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -27,7 +27,7 @@
             height: 100%;
         }
 
-        /* الصورة كخلفية مع تغطية كاملة للشاشة */
+        /* الصورة الجديدة كخلفية */
         .custom-bg {
             position: absolute;
             top: 0;
@@ -35,15 +35,15 @@
             width: 100%;
             height: 100%;
             background: url('https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772594834/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_1_kmg4fd.png') no-repeat center center;
-            background-size: contain; /* للحفاظ على أبعاد الصورة */
-            background-color: #3d2e24; /* لون خلفية مطابق للصورة لملء الفراغات */
+            background-size: contain;
+            background-color: #2b1e16;
             z-index: -1;
         }
 
-        /* حاوية مخصصة للكمبيوتر لتوسيط الصورة */
+        /* للكمبيوتر */
         @media (min-width: 769px) {
             .custom-bg {
-                background-size: auto 100%; /* تظهر الصورة كاملة عمودياً */
+                background-size: auto 100%;
                 background-position: center center;
             }
         }
@@ -57,25 +57,25 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px 15px;
+            justify-content: flex-start; /* تغيير إلى flex-start لتبدأ من الأعلى */
+            padding: 5px 15px 0;
         }
 
-        /* المساحة العلوية (الشعار موجود في الصورة) - تم تقليلها كثيراً لرفع الأيقونات */
+        /* المساحة العلوية - صفر تقريباً */
         .top-spacer {
-            height: 12vh; /* أقل بكثير من السابق لرفع الأيقونات للأعلى */
+            height: 5vh; /* مساحة صغيرة جداً */
             width: 100%;
         }
 
-        /* المنطقة الوسطى - شبكة 3×3 متقاربة جداً */
+        /* المنطقة الوسطى - شبكة 3×3 متقاربة جداً ومرفوعة للأعلى */
         .icons-grid {
             width: 100%;
-            max-width: 260px; /* أصغر لتقريب الأيقونات */
+            max-width: 240px; /* أصغر لتقريب الأيقونات */
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px 5px; /* مسافات صغيرة جداً بين الأيقونات */
+            gap: 5px 3px; /* مسافات صغيرة جداً */
             padding: 0;
-            margin-top: -15px; /* رفع الأيقونات أكثر */
+            margin-top: -15px; /* رفع الأيقونات للأعلى */
         }
 
         /* عنصر الأيقونة الواحدة */
@@ -91,14 +91,13 @@
             animation: fadeIn 0.3s ease forwards;
             opacity: 0;
             background: transparent;
-            padding: 2px 0;
+            padding: 1px 0;
         }
 
         @keyframes fadeIn {
             to { opacity: 1; }
         }
 
-        /* تأخير ظهور الأيقونات */
         .icon-item:nth-child(1) { animation-delay: 0.02s; }
         .icon-item:nth-child(2) { animation-delay: 0.04s; }
         .icon-item:nth-child(3) { animation-delay: 0.06s; }
@@ -113,22 +112,22 @@
             transform: scale(0.92);
         }
 
-        /* دائرة الأيقونة مع تضليل خلفي */
+        /* دائرة الأيقونة */
         .icon-circle {
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 22px;
             color: white;
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
-            margin-bottom: 3px;
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            margin-bottom: 2px;
             border: 1.5px solid rgba(217, 179, 130, 0.4);
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
             transition: all 0.2s ease;
         }
 
@@ -138,22 +137,22 @@
             transform: scale(1.05);
         }
 
-        /* نص مختصر تحت الأيقونة - مع تضليل خلفي */
+        /* نص مختصر تحت الأيقونة */
         .icon-label {
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 700;
             color: white;
             text-align: center;
-            padding: 2px 8px;
+            padding: 2px 5px;
             border-radius: 20px;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            max-width: 65px;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(1px);
+            -webkit-backdrop-filter: blur(1px);
+            max-width: 55px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(217, 179, 130, 0.2);
             transition: all 0.2s ease;
         }
@@ -174,9 +173,9 @@
         .fa-x-twitter { color: #ffffff; }
         .fa-snapchat { color: #FFFC00; }
 
-        /* المساحة السفلية (QR code موجود في الصورة) */
+        /* المساحة السفلية */
         .bottom-spacer {
-            height: 12vh;
+            flex: 1; /* يأخذ المساحة المتبقية */
             width: 100%;
         }
 
@@ -311,13 +310,13 @@
     <div class="custom-bg"></div>
 
     <div class="container">
-        <!-- مساحة علوية صغيرة جداً لرفع الأيقونات للأعلى -->
+        <!-- مساحة علوية صغيرة جداً -->
         <div class="top-spacer"></div>
 
-        <!-- المنطقة الوسطى - أيقونات 3×3 متقاربة جداً -->
+        <!-- أيقونات تحت الشعار مباشرة -->
         <div class="icons-grid" id="iconsGrid"></div>
 
-        <!-- مساحة سفلية صغيرة -->
+        <!-- مساحة سفلية تمتد لبقية الشاشة -->
         <div class="bottom-spacer"></div>
     </div>
 
@@ -364,18 +363,16 @@
         let clickCount = 0;
         let clickTimer;
 
-        // تحميل البيانات
         function loadData() {
-            const saved = localStorage.getItem('shababek_icons_final_v2');
+            const saved = localStorage.getItem('shababek_icons_final_v3');
             if (saved) iconsData = JSON.parse(saved);
             renderIcons();
         }
 
         function saveData() {
-            localStorage.setItem('shababek_icons_final_v2', JSON.stringify(iconsData));
+            localStorage.setItem('shababek_icons_final_v3', JSON.stringify(iconsData));
         }
 
-        // عرض الأيقونات في شبكة 3 أعمدة
         function renderIcons() {
             const container = document.getElementById('iconsGrid');
             if (!container) return;
@@ -394,13 +391,11 @@
             container.innerHTML = html;
         }
 
-        // فتح رابط الأيقونة
         function openIconLink(url) {
             showNotif('جاري الفتح...');
             window.location.href = url;
         }
 
-        // نظام الـ 5 نقرات على أي أيقونة
         function handleIconClick(event, index) {
             clickCount++;
             if (clickTimer) clearTimeout(clickTimer);
@@ -411,7 +406,6 @@
             }
         }
 
-        // لوحة التحكم
         function openAdminPanel() {
             document.getElementById('adminPanel').classList.add('show');
             showAdminIcons();
