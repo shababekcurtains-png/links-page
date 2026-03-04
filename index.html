@@ -46,9 +46,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between; /* توزيع المساحة */
             height: 100vh;
             width: 100%;
+            padding: 0 15px;
         }
 
         /* حاوية الشعار والأيقونات */
@@ -59,7 +60,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: -60px;
+            margin-top: 20px; /* تعديل المسافة العلوية */
         }
 
         /* الشعار ثابت */
@@ -132,11 +133,11 @@
         .fa-snapchat { color: #FFFC00; }
         .fa-telegram { color: #0088cc; }
 
-        /* زر الاتصال */
+        /* زر الاتصال - في أسفل الصفحة */
         .contact-link {
             text-align: center;
-            margin-top: 100px;
             width: 100%;
+            margin-bottom: 30px; /* مسافة من الأسفل */
         }
 
         .contact-button {
@@ -166,7 +167,7 @@
             .wrapper {
                 width: 320px;
                 height: 320px;
-                margin-top: -40px;
+                margin-top: 10px;
             }
             
             .logo-image {
@@ -186,7 +187,7 @@
             }
             
             .contact-link {
-                margin-top: 70px;
+                margin-bottom: 20px;
             }
             
             .contact-button {
@@ -237,11 +238,9 @@
             
             orbit.innerHTML = '';
             const total = iconsData.length;
-            // تم تصغير نصف القطر من 130 إلى 100 لتقريب الأيقونات من المركز
-            const radius = 100; // المسافة من المركز (أقرب بكثير)
+            const radius = 100; // المسافة من المركز
             
             iconsData.forEach((item, index) => {
-                // حساب الزاوية بالراديان (توزيع متساوي 40 درجة بين كل أيقونة)
                 const angle = (index / total) * (2 * Math.PI);
                 const x = radius * Math.cos(angle);
                 const y = radius * Math.sin(angle);
@@ -274,12 +273,10 @@
                     const orbit = document.getElementById('orbit');
                     orbit.classList.add('paused');
                     
-                    // استئناف الدوران بعد ثانيتين
                     setTimeout(() => {
                         orbit.classList.remove('paused');
                     }, 2000);
                     
-                    // السماح بفتح الرابط بشكل طبيعي
                     return true;
                 });
                 
@@ -287,7 +284,6 @@
             });
         }
 
-        // تشغيل الدالة عند تحميل الصفحة
         document.addEventListener('DOMContentLoaded', renderIcons);
     </script>
 </body>
