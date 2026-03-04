@@ -57,25 +57,25 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* تغيير إلى flex-start لتبدأ من الأعلى */
+            justify-content: flex-start;
             padding: 5px 15px 0;
         }
 
-        /* المساحة العلوية - صفر تقريباً */
+        /* المساحة العلوية - 2 أيقونة للأسفل */
         .top-spacer {
-            height: 5vh; /* مساحة صغيرة جداً */
+            height: 16vh; /* زيادة المساحة العلوية لإنزال الأيقونات */
             width: 100%;
         }
 
-        /* المنطقة الوسطى - شبكة 3×3 متقاربة جداً ومرفوعة للأعلى */
+        /* المنطقة الوسطى - شبكة 3×3 متقاربة جداً */
         .icons-grid {
             width: 100%;
-            max-width: 240px; /* أصغر لتقريب الأيقونات */
+            max-width: 240px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 5px 3px; /* مسافات صغيرة جداً */
+            gap: 5px 3px;
             padding: 0;
-            margin-top: -15px; /* رفع الأيقونات للأعلى */
+            margin-top: 0; /* إزالة الـ margin العلوي */
         }
 
         /* عنصر الأيقونة الواحدة */
@@ -175,7 +175,7 @@
 
         /* المساحة السفلية */
         .bottom-spacer {
-            flex: 1; /* يأخذ المساحة المتبقية */
+            flex: 1;
             width: 100%;
         }
 
@@ -310,13 +310,13 @@
     <div class="custom-bg"></div>
 
     <div class="container">
-        <!-- مساحة علوية صغيرة جداً -->
+        <!-- مساحة علوية بمقدار 2 أيقونة للأسفل -->
         <div class="top-spacer"></div>
 
-        <!-- أيقونات تحت الشعار مباشرة -->
+        <!-- أيقونات في المنتصف -->
         <div class="icons-grid" id="iconsGrid"></div>
 
-        <!-- مساحة سفلية تمتد لبقية الشاشة -->
+        <!-- مساحة سفلية -->
         <div class="bottom-spacer"></div>
     </div>
 
@@ -364,13 +364,13 @@
         let clickTimer;
 
         function loadData() {
-            const saved = localStorage.getItem('shababek_icons_final_v3');
+            const saved = localStorage.getItem('shababek_icons_final_v4');
             if (saved) iconsData = JSON.parse(saved);
             renderIcons();
         }
 
         function saveData() {
-            localStorage.setItem('shababek_icons_final_v3', JSON.stringify(iconsData));
+            localStorage.setItem('shababek_icons_final_v4', JSON.stringify(iconsData));
         }
 
         function renderIcons() {
