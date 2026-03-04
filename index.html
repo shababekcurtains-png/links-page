@@ -17,7 +17,7 @@
 
         body {
             min-height: 100vh;
-            background: #000;
+            background: #3d2e24; /* نفس اللون الداكن في الصورة */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -27,15 +27,25 @@
             height: 100%;
         }
 
-        /* الصورة الجديدة كخلفية */
+        /* الصورة كخلفية مع تغطية كاملة للشاشة */
         .custom-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772592833/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_k1da5w.png') no-repeat center center/cover;
+            background: url('https://res.cloudinary.com/dnkuwf8q9/image/upload/v1772594834/%D8%AA%D8%B5%D9%85%D9%8A%D9%85_%D8%A8%D8%AF%D9%88%D9%86_%D8%B9%D9%86%D9%88%D8%A7%D9%86_1_kmg4fd.png') no-repeat center center;
+            background-size: contain; /* للحفاظ على أبعاد الصورة */
+            background-color: #3d2e24; /* لون خلفية مطابق للصورة لملء الفراغات */
             z-index: -1;
+        }
+
+        /* حاوية مخصصة للكمبيوتر لتوسيط الصورة */
+        @media (min-width: 769px) {
+            .custom-bg {
+                background-size: auto 100%; /* تظهر الصورة كاملة عمودياً */
+                background-position: center center;
+            }
         }
 
         /* الحاوية الرئيسية */
@@ -51,21 +61,21 @@
             padding: 20px 15px;
         }
 
-        /* المساحة العلوية (الشعار موجود في الصورة) - تم تقليلها لرفع الأيقونات */
+        /* المساحة العلوية (الشعار موجود في الصورة) - تم تقليلها كثيراً لرفع الأيقونات */
         .top-spacer {
-            height: 18vh; /* تم التقليل من 22vh إلى 18vh لرفع الأيقونات للأعلى */
+            height: 12vh; /* أقل بكثير من السابق لرفع الأيقونات للأعلى */
             width: 100%;
         }
 
-        /* المنطقة الوسطى - شبكة 3×3 */
+        /* المنطقة الوسطى - شبكة 3×3 متقاربة جداً */
         .icons-grid {
             width: 100%;
-            max-width: 280px; /* تم التصغير قليلاً */
+            max-width: 260px; /* أصغر لتقريب الأيقونات */
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px 10px; /* تم تقريب الأيقونات لبعضها */
-            padding: 5px 0;
-            margin-top: -5px; /* رفع الأيقونات أكثر */
+            gap: 8px 5px; /* مسافات صغيرة جداً بين الأيقونات */
+            padding: 0;
+            margin-top: -15px; /* رفع الأيقونات أكثر */
         }
 
         /* عنصر الأيقونة الواحدة */
@@ -81,7 +91,7 @@
             animation: fadeIn 0.3s ease forwards;
             opacity: 0;
             background: transparent;
-            padding: 3px 0;
+            padding: 2px 0;
         }
 
         @keyframes fadeIn {
@@ -105,20 +115,20 @@
 
         /* دائرة الأيقونة مع تضليل خلفي */
         .icon-circle {
-            width: 58px;
-            height: 58px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            font-size: 24px;
             color: white;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            margin-bottom: 4px;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            margin-bottom: 3px;
             border: 1.5px solid rgba(217, 179, 130, 0.4);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
             transition: all 0.2s ease;
         }
 
@@ -130,20 +140,20 @@
 
         /* نص مختصر تحت الأيقونة - مع تضليل خلفي */
         .icon-label {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
             color: white;
             text-align: center;
-            padding: 3px 10px; /* إضافة حشو داخلي */
-            border-radius: 20px; /* تدوير النص */
-            background: rgba(0, 0, 0, 0.35); /* تضليل خلفي للنص */
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
-            max-width: 75px;
+            padding: 2px 8px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            max-width: 65px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(217, 179, 130, 0.2);
             transition: all 0.2s ease;
         }
@@ -166,7 +176,7 @@
 
         /* المساحة السفلية (QR code موجود في الصورة) */
         .bottom-spacer {
-            height: 14vh; /* تم تعديلها قليلاً */
+            height: 12vh;
             width: 100%;
         }
 
@@ -297,17 +307,17 @@
     </style>
 </head>
 <body>
-    <!-- الصورة الجديدة كخلفية (بها QR code) -->
+    <!-- الصورة الجديدة كخلفية -->
     <div class="custom-bg"></div>
 
     <div class="container">
-        <!-- مساحة علوية (الشعار موجود في الصورة) - تم تقليلها لرفع الأيقونات -->
+        <!-- مساحة علوية صغيرة جداً لرفع الأيقونات للأعلى -->
         <div class="top-spacer"></div>
 
-        <!-- المنطقة الوسطى - أيقونات 3×3 مع نصوص داخل التضليل -->
+        <!-- المنطقة الوسطى - أيقونات 3×3 متقاربة جداً -->
         <div class="icons-grid" id="iconsGrid"></div>
 
-        <!-- مساحة سفلية (QR code موجود في الصورة) -->
+        <!-- مساحة سفلية صغيرة -->
         <div class="bottom-spacer"></div>
     </div>
 
@@ -356,13 +366,13 @@
 
         // تحميل البيانات
         function loadData() {
-            const saved = localStorage.getItem('shababek_icons_final');
+            const saved = localStorage.getItem('shababek_icons_final_v2');
             if (saved) iconsData = JSON.parse(saved);
             renderIcons();
         }
 
         function saveData() {
-            localStorage.setItem('shababek_icons_final', JSON.stringify(iconsData));
+            localStorage.setItem('shababek_icons_final_v2', JSON.stringify(iconsData));
         }
 
         // عرض الأيقونات في شبكة 3 أعمدة
