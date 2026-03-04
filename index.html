@@ -59,7 +59,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: -60px; /* رفع الشعار والأيقونات للأعلى */
+            margin-top: -60px;
         }
 
         /* الشعار ثابت */
@@ -132,10 +132,10 @@
         .fa-snapchat { color: #FFFC00; }
         .fa-telegram { color: #0088cc; }
 
-        /* زر الاتصال - منزل للأسفل */
+        /* زر الاتصال */
         .contact-link {
             text-align: center;
-            margin-top: 100px; /* زيادة المسافة لإنزال الزر */
+            margin-top: 100px;
             width: 100%;
         }
 
@@ -237,7 +237,8 @@
             
             orbit.innerHTML = '';
             const total = iconsData.length;
-            const radius = 130; // نصف قطر الدائرة
+            // تم تصغير نصف القطر من 130 إلى 100 لتقريب الأيقونات من المركز
+            const radius = 100; // المسافة من المركز (أقرب بكثير)
             
             iconsData.forEach((item, index) => {
                 // حساب الزاوية بالراديان (توزيع متساوي 40 درجة بين كل أيقونة)
